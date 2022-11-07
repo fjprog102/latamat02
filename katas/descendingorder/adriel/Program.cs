@@ -1,16 +1,16 @@
-﻿System.Console.WriteLine("Type a non-negative number");
-string input = Console.ReadLine();
-
-long checkInt;
-if(!long.TryParse(input, out checkInt) || checkInt < 0)
+﻿int descendingOrder(int number)
 {
-    System.Console.WriteLine("Only non-negative numbers accepted.");
-    return;
+    char[] inputString = Convert.ToString(number).ToArray();
+
+    Array.Sort(inputString);
+    Array.Reverse(inputString);
+
+    string resString = String.Join("", inputString);
+    int res = Convert.ToInt32(resString);
+
+    return (res);
 }
 
-char[] res = input.ToArray();
-Array.Sort(res);
-Array.Reverse(res);
-String.Join("", res);
-
-System.Console.WriteLine(res);
+System.Console.WriteLine(descendingOrder(6568161));
+System.Console.WriteLine(descendingOrder(99541478));
+System.Console.WriteLine(descendingOrder(4584151));
