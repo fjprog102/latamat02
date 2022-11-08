@@ -1,10 +1,10 @@
 ﻿using System;
 
-namespace HighestLowest
+namespace HighestLowestKata.Valeria
 {
     public class HighestLowest
     {
-        public static string GetHighAndLow(string s)
+        public string GetHighAndLow(string s)
         {
             var array = Array.ConvertAll(s.Split(' '), int.Parse);
             return array.Max() + " " + array.Min();
