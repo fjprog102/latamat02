@@ -1,2 +1,7 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+﻿namespace HelloWorld.Joaquin;
+
+public class Hello {
+    public string SayHello() {
+        return "Hello, Joaquin!";
+    }
+}
