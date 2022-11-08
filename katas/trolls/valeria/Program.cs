@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Text.RegularExpressions;
 
-namespace MyConsoleApp
+namespace Troll
 {
     public class Troll
     {
@@ -11,15 +11,6 @@ namespace MyConsoleApp
             var Vowels = new HashSet<char>("aeiouAEIOU");
             Mssg = new string(Mssg.Where(c => !Vowels.Contains(c)).ToArray());
             return Mssg;
-        }
-    }
-    public class Program
-    {
-
-        static void Main(string[] args)
-        {
-
-            Console.WriteLine(Troll.EatVowels("This website is for losers LOL!"));
         }
     }
 }
