@@ -1,12 +1,17 @@
-﻿System.Console.WriteLine("Type specific string:");
-string input = Console.ReadLine();
-string[] splitInput = input.Split(' ');
+﻿namespace HighestLowest.Adriel;
 
-List<int> inputList = new List<int>();
-foreach (string s in splitInput)
-{
-    inputList.Add(Convert.ToInt32(s));
+public class HighestAndLowest {
+    public string getHighestAndLowest(string formattedString) {
+        System.Console.WriteLine($"You entered: {formattedString}");
+        string[] splitInput = formattedString.Split(' ');
+
+        List<int> inputList = new List<int>();
+        foreach (string s in splitInput)
+        {
+            inputList.Add(Convert.ToInt32(s));
+        }
+
+        return $"{inputList.Max()} {inputList.Min()}";
+
+    }
 }
-inputList.Sort();
-
-Console.WriteLine($"{inputList.Last()} {inputList.First()}");
