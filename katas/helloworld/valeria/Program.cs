@@ -1,8 +1,10 @@
-﻿namespace HelloWorld.Valeria
+namespace HelloWorld.Valeria
 {
-    public class HelloWorld{
-        public String SayHello(){
-            return "Hello, World!";
+    public class Hello
+    {
+        public string SayHello()
+        {
+            return "Hello, Valeria!";
         }
     }
 }
