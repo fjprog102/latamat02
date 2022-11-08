@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Text.RegularExpressions;
 
-namespace MyConsoleApp
+namespace SquareDigit
 {
-    public class Class1
+    public class SquareDigit
     {
-        public static string SquareDigit(string s)
+        public static string GetTheSquareDigit(string s)
         {
             string res = "a valid number is required";
             Regex regex = new Regex(@"^\d+$");
@@ -19,13 +19,6 @@ namespace MyConsoleApp
                 }
             }
             return res;
-        }
-    }
-    public class Program
-    {
-        static void Main(string[] args)
-        {
-            Console.WriteLine(Class1.SquareDigit(Console.ReadLine()));
         }
     }
 }
