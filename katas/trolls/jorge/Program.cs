@@ -1,7 +1,7 @@
 ﻿namespace Trolls.Jorge;
 using System.Text.RegularExpressions;
-public class Trolls{
-    public string IsTrolls(string text) {
+public class TrollsText{
+    public string Troll(string text) {
         return Regex.Replace(text, @"[aeiouAEIOUáéíóúÁÉÍÓÚ]", "");
     }
 }
