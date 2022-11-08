@@ -8,10 +8,3 @@ public class DescendingOrder{
         return int.Parse(sortedNumber);
     }
 }
-
-
-//char[] numberArray = number.ToCharArray();
-//Array.Sort(numberArray);
-//Array.Reverse(numberArray);
-//var sortedNumber = new string(numberArray);
-//Console.WriteLine("Your highest possible number is: " + sortedNumber);
