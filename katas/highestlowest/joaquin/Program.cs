@@ -1,20 +1,19 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Write input of space separated numbers:");
-var input = Console.ReadLine();
+﻿namespace HighestLowest.Joaquin {
+    public class HighestLowestClass {
+        public string highAndLow(string input) {
 
-Console.WriteLine(highAndLow(input));
+            if (!input.Contains(' ')) return $"{input} {input}";
+            
+            string[] inputStringArray = input.Split(' ');
+            int[] inputIntegersArray = new int [inputStringArray.Length];
 
-string highAndLow(string input) {
-
-    if (!input.Contains(' ')) return $"{input} {input}";
-    
-    string[] inputStringArray = input.Split(' ');
-    int[] inputIntegersArray = new int [inputStringArray.Length];
-
-    for (int i = 0; i<inputStringArray.Length; i++) {
-        inputIntegersArray[i] = int.Parse(inputStringArray[i]);
+            for (int i = 0; i<inputStringArray.Length; i++) {
+                inputIntegersArray[i] = int.Parse(inputStringArray[i]);
+            }
+            Array.Sort(inputIntegersArray);
+        
+            return $"{inputIntegersArray[inputIntegersArray.Length - 1]} {inputIntegersArray[0]}";
+        }
     }
-    Array.Sort(inputIntegersArray);
-  
-    return $"{inputIntegersArray[inputIntegersArray.Length - 1]} {inputIntegersArray[0]}";
 }
+
