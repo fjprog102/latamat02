@@ -1,4 +1,4 @@
-﻿namespace Vowelcount.Jose;
+﻿namespace VowelCount.Jose;
 
 public class VowelCounter {
     public bool IsVowel(char letter) {
