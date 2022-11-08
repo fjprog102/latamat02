@@ -6,7 +6,7 @@ namespace VowelCount.Valeria
 {
     public class VowelCounter
     {
-        public static string CountVowels(string str)
+        public string CountVowels(string str)
         {
             string res = "The message must be in lower case";
             Regex regex = new Regex(@"^[a-z0-9\s]+$");
@@ -16,6 +16,10 @@ namespace VowelCount.Valeria
                 res = Regex.Matches(str, "a|e|i|o|u").Count.ToString();
             }
             return res;
+        }
+
+        public static void main(string args){
+            
         }
     }
 }
