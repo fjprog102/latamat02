@@ -1,23 +1,13 @@
 ﻿using System;
 
-namespace MyConsoleApp
+namespace HighestLowest
 {
-    public class Class1
+    public class HighestLowest
     {
-        public static string highAndLow(string s)
+        public static string GetHighAndLow(string s)
         {
             var array = Array.ConvertAll(s.Split(' '), int.Parse);
             return array.Max() + " " + array.Min();
-        }
-    }
-    public class Program
-    {
-
-        static void Main(string[] args)
-        {
-            Console.WriteLine(Class1.highAndLow("1 2 3 4 5"));
-            Console.WriteLine(Class1.highAndLow("1 2 -3 4 5"));
-            Console.WriteLine(Class1.highAndLow("1 9 3 4 -5"));
         }
     }
 }
