@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Text.RegularExpressions;
 
-namespace SquareDigit
+namespace SquareDigit.Valeria
 {
-    public class SquareDigit
+    public class SquareDigitCalculator
     {
-        public static string GetTheSquareDigit(string s)
+        public string GetTheSquareDigit(string s)
         {
             string res = "a valid number is required";
             Regex regex = new Regex(@"^\d+$");
