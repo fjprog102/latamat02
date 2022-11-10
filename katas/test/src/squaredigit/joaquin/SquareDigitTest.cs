@@ -15,7 +15,7 @@ namespace SquareDigit.Test.Joaquin {
 
          [Fact]
          public void ItShouldReturnAnInteger(){
-             Assert.Equal(true, new SquareDigitClass().squareDigits(9119).GetType().Equals(typeof(int)));
+             Assert.True(new SquareDigitClass().squareDigits(9119).GetType().Equals(typeof(int)));
          }
         
     }

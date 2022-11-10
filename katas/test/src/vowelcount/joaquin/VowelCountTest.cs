@@ -15,7 +15,7 @@ namespace VowelCount.Test.Joaquin {
 
         [Fact]
         public void ItShouldReturnAnInteger(){
-            Assert.Equal(true, new VowelCountClass().vowelCount("aeiou").GetType().Equals(typeof(int)));
+            Assert.True(new VowelCountClass().vowelCount("aeiou").GetType().Equals(typeof(int)));
         }
 
         [Fact]

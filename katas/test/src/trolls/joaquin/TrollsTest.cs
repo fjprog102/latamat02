@@ -13,11 +13,11 @@ namespace Trolls.Test.Joaquin {
         [Fact]
         public void ItShouldNotContainVowels()
         {
-            Assert.Equal(false, new TrollsText().removeVowels("aeiou").Contains("a"));
-            Assert.Equal(false, new TrollsText().removeVowels("aeiou").Contains("e"));
-            Assert.Equal(false, new TrollsText().removeVowels("aeiou").Contains("i"));
-            Assert.Equal(false, new TrollsText().removeVowels("aeiou").Contains("o"));
-            Assert.Equal(false, new TrollsText().removeVowels("aeiou").Contains("u"));
+            Assert.DoesNotContain("a", new TrollsText().removeVowels("aeiou"));
+            Assert.DoesNotContain("e", new TrollsText().removeVowels("aeiou"));
+            Assert.DoesNotContain("i", new TrollsText().removeVowels("aeiou"));
+            Assert.DoesNotContain("o", new TrollsText().removeVowels("aeiou"));
+            Assert.DoesNotContain("u", new TrollsText().removeVowels("aeiou"));
         }
 
     }
