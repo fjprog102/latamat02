@@ -49,3 +49,4 @@ dotnet reportgenerator -reports:"**/*.cobertura.xml" -targetdir:".coveragereport
  - https://xunit.net/#documentation
  - https://git-scm.com/book/en/v2
  - https://github.com/dotnet/format
+ 

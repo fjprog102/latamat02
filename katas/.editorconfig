@@ -164,6 +164,7 @@ dotnet_diagnostic.IDE0040.severity = warning
 
 # CONSIDER: Are IDE0051 and IDE0052 too noisy to be warnings for IDE editing scenarios? Should they be made build-only warnings?
 # IDE0051: Remove unused private member
+
 # dotnet_diagnostic.IDE0051.severity = warning
 
 # IDE0052: Remove unread private member
@@ -179,6 +180,7 @@ dotnet_diagnostic.IDE0060.severity = warning
 dotnet_diagnostic.CA1012.severity = warning
 
 # CA1822: Make member static
+
 #dotnet_diagnostic.CA1822.severity = warning
 
 # IDE0005: Using directive is unnecessary
