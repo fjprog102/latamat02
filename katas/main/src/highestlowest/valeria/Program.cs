@@ -2,7 +2,7 @@
 
 namespace HighestLowestKata.Valeria
 {
-    public class HighestLowest
+    public class HighestLowestValeria
     {
         public string GetHighAndLow(string s)
         {
