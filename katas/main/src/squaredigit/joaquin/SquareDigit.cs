@@ -2,7 +2,7 @@
 {
     public class SquareDigitClass
     {
-        public int squareDigits(int input)
+        public int SquareDigits(int input)
         {
             string numbers = input.ToString();
             string result = "";

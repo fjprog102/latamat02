@@ -14,8 +14,8 @@ public class DescentingOrderTestJuan
 {
     [Theory]
     [ClassData(typeof(DescentingOrderDataClass))]
-    public void test_descending_order_kata(string input, string expected)
+    public void TestDescendingOrderKata(string input, string expected)
     {
-        Assert.Equal(expected, DescentingOrderJuan.descenting_order(input));
+        Assert.Equal(expected, DescentingOrderJuan.DescentingOrder(input));
     }
 }

@@ -2,13 +2,13 @@
 {
     public class TrollsJuan
     {
-        public static string trolls(string user_input)
+        public static string Trolls(string user_input)
         {
             char[] values = user_input.ToArray();
             string opt = "";
             foreach (char val in values)
             {
-                if (!is_vowel(val))
+                if (!IsVowel(val))
                 {
                     opt += val.ToString();
                 }
@@ -17,7 +17,7 @@
             return (opt);
         }
 
-        public static bool is_vowel(char val)
+        public static bool IsVowel(char val)
         {
             char[] vowels = { 'a', 'e', 'i', 'o', 'u' };
 

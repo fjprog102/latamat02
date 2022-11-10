@@ -2,7 +2,7 @@
 
 public class SquareDigits
 {
-    public int squareEveryDigit(int num)
+    public int SquareEveryDigit(int num)
     {
         List<int> numberList = new List<int>();
         while (num != 0)
@@ -12,6 +12,5 @@ public class SquareDigits
         }
 
         return Convert.ToInt32(string.Join("", numberList));
-
     }
 }

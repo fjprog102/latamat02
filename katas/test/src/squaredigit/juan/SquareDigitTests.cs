@@ -14,8 +14,8 @@ public class SquareDigitTestJuan
 {
     [Theory]
     [ClassData(typeof(SquareDigitDataClass))]
-    public void test_square_digits_kata(string input, string expected)
+    public void TestSquareDigitsKata(string input, string expected)
     {
-        Assert.Equal(expected, SquareDigitJuan.square_digit(input));
+        Assert.Equal(expected, SquareDigitJuan.SquareDigit(input));
     }
 }

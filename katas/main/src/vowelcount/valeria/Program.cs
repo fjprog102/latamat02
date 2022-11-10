@@ -17,7 +17,5 @@ namespace VowelCount.Valeria
 
             return res;
         }
-
-        public static void main(string args) { }
     }
 }

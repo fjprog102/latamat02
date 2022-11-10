@@ -2,9 +2,8 @@
 {
     public class HighestLowestClass
     {
-        public string highAndLow(string input)
+        public string HighAndLow(string input)
         {
-
             if (!input.Contains(' '))
             {
                 return $"{input} {input}";
@@ -24,4 +23,3 @@
         }
     }
 }
-

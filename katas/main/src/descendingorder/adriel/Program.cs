@@ -2,7 +2,7 @@
 
 public class DescendingOrder
 {
-    public int getDescendingOrder(int number)
+    public int GetDescendingOrder(int number)
     {
         char[] inputString = Convert.ToString(number).ToArray();
 

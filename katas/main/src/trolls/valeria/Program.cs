@@ -6,11 +6,11 @@ namespace Trolls.Valeria
 {
     public class Troll
     {
-        public string EatVowels(string Mssg)
+        public string EatVowels(string mssg)
         {
-            var Vowels = new HashSet<char>("aeiouAEIOU");
-            Mssg = new string(Mssg.Where(c => !Vowels.Contains(c)).ToArray());
-            return Mssg;
+            var vowels = new HashSet<char>("aeiouAEIOU");
+            mssg = new string(mssg.Where(c => !vowels.Contains(c)).ToArray());
+            return mssg;
         }
     }
 }
