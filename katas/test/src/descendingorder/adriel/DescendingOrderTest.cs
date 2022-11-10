@@ -2,9 +2,11 @@ namespace DescendingOrder.Test.Adriel;
 
 using DescendingOrder.Adriel;
 
-public class DescendingOrderTest {
+public class DescendingOrderTest
+{
     [Fact]
-    void ShouldReturnNumberInDescendingOrder() {
+    void ShouldReturnNumberInDescendingOrder()
+    {
         Assert.Equal(321, new DescendingOrder().getDescendingOrder(123));
         Assert.Equal(654321, new DescendingOrder().getDescendingOrder(123456));
         Assert.Equal(987654, new DescendingOrder().getDescendingOrder(469785));

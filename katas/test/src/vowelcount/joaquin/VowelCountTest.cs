@@ -1,7 +1,9 @@
 using VowelCount.Joaquin;
 
-namespace VowelCount.Test.Joaquin {
-    public class VowelCountTest {
+namespace VowelCount.Test.Joaquin
+{
+    public class VowelCountTest
+    {
 
         [Fact]
         public void ItShouldReturnTheAmountOfVowels()
@@ -14,12 +16,14 @@ namespace VowelCount.Test.Joaquin {
         }
 
         [Fact]
-        public void ItShouldReturnAnInteger(){
+        public void ItShouldReturnAnInteger()
+        {
             Assert.True(new VowelCountClass().vowelCount("aeiou").GetType().Equals(typeof(int)));
         }
 
         [Fact]
-        public void ItShouldNotBeNegative(){
+        public void ItShouldNotBeNegative()
+        {
             Assert.InRange(new VowelCountClass().vowelCount("aeiou"), 0, 99999999);
             Assert.InRange(new VowelCountClass().vowelCount("<<   >>> ;; //"), 0, 99999999);
             Assert.InRange(new VowelCountClass().vowelCount("My phone number is 11330012"), 0, 99999999);

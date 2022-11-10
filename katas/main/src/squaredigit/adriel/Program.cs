@@ -1,10 +1,12 @@
 ﻿namespace SquareDigit.Adriel;
 
-public class SquareDigits {
+public class SquareDigits
+{
     public int squareEveryDigit(int num)
     {
         List<int> numberList = new List<int>();
-        while (num != 0) {
+        while (num != 0)
+        {
             numberList.Insert(0, (num % 10) * (num % 10));
             num = num / 10;
         }

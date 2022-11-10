@@ -1,9 +1,11 @@
 using DescendingOrder.Joaquin;
 
-namespace DescendingOrder.Test.Joaquin {
+namespace DescendingOrder.Test.Joaquin
+{
 
-    public class DescendingOrderTest {
-        
+    public class DescendingOrderTest
+    {
+
         [Fact]
         public void ItShouldOrderDescent()
         {

@@ -1,8 +1,10 @@
 using SquareDigit.Joaquin;
 
-namespace SquareDigit.Test.Joaquin {
-    public class SquareDigitTest {
-        
+namespace SquareDigit.Test.Joaquin
+{
+    public class SquareDigitTest
+    {
+
         [Fact]
         public void ItShouldReturnAllDigitsToSquare()
         {
@@ -13,10 +15,11 @@ namespace SquareDigit.Test.Joaquin {
             Assert.Equal(811181, new SquareDigitClass().squareDigits(9119));
         }
 
-         [Fact]
-         public void ItShouldReturnAnInteger(){
-             Assert.True(new SquareDigitClass().squareDigits(9119).GetType().Equals(typeof(int)));
-         }
-        
+        [Fact]
+        public void ItShouldReturnAnInteger()
+        {
+            Assert.True(new SquareDigitClass().squareDigits(9119).GetType().Equals(typeof(int)));
+        }
+
     }
 }

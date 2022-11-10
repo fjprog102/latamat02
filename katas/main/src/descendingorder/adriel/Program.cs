@@ -1,6 +1,7 @@
 namespace DescendingOrder.Adriel;
 
-public class DescendingOrder {
+public class DescendingOrder
+{
     public int getDescendingOrder(int number)
     {
         char[] inputString = Convert.ToString(number).ToArray();

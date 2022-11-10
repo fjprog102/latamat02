@@ -1,7 +1,9 @@
 ﻿namespace HighestLowest.Adriel;
 
-public class HighestAndLowest {
-    public string getHighestAndLowest(string formattedString) {
+public class HighestAndLowest
+{
+    public string getHighestAndLowest(string formattedString)
+    {
         System.Console.WriteLine($"You entered: {formattedString}");
         string[] splitInput = formattedString.Split(' ');
 

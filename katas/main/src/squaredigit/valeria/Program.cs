@@ -9,7 +9,8 @@ namespace SquareDigit.Valeria
         {
             string res = "a valid number is required";
             Regex regex = new Regex(@"^\d+$");
-            if(regex.IsMatch(s)){
+            if (regex.IsMatch(s))
+            {
                 res = "";
                 foreach (char item in s)
                 {
