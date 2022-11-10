@@ -5,7 +5,10 @@
         public string highAndLow(string input)
         {
 
-            if (!input.Contains(' ')) return $"{input} {input}";
+            if (!input.Contains(' '))
+            {
+                return $"{input} {input}";
+            }
 
             string[] inputStringArray = input.Split(' ');
             int[] inputIntegersArray = new int[inputStringArray.Length];
@@ -14,6 +17,7 @@
             {
                 inputIntegersArray[i] = int.Parse(inputStringArray[i]);
             }
+
             Array.Sort(inputIntegersArray);
 
             return $"{inputIntegersArray[inputIntegersArray.Length - 1]} {inputIntegersArray[0]}";

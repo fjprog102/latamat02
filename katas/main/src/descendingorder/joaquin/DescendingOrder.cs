@@ -18,12 +18,9 @@ namespace DescendingOrder.Joaquin
                 output += num;
             }
 
-            return Int32.Parse(output);
+            return int.Parse(output);
 
         }
-
     }
 }
-
-
 

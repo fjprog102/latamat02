@@ -14,11 +14,12 @@ namespace SquareDigit.Valeria
                 res = "";
                 foreach (char item in s)
                 {
-                    int sqr = (int)Char.GetNumericValue(item);
+                    int sqr = (int)char.GetNumericValue(item);
                     sqr = sqr * sqr;
                     res += sqr.ToString();
                 }
             }
+
             return res;
         }
     }

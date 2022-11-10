@@ -1,4 +1,4 @@
-namespace VowelCount.Test.Adriel;
+﻿namespace VowelCount.Test.Adriel;
 
 using VowelCount.Adriel;
 

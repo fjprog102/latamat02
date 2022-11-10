@@ -1,4 +1,4 @@
-namespace VowelCount.Test.Valeria
+﻿namespace VowelCount.Test.Valeria
 {
     using VowelCount.Valeria;
     public class VowelCountTest
@@ -20,6 +20,5 @@ namespace VowelCount.Test.Valeria
             Assert.Equal("The message must be in lower case", new VowelCounter().CountVowels(".NET 6"));
             Assert.Equal("The message must be in lower case", new VowelCounter().CountVowels(",./!@#asdf123"));
         }
-
     }
 }

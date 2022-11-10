@@ -1,4 +1,4 @@
-namespace VowelCount.Test.Jorge
+﻿namespace VowelCount.Test.Jorge
 {
     using VowelCount.Jorge;
     public class VowelCountTest
@@ -11,7 +11,6 @@ namespace VowelCount.Test.Jorge
             Assert.True(8 == new VowelCount().Phrase("It's a piece of cake"));
             Assert.True(15 == new VowelCount().Phrase("To not hold someone responsible for something"));
         }
-
     }
 }
 

@@ -11,7 +11,7 @@ public class SquareDigits
             num = num / 10;
         }
 
-        return Convert.ToInt32(String.Join("", numberList));
+        return Convert.ToInt32(string.Join("", numberList));
 
     }
 }

@@ -1,4 +1,4 @@
-namespace Trolls.Test.Adriel;
+﻿namespace Trolls.Test.Adriel;
 
 using Trolls.Adriel;
 

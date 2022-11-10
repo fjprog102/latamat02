@@ -1,4 +1,4 @@
-namespace SquareDigit.Test.Adriel;
+﻿namespace SquareDigit.Test.Adriel;
 
 using SquareDigit.Adriel;
 

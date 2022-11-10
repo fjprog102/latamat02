@@ -1,4 +1,4 @@
-using VowelCount.Joaquin;
+﻿using VowelCount.Joaquin;
 
 namespace VowelCount.Test.Joaquin
 {
@@ -28,7 +28,5 @@ namespace VowelCount.Test.Joaquin
             Assert.InRange(new VowelCountClass().vowelCount("<<   >>> ;; //"), 0, 99999999);
             Assert.InRange(new VowelCountClass().vowelCount("My phone number is 11330012"), 0, 99999999);
         }
-
     }
-
 }

@@ -12,9 +12,9 @@ namespace VowelCount.Valeria
             Regex regex = new Regex(@"^[a-z0-9\s]+$");
             if (regex.IsMatch(str))
             {
-                var Vowels = new HashSet<char>("aeiou");
                 res = Regex.Matches(str, "a|e|i|o|u").Count.ToString();
             }
+
             return res;
         }
 
