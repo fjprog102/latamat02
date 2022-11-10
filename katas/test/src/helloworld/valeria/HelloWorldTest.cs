@@ -4,9 +4,10 @@ namespace HelloWorld.Test.Valeria
     public class HelloWorldTest
     {
         [Fact]
-        void ItShouldSayHelloValeria(){
+        void ItShouldSayHelloValeria()
+        {
             Assert.Equal("Hello, Valeria!", new Hello().SayHello());
         }
-        
+
     }
 }

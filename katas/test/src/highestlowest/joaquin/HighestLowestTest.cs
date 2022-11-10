@@ -1,7 +1,9 @@
 using HighestLowest.Joaquin;
 
-namespace HighestLowest.Test.Joaquin {
-    public class HighestLowestTest {
+namespace HighestLowest.Test.Joaquin
+{
+    public class HighestLowestTest
+    {
 
         [Fact]
         public void ItShouldReturnHighestAndLowestNumbers()
@@ -14,8 +16,9 @@ namespace HighestLowest.Test.Joaquin {
         }
 
         [Fact]
-        public void ItShouldReturnAString(){
-              Assert.True(new HighestLowestClass().highAndLow("12345 12345").GetType().Equals(typeof(string)));
+        public void ItShouldReturnAString()
+        {
+            Assert.True(new HighestLowestClass().highAndLow("12345 12345").GetType().Equals(typeof(string)));
         }
     }
 

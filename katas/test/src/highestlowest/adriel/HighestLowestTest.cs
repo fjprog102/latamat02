@@ -2,9 +2,11 @@ namespace HighestLowest.Test.Adriel;
 
 using HighestLowest.Adriel;
 
-public class HighestLowestTest {
+public class HighestLowestTest
+{
     [Fact]
-    void ItShouldReturnTheHighestAndLowestNumbersOnAString() {
+    void ItShouldReturnTheHighestAndLowestNumbersOnAString()
+    {
         Assert.Equal("5 1", new HighestAndLowest().getHighestAndLowest("1 2 3 4 5"));
         Assert.Equal("5 -1", new HighestAndLowest().getHighestAndLowest("-1 2 3 4 5"));
         Assert.Equal("64 -58", new HighestAndLowest().getHighestAndLowest("5 5 64 -58 4"));
