@@ -2,12 +2,12 @@
 {
     public class DescentingOrderJuan
     {
-        static public String char_list_to_string(char[] arr)
+        public static string char_list_to_string(char[] arr)
         {
-            return new String(arr);
+            return new string(arr);
         }
 
-        static public String descenting_order(String user_input)
+        public static string descenting_order(string user_input)
         {
             char[] values = user_input.ToArray();
             Array.Sort(values, new ReverseString());

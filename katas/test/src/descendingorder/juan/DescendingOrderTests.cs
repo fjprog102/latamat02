@@ -1,6 +1,6 @@
-using DescentingOrder.Juan;
+﻿using DescentingOrder.Juan;
 
-public class DescentingOrderDataClass : TheoryData<String, String>
+public class DescentingOrderDataClass : TheoryData<string, string>
 {
     public DescentingOrderDataClass()
     {
@@ -14,7 +14,7 @@ public class DescentingOrderTestJuan
 {
     [Theory]
     [ClassData(typeof(DescentingOrderDataClass))]
-    public void test_descending_order_kata(String input, String expected)
+    public void test_descending_order_kata(string input, string expected)
     {
         Assert.Equal(expected, DescentingOrderJuan.descenting_order(input));
     }

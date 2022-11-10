@@ -1,4 +1,4 @@
-namespace DescendingOrder.Test.Jorge
+﻿namespace DescendingOrder.Test.Jorge
 {
     using DescendingOrder.Jorge;
     public class DescendingOrderTest
@@ -12,7 +12,6 @@ namespace DescendingOrder.Test.Jorge
             Assert.True(654321 == new DescendingOrder().Number(145263));
             Assert.True(987654321 == new DescendingOrder().Number(123456789));
         }
-
     }
 }
 

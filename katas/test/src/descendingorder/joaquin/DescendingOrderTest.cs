@@ -1,4 +1,4 @@
-using DescendingOrder.Joaquin;
+﻿using DescendingOrder.Joaquin;
 
 namespace DescendingOrder.Test.Joaquin
 {
@@ -13,6 +13,5 @@ namespace DescendingOrder.Test.Joaquin
             Assert.Equal(654321, new DescendingClass().orderDescent(145263));
             Assert.Equal(987654321, new DescendingClass().orderDescent(123456789));
         }
-
     }
 }

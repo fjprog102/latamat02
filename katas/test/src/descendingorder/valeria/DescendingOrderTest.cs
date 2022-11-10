@@ -1,4 +1,4 @@
-using DescendingOrder.Valeria;
+﻿using DescendingOrder.Valeria;
 namespace DescendingOrder.Test.Valeria;
 public class DescendingOrderTest
 {
@@ -18,5 +18,4 @@ public class DescendingOrderTest
         Assert.Equal("your input must be a non-negative integer", new DescendingOrderClass().GetTheHighestValue(-1354));
         Assert.Equal("your input must be a non-negative integer", new DescendingOrderClass().GetTheHighestValue(-9874));
     }
-
 }

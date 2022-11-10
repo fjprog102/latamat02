@@ -9,10 +9,11 @@
 
             foreach (char c in numbers)
             {
-                double squared = Math.Pow(Int32.Parse(c.ToString()), 2);
+                double squared = Math.Pow(int.Parse(c.ToString()), 2);
                 result += squared.ToString();
             }
-            return Int32.Parse(result);
+
+            return int.Parse(result);
         }
     }
 }

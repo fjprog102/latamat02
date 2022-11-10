@@ -2,21 +2,21 @@
 {
     public class SquareDigitJuan
     {
-        static public String square_digit(String user_input)
+        public static string square_digit(string user_input)
         {
-            char[] values = user_input.ToArray();
-            String opt = "";
+            string opt = "";
 
             foreach (char val in user_input)
             {
                 opt += get_square(val);
             }
+
             return opt;
         }
 
-        static public String get_square(char value)
+        public static string get_square(char value)
         {
-            int parsed = Int32.Parse(value.ToString());
+            int parsed = int.Parse(value.ToString());
             int square = parsed * parsed;
             return square.ToString();
         }

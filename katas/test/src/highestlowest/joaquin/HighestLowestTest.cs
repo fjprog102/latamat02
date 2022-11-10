@@ -1,4 +1,4 @@
-using HighestLowest.Joaquin;
+﻿using HighestLowest.Joaquin;
 
 namespace HighestLowest.Test.Joaquin
 {
@@ -21,5 +21,4 @@ namespace HighestLowest.Test.Joaquin
             Assert.True(new HighestLowestClass().highAndLow("12345 12345").GetType().Equals(typeof(string)));
         }
     }
-
 }

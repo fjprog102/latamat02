@@ -10,7 +10,10 @@ namespace VowelCount.Joaquin
 
             foreach (char ch in input)
             {
-                if (vowels.Contains(ch)) count++;
+                if (vowels.Contains(ch))
+                {
+                    count++;
+                }
             }
 
             return count;

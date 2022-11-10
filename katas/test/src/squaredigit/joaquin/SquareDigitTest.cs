@@ -1,4 +1,4 @@
-using SquareDigit.Joaquin;
+﻿using SquareDigit.Joaquin;
 
 namespace SquareDigit.Test.Joaquin
 {
@@ -20,6 +20,5 @@ namespace SquareDigit.Test.Joaquin
         {
             Assert.True(new SquareDigitClass().squareDigits(9119).GetType().Equals(typeof(int)));
         }
-
     }
 }

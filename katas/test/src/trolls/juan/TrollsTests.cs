@@ -1,6 +1,6 @@
-using Trolls.Juan;
+﻿using Trolls.Juan;
 
-public class TrollsDataClass : TheoryData<String, String>
+public class TrollsDataClass : TheoryData<string, string>
 {
     public TrollsDataClass()
     {
@@ -16,7 +16,7 @@ public class TrollsTestJuan
 {
     [Theory]
     [ClassData(typeof(TrollsDataClass))]
-    public void test_trolls_kata(String input, String expected)
+    public void test_trolls_kata(string input, string expected)
     {
         Assert.Equal(expected, TrollsJuan.trolls(input));
     }

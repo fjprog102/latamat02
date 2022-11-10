@@ -1,4 +1,4 @@
-using Trolls.Joaquin;
+﻿using Trolls.Joaquin;
 
 namespace Trolls.Test.Joaquin
 {
@@ -22,7 +22,5 @@ namespace Trolls.Test.Joaquin
             Assert.DoesNotContain("o", new TrollsText().removeVowels("aeiou"));
             Assert.DoesNotContain("u", new TrollsText().removeVowels("aeiou"));
         }
-
     }
-
 }

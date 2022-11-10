@@ -1,6 +1,6 @@
-using VowelCount.Juan;
+﻿using VowelCount.Juan;
 
-public class VowelCountDataClass : TheoryData<String, Int32>
+public class VowelCountDataClass : TheoryData<string, int>
 {
     public VowelCountDataClass()
     {
@@ -15,7 +15,7 @@ public class VowelCountTestJuan
 {
     [Theory]
     [ClassData(typeof(VowelCountDataClass))]
-    public void test_count_vowels_kata(String input, Int32 expected)
+    public void test_count_vowels_kata(string input, int expected)
     {
         Assert.Equal(expected, VowelCountJuan.count_vowels(input));
     }
