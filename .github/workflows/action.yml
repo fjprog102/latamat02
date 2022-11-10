@@ -18,3 +18,5 @@ jobs:
         run: dotnet build katas/
       - name: Check format issues
         run: dotnet format --verify-no-changes katas/
+      - name: Run tests
+        run: dotnet test katas/ -l html --collect:"XPlat Code Coverage"
