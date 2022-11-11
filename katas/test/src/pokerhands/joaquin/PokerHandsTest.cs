@@ -157,4 +157,9 @@ public class PokerHandsTest
         Assert.True(new PokerClass().GetHandWinner("2H 3D 5S 9C KD", "2C 3H 4S 8C KH").GetType().Equals(typeof(string)));
     }
 
+    [Fact]
+    public void InputShouldContainBothHands()
+    {
+
+    }
 }

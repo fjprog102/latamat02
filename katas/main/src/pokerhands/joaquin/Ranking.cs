@@ -19,6 +19,7 @@ public class PokerRanking
 
     public string GetHandRanking(string hand)
     {
+        // receive "2H 3D 5S 9C KD"
         return "ranking";
     }
 
