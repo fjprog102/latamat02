@@ -1,7 +1,7 @@
-using PokerHands.Juan;
+﻿using PokerHands.Juan;
 using Xunit.Abstractions;
 
-public class PokerHandsDataClass : TheoryData<String, String>
+public class PokerHandsDataClass : TheoryData<string, string>
 {
     public PokerHandsDataClass()
     {
@@ -31,7 +31,7 @@ public class PokerHandsTestJuan
 
     [Theory]
     [ClassData(typeof(PokerHandsDataClass))]
-    public void TestPokerHands(String input, String expected)
+    public void TestPokerHands(string input, string expected)
     {
         output.WriteLine("This is output from {0}", new PokerHandsJuan().PlayHands(input));
         Assert.Equal(expected, new PokerHandsJuan().PlayHands(input));
