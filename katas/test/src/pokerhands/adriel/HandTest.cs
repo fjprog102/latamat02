@@ -4,7 +4,7 @@ using Enums.Adriel;
 using Cards.Adriel;
 using Hands.Adriel;
 
-public class PokerHandsHandsTest
+public class HandTest
 {
     [Fact]
     private void ShouldReturnAnArgumentExceptionForInvalidHandInput()

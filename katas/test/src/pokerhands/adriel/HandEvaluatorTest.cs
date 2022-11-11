@@ -4,7 +4,7 @@ using Enums.Adriel;
 using Hands.Adriel;
 using HandsEvaluator.Adriel;
 
-public class PokerHandsHandEvaluatorTest
+public class HandEvaluatorTest
 {
     [Fact]
     private void MethodShouldCorrectlyReturnHighCardForAHandWithHighCard()

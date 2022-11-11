@@ -1,15 +1,15 @@
-namespace PokerHands.RankedHands.Adriel;
+namespace PokerHands.HandsRanker.Adriel;
 
 using Enums.Adriel;
 using Hands.Adriel;
 using HandsEvaluator.Adriel;
 
-public class RankedHand
+public class HandRanker
 {
     public Hand Hand { get; }
     public Ranking Ranking { get; }
 
-    public RankedHand(Hand hand)
+    public HandRanker(Hand hand)
     {
         var tempCards = hand.Cards.OrderBy(c => c.Value);
         string tempCardsString = string.Join(" ", tempCards);

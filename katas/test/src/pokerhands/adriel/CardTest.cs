@@ -3,7 +3,7 @@ namespace PokerHands.Cards.Test.Adriel;
 using Enums.Adriel;
 using Cards.Adriel;
 
-public class PokerHandsCardsTest
+public class CardTest
 {
     [Fact]
     private void ShouldReturnAnArgumentExceptionForInvalidCardInput()
