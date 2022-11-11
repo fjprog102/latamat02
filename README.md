@@ -15,6 +15,18 @@ dotnet restore
 dotnet tool restore
 ```
 
+## Formating
+- Check format issues
+```
+dotnet format --verify-no-changes
+```
+
+- Fix format issues
+```
+dotnet format
+```
+
+
 ## Testing
 - Run tests (includes restore and build)
 ```
@@ -37,3 +49,5 @@ dotnet reportgenerator -reports:"**/*.cobertura.xml" -targetdir:".coveragereport
 - https://learn.microsoft.com/en-us/dotnet/csharp/
 - https://xunit.net/#documentation
 - https://git-scm.com/book/en/v2
+- https://github.com/dotnet/format
+

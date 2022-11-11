@@ -2,15 +2,15 @@
 {
     public class HighestLowestJuan
     {
-        static public String highest_lowest(String user_input)
+        public static string HighestLowest(string user_input)
         {
-            var values = string_to_int_list(user_input, " ");
-            return (String.Format("{0} {1}", values.Max(), values.Min()));
+            var values = StringToIntList(user_input, " ");
+            return (string.Format("{0} {1}", values.Max(), values.Min()));
         }
 
-        static public int[] string_to_int_list(String str, String separator)
+        public static int[] StringToIntList(string str, string separator)
         {
-            return Array.ConvertAll(str.Split(separator), value => Int32.Parse(value));
+            return Array.ConvertAll(str.Split(separator), value => int.Parse(value));
         }
     }
 }

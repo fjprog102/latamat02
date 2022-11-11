@@ -1,4 +1,4 @@
-namespace Trolls.Test.Jorge
+﻿namespace Trolls.Test.Jorge
 {
     using Trolls.Jorge;
     public class TrollsTest
@@ -11,7 +11,6 @@ namespace Trolls.Test.Jorge
             Assert.True("Wht r y,  cmmnst?" == new TrollsText().Troll("What are you, a communist?"));
             Assert.True("N ffns bt,\nYr wrtng s mng th wrst 'v vr rd" == new TrollsText().Troll("No offense but,\nYour writing is among the worst I've ever read"));
         }
-
     }
 }
 

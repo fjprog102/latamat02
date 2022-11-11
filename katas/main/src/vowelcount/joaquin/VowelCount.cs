@@ -3,14 +3,17 @@ namespace VowelCount.Joaquin
 {
     public class VowelCountClass
     {
-        public int vowelCount(string input)
+        public int VowelCount(string input)
         {
             int count = 0;
             char[] vowels = { 'a', 'e', 'i', 'o', 'u' };
 
             foreach (char ch in input)
             {
-                if (vowels.Contains(ch)) count++;
+                if (vowels.Contains(ch))
+                {
+                    count++;
+                }
             }
 
             return count;
