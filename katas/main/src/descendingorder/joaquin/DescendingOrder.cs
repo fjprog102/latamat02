@@ -4,9 +4,8 @@ namespace DescendingOrder.Joaquin
 {
     public class DescendingClass
     {
-        public int orderDescent(int input)
+        public int OrderDescent(int input)
         {
-
             char[] numbers = input.ToString().ToCharArray();
             string output = "";
 
@@ -18,12 +17,7 @@ namespace DescendingOrder.Joaquin
                 output += num;
             }
 
-            return Int32.Parse(output);
-
+            return int.Parse(output);
         }
-
     }
 }
-
-
-

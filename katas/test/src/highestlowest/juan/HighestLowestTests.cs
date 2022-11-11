@@ -1,6 +1,6 @@
-using HighestLowest.Juan;
+﻿using HighestLowest.Juan;
 
-public class HighestLowestDataClass : TheoryData<String, String>
+public class HighestLowestDataClass : TheoryData<string, string>
 {
     public HighestLowestDataClass()
     {
@@ -14,8 +14,8 @@ public class HighestLowestTestJuan
 {
     [Theory]
     [ClassData(typeof(HighestLowestDataClass))]
-    public void test_highest_lowest_kata(String input, String expected)
+    public void TestHighestLowestKata(string input, string expected)
     {
-        Assert.Equal(expected, HighestLowestJuan.highest_lowest(input));
+        Assert.Equal(expected, HighestLowestJuan.HighestLowest(input));
     }
 }
