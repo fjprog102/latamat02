@@ -38,28 +38,21 @@ public class Card {
         }
     }
 
-    public virtual int compareTo(Card other)
-    {
-        if(this.Value > other.Value) return 1;
-        else if(this.Value < other.Value) return -1;
-        else if(this.Suit > other.Suit) return 1;
-        else if(this.Suit < other.Suit) return -1;
-        return 0;
-    }
+    // public virtual int compareTo(Card other)
+    // {
+    //     if(this.Value > other.Value) return 1;
+    //     else if(this.Value < other.Value) return -1;
+    //     else if(this.Suit > other.Suit) return 1;
+    //     else if(this.Suit < other.Suit) return -1;
+    //     return 0;
+    // }
 
     public override string ToString()
     {
         char[] values = "23456789TJQKA".ToCharArray();
         char[] suits = "cdhs".ToCharArray();
+        //char[] suits = {  '♣', '♦', '♥', '♠' };
 
         return values[(int)Value].ToString() + suits[(int)Suit].ToString();
     }
-
-    // public override string ToString()
-    // {
-    //     char[] values = "23456789TJQKA".ToCharArray();
-    //     char[] suits = {  '♣', '♦', '♥', '♠' };
-
-    //     return values[(int)Value].ToString() + suits[(int)Suit].ToString();
-    // }
 }
