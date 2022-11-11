@@ -20,28 +20,28 @@ public class CardTest
     public void ItShouldReturnThePossibleValuesOfACard()
     {
        Card card = new Card();
-       Assert.Equal(13, card.values.Length);
-       Assert.Equal('2', card.values[0]);
-       Assert.Equal('3', card.values[1]);
-       Assert.Equal('4', card.values[2]);
-       Assert.Equal('5', card.values[3]);
-       Assert.Equal('6', card.values[4]);
-       Assert.Equal('7', card.values[5]);
-       Assert.Equal('8', card.values[6]);
-       Assert.Equal('9', card.values[7]);
-       Assert.Equal('T', card.values[8]);
-       Assert.Equal('J', card.values[9]);
-       Assert.Equal('Q', card.values[10]);
-       Assert.Equal('K', card.values[11]);
-       Assert.Equal('A', card.values[12]);
+       Assert.Equal(13, card.cardValues.Length);
+       Assert.Equal('2', card.cardValues[0]);
+       Assert.Equal('3', card.cardValues[1]);
+       Assert.Equal('4', card.cardValues[2]);
+       Assert.Equal('5', card.cardValues[3]);
+       Assert.Equal('6', card.cardValues[4]);
+       Assert.Equal('7', card.cardValues[5]);
+       Assert.Equal('8', card.cardValues[6]);
+       Assert.Equal('9', card.cardValues[7]);
+       Assert.Equal('T', card.cardValues[8]);
+       Assert.Equal('J', card.cardValues[9]);
+       Assert.Equal('Q', card.cardValues[10]);
+       Assert.Equal('K', card.cardValues[11]);
+       Assert.Equal('A', card.cardValues[12]);
     }
 
     [Fact]
-    public void ItShouldReturnTheValueOfACard()
+    public void ItShouldHaveAValidValue()
     {
         Card card = new Card();
-        Assert.Equal("", card.cardValue);
-        Assert.Equal("3S", card.CreateCard('3', 'S'));
-        Assert.Equal("3S", card.cardValue);
+        Assert.NotNull(card.value);
+        card.suits.Contains(card.value[0]);
+        card.cardValues.Contains(card.value[1]);
     }
 }
