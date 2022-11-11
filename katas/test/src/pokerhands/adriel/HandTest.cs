@@ -10,16 +10,16 @@ public class PokerHandsHandsTest
     private void ShouldReturnAnArgumentExceptionWithInvalidHandInput()
     {
         string message = "Hand must contain 5 cards";
-        
+
         var ex = Assert.Throws<ArgumentException>(() => new Hand("2c 3d 4h 5c"));
         Assert.Equal(message, ex.Message);
-        
+
         var ex2 = Assert.Throws<ArgumentException>(() => new Hand("2c 3d "));
         Assert.Equal(message, ex2.Message);
-        
+
         var ex3 = Assert.Throws<ArgumentException>(() => new Hand(""));
         Assert.Equal(message, ex3.Message);
-        
+
         var ex4 = Assert.Throws<ArgumentException>(() => new Hand("2c 3d 4h 5c ac 7d"));
         Assert.Equal(message, ex4.Message);
     }

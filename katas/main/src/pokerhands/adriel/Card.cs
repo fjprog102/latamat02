@@ -1,16 +1,17 @@
 namespace PokerHands.Cards.Adriel;
 
-using PokerHands.Enums.Adriel;
+using Enums.Adriel;
 
-public class Card {
+public class Card
+{
     public Value Value { get; set; }
     public Suit Suit { get; set; }
 
     public Card(string c)
     {
         char[] arr = c.ToLower().ToCharArray();
-        if(arr.Length != 2) throw new ArgumentException("Card must consist of value and suit");
-        switch(arr[0])
+        if (arr.Length != 2) throw new ArgumentException("Card must only consist of value and suit");
+        switch (arr[0])
         {
             case '2': this.Value = Value.Two; break;
             case '3': this.Value = Value.Three; break;
@@ -20,6 +21,7 @@ public class Card {
             case '7': this.Value = Value.Seven; break;
             case '8': this.Value = Value.Eight; break;
             case '9': this.Value = Value.Nine; break;
+            case '0': this.Value = Value.Ten; break;
             case 't': this.Value = Value.Ten; break;
             case 'j': this.Value = Value.Jack; break;
             case 'q': this.Value = Value.Queen; break;
@@ -28,7 +30,7 @@ public class Card {
             default: throw new ArgumentException($"Invalid value: '{arr[0]}'");
         }
 
-        switch(arr[1])
+        switch (arr[1])
         {
             case 's': this.Suit = Suit.Spades; break;
             case 'h': this.Suit = Suit.Hearts; break;
