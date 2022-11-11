@@ -2,7 +2,7 @@ namespace Ranking.Joaquin;
 using System;
 using System.Collections.Generic;  
 
-public class Ranking
+public class RankingClass
 {
 
     Dictionary<string, int> pokerRanking = new Dictionary<string, int>
@@ -18,5 +18,9 @@ public class Ranking
         {"straight flush", 8},
     };
 
+    public object GetHandRanking(string hand)
+    {
+        return "ranking";
+    }
 
 }
