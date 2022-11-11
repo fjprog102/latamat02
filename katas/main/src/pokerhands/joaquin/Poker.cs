@@ -7,18 +7,14 @@ public class PokerClass
     PlayerClass Black = new PlayerClass();
     PlayerClass White = new PlayerClass();
 
-    // SHOULD CREATE CARD CLASS????
-    char[] suits = {'C', 'D', 'H', 'S'};
-    char[] values = {'2', '3', '4', '5', '6', '7', '8', '9', 'T', 'J', 'Q', 'K', 'A'};
-
     // METHOD TO RETURN DEAL CARD RESULT
-    public string GetDealCardsResult(string blackHand, string whiteHand)
+    public string GetHandWinner(string blackHand, string whiteHand)
     {
         return "res";
     }
 
     // METHOD TO GET HAND RANKING (SHOULD CREATE RANKING CLASS????)
-    public string GetHandRanking()
+    public string GetHandRanking(string hand)
     {
         return "ranking";
     }
