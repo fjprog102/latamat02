@@ -32,4 +32,48 @@ public class DirectionListTest
         Assert.Equal(Direction.West, newCurrentDirection);
         Assert.Equal(Direction.West, directions.Current);
     }
+
+    [Fact]
+    private void DirectionListMoveToPreviousAndUpdateCurrent()
+    {
+        DirectionList directions = new DirectionList();
+
+        Direction newCurrentDirection = directions.Previous();
+        Assert.Equal(Direction.South, newCurrentDirection);
+        Assert.Equal(Direction.South, directions.Current);
+
+        newCurrentDirection = directions.Previous();
+        Assert.Equal(Direction.East, newCurrentDirection);
+        Assert.Equal(Direction.East, directions.Current);
+
+        newCurrentDirection = directions.Previous();
+        Assert.Equal(Direction.North, newCurrentDirection);
+        Assert.Equal(Direction.North, directions.Current);
+
+        newCurrentDirection = directions.Previous();
+        Assert.Equal(Direction.West, newCurrentDirection);
+        Assert.Equal(Direction.West, directions.Current);
+    }
+
+    [Fact]
+    private void DirectionListMoveToPreviousAndNext()
+    {
+        DirectionList directions = new DirectionList();
+
+        Direction newCurrentDirection = directions.Previous();
+        Assert.Equal(Direction.South, newCurrentDirection);
+        Assert.Equal(Direction.South, directions.Current);
+
+        newCurrentDirection = directions.Next();
+        Assert.Equal(Direction.West, newCurrentDirection);
+        Assert.Equal(Direction.West, directions.Current);
+
+        newCurrentDirection = directions.Next();
+        Assert.Equal(Direction.North, newCurrentDirection);
+        Assert.Equal(Direction.North, directions.Current);
+
+        newCurrentDirection = directions.Previous();
+        Assert.Equal(Direction.West, newCurrentDirection);
+        Assert.Equal(Direction.West, directions.Current);
+    }
 }

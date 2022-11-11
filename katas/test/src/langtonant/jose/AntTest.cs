@@ -29,4 +29,23 @@ public class AntTest
         theAnt.TurnRight();
         Assert.Equal(Direction.West, theAnt.Direction);
     }
+
+    [Fact]
+    private void AntShouldTurnLeft()
+    {
+        Ant theAnt = new Ant();
+
+        // Default initial direction is West, after turning 90° right, new direction should be North
+        theAnt.TurnLeft();
+        Assert.Equal(Direction.South, theAnt.Direction);
+
+        theAnt.TurnLeft();
+        Assert.Equal(Direction.East, theAnt.Direction);
+
+        theAnt.TurnLeft();
+        Assert.Equal(Direction.North, theAnt.Direction);
+
+        theAnt.TurnLeft();
+        Assert.Equal(Direction.West, theAnt.Direction);
+    }
 }

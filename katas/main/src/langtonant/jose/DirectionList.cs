@@ -18,4 +18,12 @@ public class DirectionList
         Current = _directions[_currentIndex];
         return Current;
     }
+
+    public Direction Previous()
+    {
+        _currentIndex--;
+        _currentIndex = _currentIndex < 0 ? _directions.Length - 1 : _currentIndex;
+        Current = _directions[_currentIndex];
+        return Current;
+    }
 }

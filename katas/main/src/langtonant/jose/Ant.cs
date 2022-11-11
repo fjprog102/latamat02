@@ -1,7 +1,5 @@
 ﻿namespace LangtonAnt.Jose;
 
-using static Direction;
-
 public class Ant
 {
     public Direction Direction => _directionList.Current;
@@ -16,5 +14,10 @@ public class Ant
     public void TurnRight()
     {
         _directionList.Next();
+    }
+
+    public void TurnLeft()
+    {
+        _directionList.Previous();
     }
 }
