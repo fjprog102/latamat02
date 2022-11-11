@@ -18,7 +18,7 @@ public class HandRankerTest
     {
         HandRanker hr = new HandRanker(new Hand("tc 4d 8s Kh Qd"));
         Assert.Equal(Ranking.HighCard, hr.Ranking);
-        
+
         HandRanker hr2 = new HandRanker(new Hand("2d 3d 4s 5h Ks"));
         Assert.Equal(Ranking.HighCard, hr2.Ranking);
 
@@ -34,7 +34,7 @@ public class HandRankerTest
     {
         HandRanker hr = new HandRanker(new Hand("tc td 8s Kh Qd"));
         Assert.Equal(Ranking.Pair, hr.Ranking);
-        
+
         HandRanker hr2 = new HandRanker(new Hand("2d 3d 4s 5h 4s"));
         Assert.Equal(Ranking.Pair, hr2.Ranking);
 
@@ -50,7 +50,7 @@ public class HandRankerTest
     {
         HandRanker hr = new HandRanker(new Hand("tc td 8s Kh 8d"));
         Assert.Equal(Ranking.TwoPairs, hr.Ranking);
-        
+
         HandRanker hr2 = new HandRanker(new Hand("2d 2d 4s 5h 4s"));
         Assert.Equal(Ranking.TwoPairs, hr2.Ranking);
 
@@ -66,7 +66,7 @@ public class HandRankerTest
     {
         HandRanker hr = new HandRanker(new Hand("tc td ts Kh 8d"));
         Assert.Equal(Ranking.ThreeOfAKind, hr.Ranking);
-        
+
         HandRanker hr2 = new HandRanker(new Hand("2d 2d 4s 5h 2s"));
         Assert.Equal(Ranking.ThreeOfAKind, hr2.Ranking);
 
@@ -82,7 +82,7 @@ public class HandRankerTest
     {
         HandRanker hr = new HandRanker(new Hand("9c 6d 7s 0h 8d"));
         Assert.Equal(Ranking.Straight, hr.Ranking);
-        
+
         HandRanker hr2 = new HandRanker(new Hand("2d 3d 4s 5h As"));
         Assert.Equal(Ranking.Straight, hr2.Ranking);
 
@@ -98,7 +98,7 @@ public class HandRankerTest
     {
         HandRanker hr = new HandRanker(new Hand("9c 6c Kc 2c 8c"));
         Assert.Equal(Ranking.Flush, hr.Ranking);
-        
+
         HandRanker hr2 = new HandRanker(new Hand("2d 3d 4d 7d Ad"));
         Assert.Equal(Ranking.Flush, hr2.Ranking);
 
@@ -114,7 +114,7 @@ public class HandRankerTest
     {
         HandRanker hr = new HandRanker(new Hand("9c 9s 9d 2c 2d"));
         Assert.Equal(Ranking.FullHouse, hr.Ranking);
-        
+
         HandRanker hr2 = new HandRanker(new Hand("2d 3d 2h 3s 3c"));
         Assert.Equal(Ranking.FullHouse, hr2.Ranking);
 
@@ -130,7 +130,7 @@ public class HandRankerTest
     {
         HandRanker hr = new HandRanker(new Hand("9c 9s 9d 9h 2d"));
         Assert.Equal(Ranking.FourOfAKind, hr.Ranking);
-        
+
         HandRanker hr2 = new HandRanker(new Hand("2d 2c 2h 2s 3c"));
         Assert.Equal(Ranking.FourOfAKind, hr2.Ranking);
 
@@ -146,7 +146,7 @@ public class HandRankerTest
     {
         HandRanker hr = new HandRanker(new Hand("9c 6c 7c 0c 8c"));
         Assert.Equal(Ranking.StraightFlush, hr.Ranking);
-        
+
         HandRanker hr2 = new HandRanker(new Hand("2d 3d 4d 5d Ad"));
         Assert.Equal(Ranking.StraightFlush, hr2.Ranking);
 
