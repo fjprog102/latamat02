@@ -1,18 +1,17 @@
-﻿
-namespace DescendingOrder.Valeria;
+﻿namespace DescendingOrder.Valeria;
 using System;
 using System.Linq;
 
 public class DescendingOrderClass
 {
-    public string GetTheHighestValue(int MyNumber)
+    public string GetTheHighestValue(int myNumber)
     {
         string res = "your input must be a non-negative integer";
-        if (MyNumber > 0)
+        if (myNumber > 0)
         {
-            res = String.Concat(MyNumber.ToString().OrderByDescending(c => c));
+            res = string.Concat(myNumber.ToString().OrderByDescending(c => c));
         }
+
         return res;
     }
 }
-

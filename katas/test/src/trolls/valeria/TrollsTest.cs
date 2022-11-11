@@ -1,10 +1,10 @@
-using Trolls.Valeria;
+﻿using Trolls.Valeria;
 namespace Trolls.Test.Valeria
 {
     public class TrollsTest
     {
         [Fact]
-        void ItShouldGiveMeTheMessageWithoutVowels()
+        private void ItShouldGiveMeTheMessageWithoutVowels()
         {
             Assert.Equal("Ths wbst s fr lsrs LL!", new Troll().EatVowels("This website is for losers LOL!"));
             Assert.Equal(" hv 19875213 dllrs!! $.$", new Troll().EatVowels("I have 19875213 dollars!! $.$"));

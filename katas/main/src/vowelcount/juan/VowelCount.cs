@@ -2,24 +2,25 @@
 {
     public class VowelCountJuan
     {
-        static public bool is_vowel(Char val)
+        public static bool IsVowel(char val)
         {
-            Char[] vowels = { 'a', 'e', 'i', 'o', 'u' };
+            char[] vowels = { 'a', 'e', 'i', 'o', 'u' };
 
-            return vowels.Contains(Char.ToLower(val));
+            return vowels.Contains(char.ToLower(val));
         }
 
-        static public int count_vowels(String user_input)
+        public static int CountVowels(string user_input)
         {
             char[] values = user_input.ToArray();
-            Int32 opt = 0;
+            int opt = 0;
             foreach (char val in values)
             {
-                if (is_vowel(val))
+                if (IsVowel(val))
                 {
                     opt += 1;
                 }
             }
+
             return opt;
         }
     }

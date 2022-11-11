@@ -2,7 +2,7 @@
 
 public class HighestAndLowest
 {
-    public string getHighestAndLowest(string formattedString)
+    public string GetHighestAndLowest(string formattedString)
     {
         System.Console.WriteLine($"You entered: {formattedString}");
         string[] splitInput = formattedString.Split(' ');
@@ -14,6 +14,5 @@ public class HighestAndLowest
         }
 
         return $"{inputList.Max()} {inputList.Min()}";
-
     }
 }

@@ -19,13 +19,13 @@ jobs:
       - name: Build
         run: dotnet build katas/
       - name: Check format issues
-        run: dotnet format --verify-no-changes katas/
+        run: dotnet format --verify-no-changes -v d katas/ 
       - name: Run tests
         run: dotnet test katas/ -l html --collect:"XPlat Code Coverage" --results-directory "TestResults-${{ matrix.dotnet-version }}"
       - name: Upload test results
         uses: actions/upload-artifact@v3
         with:
-          name: dotnet-results-${{ matrix.dotnet-version }}
+          name: test-results-${{ matrix.dotnet-version }}
           path: TestResults-${{ matrix.dotnet-version }}
         # Use always() to always run this step to publish test results when there are test failures
         if: ${{ always() }}

@@ -1,10 +1,10 @@
-using SquareDigit.Valeria;
+﻿using SquareDigit.Valeria;
 namespace SquareDigit.Test.Valeria
 {
     public class SquareDigitTest
     {
         [Fact]
-        void ItShouldReturnTheSquareOfEveryDigitOfANumber()
+        private void ItShouldReturnTheSquareOfEveryDigitOfANumber()
         {
             Assert.Equal("811181", new SquareDigitCalculator().GetTheSquareDigit("9119"));
             Assert.Equal("14", new SquareDigitCalculator().GetTheSquareDigit("12"));
@@ -13,7 +13,7 @@ namespace SquareDigit.Test.Valeria
         }
 
         [Fact]
-        void ItShouldReturnTheErrorMessage()
+        private void ItShouldReturnTheErrorMessage()
         {
             Assert.Equal("a valid number is required", new SquareDigitCalculator().GetTheSquareDigit("62.35"));
             Assert.Equal("a valid number is required", new SquareDigitCalculator().GetTheSquareDigit("-156"));
@@ -23,5 +23,4 @@ namespace SquareDigit.Test.Valeria
             Assert.Equal("a valid number is required", new SquareDigitCalculator().GetTheSquareDigit(" "));
         }
     }
-
 }
