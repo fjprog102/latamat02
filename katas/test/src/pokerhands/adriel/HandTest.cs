@@ -7,25 +7,25 @@ using Hands.Adriel;
 public class PokerHandsHandsTest
 {
     [Fact]
-    private void ShouldReturnAnArgumentExceptionWithInvalidHandInput()
+    private void ShouldReturnAnArgumentExceptionForInvalidHandInput()
     {
         string message = "Hand must contain 5 cards";
 
-        var ex = Assert.Throws<ArgumentException>(() => new Hand("2c 3d 4h 5c"));
+        ArgumentException ex = Assert.Throws<ArgumentException>(() => new Hand("2c 3d 4h 5c"));
         Assert.Equal(message, ex.Message);
 
-        var ex2 = Assert.Throws<ArgumentException>(() => new Hand("2c 3d "));
+        ArgumentException ex2 = Assert.Throws<ArgumentException>(() => new Hand("2c 3d "));
         Assert.Equal(message, ex2.Message);
 
-        var ex3 = Assert.Throws<ArgumentException>(() => new Hand(""));
+        ArgumentException ex3 = Assert.Throws<ArgumentException>(() => new Hand(""));
         Assert.Equal(message, ex3.Message);
 
-        var ex4 = Assert.Throws<ArgumentException>(() => new Hand("2c 3d 4h 5c ac 7d"));
+        ArgumentException ex4 = Assert.Throws<ArgumentException>(() => new Hand("2c 3d 4h 5c ac 7d"));
         Assert.Equal(message, ex4.Message);
     }
 
     [Fact]
-    private void MethodShouldCorrectlyReturnIfAHandContainsACardWithPassedValue()
+    private void MethodShouldCorrectlyReturnIfAHandContainsACardForPassedValue()
     {
         Hand hand = new Hand("as 2s 3s 4s 5s");
 
@@ -36,7 +36,7 @@ public class PokerHandsHandsTest
     }
 
     [Fact]
-    private void MethodShouldCorrectlyReturnIfAHandDoesntContainsACardWithPassedValue()
+    private void MethodShouldCorrectlyReturnIfAHandDoesntContainsACardForPassedValue()
     {
         Hand hand = new Hand("2s 4s 6s 8s ks");
 

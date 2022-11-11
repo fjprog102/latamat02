@@ -4,8 +4,8 @@ using Enums.Adriel;
 
 public class Card
 {
-    public Value Value { get; set; }
-    public Suit Suit { get; set; }
+    public Value Value { get; }
+    public Suit Suit { get; }
 
     public Card(string c)
     {

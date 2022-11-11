@@ -2,7 +2,7 @@ namespace PokerHands.RankedHands.Adriel;
 
 using Enums.Adriel;
 using Hands.Adriel;
-using EvaluateHand.Adriel;
+using HandsEvaluator.Adriel;
 
 public class RankedHand
 {

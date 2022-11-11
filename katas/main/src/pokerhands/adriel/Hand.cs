@@ -5,7 +5,7 @@ using Cards.Adriel;
 
 public class Hand
 {
-    public List<Card> Cards { get; set; }
+    public List<Card> Cards { get; }
 
     public Hand(string handString)
     {
