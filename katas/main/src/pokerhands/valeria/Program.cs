@@ -2,15 +2,16 @@
 
 namespace PokerHands.Valeria
 {
-    
-    public class Dealer
-    {
-
-    }
     public class Player
     {
+        public String []MyHand { get; set; }
         List<int> Values = new List<int>();
         List<char> Suit = new List<char>();
+
+        public Player(String []Hand)
+        {
+            MyHand = Hand;
+        }
         
         public void OrderValues(string []Hand)
         {
