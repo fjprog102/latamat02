@@ -1,15 +1,14 @@
-﻿using System.Text.RegularExpressions;
-
-namespace PokerHands.Valeria
+﻿namespace PokerHands.Valeria
 {
-    public class Player
+    public class Program
     {
-        public String []MyHand { get; set; }
-
-        public Player(String []Hand)
+        public static void Main(String[] args)
         {
-            MyHand = Hand;
+            List<int> Values = new List<int>();
+            GamePlayRules Rules = new GamePlayRules();
+            Values = Rules.GetValues(new string[] {"AH","AC","AS","AD","3S"});
+            String res = Rules.ApplyFourOfAKindRule();
+            Console.WriteLine(res);
         }
-
     }
 }
