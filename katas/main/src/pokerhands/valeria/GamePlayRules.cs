@@ -2,9 +2,10 @@ using System.Text.RegularExpressions;
 
 namespace PokerHands.Valeria
 {
-    public class GamePlayRules
+    public partial class GamePlayRules
     {
         List<int> Values = new List<int>();
+        List<char> Suits = new List<char>();
         public List<int> GetValues(string []Hand)
         {
             foreach (var Item in Hand)
@@ -14,6 +15,11 @@ namespace PokerHands.Valeria
                 Values.Add(int.Parse(NItem.ToString()));
             }
             return Values;
+        }
+        public  List<char> GetSuits(string []Hand)
+        {
+            Suits = Hand.Select(s => s[1]).ToList();
+            return Suits;
         }
     }
 }
