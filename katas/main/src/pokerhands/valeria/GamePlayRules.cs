@@ -1,12 +1,23 @@
+using System.Collections;
 using System.Text.RegularExpressions;
 
 namespace PokerHands.Valeria
 {
     public partial class GamePlayRules
     {
-        List<int> Values = new List<int>();
-        List<char> Suits = new List<char>();
-        public List<int> GetValues(string []Hand)
+        public String []Hand = {};
+        public List<int> Values = new List<int>();
+        public List<char> Suits = new List<char>();
+        public Dictionary<int, int> ValuesCount = new Dictionary<int, int>();
+        
+        public GamePlayRules(string []_hand)
+        {
+            Hand = _hand;
+            GetValues();
+            GetSuits();
+            GetGridValuesCounter();
+        }
+        public void GetValues()
         {
             foreach (var Item in Hand)
             {   
@@ -14,12 +25,19 @@ namespace PokerHands.Valeria
                 NItem = Regex.Replace(NItem,@"A","11");
                 Values.Add(int.Parse(NItem.ToString()));
             }
-            return Values;
         }
-        public  List<char> GetSuits(string []Hand)
+        public void GetSuits()
         {
             Suits = Hand.Select(s => s[1]).ToList();
-            return Suits;
+        }
+
+        public void GetGridValuesCounter()
+        {
+            var q = from x in Values group x by x into g let count = g.Count() orderby count descending select new { Value = g.Key, Count = count };
+            foreach (var x in q)
+            {
+                ValuesCount.Add(x.Value, x.Count);
+            }
         }
     }
 }

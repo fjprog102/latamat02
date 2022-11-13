@@ -9,13 +9,7 @@ namespace PokerHands.Valeria
 
         public String ApplyFourOfAKindRule()
         {
-            IEnumerable<int> duplicates = Values
-                .GroupBy(x => x)
-                .Where(g => g.Count() > 1)
-                .Select(x => x.Key);
-
-            Console.WriteLine("Duplicate elements are: " + String.Join(",", duplicates));
-            return "FourOfAKind";
+            return ValuesCount.ContainsValue(4) ? "FourOfAKind" : "None";
         }
     }
 }
