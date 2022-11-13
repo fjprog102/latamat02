@@ -2,7 +2,6 @@ namespace Hand.Test.Joaquin;
 
 using PokerHand.Joaquin;
 
-
 public class HandTest 
 {
 

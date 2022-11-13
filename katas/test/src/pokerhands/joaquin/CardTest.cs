@@ -9,24 +9,30 @@ public class CardTest
     public void ItShouldReturnAValidSuit()
     {
        Card card = new Card();
-       card.CreateCard();
-       Assert.Contains(card.value[1], card.Deck.suits);
+       Assert.Contains(card.suit, card.Deck.suits);
     }
 
     [Fact]
     public void ItShouldReturnAValidCardValue()
     {
        Card card = new Card();
-       card.CreateCard();
-       Assert.Contains(card.value[0], card.Deck.cardValues);
+       Assert.Contains(card.value, card.Deck.cardValues);
     }
 
     [Fact]
-    public void ItShouldHaveAValidValue()
+    public void ItShouldBeAValidCard()
     {
-        Card card = new Card();
-        card.CreateCard();
-        Assert.NotNull(card.value);
-        Assert.Contains(card.value, card.Deck.cards);
+        Deck Deck = new Deck();
+        string card = new Card().CreateCard();
+        Assert.NotNull(card);
+        Assert.Contains(card, Deck.cards);
+    }
+
+    [Fact]
+    public void ItShouldHaveAValidWeight()
+    {
+        Deck Deck = new Deck();
+        Card Card = new Card();
+        Assert.InRange(Card.weight, 0, 13);
     }
 }
