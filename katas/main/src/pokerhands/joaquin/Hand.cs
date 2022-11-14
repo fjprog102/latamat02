@@ -7,7 +7,7 @@ public class Hand
     public Hand(string hand)
     {
         string[] cards = hand.Split(" ");
-        if(cards.Length != 5)
+        if (cards.Length != 5)
         {
             throw new ArgumentException("Hand must contain 5 cards");
         }

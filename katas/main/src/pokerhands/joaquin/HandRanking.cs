@@ -18,7 +18,7 @@ public class HandRanking
         {"straight flush", 8},
     };
 
-    public string ranking = ""; 
+    public string ranking = "";
 
     public bool IsStraightFlush(Hand hand)
     {
@@ -60,9 +60,9 @@ public class HandRanking
 
         int[] values = new int[5];
 
-        for(int i = 0; i < values.Length; i++)
+        for (int i = 0; i < values.Length; i++)
         {
-            foreach(Card card in hand.Cards)
+            foreach (Card card in hand.Cards)
             {
                 values[i] = card.weight;
             }
@@ -70,9 +70,9 @@ public class HandRanking
 
         Array.Sort(values);
 
-        for(int i = 0; i < values.Length - 1; i++)
+        for (int i = 0; i < values.Length - 1; i++)
         {
-            if (values[i] + 1 != values[i+1])
+            if (values[i] + 1 != values[i + 1])
             {
                 return false;
             }

@@ -2,12 +2,12 @@ namespace HandRanking.Test.Joaquin;
 
 using PokerHand.Joaquin;
 
-public class HandRankingTest 
+public class HandRankingTest
 {
 
     [Fact]
     public void ItShouldBeStraightFlush()
-    {  
+    {
         Hand spadesStraight = new Hand("4S 6S 5S 8S 7S");
         Hand clubsStraight = new Hand("AC TC JC QC KC");
         Hand diamondsStraight = new Hand("5D 2D 6D 4D 3D");
@@ -21,7 +21,7 @@ public class HandRankingTest
 
     [Fact]
     public void ItShouldBeFourOfAKind()
-    {  
+    {
         Hand aces = new Hand("AS AD AH AC 7S");
         Hand sevens = new Hand("7C 7H 7D QC 7S");
         Hand twos = new Hand("2D 2C 6D 2H 2S");
@@ -35,7 +35,7 @@ public class HandRankingTest
 
     [Fact]
     public void ItShouldBeFullHouse()
-    {  
+    {
         Hand aceOverThree = new Hand("AS 3D AH AC 3S");
         Hand fiveOverTwo = new Hand("2C 5H 5D 5C 2S");
         Hand tenOverNine = new Hand("9D TC 9C TH 9S");
@@ -49,7 +49,7 @@ public class HandRankingTest
 
     [Fact]
     public void ItShouldBeFlush()
-    {  
+    {
         Hand spades = new Hand("4S 2S KS TS 7S");
         Hand clubs = new Hand("3C TC 7C QC KC");
         Hand diamonds = new Hand("AD 2D 6D 4D 3D");
@@ -63,7 +63,7 @@ public class HandRankingTest
 
     [Fact]
     public void ItShouldBeStraight()
-    {  
+    {
         Hand straight = new Hand("4S 6D 5H 8S 7S");
         HandRanking ranking = new HandRanking();
         Assert.True(ranking.IsStraight(straight));
@@ -71,7 +71,7 @@ public class HandRankingTest
 
     [Fact]
     public void ItShouldBeThreeOfAKind()
-    {  
+    {
         Hand aces = new Hand("3S AD AH AC 7S");
         Hand sevens = new Hand("7C AH 7D QC 7S");
         Hand twos = new Hand("2D 2C 6D 2H 4S");
@@ -85,7 +85,7 @@ public class HandRankingTest
 
     [Fact]
     public void ItShouldBeTwoPairs()
-    {  
+    {
         Hand acesAndThrees = new Hand("3S AD 3H AC 7S");
         Hand queensAndSevens = new Hand("7C AH QD QC 7S");
         Hand sixesAndTwos = new Hand("2D 2C 6D 6H 4S");
@@ -99,7 +99,7 @@ public class HandRankingTest
 
     [Fact]
     public void ItShouldBePair()
-    {  
+    {
         Hand threes = new Hand("3S AD 3H 4C 7S");
         Hand queens = new Hand("7C AH QD QC KS");
         Hand twos = new Hand("2D 2C AD 6H 4S");

@@ -3,7 +3,7 @@ using Poker.Joaquin;
 
 public class PlayerClass
 {
-    
+
     private string name;
     private string pokerHand;
 

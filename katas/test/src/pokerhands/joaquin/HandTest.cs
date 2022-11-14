@@ -2,7 +2,7 @@ namespace Hand.Test.Joaquin;
 
 using PokerHand.Joaquin;
 
-public class HandTest 
+public class HandTest
 {
     List<string> Cards = new List<string>()
     {
@@ -16,7 +16,7 @@ public class HandTest
     [Fact]
     public void ItShouldCreateAHandOfPoker()
     {
-        foreach(string card in Cards)
+        foreach (string card in Cards)
         {
             Hand hand = new Hand(card);
             Assert.Equal(5, hand.Cards.Count);
@@ -28,12 +28,12 @@ public class HandTest
     {
         Deck deck = new Deck();
 
-        foreach(string card in Cards)
+        foreach (string card in Cards)
         {
             Hand hand = new Hand("AS 7H 8D JS QH");
-            foreach(var c in hand.Cards)
+            foreach (var c in hand.Cards)
             {
-            Assert.Contains(c.CreateCard(), deck.cards);
+                Assert.Contains(c.CreateCard(), deck.cards);
             }
         }
     }

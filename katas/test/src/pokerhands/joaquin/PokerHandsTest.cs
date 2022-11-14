@@ -1,9 +1,8 @@
 namespace PokerHands.Test.Joaquin;
 using Poker.Joaquin;
 
-public class PokerHandsTest 
+public class PokerHandsTest
 {
-
     // [Fact]
     // public void WhitePlayerShouldWin()
     // {
@@ -131,7 +130,7 @@ public class PokerHandsTest
     //     Assert.Equal("Black wins. - with straight flush", new PokerClass().GetHandWinner("5H 9H 6H 7H 8H", "2S 2C 8D 8S 8C")); 
     //     Assert.Equal("Black wins. - with straight flush", new PokerClass().GetHandWinner("8S 9S 6S 7S TS", "AS AC AD AH 8C")); 
     // }
-    
+
     // [Fact]
     // public void ItShouldBeATie()
     // {
@@ -157,6 +156,4 @@ public class PokerHandsTest
     //     Assert.NotNull(new PokerClass().GetHandWinner("2H 3D 5S 9C KD", "2C 3H 4S 8C KH"));
     //     Assert.True(new PokerClass().GetHandWinner("2H 3D 5S 9C KD", "2C 3H 4S 8C KH").GetType().Equals(typeof(string)));
     // }
-
-
 }
