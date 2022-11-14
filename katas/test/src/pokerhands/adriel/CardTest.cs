@@ -95,15 +95,15 @@ public class CardTest
     {
         Card card = new Card("4s");
         Card card2 = new Card("8s");
-        Assert.Equal(-1, card.compareTo(card2));
+        Assert.Equal(-1, card.CompareTo(card2));
 
         Card card3 = new Card("Jd");
         Card card4 = new Card("2s");
-        Assert.Equal(1, card3.compareTo(card4));
+        Assert.Equal(1, card3.CompareTo(card4));
 
         Card card5 = new Card("7s");
         Card card6 = new Card("7d");
-        Assert.Equal(0, card5.compareTo(card6));
+        Assert.Equal(0, card5.CompareTo(card6));
     }
 
     [Fact]
