@@ -1,6 +1,6 @@
 ﻿namespace PokerGame.Jorge;
 
-public class PokerGameCompetitors
+public class PokerGameBlackAndWhite
 {
     public string BothHands(string CompetitorsHand)
     {
@@ -11,11 +11,11 @@ public class PokerGameCompetitors
         //List<string> ListPokerHandWhite = whiteHand.Split().ToList();
 
         return blackHand > whiteHand
-            ? "Black wins - with " + results[blackHand]
-            : "White wins - with " + results[whiteHand];
+            ? "Black wins - with " + resultsScore[blackHand]
+            : "White wins - with " + resultsScore[whiteHand];
     }
 
-    public Dictionary<double, string> results = new Dictionary<double, string>
+    public Dictionary<double, string> resultsScore = new Dictionary<double, string>
     {
         { 0, "ERROR!" },
         { 1, "Highcard" },
@@ -32,6 +32,14 @@ public class PokerGameCompetitors
 
 public class PokerHand
 {
+    public bool AllSameSuit { get; private set; } // Show if all cards are same suit.
+    public double HandScore { get; private set; } // Score in hand. ej. Pair, Full...
+    public string HandScoreValue = ""; //{ get; private set; } // Value of the score in hand. ej. A, 7...
+    public string HighestCard = "0"; // { get; private set; } // Highest value of cards. ej. A
+    public string LowestCard = "A"; // { get; private set; } // Lowest value of cards. ej. A
+    public int pairCount { get; private set; } // Counter if hand has pairs.
+    public List<string> PairArray = new List<string>(); // List to know pairs.
+
     public double HandToPlay(string ListPokerHand)
     {
         List<string> CurrentPokerHand = ListPokerHand.Split().ToList();
@@ -51,18 +59,11 @@ public class PokerHand
             orderby count descending
             select new { Value = newGroup.Key, Count = count };
 
-        bool AllSameSuit = false; // Show if all cards are same suit.
-        double HandScore = 0; // Score in hand. ej. Pair, Full...
-        string HandScoreValue = ""; // Value of the score in hand. ej. A, 7...
-        string HighestCard = "0"; // Highest value of cards. ej. A
-        string LowestCard = "A"; // Lowest value of cards. ej. A
-        int pairCount = 0; // Counter if hand has pairs.
-
-        List<string> PairArray = new List<string>();
         foreach (var suit in handSuits)
         {
             AllSameSuit = (suit.Count == 5);
         }
+
         foreach (var num in handNums)
         {
             if (num.Count > HandScore)
@@ -85,38 +86,38 @@ public class PokerHand
                     : LowestCard;
             pairCount = num.Count == 2 ? ++pairCount : pairCount;
         }
+        return Score();
+    }
 
+    public double Score()
+    {
         // Conditionals to get score
-        double Score()
+        if (HandScore == 1)
         {
-            if (HandScore == 1)
+            HandScoreValue = HighestCard;
+            if (AllSameSuit)
             {
-                HandScoreValue = HighestCard;
+                HandScore = 3.2;
+            }
+            if (ValueOfCards[HighestCard] - ValueOfCards[LowestCard] == 4)
+            {
+                HandScore = 3.1;
                 if (AllSameSuit)
                 {
-                    HandScore = 3.2;
-                }
-                if (ValueOfCards[HighestCard] - ValueOfCards[LowestCard] == 4)
-                {
-                    HandScore = 3.1;
-                    if (AllSameSuit)
-                    {
-                        HandScore = 5;
-                    }
+                    HandScore = 5;
                 }
             }
-            if (pairCount == 2)
-            {
-                HandScore = 2.1;
-                HandScoreValue = String.Join(" & ", PairArray.ToArray());
-            }
-            if (HandScore == 3 && pairCount == 1)
-            {
-                HandScore = 3.3;
-            }
-            return HandScore;
         }
-        return Score();
+        if (pairCount == 2)
+        {
+            HandScore = 2.1;
+            HandScoreValue = String.Join(" & ", PairArray.ToArray());
+        }
+        if (HandScore == 3 && pairCount == 1)
+        {
+            HandScore = 3.3;
+        }
+        return HandScore;
     }
 
     //Dictionary to give values to cards

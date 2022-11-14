@@ -10,31 +10,35 @@ namespace PokerGame.Test.Jorge
             //Should win Black with Four of a Kind
             Assert.Equal(
                 "Black wins - with Four of a kind",
-                new PokerGameCompetitors().BothHands("Black: 2H 2D 2S 2C KD  White: 2C 3H 4S 8C AH")
+                new PokerGameBlackAndWhite().BothHands(
+                    "Black: 2H 2D 2S 2C KD  White: 2C 3H 4S 8C AH"
+                )
             );
             Assert.Equal(
                 "White wins - with Straight Flush",
-                new PokerGameCompetitors().BothHands("Black: 2H 2D 2S 2C KD  White: AH JH QH TH KH")
+                new PokerGameBlackAndWhite().BothHands(
+                    "Black: 2H 2D 2S 2C KD  White: AH JH QH TH KH"
+                )
             );
             ////Should be tie with tiebreaker of Highcard winning White
             //Assert.Equal(
             //    "White wins.",
-            //    new PokerGameCompetitors().BothHands("Black: 2H 3D 5S 9C KD  White: 2C 3H 4S 8C AH")
+            //    new PokerGameBlackAndWhite().BothHands("Black: 2H 3D 5S 9C KD  White: 2C 3H 4S 8C AH")
             //);
             ////Should win Black (Full vs Highcard)
             //Assert.Equal(
             //    "Black wins.",
-            //    new PokerGameCompetitors().BothHands("Black: 2H 4S 4C 2D 4H  White: 2S 8S AS QS 3S")
+            //    new PokerGameBlackAndWhite().BothHands("Black: 2H 4S 4C 2D 4H  White: 2S 8S AS QS 3S")
             //);
             ////Should win Black because second highest card
             //Assert.Equal(
             //    "Black wins.",
-            //    new PokerGameCompetitors().BothHands("Black: 2H 3D 5S 9C KD  White: 2C 3H 4S 8C KH")
+            //    new PokerGameBlackAndWhite().BothHands("Black: 2H 3D 5S 9C KD  White: 2C 3H 4S 8C KH")
             //);
             ////Should be tie
             //Assert.Equal(
             //    "Tie.",
-            //    new PokerGameCompetitors().BothHands("Black: 2H 3D 5S 9C KD  White: 2D 3H 5C 9S KH")
+            //    new PokerGameBlackAndWhite().BothHands("Black: 2H 3D 5S 9C KD  White: 2D 3H 5C 9S KH")
             //);
         }
 
