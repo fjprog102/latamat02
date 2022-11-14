@@ -23,12 +23,11 @@ public class HandRanking : HandEvaluator
 
     public int GetHandRanking(Hand hand)
     {
-        // orderedCards = hand.Cards.GroupBy(card => (card.weight)).ToArray();
         if(IsStraightFlush(hand)) return ranking = 8;
         else if (IsFourOfAKind(hand)) return ranking = 7;
         else if (IsFullHouse(hand)) return ranking = 6; 
         else if (IsFlush(hand)) return ranking = 5;
-        // else if (IsStraight(hand)) return ranking = 4;
+        else if (IsStraight(hand)) return ranking = 4;
         else if (IsThreeOfAKind(hand)) return ranking = 3;
         else if (IsTwoPairs(hand)) return ranking = 2;
         else if (IsPair(hand)) return ranking = 1;
@@ -41,9 +40,8 @@ public class HandRanking : HandEvaluator
         return type;
     }
 
-    public int[] OrderHandByCardValue(Hand hand)
+    public int[] OrderHandByCardWeight(Hand hand)
     {
-        Deck deck = new Deck();
         int index = 0;
 
         foreach (var card in hand.Cards)
@@ -54,5 +52,16 @@ public class HandRanking : HandEvaluator
         orderedHand.OrderByDescending(v => v);
 
         return orderedHand;
+    }
+
+        public bool CheckOrder(int[] ranking)
+    {
+        bool isOrdered = true;
+        for(int i = 0; i < ranking.Length - 1; i++)
+        {
+            if(ranking[i] < ranking[i + 1]) 
+            return isOrdered = false;
+        }
+        return isOrdered;
     }
 }

@@ -11,7 +11,6 @@ public class Card
 
     public Card(char value, char suit)
     {
-        Random index = new Random();
         this.value = char.ToUpper(value);
         this.suit = char.ToUpper(suit);
         this.weight = Deck.valuesRanking[this.value];

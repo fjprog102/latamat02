@@ -40,26 +40,12 @@ public class HandEvaluator
 
     public bool IsStraight(Hand hand)
     {
+        var orderedHand = hand.Cards.OrderByDescending(card => card.weight).ToArray();
 
-        // int[] values = new int[5];
-
-        // for (int i = 0; i < values.Length; i++)
-        // {
-        //     foreach (Card card in hand.Cards)
-        //     {
-        //         values[i] = card.weight;
-        //     }
-        // }
-
-        // Array.Sort(values);
-
-        // for (int i = 0; i < values.Length - 1; i++)
-        // {
-        //     if (values[i] + 1 != values[i + 1])
-        //     {
-        //         return false;
-        //     }
-        // }
+        for(int i = 0; i < orderedHand.Length - 1; i++)
+        {
+            if(orderedHand[i].weight - 1 != orderedHand[i + 1].weight) return false;
+        }
 
         return true;
     }

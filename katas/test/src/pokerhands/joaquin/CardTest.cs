@@ -4,6 +4,7 @@ using PokerHand.Joaquin;
 
 public class CardTest
 {
+    Deck Deck = new Deck();
 
     char[] values = { 'A', '9', '4', 'J' };
     char[] suits = { 'C', 'D', 'H', 'S' };
@@ -30,7 +31,6 @@ public class CardTest
     [Fact]
     public void ItShouldBeAValidCard()
     {
-        Deck Deck = new Deck();
         for (int i = 0; i < values.Length; i++)
         {
             Card card = new Card(values[i], suits[i]);
@@ -41,12 +41,13 @@ public class CardTest
     }
 
     [Fact]
-    public void ItShouldHaveAValidWeight()
+    public void ItShouldHaveTheCorrectWeight()
     {
         for (int i = 0; i < values.Length; i++)
         {
             Card card = new Card(values[i], suits[i]);
             Assert.InRange(card.weight, 0, 12);
+            Assert.Equal(Deck.valuesRanking[values[i]], card.weight);
         }
     }
 }

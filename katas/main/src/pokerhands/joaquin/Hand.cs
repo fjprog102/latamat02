@@ -11,7 +11,7 @@ public class Hand
         {
             throw new ArgumentException("Hand must contain 5 cards");
         }
-        cards.GroupBy(value => value);
+        // cards.GroupBy(value => value);
 
         foreach (string card in cards)
         {
