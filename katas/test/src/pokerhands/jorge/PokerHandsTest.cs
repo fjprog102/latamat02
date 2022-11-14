@@ -1,4 +1,4 @@
-namespace PokerGame.Test.Jorge
+﻿namespace PokerGame.Test.Jorge
 {
     using PokerGame.Jorge;
 

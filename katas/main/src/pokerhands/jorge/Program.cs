@@ -2,10 +2,10 @@
 
 public class PokerGameBlackAndWhite
 {
-    public string BothHands(string CompetitorsHand)
+    public string BothHands(string competitorsHand)
     {
-        double blackHand = new PokerHand().HandToPlay(CompetitorsHand.Substring(7, 14));
-        double whiteHand = new PokerHand().HandToPlay(CompetitorsHand.Substring(30, 14));
+        double blackHand = new PokerHand().HandToPlay(competitorsHand.Substring(7, 14));
+        double whiteHand = new PokerHand().HandToPlay(competitorsHand.Substring(30, 14));
 
         return blackHand > whiteHand
             ? "Black wins - with " + resultsScore[blackHand]
@@ -34,15 +34,15 @@ public class PokerHand
     public string HandScoreValue = ""; //{ get; private set; } // Value of the score in hand. ej. A, 7...
     public string HighestCard = "0"; // { get; private set; } // Highest value of cards. ej. A
     public string LowestCard = "A"; // { get; private set; } // Lowest value of cards. ej. A
-    public int pairCount { get; private set; } // Counter if hand has pairs.
+    public int PairCount { get; private set; } // Counter if hand has pairs.
     public List<string> PairArray = new List<string>(); // List to know pairs.
 
-    public double HandToPlay(string ListPokerHand)
+    public double HandToPlay(string listPokerHand)
     {
-        List<string> CurrentPokerHand = ListPokerHand.Split().ToList();
+        List<string> currentPokerHand = listPokerHand.Split().ToList();
         //Get number of repeated values
         var handNums =
-            from card in CurrentPokerHand
+            from card in currentPokerHand
             group card by card[0] into newGroup
             let count = newGroup.Count()
             orderby count descending
@@ -50,7 +50,7 @@ public class PokerHand
 
         //Get number of repeated suits
         var handSuits =
-            from card in CurrentPokerHand
+            from card in currentPokerHand
             group card by card[1] into newGroup
             let count = newGroup.Count()
             orderby count descending
@@ -68,6 +68,7 @@ public class PokerHand
                 HandScore = num.Count;
                 HandScoreValue = num.Value.ToString();
             }
+
             if (num.Count == 2)
             {
                 PairArray.Add(num.Value.ToString());
@@ -81,8 +82,9 @@ public class PokerHand
                 ValueOfCards[num.Value.ToString()] < ValueOfCards[LowestCard]
                     ? num.Value.ToString()
                     : LowestCard;
-            pairCount = num.Count == 2 ? ++pairCount : pairCount;
+            PairCount = num.Count == 2 ? ++PairCount : PairCount;
         }
+
         return Score();
     }
 
@@ -96,6 +98,7 @@ public class PokerHand
             {
                 HandScore = 3.2;
             }
+
             if (ValueOfCards[HighestCard] - ValueOfCards[LowestCard] == 4)
             {
                 HandScore = 3.1;
@@ -105,15 +108,18 @@ public class PokerHand
                 }
             }
         }
-        if (pairCount == 2)
+
+        if (PairCount == 2)
         {
             HandScore = 2.1;
-            HandScoreValue = String.Join(" & ", PairArray.ToArray());
+            HandScoreValue = string.Join(" & ", PairArray.ToArray());
         }
-        if (HandScore == 3 && pairCount == 1)
+
+        if (HandScore == 3 && PairCount == 1)
         {
             HandScore = 3.3;
         }
+
         return HandScore;
     }
 
