@@ -4,9 +4,9 @@ namespace PokerHands.Valeria
 {
     public class Player
     {
-        public String []MyHand { get; set; }
+        public string []MyHand { get; set; }
 
-        public Player(String []hand)
+        public Player(string []hand)
         {
             MyHand = hand;
         }
