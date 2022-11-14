@@ -10,18 +10,18 @@ namespace PokerHands.Valeria
         public List<char> Suits = new List<char>();
         public Dictionary<int, int> ValuesCount = new Dictionary<int, int>();
         
-        public GamePlayRules(string []_hand)
+        public GamePlayRules(string []Hand)
         {
-            Hand = _hand;
+            this.Hand = Hand;
             GetValues();
             GetSuits();
             GetGridValuesCounter();
         }
         public void GetValues()
         {
-            foreach (var Item in Hand)
+            foreach (var item in Hand)
             {   
-                string NItem = Regex.Replace(Item[0].ToString(),@"J|Q|K","10");
+                string NItem = Regex.Replace(item[0].ToString(),@"J|Q|K","10");
                 NItem = Regex.Replace(NItem,@"A","11");
                 Values.Add(int.Parse(NItem.ToString()));
             }
