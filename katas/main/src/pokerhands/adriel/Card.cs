@@ -40,14 +40,12 @@ public class Card
         }
     }
 
-    // public virtual int compareTo(Card other)
-    // {
-    //     if(this.Value > other.Value) return 1;
-    //     else if(this.Value < other.Value) return -1;
-    //     else if(this.Suit > other.Suit) return 1;
-    //     else if(this.Suit < other.Suit) return -1;
-    //     return 0;
-    // }
+    public int compareTo(Card other)
+    {
+        if (this.Value > other.Value) return 1;
+        else if (this.Value < other.Value) return -1;
+        return 0;
+    }
 
     public override string ToString()
     {

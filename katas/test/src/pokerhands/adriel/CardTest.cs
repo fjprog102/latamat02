@@ -87,6 +87,25 @@ public class CardTest
         Assert.Equal(Suit.Hearts, card4.Suit);
     }
 
+    //Returns 1 if card1 has higher value
+    //Returns -1 if card2 has higher value
+    //Returns 0 if both cards have the same value
+    [Fact]
+    private void MethodShouldCorrectlyReturnTheCardWithMostValue()
+    {
+        Card card = new Card("4s");
+        Card card2 = new Card("8s");
+        Assert.Equal(-1, card.compareTo(card2));
+
+        Card card3 = new Card("Jd");
+        Card card4 = new Card("2s");
+        Assert.Equal(1, card3.compareTo(card4));
+
+        Card card5 = new Card("7s");
+        Card card6 = new Card("7d");
+        Assert.Equal(0, card5.compareTo(card6));
+    }
+
     [Fact]
     private void MethodShouldCorrectlyReturnACardCreatedAsAString()
     {
