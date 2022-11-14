@@ -12,7 +12,7 @@ namespace PokerHands.Valeria
         
         public GamePlayRules(string []hand)
         {
-            this.Hand = hand;
+            Hand = hand;
             GetValues();
             GetSuits();
             GetGridValuesCounter();
