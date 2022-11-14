@@ -7,11 +7,11 @@ public class Card
     public Value Value { get; }
     public Suit Suit { get; }
 
-    public Card(string c)
+    public Card(string cardString)
     {
-        char[] arr = c.ToLower().ToCharArray();
-        if (arr.Length != 2) throw new ArgumentException("Card must only consist of value and suit");
-        switch (arr[0])
+        char[] valueAndSuitArray = cardString.ToLower().ToCharArray();
+        if (valueAndSuitArray.Length != 2) throw new ArgumentException("Card must only consist of value and suit");
+        switch (valueAndSuitArray.First())
         {
             case '2': this.Value = Value.Two; break;
             case '3': this.Value = Value.Three; break;
@@ -27,25 +27,20 @@ public class Card
             case 'q': this.Value = Value.Queen; break;
             case 'k': this.Value = Value.King; break;
             case 'a': this.Value = Value.Ace; break;
-            default: throw new ArgumentException($"Invalid value: '{arr[0]}'");
+            default: throw new ArgumentException($"Invalid value: '{valueAndSuitArray.First()}'");
         }
 
-        switch (arr[1])
+        switch (valueAndSuitArray.Last())
         {
             case 's': this.Suit = Suit.Spades; break;
             case 'h': this.Suit = Suit.Hearts; break;
             case 'd': this.Suit = Suit.Diamonds; break;
             case 'c': this.Suit = Suit.Clubs; break;
-            default: throw new ArgumentException($"Invalid suit: '{arr[1]}'");
+            default: throw new ArgumentException($"Invalid suit: '{valueAndSuitArray.Last()}'");
         }
     }
 
-    public int CompareTo(Card other)
-    {
-        if (this.Value > other.Value) return 1;
-        else if (this.Value < other.Value) return -1;
-        return 0;
-    }
+    public int CompareTo(Card other) => this.Value - other.Value;
 
     public override string ToString()
     {

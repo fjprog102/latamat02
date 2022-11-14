@@ -1,74 +1,58 @@
 namespace PokerHands.HandsEvaluator.Adriel;
 
 using Enums.Adriel;
+using Cards.Adriel;
 using Hands.Adriel;
+using HandsRankingEvaluator.Adriel;
+using HandsKickersEvaluator.Adriel;
+using HandsMainEvaluator.Adriel;
 
 public class HandEvaluator
 {
-    public Ranking Evaluate(Hand hand)
-    {
-        if (isStraightFlush(hand)) return Ranking.StraightFlush;
-        else if (IsFourOfAKind(hand)) return Ranking.FourOfAKind;
-        else if (IsFullHouse(hand)) return Ranking.FullHouse;
-        else if (IsFlush(hand)) return Ranking.Flush;
-        else if (IsStraight(hand)) return Ranking.Straight;
-        else if (IsThreeOfAKind(hand)) return Ranking.ThreeOfAKind;
-        else if (IsTwoPairs(hand)) return Ranking.TwoPairs;
-        else if (IsPair(hand)) return Ranking.Pair;
-        return Ranking.HighCard;
-    }
+    public Hand Hand { get; }
+    public Ranking Ranking { get; }
+    public Card[] RankingCards { get; }
+    public Card[] Kickers { get; }
 
-    private bool IsPair(Hand hand)
+    public HandEvaluator(Hand hand)
     {
-        return hand.Cards.GroupBy(c => c.Value).Where(g => g.Count() == 2).Count() == 1;
-    }
+        string tempCardsString = string.Join(" ", hand.Cards.OrderBy(c => c.Value));
 
-    private bool IsTwoPairs(Hand hand)
-    {
-        return hand.Cards.GroupBy(c => c.Value).Where(g => g.Count() == 2).Count() == 2;
-    }
+        Hand = new Hand(tempCardsString);
+        Ranking = HandRankingEvaluator.Evaluate(Hand);
 
-    private bool IsThreeOfAKind(Hand hand)
-    {
-        return hand.Cards.GroupBy(c => c.Value).Where(g => g.Count() == 3).Any();
-    }
-
-    private bool IsFourOfAKind(Hand hand)
-    {
-        return hand.Cards.GroupBy(c => c.Value).Where(g => g.Count() == 4).Any();
-    }
-
-    private bool IsStraight(Hand hand)
-    {
-        if (hand.Contains(Value.Ace) && hand.Contains(Value.Two) && hand.Contains(Value.Three) &&
-            hand.Contains(Value.Four) && hand.Contains(Value.Five))
+        if (IsAceLowStraightOrAceLowStraightFlush())
         {
-            return true;
+            Hand.Cards.Insert(0, Hand.Cards[4]);
+            Hand.Cards.RemoveAt(5);
         }
 
-        var sortedHand = hand.Cards.OrderBy(h => h.Value).ToArray();
-        int firstCardOfStraight = (int)sortedHand.First().Value;
-
-        for (int i = 1; i < sortedHand.Length; i++)
-        {
-            if ((int)sortedHand[i].Value != firstCardOfStraight + i) return false;
-        }
-
-        return true;
+        RankingCards = GetRankingCards();
+        Kickers = GetKickers();
     }
 
-    private bool IsFlush(Hand hand)
+    private bool IsAceLowStraightOrAceLowStraightFlush()
     {
-        return hand.Cards.GroupBy(h => h.Suit).Count() == 1;
+        return (Ranking == Ranking.Straight || Ranking == Ranking.StraightFlush) &&
+        (Hand.Contains(Value.Ace) && Hand.Contains(Value.Two) && Hand.Contains(Value.Three) &&
+        Hand.Contains(Value.Four) && Hand.Contains(Value.Five));
     }
 
-    private bool IsFullHouse(Hand hand)
+    private Card[] GetRankingCards()
     {
-        return IsPair(hand) && IsThreeOfAKind(hand);
+        if (Ranking == Ranking.Pair) return HandMainEvaluator.Pair(Hand);
+        else if (Ranking == Ranking.TwoPairs) return HandMainEvaluator.TwoPairs(Hand);
+        else if (Ranking == Ranking.ThreeOfAKind) return HandMainEvaluator.ThreeOfAKind(Hand);
+        else if (Ranking == Ranking.FourOfAKind) return HandMainEvaluator.FourOfAKind(Hand);
+        else return HandMainEvaluator.OtherRankings(Hand);
     }
 
-    private bool isStraightFlush(Hand hand)
+    private Card[] GetKickers()
     {
-        return IsStraight(hand) && IsFlush(hand);
+        if (Ranking == Ranking.Pair) return HandKickersEvaluator.Pair(Hand);
+        else if (Ranking == Ranking.TwoPairs) return HandKickersEvaluator.TwoPairsOrFourOfAKind(Hand);
+        else if (Ranking == Ranking.ThreeOfAKind) return HandKickersEvaluator.ThreeOfAKind(Hand);
+        else if (Ranking == Ranking.FourOfAKind) return HandKickersEvaluator.TwoPairsOrFourOfAKind(Hand);
+        else return new Card[0];
     }
 }

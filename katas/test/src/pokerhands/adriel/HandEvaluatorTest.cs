@@ -7,164 +7,153 @@ using HandsEvaluator.Adriel;
 public class HandEvaluatorTest
 {
     [Fact]
-    private void MethodShouldCorrectlyReturnHighCardForAHandWithHighCard()
+    private void ShouldHaveAPropertyOfTypeHand()
     {
-        HandEvaluator he = new HandEvaluator();
-
-        Hand hand = new Hand("tc 4d 8s Kh Qd");
-        Assert.Equal(Ranking.HighCard, he.Evaluate(hand));
-
-        Hand hand2 = new Hand("2d 3d 4s 5h Ks");
-        Assert.Equal(Ranking.HighCard, he.Evaluate(hand2));
-
-        Hand hand3 = new Hand("As 4s 8d 2h Js");
-        Assert.Equal(Ranking.HighCard, he.Evaluate(hand3));
-
-        Hand hand4 = new Hand("6d 5h 3s 9d Qh");
-        Assert.Equal(Ranking.HighCard, he.Evaluate(hand4));
+        HandEvaluator hr = new HandEvaluator(new Hand("As 2s 3s 4s 5s"));
+        Assert.IsType<Hand>(hr.Hand);
     }
 
     [Fact]
-    private void MethodShouldCorrectlyReturnPairForAHandWithPair()
+    private void RankingPropertyShouldCorrectlyContainTheRankHighCard()
     {
-        HandEvaluator he = new HandEvaluator();
+        HandEvaluator hr = new HandEvaluator(new Hand("tc 4d 8s Kh Qd"));
+        Assert.Equal(Ranking.HighCard, hr.Ranking);
 
-        Hand hand = new Hand("tc td 8s Kh Qd");
-        Assert.Equal(Ranking.Pair, he.Evaluate(hand));
+        HandEvaluator hr2 = new HandEvaluator(new Hand("2d 3d 4s 5h Ks"));
+        Assert.Equal(Ranking.HighCard, hr2.Ranking);
 
-        Hand hand2 = new Hand("2d 3d 4s 5h 4s");
-        Assert.Equal(Ranking.Pair, he.Evaluate(hand2));
+        HandEvaluator hr3 = new HandEvaluator(new Hand("As 4s 8d 2h Js"));
+        Assert.Equal(Ranking.HighCard, hr3.Ranking);
 
-        Hand hand3 = new Hand("As 4s 8d Ah Js");
-        Assert.Equal(Ranking.Pair, he.Evaluate(hand3));
-
-        Hand hand4 = new Hand("6d 5h 9s 9d Qh");
-        Assert.Equal(Ranking.Pair, he.Evaluate(hand4));
+        HandEvaluator hr4 = new HandEvaluator(new Hand("6d 5h 3s 9d Qh"));
+        Assert.Equal(Ranking.HighCard, hr4.Ranking);
     }
 
     [Fact]
-    private void MethodShouldCorrectlyReturnTwoPairsForAHandWithTwoPairs()
+    private void RankingPropertyShouldCorrectlyContainTheRankPair()
     {
-        HandEvaluator he = new HandEvaluator();
+        HandEvaluator hr = new HandEvaluator(new Hand("tc td 8s Kh Qd"));
+        Assert.Equal(Ranking.Pair, hr.Ranking);
 
-        Hand hand = new Hand("tc td 8s Kh 8d");
-        Assert.Equal(Ranking.TwoPairs, he.Evaluate(hand));
+        HandEvaluator hr2 = new HandEvaluator(new Hand("2d 3d 4s 5h 4s"));
+        Assert.Equal(Ranking.Pair, hr2.Ranking);
 
-        Hand hand2 = new Hand("2d 2d 4s 5h 4s");
-        Assert.Equal(Ranking.TwoPairs, he.Evaluate(hand2));
+        HandEvaluator hr3 = new HandEvaluator(new Hand("As 4s 8d Ah Js"));
+        Assert.Equal(Ranking.Pair, hr3.Ranking);
 
-        Hand hand3 = new Hand("As Js 8d Ah Js");
-        Assert.Equal(Ranking.TwoPairs, he.Evaluate(hand3));
-
-        Hand hand4 = new Hand("6d Qh 9s 9d Qh");
-        Assert.Equal(Ranking.TwoPairs, he.Evaluate(hand4));
+        HandEvaluator hr4 = new HandEvaluator(new Hand("6d 5h 9s 9d Qh"));
+        Assert.Equal(Ranking.Pair, hr4.Ranking);
     }
 
     [Fact]
-    private void MethodShouldCorrectlyReturnThreeOfAKindForAHandWithThreeOfAKind()
+    private void RankingPropertyShouldCorrectlyContainTheRankTwoPairs()
     {
-        HandEvaluator he = new HandEvaluator();
+        HandEvaluator hr = new HandEvaluator(new Hand("tc td 8s Kh 8d"));
+        Assert.Equal(Ranking.TwoPairs, hr.Ranking);
 
-        Hand hand = new Hand("tc td ts Kh 8d");
-        Assert.Equal(Ranking.ThreeOfAKind, he.Evaluate(hand));
+        HandEvaluator hr2 = new HandEvaluator(new Hand("2d 2d 4s 5h 4s"));
+        Assert.Equal(Ranking.TwoPairs, hr2.Ranking);
 
-        Hand hand2 = new Hand("2d 2d 4s 5h 2s");
-        Assert.Equal(Ranking.ThreeOfAKind, he.Evaluate(hand2));
+        HandEvaluator hr3 = new HandEvaluator(new Hand("As Js 8d Ah Js"));
+        Assert.Equal(Ranking.TwoPairs, hr3.Ranking);
 
-        Hand hand3 = new Hand("As Js 8d Ah Ac");
-        Assert.Equal(Ranking.ThreeOfAKind, he.Evaluate(hand3));
-
-        Hand hand4 = new Hand("9h 2d 9s 9d Qh");
-        Assert.Equal(Ranking.ThreeOfAKind, he.Evaluate(hand4));
+        HandEvaluator hr4 = new HandEvaluator(new Hand("6d Qh 9s 9d Qh"));
+        Assert.Equal(Ranking.TwoPairs, hr4.Ranking);
     }
 
     [Fact]
-    private void MethodShouldCorrectlyReturnStraightForAHandWithStraight()
+    private void RankingPropertyShouldCorrectlyContainTheRankThreeOfAKind()
     {
-        HandEvaluator he = new HandEvaluator();
+        HandEvaluator hr = new HandEvaluator(new Hand("tc td ts Kh 8d"));
+        Assert.Equal(Ranking.ThreeOfAKind, hr.Ranking);
 
-        Hand hand = new Hand("9c 6d 7s 0h 8d");
-        Assert.Equal(Ranking.Straight, he.Evaluate(hand));
+        HandEvaluator hr2 = new HandEvaluator(new Hand("2d 2d 4s 5h 2s"));
+        Assert.Equal(Ranking.ThreeOfAKind, hr2.Ranking);
 
-        Hand hand2 = new Hand("2d 3d 4s 5h As");
-        Assert.Equal(Ranking.Straight, he.Evaluate(hand2));
+        HandEvaluator hr3 = new HandEvaluator(new Hand("As Js 8d Ah Ac"));
+        Assert.Equal(Ranking.ThreeOfAKind, hr3.Ranking);
 
-        Hand hand3 = new Hand("As Js Qd Kh Tc");
-        Assert.Equal(Ranking.Straight, he.Evaluate(hand3));
-
-        Hand hand4 = new Hand("9h 8d 6s 7d 5h");
-        Assert.Equal(Ranking.Straight, he.Evaluate(hand4));
+        HandEvaluator hr4 = new HandEvaluator(new Hand("9h 2d 9s 9d Qh"));
+        Assert.Equal(Ranking.ThreeOfAKind, hr4.Ranking);
     }
 
     [Fact]
-    private void MethodShouldCorrectlyReturnFlushForAHandWithFlush()
+    private void RankingPropertyShouldCorrectlyContainTheRankStraight()
     {
-        HandEvaluator he = new HandEvaluator();
+        HandEvaluator hr = new HandEvaluator(new Hand("9c 6d 7s 0h 8d"));
+        Assert.Equal(Ranking.Straight, hr.Ranking);
 
-        Hand hand = new Hand("9c 6c Kc 2c 8c");
-        Assert.Equal(Ranking.Flush, he.Evaluate(hand));
+        HandEvaluator hr2 = new HandEvaluator(new Hand("2d 3d 4s 5h As"));
+        Assert.Equal(Ranking.Straight, hr2.Ranking);
 
-        Hand hand2 = new Hand("2d 3d 4d 7d Ad");
-        Assert.Equal(Ranking.Flush, he.Evaluate(hand2));
+        HandEvaluator hr3 = new HandEvaluator(new Hand("As Js Qd Kh Tc"));
+        Assert.Equal(Ranking.Straight, hr3.Ranking);
 
-        Hand hand3 = new Hand("As Js Qs 6s 2s");
-        Assert.Equal(Ranking.Flush, he.Evaluate(hand3));
-
-        Hand hand4 = new Hand("9h 8h 6h 0h Kh");
-        Assert.Equal(Ranking.Flush, he.Evaluate(hand4));
+        HandEvaluator hr4 = new HandEvaluator(new Hand("9h 8d 6s 7d 5h"));
+        Assert.Equal(Ranking.Straight, hr4.Ranking);
     }
 
     [Fact]
-    private void MethodShouldCorrectlyReturnFullHouseForAHandWithFullHouse()
+    private void RankingPropertyShouldCorrectlyContainTheRankFlush()
     {
-        HandEvaluator he = new HandEvaluator();
+        HandEvaluator hr = new HandEvaluator(new Hand("9c 6c Kc 2c 8c"));
+        Assert.Equal(Ranking.Flush, hr.Ranking);
 
-        Hand hand = new Hand("9c 9s 9d 2c 2d");
-        Assert.Equal(Ranking.FullHouse, he.Evaluate(hand));
+        HandEvaluator hr2 = new HandEvaluator(new Hand("2d 3d 4d 7d Ad"));
+        Assert.Equal(Ranking.Flush, hr2.Ranking);
 
-        Hand hand2 = new Hand("2d 3d 2h 3s 3c");
-        Assert.Equal(Ranking.FullHouse, he.Evaluate(hand2));
+        HandEvaluator hr3 = new HandEvaluator(new Hand("As Js Qs 6s 2s"));
+        Assert.Equal(Ranking.Flush, hr3.Ranking);
 
-        Hand hand3 = new Hand("As Ad Qs Qd Qc");
-        Assert.Equal(Ranking.FullHouse, he.Evaluate(hand3));
-
-        Hand hand4 = new Hand("9h 8h 9d 8s 8c");
-        Assert.Equal(Ranking.FullHouse, he.Evaluate(hand4));
+        HandEvaluator hr4 = new HandEvaluator(new Hand("9h 8h 6h 0h Kh"));
+        Assert.Equal(Ranking.Flush, hr4.Ranking);
     }
 
     [Fact]
-    private void MethodShouldCorrectlyReturnFourOfAKindForAHandWithFourOfAKind()
+    private void RankingPropertyShouldCorrectlyContainTheRankFullHouse()
     {
-        HandEvaluator he = new HandEvaluator();
+        HandEvaluator hr = new HandEvaluator(new Hand("9c 9s 9d 2c 2d"));
+        Assert.Equal(Ranking.FullHouse, hr.Ranking);
 
-        Hand hand = new Hand("9c 9s 9d 9h 2d");
-        Assert.Equal(Ranking.FourOfAKind, he.Evaluate(hand));
+        HandEvaluator hr2 = new HandEvaluator(new Hand("2d 3d 2h 3s 3c"));
+        Assert.Equal(Ranking.FullHouse, hr2.Ranking);
 
-        Hand hand2 = new Hand("2d 2c 2h 2s 3c");
-        Assert.Equal(Ranking.FourOfAKind, he.Evaluate(hand2));
+        HandEvaluator hr3 = new HandEvaluator(new Hand("As Ad Qs Qd Qc"));
+        Assert.Equal(Ranking.FullHouse, hr3.Ranking);
 
-        Hand hand3 = new Hand("As Ad Ac Ah Qc");
-        Assert.Equal(Ranking.FourOfAKind, he.Evaluate(hand3));
-
-        Hand hand4 = new Hand("9h 9s 9d 9c 8c");
-        Assert.Equal(Ranking.FourOfAKind, he.Evaluate(hand4));
+        HandEvaluator hr4 = new HandEvaluator(new Hand("9h 8h 9d 8s 8c"));
+        Assert.Equal(Ranking.FullHouse, hr4.Ranking);
     }
 
     [Fact]
-    private void MethodShouldCorrectlyReturnStraightFlushForAHandWithStraightFlush()
+    private void RankingPropertyShouldCorrectlyContainTheRankFourOfAKind()
     {
-        HandEvaluator he = new HandEvaluator();
+        HandEvaluator hr = new HandEvaluator(new Hand("9c 9s 9d 9h 2d"));
+        Assert.Equal(Ranking.FourOfAKind, hr.Ranking);
 
-        Hand hand = new Hand("9c 6c 7c 0c 8c");
-        Assert.Equal(Ranking.StraightFlush, he.Evaluate(hand));
+        HandEvaluator hr2 = new HandEvaluator(new Hand("2d 2c 2h 2s 3c"));
+        Assert.Equal(Ranking.FourOfAKind, hr2.Ranking);
 
-        Hand hand2 = new Hand("2d 3d 4d 5d Ad");
-        Assert.Equal(Ranking.StraightFlush, he.Evaluate(hand2));
+        HandEvaluator hr3 = new HandEvaluator(new Hand("As Ad Ac Ah Qc"));
+        Assert.Equal(Ranking.FourOfAKind, hr3.Ranking);
 
-        Hand hand3 = new Hand("As Js Qs Ks Ts");
-        Assert.Equal(Ranking.StraightFlush, he.Evaluate(hand3));
+        HandEvaluator hr4 = new HandEvaluator(new Hand("9h 9s 9d 9c 8c"));
+        Assert.Equal(Ranking.FourOfAKind, hr4.Ranking);
+    }
 
-        Hand hand4 = new Hand("9h 8h 6h 7h 5h");
-        Assert.Equal(Ranking.StraightFlush, he.Evaluate(hand4));
+    [Fact]
+    private void RankingPropertyShouldCorrectlyContainTheRankStraightFlush()
+    {
+        HandEvaluator hr = new HandEvaluator(new Hand("9c 6c 7c 0c 8c"));
+        Assert.Equal(Ranking.StraightFlush, hr.Ranking);
+
+        HandEvaluator hr2 = new HandEvaluator(new Hand("2d 3d 4d 5d Ad"));
+        Assert.Equal(Ranking.StraightFlush, hr2.Ranking);
+
+        HandEvaluator hr3 = new HandEvaluator(new Hand("As Js Qs Ks Ts"));
+        Assert.Equal(Ranking.StraightFlush, hr3.Ranking);
+
+        HandEvaluator hr4 = new HandEvaluator(new Hand("9h 8h 6h 7h 5h"));
+        Assert.Equal(Ranking.StraightFlush, hr4.Ranking);
     }
 }
