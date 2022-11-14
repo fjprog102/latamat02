@@ -1,5 +1,7 @@
 namespace PokerHand.Joaquin;
 
+using System.Linq;
+
 public class HandRanking
 {
 
@@ -15,47 +17,67 @@ public class HandRanking
         {"four of a kind", 7},
         {"straight flush", 8},
     };
-    
+
     public string ranking = ""; 
 
-    public bool IsStraightFlush(string[] hand)
+    public bool IsStraightFlush(Hand hand)
     {
         return IsStraight(hand) && IsFlush(hand);
     }
-    
-    public bool IsFourOfAKind(string[] hand)
+
+    public bool IsPair(Hand hand)
     {
-        return true;
+        return hand.Cards.GroupBy(card => card.value).Where(v => v.Count() == 2).Count() == 1;
     }
 
-    public bool IsFullHouse(string[] hand)
+    public bool IsTwoPairs(Hand hand)
     {
-        return true;
+        return hand.Cards.GroupBy(card => card.value).Where(v => v.Count() == 2).Count() == 2;
     }
 
-    public bool IsFlush(string[] hand)
+    public bool IsThreeOfAKind(Hand hand)
     {
-        int count = 0;
-        char suit = hand[0][1];
-        foreach(string card in hand)
+        return hand.Cards.GroupBy(card => card.value).Where(v => v.Count() == 3).Any();
+    }
+
+    public bool IsFourOfAKind(Hand hand)
+    {
+        return hand.Cards.GroupBy(card => card.value).Where(v => v.Count() == 4).Any();
+    }
+
+    public bool IsFullHouse(Hand hand)
+    {
+        return IsPair(hand) && IsThreeOfAKind(hand);
+    }
+
+    public bool IsFlush(Hand hand)
+    {
+        return hand.Cards.GroupBy(card => card.suit).Count() == 1;
+    }
+
+    public bool IsStraight(Hand hand)
+    {
+
+        int[] values = new int[5];
+
+        for(int i = 0; i < values.Length; i++)
         {
-            if(suit == card[1])
+            foreach(Card card in hand.Cards)
             {
-                count++;
+                values[i] = card.weight;
             }
         }
-        if(count == 5)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-    }
 
-    public bool IsStraight(string[] hand)
-    {
+        Array.Sort(values);
+
+        for(int i = 0; i < values.Length - 1; i++)
+        {
+            if (values[i] + 1 != values[i+1])
+            {
+                return false;
+            }
+        }
+
         return true;
     }
 }

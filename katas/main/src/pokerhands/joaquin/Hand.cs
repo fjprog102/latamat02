@@ -2,39 +2,20 @@ namespace PokerHand.Joaquin;
 
 public class Hand
 {
+    public List<Card> Cards = new List<Card>();
 
-    public string[] cards = new string[5]; 
-    // public int amount = 0;
-
-    Card Card = new Card();
-
-    public Hand()
+    public Hand(string hand)
     {
-
-        // while (amount < 5)
-        // {
-        //     int index = 0;
-        //     string card = Card.CreateCard();
-
-        //     if(!cards.Contains(card))
-        //     {
-        //         cards[0] += card;
-        //         index += 1;
-        //     }
-        // }
-
-
-        for (int i = 0; i < cards.Length; i++)
+        string[] cards = hand.Split(" ");
+        if(cards.Length != 5)
         {
-            string card = Card.CreateCard();
+            throw new ArgumentException("Hand must contain 5 cards");
+        }
+        cards.GroupBy(value => value);
 
-            if(!cards.Contains(card))
-            {
-                cards[i] += card;
-            }
-            else {
-                i--;
-            }
-        }        
+        foreach (string card in cards)
+        {
+            Cards.Add(new Card(card[0], card[1]));
+        }
     }
 }

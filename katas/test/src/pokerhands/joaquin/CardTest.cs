@@ -5,34 +5,48 @@ using PokerHand.Joaquin;
 public class CardTest 
 {
 
+    char[] values = {'A', '9', '4', 'J'};
+    char[] suits = {'C', 'D', 'H', 'S'};
     [Fact]
     public void ItShouldReturnAValidSuit()
     {
-       Card card = new Card();
-       Assert.Contains(card.suit, card.Deck.suits);
+        for(int i = 0; i < values.Length; i++)
+        {
+            Card card = new Card(values[i], suits[i]);
+            Assert.Contains(card.suit, card.Deck.suits);
+        }
     }
 
     [Fact]
     public void ItShouldReturnAValidCardValue()
     {
-       Card card = new Card();
-       Assert.Contains(card.value, card.Deck.cardValues);
+        for(int i = 0; i < values.Length; i++)
+        {
+        Card card = new Card(values[i], suits[i]);
+        Assert.Contains(card.value, card.Deck.cardValues);
+        }
     }
 
     [Fact]
     public void ItShouldBeAValidCard()
     {
         Deck Deck = new Deck();
-        string card = new Card().CreateCard();
+        for(int i = 0; i < values.Length; i++)
+        {
+        Card card = new Card(values[i], suits[i]);
+        string cardValue = card.CreateCard();
         Assert.NotNull(card);
-        Assert.Contains(card, Deck.cards);
+        Assert.Contains(cardValue, Deck.cards);
+        }
     }
 
     [Fact]
     public void ItShouldHaveAValidWeight()
     {
-        Deck Deck = new Deck();
-        Card Card = new Card();
-        Assert.InRange(Card.weight, 0, 13);
+        for(int i = 0; i < values.Length; i++)
+        {
+        Card card = new Card(values[i], suits[i]);
+        Assert.InRange(card.weight, 0, 12);
+        }
     }
 }

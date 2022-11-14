@@ -4,39 +4,52 @@ using PokerHand.Joaquin;
 
 public class HandTest 
 {
+    List<string> Cards = new List<string>()
+    {
+        {"AS 7H 8D JS QH"},
+        {"3C 3S JS 3H JH"},
+        {"7D 4D 6D 3D 5D"},
+        {"JS TD QH 2S 4C"},
+        {"5S AH 2C QS 4C"},
+    };
 
     [Fact]
     public void ItShouldCreateAHandOfPoker()
     {
-       Hand hand = new Hand();
-       Assert.Equal(5, hand.cards.Length);
+        foreach(string card in Cards)
+        {
+            Hand hand = new Hand(card);
+            Assert.Equal(5, hand.Cards.Count);
+        }
     }
 
     [Fact]
     public void ItShouldHaveValidValues()
     {
         Deck deck = new Deck();
-        Hand hand = new Hand();
 
-        foreach (string card in hand.cards)
+        foreach(string card in Cards)
         {
-            Assert.Contains(card, deck.cards);
+            Hand hand = new Hand("AS 7H 8D JS QH");
+            foreach(var c in hand.Cards)
+            {
+            Assert.Contains(c.CreateCard(), deck.cards);
+            }
         }
     }
 
-    [Fact]
-    public void CardShouldNotBeRepeatedInAHand()
-    {
-        Hand hand = new Hand();
+    // [Fact]
+    // public void CardShouldNotBeRepeatedInAHand()
+    // {
+    // }
 
-        for (int i = 0; i < hand.cards.Length; i++)
-        {
-            int index = i;
-            while (index < hand.cards.Length - 1)
-            {
-                index += 1;
-                Assert.NotEqual(hand.cards[index], hand.cards[i]);
-            }
-        }
+    [Fact]
+    public void ItShouldReceiveAValidInput()
+    {
+        Assert.Throws<ArgumentException>(() => new Hand(""));
+        Assert.Throws<ArgumentException>(() => new Hand("AS JQ"));
+        Assert.Throws<ArgumentException>(() => new Hand("8S 4H AH JQ"));
+        Assert.Throws<ArgumentException>(() => new Hand("24342389473"));
+        Assert.Throws<ArgumentException>(() => new Hand("JSJSJSJ131313"));
     }
 }
