@@ -2,12 +2,12 @@ namespace PokerHands.Valeria
 {
     public partial class GamePlayRules
     {
-        public String ApplyStraightFlushRule()
+        public string ApplyStraightFlushRule()
         {
             return Values.Distinct().Count() == 1 ? "StraighyFlush!" : "None";
         }
 
-        public String ApplyFourOfAKindRule()
+        public string ApplyFourOfAKindRule()
         {
             return ValuesCount.ContainsValue(4) ? "FourOfAKind" : "None";
         }
