@@ -7,7 +7,7 @@ namespace PokerGame.Test.Jorge
         [Fact]
         public void WinnerWinner()
         {
-            //Should win Black with Four of a Kind
+            //Should win Black with Four of a Kind.
             Assert.Equal(
                 "Black wins - with Four of a kind",
                 new PokerGameBlackAndWhite().BothHands(

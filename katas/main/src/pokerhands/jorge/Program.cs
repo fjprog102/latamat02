@@ -7,9 +7,6 @@ public class PokerGameBlackAndWhite
         double blackHand = new PokerHand().HandToPlay(CompetitorsHand.Substring(7, 14));
         double whiteHand = new PokerHand().HandToPlay(CompetitorsHand.Substring(30, 14));
 
-        //List<string> ListPokerHandBlack = blackHand.Split().ToList();
-        //List<string> ListPokerHandWhite = whiteHand.Split().ToList();
-
         return blackHand > whiteHand
             ? "Black wins - with " + resultsScore[blackHand]
             : "White wins - with " + resultsScore[whiteHand];
