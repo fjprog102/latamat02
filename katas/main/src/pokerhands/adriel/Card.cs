@@ -40,7 +40,7 @@ public class Card
         }
     }
 
-    public int compareTo(Card other)
+    public int CompareTo(Card other)
     {
         if (this.Value > other.Value) return 1;
         else if (this.Value < other.Value) return -1;
