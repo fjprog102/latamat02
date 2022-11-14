@@ -6,9 +6,9 @@ namespace PokerHands.Test.Valeria
         [Fact]
         private void PlayerShouldShowTheCardsThatHasBeenGiven()
         {
-            string []Hand= new string [5]{"2H", "2D", "3C", "3S", "AD"};
-            Player BlackPlayer = new Player(Hand);
-            Assert.Equal(Hand, BlackPlayer.MyHand);
+            string []hand= new string [5]{"2H", "2D", "3C", "3S", "AD"};
+            Player BlackPlayer = new Player(hand);
+            Assert.Equal(hand, BlackPlayer.MyHand);
         }
     }
 }

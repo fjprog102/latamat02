@@ -6,8 +6,8 @@ namespace  PokerHands.Test.Valeria
         [Fact]
         private void GivenAHandItShouldReturnTheValuesInAList()
         {
-            GamePlayRules Rules = new GamePlayRules(new string [5]{"2H", "2D", "3C", "3S", "AD"});
-            Assert.Equal(new List<int>() { 2, 2, 3, 3, 11}, Rules.Values);
+            GamePlayRules rules = new GamePlayRules(new string [5]{"2H", "2D", "3C", "3S", "AD"});
+            Assert.Equal(new List<int>() { 2, 2, 3, 3, 11}, rules.Values);
         }
         [Fact]
         private void GivenAHandItShouldReturnTheSuitsInAList()
