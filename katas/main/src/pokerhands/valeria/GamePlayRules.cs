@@ -5,7 +5,7 @@ namespace PokerHands.Valeria
 {
     public partial class GamePlayRules
     {
-        public String []Hand = {};
+        public string []Hand = {};
         public List<int> Values = new List<int>();
         public List<char> Suits = new List<char>();
         public Dictionary<int, int> ValuesCount = new Dictionary<int, int>();

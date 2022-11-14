@@ -38,7 +38,6 @@ namespace  PokerHands.Test.Valeria
         {
             GamePlayRules rules = new GamePlayRules(new string [5]{"2H", "3D", "AC", "AS", "AD"});
             Assert.Equal("None", rules.ApplyFourOfAKindRule());
-        }
-        
+        } 
     }
 }
