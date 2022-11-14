@@ -5,7 +5,7 @@ using PokerHand.Joaquin;
 public class HandRankingTest
 {
     HandRanking ranking = new HandRanking();
-    Hand straightFlush = new Hand("4S 6S 5S 8S 7S"); 
+    Hand straightFlush = new Hand("4S 6S 5S 8S 7S");
     Hand fourOfAKind = new Hand("AS AD AH AC 7S");
     Hand fullHouse = new Hand("6H 6D 6S 7H 7C");
     Hand flush = new Hand("3C TC 7C QC KC");

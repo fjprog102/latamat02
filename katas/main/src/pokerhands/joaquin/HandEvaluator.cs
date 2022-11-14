@@ -42,9 +42,9 @@ public class HandEvaluator
     {
         var orderedHand = hand.Cards.OrderByDescending(card => card.weight).ToArray();
 
-        for(int i = 0; i < orderedHand.Length - 1; i++)
+        for (int i = 0; i < orderedHand.Length - 1; i++)
         {
-            if(orderedHand[i].weight - 1 != orderedHand[i + 1].weight) return false;
+            if (orderedHand[i].weight - 1 != orderedHand[i + 1].weight) return false;
         }
 
         return true;
