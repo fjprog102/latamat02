@@ -68,6 +68,7 @@ public class PokerHand
         // Conditionals to get score
         if (handScore == 1) // if highcard
         {
+            handScoreValue = highestCard;
             if (allSameSuit) // if all same suit
             {
                 handScore = 3.2;
