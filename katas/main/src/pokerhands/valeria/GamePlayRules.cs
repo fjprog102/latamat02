@@ -10,9 +10,9 @@ namespace PokerHands.Valeria
         public List<char> Suits = new List<char>();
         public Dictionary<int, int> ValuesCount = new Dictionary<int, int>();
         
-        public GamePlayRules(string []Hand)
+        public GamePlayRules(string []hand)
         {
-            this.Hand = Hand;
+            this.Hand = hand;
             GetValues();
             GetSuits();
             GetGridValuesCounter();
@@ -21,9 +21,9 @@ namespace PokerHands.Valeria
         {
             foreach (var item in Hand)
             {   
-                string NItem = Regex.Replace(item[0].ToString(),@"J|Q|K","10");
-                NItem = Regex.Replace(NItem,@"A","11");
-                Values.Add(int.Parse(NItem.ToString()));
+                string nItem = Regex.Replace(item[0].ToString(),@"J|Q|K","10");
+                nItem = Regex.Replace(nItem,@"A","11");
+                Values.Add(int.Parse(nItem.ToString()));
             }
         }
         public void GetSuits()
