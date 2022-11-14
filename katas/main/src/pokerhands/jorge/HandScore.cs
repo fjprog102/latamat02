@@ -31,7 +31,7 @@ public class PokerHand
         ).ToList();
 
         var handScore = handNums.Max(card => card.Count);
-        var handScoreValue = handNums[0].Value.ToString();
+        //var handScoreValue = handNums[0].Value.ToString();
         var highestCard = valueOfCards
             .FirstOrDefault(
                 x => x.Value == handNums.Max(card => valueOfCards[card.Value.ToString()])
@@ -53,12 +53,11 @@ public class PokerHand
             }
         }
 
-        return Score(handScore, handScoreValue, highestCard, lowestCard, allSameSuit, pairCount);
+        return Score(handScore, highestCard, lowestCard, allSameSuit, pairCount);
     }
 
     public double Score(
         double handScore,
-        string handScoreValue,
         string highestCard,
         string lowestCard,
         bool allSameSuit,
