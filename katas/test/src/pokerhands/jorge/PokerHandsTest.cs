@@ -1,6 +1,6 @@
 ﻿namespace PokerGame.Test.Jorge
 {
-    using PokerGame.Jorge;
+    using PokerGame.Hands.Jorge;
 
     public class Poker
     {
@@ -54,6 +54,7 @@
             Assert.Equal(3.3, new PokerHand().HandToPlay("5H 5C 6C 5S 6H"));
             Assert.Equal(4, new PokerHand().HandToPlay("9H 3D 9S 9C 9D"));
             Assert.Equal(5, new PokerHand().HandToPlay("2H 5H 3H 4H 6H"));
+            //Assert.Equal(5, new PokerHand().HandToPlay("2H 5H 3H 4H AH"));
         }
     }
 }
