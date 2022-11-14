@@ -1,15 +1,15 @@
-namespace Player.Joaquin;
-using Poker.Joaquin;
+namespace PokerHand.Joaquin;
 
-public class PlayerClass
+public class Player
 {
+    public string name;
+    public Hand Hand;
 
-    private string name;
-    private string pokerHand;
-
-    public PlayerClass(string name, string pokerHand)
+    public Player(string name, Hand hand)
     {
+        if(name.Length < 3) throw new ArgumentException("Player name should be at least 3 characters.");
+        if(name.Length > 16) throw new ArgumentException("Player name can't be longer than 15 characters.");
         this.name = name;
-        this.pokerHand = pokerHand;
+        this.Hand = hand;
     }
 }
