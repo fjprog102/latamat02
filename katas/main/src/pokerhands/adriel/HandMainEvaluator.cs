@@ -9,7 +9,7 @@ public class HandMainEvaluator
     {
         return hand.Cards.GroupBy(c => c.Value).Where(g => g.Count() == 2).First().ToArray();
     }
-    
+
     public static Card[] TwoPairs(Hand hand)
     {
         var twoPairsGroup = hand.Cards.GroupBy(c => c.Value).Where(g => g.Count() == 2);
@@ -35,7 +35,7 @@ public class HandMainEvaluator
 
     public static Card[] OtherRankings(Hand hand)
     {
-        var handList =  hand.Cards.OrderBy(c => c.Value).ToList();
+        var handList = hand.Cards.OrderBy(c => c.Value).ToList();
 
         if (AceLowStraightOrAceLowStraightFlush(handList))
         {

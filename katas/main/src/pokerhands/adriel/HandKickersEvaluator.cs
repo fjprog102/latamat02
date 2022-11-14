@@ -3,7 +3,8 @@ namespace PokerHands.HandsKickersEvaluator.Adriel;
 using Cards.Adriel;
 using Hands.Adriel;
 
-public class HandKickersEvaluator{
+public class HandKickersEvaluator
+{
     public static Card[] Pair(Hand hand)
     {
         return hand.Cards.GroupBy(c => c.Value)
