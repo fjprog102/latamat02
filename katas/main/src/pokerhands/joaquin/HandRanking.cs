@@ -2,9 +2,12 @@ namespace PokerHand.Joaquin;
 
 using System.Linq;
 
-public class HandRanking
+public class HandRanking : HandEvaluator
 {
 
+    public int ranking = 0;
+    public string type = "high card";
+    public int[] orderedHand = new int[5];
     Dictionary<string, int> pokerRanking = new Dictionary<string, int>
     {
         {"high card", 0},
@@ -18,66 +21,38 @@ public class HandRanking
         {"straight flush", 8},
     };
 
-    public string ranking = "";
-
-    public bool IsStraightFlush(Hand hand)
+    public int GetHandRanking(Hand hand)
     {
-        return IsStraight(hand) && IsFlush(hand);
+        // orderedCards = hand.Cards.GroupBy(card => (card.weight)).ToArray();
+        if(IsStraightFlush(hand)) return ranking = 8;
+        else if (IsFourOfAKind(hand)) return ranking = 7;
+        else if (IsFullHouse(hand)) return ranking = 6; 
+        else if (IsFlush(hand)) return ranking = 5;
+        // else if (IsStraight(hand)) return ranking = 4;
+        else if (IsThreeOfAKind(hand)) return ranking = 3;
+        else if (IsTwoPairs(hand)) return ranking = 2;
+        else if (IsPair(hand)) return ranking = 1;
+        else return ranking = 0;
     }
 
-    public bool IsPair(Hand hand)
+    public string GetRankingType(int ranking)
     {
-        return hand.Cards.GroupBy(card => card.value).Where(v => v.Count() == 2).Count() == 1;
+        this.type = pokerRanking.FirstOrDefault(x => x.Value == ranking).Key;
+        return type;
     }
 
-    public bool IsTwoPairs(Hand hand)
+    public int[] OrderHandByCardValue(Hand hand)
     {
-        return hand.Cards.GroupBy(card => card.value).Where(v => v.Count() == 2).Count() == 2;
-    }
+        Deck deck = new Deck();
+        int index = 0;
 
-    public bool IsThreeOfAKind(Hand hand)
-    {
-        return hand.Cards.GroupBy(card => card.value).Where(v => v.Count() == 3).Any();
-    }
+        foreach (var card in hand.Cards)
+        {
+            orderedHand[index] = card.weight;
+        }
 
-    public bool IsFourOfAKind(Hand hand)
-    {
-        return hand.Cards.GroupBy(card => card.value).Where(v => v.Count() == 4).Any();
-    }
+        orderedHand.OrderByDescending(v => v);
 
-    public bool IsFullHouse(Hand hand)
-    {
-        return IsPair(hand) && IsThreeOfAKind(hand);
-    }
-
-    public bool IsFlush(Hand hand)
-    {
-        return hand.Cards.GroupBy(card => card.suit).Count() == 1;
-    }
-
-    public bool IsStraight(Hand hand)
-    {
-
-        // int[] values = new int[5];
-
-        // for (int i = 0; i < values.Length; i++)
-        // {
-        //     foreach (Card card in hand.Cards)
-        //     {
-        //         values[i] = card.weight;
-        //     }
-        // }
-
-        // Array.Sort(values);
-
-        // for (int i = 0; i < values.Length - 1; i++)
-        // {
-        //     if (values[i] + 1 != values[i + 1])
-        //     {
-        //         return false;
-        //     }
-        // }
-
-        return true;
+        return orderedHand;
     }
 }
