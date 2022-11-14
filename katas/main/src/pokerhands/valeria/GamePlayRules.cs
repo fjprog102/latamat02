@@ -1,16 +1,16 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Text.RegularExpressions;
 
 namespace PokerHands.Valeria
 {
     public partial class GamePlayRules
     {
-        public string []Hand = {};
+        public string[] Hand = { };
         public List<int> Values = new List<int>();
         public List<char> Suits = new List<char>();
         public Dictionary<int, int> ValuesCount = new Dictionary<int, int>();
-        
-        public GamePlayRules(string []hand)
+
+        public GamePlayRules(string[] hand)
         {
             Hand = hand;
             GetValues();
@@ -20,9 +20,9 @@ namespace PokerHands.Valeria
         public void GetValues()
         {
             foreach (var item in Hand)
-            {   
-                string nItem = Regex.Replace(item[0].ToString(),@"J|Q|K","10");
-                nItem = Regex.Replace(nItem,@"A","11");
+            {
+                string nItem = Regex.Replace(item[0].ToString(), @"J|Q|K", "10");
+                nItem = Regex.Replace(nItem, @"A", "11");
                 Values.Add(int.Parse(nItem.ToString()));
             }
         }

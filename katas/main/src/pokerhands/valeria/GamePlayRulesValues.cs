@@ -1,4 +1,4 @@
-namespace PokerHands.Valeria
+﻿namespace PokerHands.Valeria
 {
     public partial class GamePlayRules
     {
@@ -12,7 +12,7 @@ namespace PokerHands.Valeria
         }
         public string ApplyFullHouseRule()
         {
-            return ValuesCount.ContainsValue(3) && ValuesCount.ContainsValue(2)? "with full house: " + ValuesCount.ElementAt(0).Key + " over " + ValuesCount.ElementAt(1).Key : "None";
+            return ValuesCount.ContainsValue(3) && ValuesCount.ContainsValue(2) ? "with full house: " + ValuesCount.ElementAt(0).Key + " over " + ValuesCount.ElementAt(1).Key : "None";
         }
         public string ApplyThreeOfAKind()
         {
@@ -20,7 +20,7 @@ namespace PokerHands.Valeria
         }
         public string ApplyTwoPairs()
         {
-            return ValuesCount.ContainsValue(2) && ValuesCount.ElementAt(1).Value == 2? "with two pairs: " + ValuesCount.ElementAt(0).Key + " and " + ValuesCount.ElementAt(1).Key : "None";
+            return ValuesCount.ContainsValue(2) && ValuesCount.ElementAt(1).Value == 2 ? "with two pairs: " + ValuesCount.ElementAt(0).Key + " and " + ValuesCount.ElementAt(1).Key : "None";
         }
     }
 }
