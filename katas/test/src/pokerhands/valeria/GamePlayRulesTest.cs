@@ -12,32 +12,32 @@ namespace  PokerHands.Test.Valeria
         [Fact]
         private void GivenAHandItShouldReturnTheSuitsInAList()
         {
-            GamePlayRules Rules = new GamePlayRules(new string [5]{"2H", "2D", "3C", "3S", "AD"});
-            Assert.Equal(new List<char>() { 'H', 'D', 'C', 'S', 'D'}, Rules.Suits);
+            GamePlayRules rules = new GamePlayRules(new string [5]{"2H", "2D", "3C", "3S", "AD"});
+            Assert.Equal(new List<char>() { 'H', 'D', 'C', 'S', 'D'}, rules.Suits);
         }
          [Fact]
         private void GivenAStraighyFlushHandItShouldReturnStraighyFlush()
         {
-            GamePlayRules Rules = new GamePlayRules(new string [5]{"AH", "AD", "AC", "AS", "AD"});
-            Assert.Equal("StraighyFlush!", Rules.ApplyStraightFlushRule());
+            GamePlayRules rules = new GamePlayRules(new string [5]{"AH", "AD", "AC", "AS", "AD"});
+            Assert.Equal("StraighyFlush!", rules.ApplyStraightFlushRule());
         }
             [Fact]
         private void GivenANonStraighyFlushHandItShouldReturnNone()
         {
-            GamePlayRules Rules = new GamePlayRules(new string [5]{"2H", "AD", "AC", "AS", "AD"});
-            Assert.Equal("None", Rules.ApplyStraightFlushRule());
+            GamePlayRules rules = new GamePlayRules(new string [5]{"2H", "AD", "AC", "AS", "AD"});
+            Assert.Equal("None", rules.ApplyStraightFlushRule());
         }
         [Fact]
         private void GivenFourOfAKindHandItShouldReturnFourOfAKind()
         {
-            GamePlayRules Rules = new GamePlayRules(new string [5]{"2H", "AD", "AC", "AS", "AD"});
-            Assert.Equal("FourOfAKind", Rules.ApplyFourOfAKindRule());
+            GamePlayRules rules = new GamePlayRules(new string [5]{"2H", "AD", "AC", "AS", "AD"});
+            Assert.Equal("FourOfAKind", rules.ApplyFourOfAKindRule());
         }
         [Fact]
         private void GivenANonFourOfAKindHandItShouldReturnNone()
         {
-            GamePlayRules Rules = new GamePlayRules(new string [5]{"2H", "3D", "AC", "AS", "AD"});
-            Assert.Equal("None", Rules.ApplyFourOfAKindRule());
+            GamePlayRules rules = new GamePlayRules(new string [5]{"2H", "3D", "AC", "AS", "AD"});
+            Assert.Equal("None", rules.ApplyFourOfAKindRule());
         }
         
     }
