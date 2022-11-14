@@ -3,14 +3,14 @@ using System.Linq;
 
 public class PokerHand
 {
-    public List<string> PairArray = new List<string>(); // List to know pairs.
+    public List<string> pairArray = new List<string>(); // List to know pairs.
 
     public double HandToPlay(string listPokerHand)
     {
         List<string> currentPokerHand = listPokerHand.Split().ToList();
 
         //Know if all suits are the same
-        bool AllSameSuit =
+        bool allSameSuit =
             (
                 from card in currentPokerHand
                 group card by card[1] into newGroup
@@ -30,75 +30,75 @@ public class PokerHand
             select new { Value = newGroup.Key, Count = count }
         ).ToList();
 
-        var HandScore = handNums.Max(card => card.Count);
-        var HandScoreValue = handNums[0].Value.ToString();
-        var HighestCard = ValueOfCards
+        var handScore = handNums.Max(card => card.Count);
+        var handScoreValue = handNums[0].Value.ToString();
+        var highestCard = valueOfCards
             .FirstOrDefault(
-                x => x.Value == handNums.Max(card => ValueOfCards[card.Value.ToString()])
+                x => x.Value == handNums.Max(card => valueOfCards[card.Value.ToString()])
             )
             .Key;
-        var LowestCard = ValueOfCards
+        var lowestCard = valueOfCards
             .FirstOrDefault(
-                x => x.Value == handNums.Min(card => ValueOfCards[card.Value.ToString()])
+                x => x.Value == handNums.Min(card => valueOfCards[card.Value.ToString()])
             )
             .Key;
 
-        var PairCount = handNums.Count(x => x.Count == 2);
+        var pairCount = handNums.Count(x => x.Count == 2);
 
         foreach (var num in handNums)
         {
             if (num.Count == 2)
             {
-                PairArray.Add(num.Value.ToString());
+                pairArray.Add(num.Value.ToString());
             }
         }
 
-        return Score(HandScore, HandScoreValue, HighestCard, LowestCard, AllSameSuit, PairCount);
+        return Score(handScore, handScoreValue, highestCard, lowestCard, allSameSuit, pairCount);
     }
 
     public double Score(
-        double HandScore,
-        string HandScoreValue,
-        string HighestCard,
-        string LowestCard,
-        bool AllSameSuit,
-        int PairCount
+        double handScore,
+        string handScoreValue,
+        string highestCard,
+        string lowestCard,
+        bool allSameSuit,
+        int pairCount
     )
     {
         // Conditionals to get score
-        if (HandScore == 1) // if highcard
+        if (handScore == 1) // if highcard
         {
-            if (AllSameSuit) // if all same suit
+            if (allSameSuit) // if all same suit
             {
-                HandScore = 3.2;
+                handScore = 3.2;
             }
 
-            if (ValueOfCards[HighestCard] - ValueOfCards[LowestCard] == 4) // if consecutive
+            if (valueOfCards[highestCard] - valueOfCards[lowestCard] == 4) // if consecutive
             {
-                HandScore = 3.1;
-                if (AllSameSuit) // if all same suit
+                handScore = 3.1;
+                if (allSameSuit) // if all same suit
                 {
-                    HandScore = 5;
+                    handScore = 5;
                 }
             }
         }
 
-        if (PairCount == 2) // if two pairs
+        if (pairCount == 2) // if two pairs
         {
-            HandScore = 2.1;
-            _ = string.Join(" & ", PairArray.ToArray());
+            handScore = 2.1;
+            _ = string.Join(" & ", pairArray.ToArray());
         }
 
-        if (HandScore == 3 && PairCount == 1) // if full house
+        if (handScore == 3 && pairCount == 1) // if full house
         {
-            HandScore = 3.3;
+            handScore = 3.3;
         }
 
-        return HandScore;
+        return handScore;
     }
 
     //Dictionary to give values to cards
-    public Dictionary<string, int> ValueOfCards = new Dictionary<string, int>
+    public Dictionary<string, int> valueOfCards = new Dictionary<string, int>
     {
         { "A", 14 },
         { "0", 0 },
