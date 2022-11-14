@@ -1,4 +1,4 @@
-namespace PokerGame.Hands.Jorge;
+﻿namespace PokerGame.Hands.Jorge;
 
 public class PokerGameBlackAndWhite
 {

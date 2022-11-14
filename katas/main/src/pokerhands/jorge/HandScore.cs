@@ -52,6 +52,7 @@ public class PokerHand
                 PairArray.Add(num.Value.ToString());
             }
         }
+
         return Score(HandScore, HandScoreValue, HighestCard, LowestCard, AllSameSuit, PairCount);
     }
 
@@ -67,7 +68,6 @@ public class PokerHand
         // Conditionals to get score
         if (HandScore == 1) // if highcard
         {
-            HandScoreValue = HighestCard;
             if (AllSameSuit) // if all same suit
             {
                 HandScore = 3.2;
@@ -86,13 +86,14 @@ public class PokerHand
         if (PairCount == 2) // if two pairs
         {
             HandScore = 2.1;
-            HandScoreValue = string.Join(" & ", PairArray.ToArray());
+            _ = string.Join(" & ", PairArray.ToArray());
         }
 
         if (HandScore == 3 && PairCount == 1) // if full house
         {
             HandScore = 3.3;
         }
+
         return HandScore;
     }
 
