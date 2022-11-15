@@ -4,12 +4,19 @@ public class PokerGameBlackAndWhite
 {
     public string BothHands(string competitorsHand)
     {
-        double blackHand = new PokerHand().HandToPlay(competitorsHand.Substring(7, 14));
-        double whiteHand = new PokerHand().HandToPlay(competitorsHand.Substring(30, 14));
+        string[] blackHand = new PokerHand().HandToPlay(competitorsHand.Substring(7, 14));
+        string[] whiteHand = new PokerHand().HandToPlay(competitorsHand.Substring(30, 14));
+        Console.WriteLine("");
+        Console.WriteLine("Black: " + int.Parse(blackHand[0]));
+        Console.WriteLine("White: " + int.Parse(whiteHand[0]));
 
-        return blackHand > whiteHand
-            ? "Black wins - with " + resultsScore[blackHand]
-            : "White wins - with " + resultsScore[whiteHand];
+        if (int.Parse(blackHand[0]) == int.Parse(whiteHand[0]))
+        {
+            return "It's a tie";
+        }
+        return int.Parse(blackHand[0]) > int.Parse(whiteHand[0])
+            ? "Black wins - with " + resultsScore[int.Parse(blackHand[0])]
+            : "White wins - with " + resultsScore[int.Parse(whiteHand[0])];
     }
 
     public Dictionary<double, string> resultsScore = new Dictionary<double, string>

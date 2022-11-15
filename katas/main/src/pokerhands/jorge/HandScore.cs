@@ -3,9 +3,10 @@ using System.Linq;
 
 public class PokerHand
 {
-    public List<string> pairArray = new List<string>(); // List to know pairs.
+    public List<int> pairArray = new List<int>(); // List to know pairs.
+    public string[] resultValues = new string[4]; // Array for results
 
-    public double HandToPlay(string listPokerHand)
+    public string[] HandToPlay(string listPokerHand)
     {
         List<string> currentPokerHand = listPokerHand.Split().ToList();
 
@@ -31,7 +32,7 @@ public class PokerHand
         ).ToList();
 
         var handScore = handNums.Max(card => card.Count);
-        //var handScoreValue = handNums[0].Value.ToString();
+        var handScoreValue = handNums[0].Value.ToString();
         var highestCard = valueOfCards
             .FirstOrDefault(
                 x => x.Value == handNums.Max(card => valueOfCards[card.Value.ToString()])
@@ -49,25 +50,26 @@ public class PokerHand
         {
             if (num.Count == 2)
             {
-                pairArray.Add(num.Value.ToString());
+                pairArray.Add(int.Parse(num.Value.ToString()));
             }
         }
 
-        return Score(handScore, highestCard, lowestCard, allSameSuit, pairCount);
+        return Score(handScore, highestCard, lowestCard, allSameSuit, pairCount, handScoreValue);
     }
 
-    public double Score(
+    public string[] Score(
         double handScore,
         string highestCard,
         string lowestCard,
         bool allSameSuit,
-        int pairCount
+        int pairCount,
+        string handScoreValue
     )
     {
         // Conditionals to get score
         if (handScore == 1) // if highcard
         {
-            //handScoreValue = highestCard;
+            handScoreValue = highestCard;
             if (allSameSuit) // if all same suit
             {
                 handScore = 3.2;
@@ -82,19 +84,31 @@ public class PokerHand
                 }
             }
         }
+        var newPairArray = pairArray.ToArray();
+        Array.Sort(newPairArray);
 
         if (pairCount == 2) // if two pairs
         {
             handScore = 2.1;
-            _ = string.Join(" & ", pairArray.ToArray());
+            handScoreValue = newPairArray[1].ToString();
         }
 
         if (handScore == 3 && pairCount == 1) // if full house
         {
             handScore = 3.3;
         }
+        resultValues[0] = handScore.ToString();
+        resultValues[1] = handScoreValue;
+        resultValues[2] = newPairArray.Length > 0 ? newPairArray[0].ToString() : "0";
+        resultValues[3] = highestCard;
 
-        return handScore;
+        //Console.WriteLine("handScore: " + resultValues[0]);
+        //Console.WriteLine("handScoreValue: " + resultValues[1]);
+        //Console.WriteLine("Tiebreaker Pair: " + resultValues[2]);
+        //Console.WriteLine("highestCard " + resultValues[3]);
+        //Console.WriteLine("");
+
+        return resultValues;
     }
 
     //Dictionary to give values to cards
