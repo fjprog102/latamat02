@@ -43,9 +43,7 @@ namespace PokerHands.Valeria
         }
         public string AnnounceWinner()
         {
-            if(BlackPlayerPoints == WhitePlayerPoints) 
-                return "Tie.";
-            return BlackPlayerPoints > WhitePlayerPoints? "Black wins. - " + BlackPlayer.MyBestPlay : "White wins. - " + WhitePlayer.MyBestPlay;
+            return BlackPlayerPoints == WhitePlayerPoints ? "Tie." : BlackPlayerPoints > WhitePlayerPoints? "Black wins. - " + BlackPlayer.MyBestPlay : "White wins. - " + WhitePlayer.MyBestPlay;
         }
     }
 }
