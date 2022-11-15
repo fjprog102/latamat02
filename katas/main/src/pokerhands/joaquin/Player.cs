@@ -4,6 +4,7 @@ public class Player
 {
     public string name;
     public Hand Hand;
+    public HandRanking HandRanking = new HandRanking();
 
     public Player(string name, Hand hand)
     {

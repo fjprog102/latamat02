@@ -49,9 +49,9 @@ public class HandRanking : HandEvaluator
             orderedHand[index] = card.weight;
         }
 
-        orderedHand.OrderByDescending(v => v);
+        var ordered = orderedHand.OrderByDescending(v => v).ToArray();
 
-        return orderedHand;
+        return ordered;
     }
 
     public bool CheckOrder(int[] ranking)

@@ -46,18 +46,6 @@ public class HandRankingTest
     [Fact]
     public void ItShouldOrderHandByCardValue()
     {
-
-        // bool CheckOrder(int[] ranking)
-        // {
-        //     bool isOrdered = true;
-        //     for(int i = 0; i < ranking.Length - 1; i++)
-        //     {
-        //         if(ranking[i] < ranking[i + 1]) 
-        //         return isOrdered = false;
-        //     }
-        //     return isOrdered;
-        // }
-
         ranking.OrderHandByCardWeight(straightFlush);
         Assert.True(ranking.CheckOrder(ranking.orderedHand));
         ranking.OrderHandByCardWeight(fourOfAKind);
