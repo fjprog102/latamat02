@@ -14,14 +14,10 @@
         private void Play()
         {
             PlayToWinStrategy();
-            if(MyBestPlay.Equals("None")) 
-                PlayBestValueStrategy();  
-            if(MyBestPlay.Equals("None")) 
-                PlayBestSuitStrategy();
-            if(MyBestPlay.Equals("None")) 
-                PlayValuesStrategy();
-            if(MyBestPlay.Equals("None")) 
-                PlayForConsolationPrize();
+            PlayBestValueStrategy();  
+            PlayBestSuitStrategy();
+            PlayValuesStrategy();
+            PlayForConsolationPrize();
         }
         public void PlayToWinStrategy()
         {
