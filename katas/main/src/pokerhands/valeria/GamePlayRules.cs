@@ -22,6 +22,7 @@
                 string Value = item.Length > 2? Value = "10" : Value =item[0].ToString();
                 Values.Add(Value);   
             }
+            
             Values.Sort(StringComparer.OrdinalIgnoreCase);
         }
         public void GetSuits()
