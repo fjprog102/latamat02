@@ -140,6 +140,5 @@
             GamePlayRules rules4 = new GamePlayRules(new string[5] { "2H", "7D", "5S", "3H", "4H" });
             Assert.Equal("with high card: 7", rules4.ApplyHighCardRule());
         }
-        
     }
 }
