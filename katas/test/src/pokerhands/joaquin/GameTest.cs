@@ -94,10 +94,10 @@ public class GameTest
         Game NewGameVI = new Game(new Player("Black", new Hand("4H 4D 5H 5D 8C")), new Player("White", new Hand("5C 4C 4S 8S 5S")));
         Assert.Equal("Tie.", NewGameVI.GetWinner(NewGameVI.firstPlayer, NewGameVI.secondPlayer));
 
-        Game NewGameVII = new Game(new Player("Black", new Hand("6S 7C 8D 9D 10H")), new Player("White", new Hand("6H 7S 8S 9S 10S")));
+        Game NewGameVII = new Game(new Player("Black", new Hand("6S 7C 8D 9D TH")), new Player("White", new Hand("6H 7S 8S 9S TS")));
         Assert.Equal("Tie.", NewGameVII.GetWinner(NewGameVII.firstPlayer, NewGameVII.secondPlayer));
 
-        Game NewGameVIII = new Game(new Player("Black", new Hand("8H 9H TH JH QH")), new Player("White", new Hand("8C 9C TC JC QS")));
+        Game NewGameVIII = new Game(new Player("Black", new Hand("8H 9H TH JH QH")), new Player("White", new Hand("8C 9C TC JC QC")));
         Assert.Equal("Tie.", NewGameVIII.GetWinner(NewGameVIII.firstPlayer, NewGameVIII.secondPlayer));
     }
 }

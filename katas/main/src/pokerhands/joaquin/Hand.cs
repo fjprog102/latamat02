@@ -11,11 +11,11 @@ public class Hand
         {
             throw new ArgumentException("Hand must contain 5 cards");
         }
-        // cards.GroupBy(value => value);
 
         foreach (string card in cards)
         {
             Cards.Add(new Card(card[0], card[1]));
         }
+        Cards.GroupBy(card => card.weight);
     }
 }

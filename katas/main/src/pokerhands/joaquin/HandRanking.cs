@@ -23,7 +23,10 @@ public class HandRanking
 
     public int GetHandRanking(Hand hand)
     {
-        return Evaluator.Evaluate(hand);
+        this.ranking = Evaluator.Evaluate(hand);
+        GetRankingType(this.ranking);
+        return this.ranking;
+
     }
 
     public string GetRankingType(int ranking)
@@ -32,26 +35,17 @@ public class HandRanking
         return type;
     }
 
-    public int[] OrderHandByCardWeight(Hand hand)
+    public List<Card> OrderHandByCardWeight(Hand hand)
     {
-        int index = 0;
-
-        foreach (var card in hand.Cards)
-        {
-            orderedHand[index] = card.weight;
-        }
-
-        var ordered = orderedHand.OrderByDescending(v => v).ToArray();
-
-        return ordered;
+        return hand.Cards.OrderByDescending(card => card.weight).ToList();
     }
 
-    public bool CheckOrder(int[] ranking)
+    public bool CheckOrder(List<Card> cards)
     {
         bool isOrdered = true;
-        for (int i = 0; i < ranking.Length - 1; i++)
+        for (int i = 0; i < cards.Count() - 1; i++)
         {
-            if (ranking[i] < ranking[i + 1])
+            if (cards[i].weight < cards[i + 1].weight)
                 return isOrdered = false;
         }
         return isOrdered;

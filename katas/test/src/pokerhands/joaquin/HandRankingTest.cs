@@ -46,22 +46,13 @@ public class HandRankingTest
     [Fact]
     public void ItShouldOrderHandByCardValue()
     {
-        ranking.OrderHandByCardWeight(straightFlush);
-        Assert.True(ranking.CheckOrder(ranking.orderedHand));
-        ranking.OrderHandByCardWeight(fourOfAKind);
-        Assert.True(ranking.CheckOrder(ranking.orderedHand));
-        ranking.OrderHandByCardWeight(fullHouse);
-        Assert.True(ranking.CheckOrder(ranking.orderedHand));
-        ranking.OrderHandByCardWeight(flush);
-        Assert.True(ranking.CheckOrder(ranking.orderedHand));
-        ranking.OrderHandByCardWeight(straight);
-        Assert.True(ranking.CheckOrder(ranking.orderedHand));
-        ranking.OrderHandByCardWeight(threeOfAKind);
-        Assert.True(ranking.CheckOrder(ranking.orderedHand));
-        ranking.OrderHandByCardWeight(twoPairs);
-        Assert.True(ranking.CheckOrder(ranking.orderedHand));
-        ranking.OrderHandByCardWeight(pair);
-        Assert.True(ranking.CheckOrder(ranking.orderedHand));
-        ranking.OrderHandByCardWeight(highCard);
+        Assert.True(ranking.CheckOrder(ranking.OrderHandByCardWeight(straightFlush)));
+        Assert.True(ranking.CheckOrder(ranking.OrderHandByCardWeight(fourOfAKind)));
+        Assert.True(ranking.CheckOrder(ranking.OrderHandByCardWeight(fullHouse)));
+        Assert.True(ranking.CheckOrder(ranking.OrderHandByCardWeight(flush)));
+        Assert.True(ranking.CheckOrder(ranking.OrderHandByCardWeight(straight)));
+        Assert.True(ranking.CheckOrder(ranking.OrderHandByCardWeight(threeOfAKind)));
+        Assert.True(ranking.CheckOrder(ranking.OrderHandByCardWeight(twoPairs)));
+        Assert.True(ranking.CheckOrder(ranking.OrderHandByCardWeight(pair)));
     }
 }

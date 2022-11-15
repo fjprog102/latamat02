@@ -13,7 +13,7 @@ public class Card
     {
         this.value = char.ToUpper(value);
         this.suit = char.ToUpper(suit);
-        this.weight = Deck.valuesRanking[this.value];
+        this.weight = Deck.valuesRanking[value];
     }
 
     public string CardToString()
