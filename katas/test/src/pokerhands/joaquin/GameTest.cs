@@ -42,7 +42,7 @@ public class GameTest
         Assert.Equal("Black wins with pair.", NewGameVIII.GetWinner(NewGameVIII.firstPlayer, NewGameVIII.secondPlayer));
 
         Game NewGameIX = new Game(new Player("Black", new Hand("2H JS 4C 8D 3H")), new Player("White", new Hand("4S 5C 7H TS 6H")));
-        Assert.Equal("Black wins with high card.", NewGameIX.GetWinner(NewGameIX.firstPlayer, NewGameIX.secondPlayer));  
+        Assert.Equal("Black wins with high card.", NewGameIX.GetWinner(NewGameIX.firstPlayer, NewGameIX.secondPlayer));
     }
 
     [Fact]
@@ -73,7 +73,7 @@ public class GameTest
         Assert.Equal("White wins with pair.", NewGameVIII.GetWinner(NewGameVIII.firstPlayer, NewGameVIII.secondPlayer));
 
         Game NewGameIX = new Game(new Player("Black", new Hand("4S 5C 7H TS 6H")), new Player("White", new Hand("2H JS 4C 8D 3H")));
-        Assert.Equal("White wins with high card.", NewGameIX.GetWinner(NewGameIX.firstPlayer, NewGameIX.secondPlayer));  
+        Assert.Equal("White wins with high card.", NewGameIX.GetWinner(NewGameIX.firstPlayer, NewGameIX.secondPlayer));
     }
 
     [Fact]

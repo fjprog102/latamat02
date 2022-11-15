@@ -22,7 +22,7 @@ public class Game
     {
         var orderedHandFirstPlayer = firstPlayer.HandRanking.OrderHandByCardWeight(firstPlayer.Hand);
         var orderedHandSecondPlayer = secondPlayer.HandRanking.OrderHandByCardWeight(secondPlayer.Hand);
-        
+
         for (int index = 0; index < orderedHandFirstPlayer.Count(); index++)
         {
             if (orderedHandFirstPlayer[index].weight > orderedHandSecondPlayer[index].weight) return $"{firstPlayer.name} wins with high card.";

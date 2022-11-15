@@ -31,9 +31,9 @@ public class HandTest
         foreach (string card in Cards)
         {
             Hand hand = new Hand("AS 7H 8D JS QH");
-            foreach (var c in hand.Cards)
+            foreach (var Card in hand.Cards)
             {
-                Assert.Contains(c.CardToString(), deck.cards);
+                Assert.Contains(Card.CardToString(), deck.cards);
             }
         }
     }

@@ -17,9 +17,9 @@ public class HandEvaluator
 
     public int Evaluate(Hand hand)
     {
-        foreach(HandAnalyzer analyzer in analyzers)
+        foreach (HandAnalyzer analyzer in analyzers)
         {
-            if(analyzer.Match(hand)) return analyzer.GetRank();
+            if (analyzer.Match(hand)) return analyzer.GetRank();
         }
         return 0;
     }

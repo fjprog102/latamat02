@@ -11,9 +11,9 @@ public class CardTest
     [Fact]
     public void ItShouldReturnAValidSuit()
     {
-        for (int i = 0; i < values.Length; i++)
+        for (int index = 0; index < values.Length; index++)
         {
-            Card card = new Card(values[i], suits[i]);
+            Card card = new Card(values[index], suits[index]);
             Assert.Contains(card.suit, card.Deck.suits);
         }
     }
@@ -21,9 +21,9 @@ public class CardTest
     [Fact]
     public void ItShouldReturnAValidCardValue()
     {
-        for (int i = 0; i < values.Length; i++)
+        for (int index = 0; index < values.Length; index++)
         {
-            Card card = new Card(values[i], suits[i]);
+            Card card = new Card(values[index], suits[index]);
             Assert.Contains(card.value, card.Deck.cardValues);
         }
     }
@@ -31,9 +31,9 @@ public class CardTest
     [Fact]
     public void ItShouldBeAValidCard()
     {
-        for (int i = 0; i < values.Length; i++)
+        for (int index = 0; index < values.Length; index++)
         {
-            Card card = new Card(values[i], suits[i]);
+            Card card = new Card(values[index], suits[index]);
             string cardValue = card.CardToString();
             Assert.NotNull(card);
             Assert.Contains(cardValue, Deck.cards);
@@ -43,11 +43,11 @@ public class CardTest
     [Fact]
     public void ItShouldHaveTheCorrectWeight()
     {
-        for (int i = 0; i < values.Length; i++)
+        for (int index = 0; index < values.Length; index++)
         {
-            Card card = new Card(values[i], suits[i]);
+            Card card = new Card(values[index], suits[index]);
             Assert.InRange(card.weight, 0, 12);
-            Assert.Equal(Deck.valuesRanking[values[i]], card.weight);
+            Assert.Equal(Deck.valuesRanking[values[index]], card.weight);
         }
     }
 }

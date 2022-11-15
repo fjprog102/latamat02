@@ -8,9 +8,9 @@ public class IsStraightAnalyzer : HandAnalyzer
     {
         var orderedHand = hand.Cards.OrderByDescending(card => card.weight).ToArray();
 
-        for (int i = 0; i < orderedHand.Length - 1; i++)
+        for (int index = 0; index < orderedHand.Length - 1; index++)
         {
-            if (orderedHand[i].weight - 1 != orderedHand[i + 1].weight) return false;
+            if (orderedHand[index].weight - 1 != orderedHand[index + 1].weight) return false;
         }
 
         return true;
