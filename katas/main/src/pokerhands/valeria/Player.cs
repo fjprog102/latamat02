@@ -3,7 +3,7 @@
     public class Player
     {
         public string[] MyHand { get; set; }
-        GamePlayRules Rules;
+        private readonly GamePlayRules Rules;
         public string MyBestPlay = "None";
         public Player(string[] hand)
         {
