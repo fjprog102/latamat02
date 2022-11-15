@@ -20,29 +20,29 @@ public class HandRankingEvaluator
 
     private static bool IsPair(Hand hand)
     {
-        return hand.Cards.GroupBy(c => c.Value).Where(g => g.Count() == 2).Count() == 1;
+        return hand.Cards.GroupBy(card => card.Value).Where(group => group.Count() == 2).Count() == 1;
     }
 
     private static bool IsTwoPairs(Hand hand)
     {
-        return hand.Cards.GroupBy(c => c.Value).Where(g => g.Count() == 2).Count() == 2;
+        return hand.Cards.GroupBy(card => card.Value).Where(group => group.Count() == 2).Count() == 2;
     }
 
     private static bool IsThreeOfAKind(Hand hand)
     {
-        return hand.Cards.GroupBy(c => c.Value).Where(g => g.Count() == 3).Any();
+        return hand.Cards.GroupBy(card => card.Value).Where(group => group.Count() == 3).Any();
     }
 
     private static bool IsFourOfAKind(Hand hand)
     {
-        return hand.Cards.GroupBy(c => c.Value).Where(g => g.Count() == 4).Any();
+        return hand.Cards.GroupBy(card => card.Value).Where(group => group.Count() == 4).Any();
     }
 
     private static bool IsStraight(Hand hand)
     {
         if (IsAceLowStraight(hand)) return true;
 
-        var sortedHand = hand.Cards.OrderBy(h => h.Value).ToArray();
+        var sortedHand = hand.Cards.OrderBy(card => card.Value).ToArray();
         int firstCardOfStraight = (int)sortedHand.First().Value;
 
         for (int i = 1; i < sortedHand.Length; i++)
@@ -62,7 +62,7 @@ public class HandRankingEvaluator
 
     private static bool IsFlush(Hand hand)
     {
-        return hand.Cards.GroupBy(h => h.Suit).Count() == 1;
+        return hand.Cards.GroupBy(card => card.Suit).Count() == 1;
     }
 
     private static bool IsFullHouse(Hand hand)

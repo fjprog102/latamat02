@@ -7,24 +7,24 @@ public class HandKickersEvaluator
 {
     public static Card[] Pair(Hand hand)
     {
-        return hand.Cards.GroupBy(c => c.Value)
-            .Where(g => g.Count() == 1)
-            .Select(e => e.First())
-            .OrderBy(c => c.Value)
+        return hand.Cards.GroupBy(card => card.Value)
+            .Where(group => group.Count() == 1)
+            .Select(each => each.First())
+            .OrderBy(card => card.Value)
             .ToArray();
     }
 
     public static Card[] TwoPairsOrFourOfAKind(Hand hand)
     {
-        return hand.Cards.GroupBy(c => c.Value).Last().ToArray();
+        return hand.Cards.GroupBy(card => card.Value).Last().ToArray();
     }
 
     public static Card[] ThreeOfAKind(Hand hand)
     {
-        return hand.Cards.GroupBy(c => c.Value)
-            .Where(g => g.Count() == 1)
-            .Select(e => e.First())
-            .OrderBy(c => c.Value)
+        return hand.Cards.GroupBy(card => card.Value)
+            .Where(group => group.Count() == 1)
+            .Select(each => each.First())
+            .OrderBy(card => card.Value)
             .ToArray();
     }
 }
