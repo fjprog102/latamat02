@@ -19,8 +19,8 @@
         {
             foreach (var item in Hand)
             {
-                string Value = item.Length > 2? "10" : item[0].ToString();
-                Values.Add(Value);   
+                string value = item.Length > 2? "10" : item[0].ToString();
+                Values.Add(value);   
             }
 
             Values.Sort(StringComparer.OrdinalIgnoreCase);
