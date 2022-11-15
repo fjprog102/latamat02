@@ -12,10 +12,10 @@ namespace PokerHands.Valeria
             "AC", "2C", "3C", "4C", "5C", "6C", "7C", "8C", "9C", "10C", "JC", "QH", "KH"};
         public Dealer()
         {
-            List<string> BlackHand = GiveAHand();
-            List<string> WhiteHand = GiveAHand();
-            BlackPlayer = new Player(BlackHand.ToArray());
-            WhitePlayer = new Player(WhiteHand.ToArray());
+            List<string> blackHand = GiveAHand();
+            List<string> whiteHand = GiveAHand();
+            BlackPlayer = new Player(blackHand.ToArray());
+            WhitePlayer = new Player(whiteHand.ToArray());
         }
         private int GetRandom()
         {
@@ -25,13 +25,13 @@ namespace PokerHands.Valeria
         }
         public List<string> GiveAHand()
         {
-            List<string> Hand = new List<string>();
+            List<string> hand = new List<string>();
             for (int i = 0; i < 5; i++)
             {
-                Hand.Add(Deck[GetRandom()]);
+                hand.Add(Deck[GetRandom()]);
             }
 
-            return Hand;
+            return hand;
         }
         public void CalculatePointsForEachPlayer()
         {
