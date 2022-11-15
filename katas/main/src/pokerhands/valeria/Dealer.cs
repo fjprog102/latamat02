@@ -4,7 +4,7 @@ namespace PokerHands.Valeria
     { 
         public Player WhitePlayer, BlackPlayer;
         public int BlackPlayerPoints = 0, WhitePlayerPoints = 0;
-        Dictionary<string, int> PriorityRulesOrderList = new Dictionary<string, int>{{"with straight flush", 9}, {"with four of a kind", 8}, {"with full house", 7}, {"with flush", 6}, {"with straight", 5}, {"with three of a kind", 4}, {"with two pairs", 3}, {"with pair", 2}, {"with high card", 1}};
+        private Dictionary<string, int> PriorityRulesOrderList = new Dictionary<string, int>{{"with straight flush", 9}, {"with four of a kind", 8}, {"with full house", 7}, {"with flush", 6}, {"with straight", 5}, {"with three of a kind", 4}, {"with two pairs", 3}, {"with pair", 2}, {"with high card", 1}};
         string []Deck = {
             "AH", "2H", "3H", "4H", "5H", "6H", "7H", "8H", "9H", "10H", "JH", "QH", "KH",
             "AD", "2D", "3D", "4D", "5D", "6D", "7D", "8D", "9D", "10D", "JD", "QD", "KD",
