@@ -14,6 +14,7 @@ public class PokerGameBlackAndWhite
         {
             return "It's a tie";
         }
+
         return int.Parse(blackHand[0]) > int.Parse(whiteHand[0])
             ? "Black wins - with " + resultsScore[int.Parse(blackHand[0])]
             : "White wins - with " + resultsScore[int.Parse(whiteHand[0])];

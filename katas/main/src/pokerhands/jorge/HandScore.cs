@@ -84,6 +84,7 @@ public class PokerHand
                 }
             }
         }
+
         var newPairArray = pairArray.ToArray();
         Array.Sort(newPairArray);
 
@@ -97,6 +98,7 @@ public class PokerHand
         {
             handScore = 3.3;
         }
+
         resultValues[0] = handScore.ToString();
         resultValues[1] = handScoreValue;
         resultValues[2] = newPairArray.Length > 0 ? newPairArray[0].ToString() : "0";
