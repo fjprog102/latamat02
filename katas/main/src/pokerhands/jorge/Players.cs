@@ -6,9 +6,6 @@ public class PokerGameBlackAndWhite
     {
         string[] blackHand = new PokerHand().HandToPlay(competitorsHand.Substring(7, 14));
         string[] whiteHand = new PokerHand().HandToPlay(competitorsHand.Substring(30, 14));
-        Console.WriteLine("");
-        Console.WriteLine("Black: " + int.Parse(blackHand[0]));
-        Console.WriteLine("White: " + int.Parse(whiteHand[0]));
 
         if (int.Parse(blackHand[0]) == int.Parse(whiteHand[0]))
         {

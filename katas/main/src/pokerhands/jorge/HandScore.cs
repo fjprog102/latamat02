@@ -104,12 +104,6 @@ public class PokerHand
         resultValues[2] = newPairArray.Length > 0 ? newPairArray[0].ToString() : "0";
         resultValues[3] = highestCard;
 
-        //Console.WriteLine("handScore: " + resultValues[0]);
-        //Console.WriteLine("handScoreValue: " + resultValues[1]);
-        //Console.WriteLine("Tiebreaker Pair: " + resultValues[2]);
-        //Console.WriteLine("highestCard " + resultValues[3]);
-        //Console.WriteLine("");
-
         return resultValues;
     }
 
