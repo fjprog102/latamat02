@@ -30,13 +30,13 @@ public class Deck
     public Deck()
     {
         int index = 0;
-            foreach (char suit in suits)
+        foreach (char suit in suits)
+        {
+            foreach (char value in cardValues)
             {
-                foreach (char value in cardValues)
-                {
-                    cards[index] = value.ToString() + suit.ToString();
-                    index++;
-                }
+                cards[index] = value.ToString() + suit.ToString();
+                index++;
             }
+        }
     }
 }
