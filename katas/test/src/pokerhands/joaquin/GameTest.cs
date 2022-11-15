@@ -29,7 +29,7 @@ public class GameTest
         Game NewGameIV = new Game(new Player("Black", new Hand("4S 5S 6S TS KS")), new Player("White", new Hand("2C 3H 4C 5C 6H")));
         Assert.Equal("Black wins with flush.", NewGameIV.GetWinner(NewGameIV.firstPlayer, NewGameIV.secondPlayer));
 
-        Game NewGameV = new Game(new Player("Black", new Hand("4H 5D 6S 7C 8D")), new Player("White", new Hand("3C 2H QS QC QH")));
+        Game NewGameV = new Game(new Player("Black", new Hand("4H 5D 7S 6C 8D")), new Player("White", new Hand("3C 2H QS QC QH")));
         Assert.Equal("Black wins with straight.", NewGameV.GetWinner(NewGameV.firstPlayer, NewGameV.secondPlayer));
 
         Game NewGameVI = new Game(new Player("Black", new Hand("AH 6D AS AC QD")), new Player("White", new Hand("3C 3H 7S 7C KH")));
@@ -41,8 +41,8 @@ public class GameTest
         Game NewGameVIII = new Game(new Player("Black", new Hand("2H 3D 5S 3C 8D")), new Player("White", new Hand("2C 3H 4S 8C KH")));
         Assert.Equal("Black wins with pair.", NewGameVIII.GetWinner(NewGameVIII.firstPlayer, NewGameVIII.secondPlayer));
 
-        // Game NewGameIX = new Game(new Player("Black", new Hand("2H JS 4C 8D 3H")), new Player("White", new Hand("4S 5C 7H TS 6H")));
-        // Assert.Equal("Black wins with high card.", NewGameIX.GetWinner(NewGameIX.firstPlayer, NewGameIX.secondPlayer));  
+        Game NewGameIX = new Game(new Player("Black", new Hand("2H JS 4C 8D 3H")), new Player("White", new Hand("4S 5C 7H TS 6H")));
+        Assert.Equal("Black wins with high card.", NewGameIX.GetWinner(NewGameIX.firstPlayer, NewGameIX.secondPlayer));  
     }
 
     [Fact]
@@ -72,8 +72,8 @@ public class GameTest
         Game NewGameVIII = new Game(new Player("Black", new Hand("2C 3H 4S 8C KH")), new Player("White", new Hand("2H 3D 5S 3C 8D")));
         Assert.Equal("White wins with pair.", NewGameVIII.GetWinner(NewGameVIII.firstPlayer, NewGameVIII.secondPlayer));
 
-        // Game NewGameIX = new Game(new Player("Black", new Hand("4S 5C 7H TS 6H")), new Player("White", new Hand("2H JS 4C 8D 3H")));
-        // Assert.Equal("White wins with high card.", NewGameIX.GetWinner(NewGameIX.firstPlayer, NewGameIX.secondPlayer));  
+        Game NewGameIX = new Game(new Player("Black", new Hand("4S 5C 7H TS 6H")), new Player("White", new Hand("2H JS 4C 8D 3H")));
+        Assert.Equal("White wins with high card.", NewGameIX.GetWinner(NewGameIX.firstPlayer, NewGameIX.secondPlayer));  
     }
 
     [Fact]
@@ -91,13 +91,13 @@ public class GameTest
         Game NewGameIV = new Game(new Player("Black", new Hand("AD QH JC AS 7H")), new Player("White", new Hand("JS AC AH QC 7C")));
         Assert.Equal("Tie.", NewGameIV.GetWinner(NewGameIV.firstPlayer, NewGameIV.secondPlayer));
 
-        // Game NewGameVI = new Game(new Player("Black", new Hand("4H 4D 5H 5D 8C")), new Player("White", new Hand("5C 4C 4S 8S 5S")));
-        // Assert.Equal("Tie.", NewGameVI.GetWinner(NewGameVI.firstPlayer, NewGameVI.secondPlayer));
+        Game NewGameVI = new Game(new Player("Black", new Hand("4H 4D 5H 5D 8C")), new Player("White", new Hand("5C 4C 4S 8S 5S")));
+        Assert.Equal("Tie.", NewGameVI.GetWinner(NewGameVI.firstPlayer, NewGameVI.secondPlayer));
 
-        // Game NewGameVII = new Game(new Player("Black", new Hand("6S 7C 8D 9D 10H")), new Player("White", new Hand("6H 7S 8S 9S 10S")));
-        // Assert.Equal("Tie.", NewGameVII.GetWinner(NewGameVII.firstPlayer, NewGameVII.secondPlayer));
+        Game NewGameVII = new Game(new Player("Black", new Hand("6S 7C 8D 9D 10H")), new Player("White", new Hand("6H 7S 8S 9S 10S")));
+        Assert.Equal("Tie.", NewGameVII.GetWinner(NewGameVII.firstPlayer, NewGameVII.secondPlayer));
 
-        // Game NewGameVIII = new Game(new Player("Black", new Hand("8H 9H TH JH QH")), new Player("White", new Hand("8C 9C TC JC QS")));
-        // Assert.Equal("Tie.", NewGameVIII.GetWinner(NewGameVIII.firstPlayer, NewGameVIII.secondPlayer));
+        Game NewGameVIII = new Game(new Player("Black", new Hand("8H 9H TH JH QH")), new Player("White", new Hand("8C 9C TC JC QS")));
+        Assert.Equal("Tie.", NewGameVIII.GetWinner(NewGameVIII.firstPlayer, NewGameVIII.secondPlayer));
     }
 }

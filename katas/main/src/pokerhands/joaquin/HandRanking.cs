@@ -2,9 +2,9 @@ namespace PokerHand.Joaquin;
 
 using System.Linq;
 
-public class HandRanking : HandEvaluator
+public class HandRanking
 {
-
+    public HandEvaluator Evaluator = new HandEvaluator();
     public int ranking = 0;
     public string type = "high card";
     public int[] orderedHand = new int[5];
@@ -23,15 +23,7 @@ public class HandRanking : HandEvaluator
 
     public int GetHandRanking(Hand hand)
     {
-        if (IsStraightFlush(hand)) return ranking = 8;
-        else if (IsFourOfAKind(hand)) return ranking = 7;
-        else if (IsFullHouse(hand)) return ranking = 6;
-        else if (IsFlush(hand)) return ranking = 5;
-        else if (IsStraight(hand)) return ranking = 4;
-        else if (IsThreeOfAKind(hand)) return ranking = 3;
-        else if (IsTwoPairs(hand)) return ranking = 2;
-        else if (IsPair(hand)) return ranking = 1;
-        else return ranking = 0;
+        return Evaluator.Evaluate(hand);
     }
 
     public string GetRankingType(int ranking)
