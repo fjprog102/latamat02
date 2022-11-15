@@ -7,65 +7,102 @@
         [Fact]
         public void WinnerWinner()
         {
-            //Should win Black with Four of a Kind.
             Assert.Equal(
-                "Black wins - with Four of a kind",
+                "Black wins - with FourOfAKind of 2",
                 new PokerGameBlackAndWhite().BothHands(
                     "Black: 2H 2D 2S 2C KD  White: 2C 3H 4S 8C AH"
                 )
             );
             Assert.Equal(
-                "White wins - with Straight Flush",
+                "White wins - with StraightFlush of A",
                 new PokerGameBlackAndWhite().BothHands(
                     "Black: 2H 2D 2S 2C KD  White: AH JH QH TH KH"
                 )
             );
-            //Should be tie with tiebreaker of Highcard winning White
             Assert.Equal(
-                //    "White wins.",
-                "It's a tie",
+                "White wins - with Highcard and High Card of A",
                 new PokerGameBlackAndWhite().BothHands(
                     "Black: 2H 3D 5S 9C KD  White: 2C 3H 4S 8C AH"
                 )
             );
-            //Should win White (Full vs Flush)
-            //Assert.Equal(
-            //    "White wins.",
-            //    new PokerGameBlackAndWhite().BothHands(
-            //        "Black: 2H 4S 4C 2D 4H  White: 2S 8S AS QS 3S"
-            //    )
-            //);
-            //Should win Black because second highest card
             Assert.Equal(
-                //    "Black wins.",
-                "It's a tie",
+                "Black wins - with FullHouse of 4",
                 new PokerGameBlackAndWhite().BothHands(
-                    "Black: 2H 3D 5S 9C KD  White: 2C 3H 4S 8C KH"
-                )
-            );
-            //Should be tie
-            Assert.Equal(
-                //    "Tie.",
-                "It's a tie",
-                new PokerGameBlackAndWhite().BothHands(
-                    "Black: 2H 3D 5S 9C KD  White: 2D 3H 5C 9S KH"
+                    "Black: 2H 4S 4C 2D 4H  White: 2S 8S AS QS 3S"
                 )
             );
         }
 
         [Fact]
-        public void ResultByHands()
+        public void ShouldBeHighCard()
         {
-            Assert.Equal("1", new PokerHand().HandToPlay("2H 5C TC 4S 6H")[0]);
-            Assert.Equal("2", new PokerHand().HandToPlay("2H 2C 3H 4S 6H")[0]);
-            Assert.Equal("2.1", new PokerHand().HandToPlay("2H 5C 2C 4S 5H")[0]);
-            Assert.Equal("3", new PokerHand().HandToPlay("2H 2D 5S 2C KD")[0]);
-            Assert.Equal("3.1", new PokerHand().HandToPlay("7H 5C 6C 3S 4H")[0]);
-            Assert.Equal("3.2", new PokerHand().HandToPlay("3C 2C KC 4C TC")[0]);
-            Assert.Equal("3.3", new PokerHand().HandToPlay("5H 5C 6C 5S 6H")[0]);
-            Assert.Equal("4", new PokerHand().HandToPlay("9H 3D 9S 9C 9D")[0]);
-            Assert.Equal("5", new PokerHand().HandToPlay("2H 5H 3H 4H 6H")[0]);
-            //Assert.Equal(5, new PokerHand().HandToPlay("2H 5H 3H 4H AH"));
+            Assert.Equal("1", new PokerHand().HandStringToList("2H 5C TC 4S 6H")[0]);
+            Assert.Equal("1", new PokerHand().HandStringToList("TH AC 7H 4S 6H")[0]);
+            Assert.Equal("1", new PokerHand().HandStringToList("AH QC KC JS 3H")[0]);
+        }
+
+        [Fact]
+        public void ShouldBePair()
+        {
+            Assert.Equal("2", new PokerHand().HandStringToList("2H 5C TC 4S TH")[0]);
+            Assert.Equal("2", new PokerHand().HandStringToList("2H 2C 3H 4S 6H")[0]);
+            Assert.Equal("2", new PokerHand().HandStringToList("9H 7C 3H 9S 6H")[0]);
+        }
+
+        [Fact]
+        public void ShouldBeTwoPais()
+        {
+            Assert.Equal("3", new PokerHand().HandStringToList("7H 5C TC 7S 5H")[0]);
+            Assert.Equal("3", new PokerHand().HandStringToList("2H 2C 3H 3S 6H")[0]);
+            Assert.Equal("3", new PokerHand().HandStringToList("QH QC AC 4S AH")[0]);
+        }
+
+        [Fact]
+        public void ShouldBeThreeOfAKind()
+        {
+            Assert.Equal("4", new PokerHand().HandStringToList("TH 5C TC TS 9H")[0]);
+            Assert.Equal("4", new PokerHand().HandStringToList("2H 2C 3H JS 2H")[0]);
+            Assert.Equal("4", new PokerHand().HandStringToList("QH QC QS 4S AH")[0]);
+        }
+
+        [Fact]
+        public void ShouldBeStraight()
+        {
+            Assert.Equal("5", new PokerHand().HandStringToList("7S 4H 5S 8S 6H")[0]);
+            Assert.Equal("5", new PokerHand().HandStringToList("2C 3C 4C 5C 6S")[0]);
+            Assert.Equal("5", new PokerHand().HandStringToList("JS QC AS KH TS")[0]);
+        }
+
+        [Fact]
+        public void ShouldBeFlush()
+        {
+            Assert.Equal("6", new PokerHand().HandStringToList("TH QH 5H 4H 9H")[0]);
+            Assert.Equal("6", new PokerHand().HandStringToList("2C 3C 4C JC QC")[0]);
+            Assert.Equal("6", new PokerHand().HandStringToList("4S TS 7S 2S AS")[0]);
+        }
+
+        [Fact]
+        public void ShouldBeFullHouse()
+        {
+            Assert.Equal("7", new PokerHand().HandStringToList("TH 5C TC TS 5H")[0]);
+            Assert.Equal("7", new PokerHand().HandStringToList("2H 2C 3H 3S 2H")[0]);
+            Assert.Equal("7", new PokerHand().HandStringToList("QH QC QS AS AH")[0]);
+        }
+
+        [Fact]
+        public void ShouldBeFourOfAKind()
+        {
+            Assert.Equal("8", new PokerHand().HandStringToList("TH 5C TC TS TD")[0]);
+            Assert.Equal("8", new PokerHand().HandStringToList("2H 2C 3H 2D 2S")[0]);
+            Assert.Equal("8", new PokerHand().HandStringToList("QH QC QS 4S QD")[0]);
+        }
+
+        [Fact]
+        public void ShouldBeStraightFlush()
+        {
+            Assert.Equal("9", new PokerHand().HandStringToList("TH QH KH AH JH")[0]);
+            Assert.Equal("9", new PokerHand().HandStringToList("2C 3C 4C 5C 6C")[0]);
+            Assert.Equal("9", new PokerHand().HandStringToList("4S 5S 7S 6S 8S")[0]);
         }
     }
 }
