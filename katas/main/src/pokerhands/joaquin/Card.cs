@@ -16,7 +16,7 @@ public class Card
         this.weight = Deck.valuesRanking[this.value];
     }
 
-    public string CreateCard()
+    public string CardToString()
     {
         return value.ToString() + suit.ToString();
     }

@@ -33,15 +33,10 @@ public class HandTest
             Hand hand = new Hand("AS 7H 8D JS QH");
             foreach (var c in hand.Cards)
             {
-                Assert.Contains(c.CreateCard(), deck.cards);
+                Assert.Contains(c.CardToString(), deck.cards);
             }
         }
     }
-
-    // [Fact]
-    // public void CardShouldNotBeRepeatedInAHand()
-    // {
-    // }
 
     [Fact]
     public void ItShouldReceiveAValidInput()

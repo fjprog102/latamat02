@@ -34,7 +34,7 @@ public class CardTest
         for (int i = 0; i < values.Length; i++)
         {
             Card card = new Card(values[i], suits[i]);
-            string cardValue = card.CreateCard();
+            string cardValue = card.CardToString();
             Assert.NotNull(card);
             Assert.Contains(cardValue, Deck.cards);
         }
