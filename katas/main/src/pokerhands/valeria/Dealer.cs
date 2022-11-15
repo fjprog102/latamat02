@@ -26,11 +26,11 @@ namespace PokerHands.Valeria
         public List<string> GiveAHand()
         {
             List<string> Hand = new List<string>();
-            
             for (int i = 0; i < 5; i++)
             {
                 Hand.Add(Deck[GetRandom()]);
             }
+
             return Hand;
         }
         public void CalculatePointsForEachPlayer()
