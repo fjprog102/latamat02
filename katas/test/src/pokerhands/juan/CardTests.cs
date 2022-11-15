@@ -17,11 +17,6 @@ namespace TestCardsJuan
 
     public class TestCards
     {
-        private string CardToString(Card card)
-        {
-            return card.ValueAttr.ToString() + card.SuitAttr.ToString();
-        }
-
         [Theory]
         [ClassData(typeof(TestCardsDataClass))]
         public void TestCard(string input, string expected)

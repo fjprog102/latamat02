@@ -24,24 +24,24 @@ namespace HandJuan
 
         public string ToStr()
         {
-            string opt = "";
+            string output = "";
             foreach (Card card in cards)
             {
-                opt += card.ToStr() + "  ";
+                output += card.ToStr() + "  ";
             }
 
-            return opt;
+            return output;
         }
 
         public string HandString()
         {
-            string opt = "";
+            string output = "";
             foreach (Card card in cards)
             {
-                opt += card.ValueAttr.ToString() + card.SuitAttr.ToString() + " ";
+                output += card.ValueAttr.ToString() + card.SuitAttr.ToString() + " ";
             }
 
-            return opt;
+            return output;
         }
 
         public List<Card> HandAttr => cards;
