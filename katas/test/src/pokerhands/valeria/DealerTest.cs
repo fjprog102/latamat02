@@ -31,10 +31,10 @@ namespace PokerHands.Test.Valeria
         {
             Dealer theDealer = new Dealer();
             theDealer.CalculatePointsForEachPlayer();
-            int BlackPoints = theDealer.BlackPlayerPoints;
-            int WhitePoints = theDealer.WhitePlayerPoints;
-            Assert.True(BlackPoints > 0);
-            Assert.True(WhitePoints > 0);
+            int blackPoints = theDealer.BlackPlayerPoints;
+            int whitePoints = theDealer.WhitePlayerPoints;
+            Assert.True(blackPoints > 0);
+            Assert.True(whitePoints > 0);
         }
         [Fact]
         private void DealerShouldAnnounceWinner()
