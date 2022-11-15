@@ -14,34 +14,34 @@
         private void Play()
         {
             PlayToWinStrategy();
-            PlayBestValueStrategy();  
+            PlayBestValueStrategy();
             PlayBestSuitStrategy();
             PlayValuesStrategy();
             PlayForConsolationPrize();
         }
         public void PlayToWinStrategy()
         {
-            MyBestPlay = Rules.ApplyStraightFlushRule(); 
+            MyBestPlay = Rules.ApplyStraightFlushRule();
         }
         public void PlayBestValueStrategy()
         {
-            MyBestPlay = MyBestPlay.Equals("None")? Rules.ApplyFourOfAKindRule() : MyBestPlay;
-            MyBestPlay = MyBestPlay.Equals("None")? Rules.ApplyFullHouseRule() : MyBestPlay;
+            MyBestPlay = MyBestPlay.Equals("None") ? Rules.ApplyFourOfAKindRule() : MyBestPlay;
+            MyBestPlay = MyBestPlay.Equals("None") ? Rules.ApplyFullHouseRule() : MyBestPlay;
         }
         public void PlayBestSuitStrategy()
         {
-            MyBestPlay = MyBestPlay.Equals("None")? Rules.ApplyFlushRule() : MyBestPlay;
-            MyBestPlay = MyBestPlay.Equals("None")? Rules.ApplyStraightRule() : MyBestPlay;
+            MyBestPlay = MyBestPlay.Equals("None") ? Rules.ApplyFlushRule() : MyBestPlay;
+            MyBestPlay = MyBestPlay.Equals("None") ? Rules.ApplyStraightRule() : MyBestPlay;
         }
         public void PlayValuesStrategy()
         {
-            MyBestPlay = MyBestPlay.Equals("None")? Rules.ApplyThreeOfAKindRule() : MyBestPlay;
-            MyBestPlay = MyBestPlay.Equals("None")? Rules.ApplyTwoPairsRule() : MyBestPlay;
-            MyBestPlay = MyBestPlay.Equals("None")? Rules.ApplyPairRule() : MyBestPlay;
+            MyBestPlay = MyBestPlay.Equals("None") ? Rules.ApplyThreeOfAKindRule() : MyBestPlay;
+            MyBestPlay = MyBestPlay.Equals("None") ? Rules.ApplyTwoPairsRule() : MyBestPlay;
+            MyBestPlay = MyBestPlay.Equals("None") ? Rules.ApplyPairRule() : MyBestPlay;
         }
         public void PlayForConsolationPrize()
         {
-            MyBestPlay = MyBestPlay.Equals("None")? Rules.ApplyHighCardRule() : MyBestPlay;
+            MyBestPlay = MyBestPlay.Equals("None") ? Rules.ApplyHighCardRule() : MyBestPlay;
         }
     }
 }

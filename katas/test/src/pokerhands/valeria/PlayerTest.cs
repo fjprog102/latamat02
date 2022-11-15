@@ -18,7 +18,7 @@
 
             Player whitePlayer = new Player(new string[] { "KH", "AD", "10S", "KH", "JH" });
             Assert.Equal("with pair: K", whitePlayer.MyBestPlay);
-            
+
             Player greenPlayer = new Player(new string[] { "KH", "AH", "10H", "QH", "JH" });
             Assert.Equal("with straight flush: H", greenPlayer.MyBestPlay);
 

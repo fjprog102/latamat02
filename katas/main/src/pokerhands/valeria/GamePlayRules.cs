@@ -19,15 +19,15 @@
         {
             foreach (var item in Hand)
             {
-                string value = item.Length > 2? "10" : item[0].ToString();
-                Values.Add(value);   
+                string value = item.Length > 2 ? "10" : item[0].ToString();
+                Values.Add(value);
             }
 
             Values.Sort(StringComparer.OrdinalIgnoreCase);
         }
         public void GetSuits()
         {
-            Suits = Hand.Select(s => s[s.Length-1]).ToList();
+            Suits = Hand.Select(s => s[s.Length - 1]).ToList();
         }
         public void GetGridValuesCounter()
         {

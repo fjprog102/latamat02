@@ -1,4 +1,4 @@
-namespace PokerHands.Test.Valeria
+﻿namespace PokerHands.Test.Valeria
 {
     using PokerHands.Valeria;
     public class DealerTest
@@ -20,8 +20,8 @@ namespace PokerHands.Test.Valeria
         private void DealerShouldOpenTheGameGivingAHandToEachPlayer()
         {
             Dealer theDealer = new Dealer();
-            string []whiteHand = theDealer.WhitePlayer.MyHand;
-            string []blackHand = theDealer.BlackPlayer.MyHand;
+            string[] whiteHand = theDealer.WhitePlayer.MyHand;
+            string[] blackHand = theDealer.BlackPlayer.MyHand;
 
             Assert.Equal(5, whiteHand.Length);
             Assert.Equal(5, blackHand.Length);

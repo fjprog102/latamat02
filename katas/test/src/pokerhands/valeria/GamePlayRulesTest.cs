@@ -7,7 +7,7 @@
         private void GivenAHandItShouldReturnTheValuesInAList()
         {
             GamePlayRules rules = new GamePlayRules(new string[5] { "2H", "2D", "3C", "10S", "AD" });
-            Assert.Equal(new List<string>() {  "10", "2", "2", "3", "A" }, rules.Values);
+            Assert.Equal(new List<string>() { "10", "2", "2", "3", "A" }, rules.Values);
         }
         [Fact]
         private void GivenAHandItShouldReturnTheSuitsInAList()
@@ -19,13 +19,13 @@
         private void GivenAHandItShouldMakeADictionaryOfValuesAndTheTimesEachValueRepeats()
         {
             GamePlayRules rules = new GamePlayRules(new string[5] { "2H", "2D", "3C", "3S", "AD" });
-            Assert.Equal(new Dictionary<string,int>() { {"3", 2}, {"2", 2}, {"A", 1}}, rules.ValuesCount);
+            Assert.Equal(new Dictionary<string, int>() { { "3", 2 }, { "2", 2 }, { "A", 1 } }, rules.ValuesCount);
         }
         [Fact]
         private void GivenAHandItShouldMakeADictionaryOfSuitsAndTheTimesEachSuitRepeats()
         {
             GamePlayRules rules = new GamePlayRules(new string[5] { "2H", "2D", "3C", "3S", "AD" });
-            Assert.Equal(new Dictionary<char,int>() { {'D', 2}, {'H', 1}, {'C', 1}, {'S', 1}}, rules.SuitsCount);
+            Assert.Equal(new Dictionary<char, int>() { { 'D', 2 }, { 'H', 1 }, { 'C', 1 }, { 'S', 1 } }, rules.SuitsCount);
         }
         [Fact]
         private void GivenAStraighyFlushHandItShouldReturnStraighyFlush()
