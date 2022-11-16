@@ -1,4 +1,4 @@
-﻿namespace PokerHand.Joaquin;
+﻿namespace PokerHands.Joaquin;
 
 using System.Linq;
 

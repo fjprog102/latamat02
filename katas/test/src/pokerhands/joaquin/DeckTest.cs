@@ -1,6 +1,4 @@
-﻿namespace Deck.Test.Joaquin;
-
-using PokerHand.Joaquin;
+﻿namespace PokerHands.Joaquin;
 
 public class DeckTest
 {

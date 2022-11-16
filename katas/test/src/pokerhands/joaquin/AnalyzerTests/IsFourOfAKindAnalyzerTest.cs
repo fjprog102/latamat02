@@ -1,6 +1,6 @@
-﻿namespace HandEvaluator.Test.Joaquin;
+﻿namespace PokerHands.Joaquin;
 
-using PokerHand.Joaquin;
+using Analyzers.Joaquin;
 
 public class IsFourOfAKindAnalyzerTest
 {

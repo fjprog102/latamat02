@@ -1,4 +1,6 @@
-﻿namespace PokerHand.Joaquin;
+﻿namespace PokerHands.Joaquin;
+
+using Analyzers.Joaquin;
 
 public class HandEvaluator
 {

@@ -1,4 +1,6 @@
-﻿namespace PokerHand.Joaquin;
+﻿namespace Analyzers.Joaquin;
+
+using PokerHands.Joaquin;
 
 using System.Linq;
 
