@@ -1,6 +1,7 @@
-namespace PokerHand.Joaquin;
+﻿namespace Analyzers.Joaquin;
 
 using System.Linq;
+using PokerHands.Joaquin;
 
 public class IsFourOfAKindAnalyzer : HandAnalyzer
 {

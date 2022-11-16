@@ -7,9 +7,9 @@ namespace HandJuan
         private readonly List<Card> cards = new List<Card>();
         private readonly IEnumerable<IGrouping<int, CardJuan.Card>> groups;
 
-        private List<Card> played;
+        private List<Card> played = new List<Card>();
         private int rating;
-        private string name;
+        private string name = "";
 
         public Hand(string input)
         {
