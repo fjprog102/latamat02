@@ -1,4 +1,4 @@
-namespace PokerHands.HandsComparer.Test.Adriel;
+﻿namespace PokerHands.HandsComparer.Test.Adriel;
 
 using HandsComparer.Adriel;
 using Xunit.Abstractions;

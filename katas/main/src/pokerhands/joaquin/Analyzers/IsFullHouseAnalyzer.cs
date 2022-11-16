@@ -1,8 +1,7 @@
 ﻿namespace Analyzers.Joaquin;
 
-using PokerHands.Joaquin;
-
 using System.Linq;
+using PokerHands.Joaquin;
 
 public class IsFullHouseAnalyzer : HandAnalyzer
 {

@@ -1,4 +1,4 @@
-namespace PokerHands.HandsMainEvaluator.Adriel;
+﻿namespace PokerHands.HandsMainEvaluator.Adriel;
 
 using Cards.Adriel;
 using Hands.Adriel;
