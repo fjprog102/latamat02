@@ -1,7 +1,7 @@
-namespace PokerHands.Hands.Test.Adriel;
+﻿namespace PokerHands.Hands.Test.Adriel;
 
-using Enums.Adriel;
 using Cards.Adriel;
+using Enums.Adriel;
 using Hands.Adriel;
 
 public class HandTest

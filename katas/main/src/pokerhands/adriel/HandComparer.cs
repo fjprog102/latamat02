@@ -1,7 +1,7 @@
-namespace PokerHands.HandsComparer.Adriel;
+﻿namespace PokerHands.HandsComparer.Adriel;
 
-using Enums.Adriel;
 using Cards.Adriel;
+using Enums.Adriel;
 using Hands.Adriel;
 using HandsEvaluator.Adriel;
 
@@ -37,9 +37,13 @@ public class HandComparer
         {
             System.Console.WriteLine(i);
             if (PlayerOneHand.RankingCards[i].Value - PlayerTwoHand.RankingCards[i].Value == 0)
+            {
                 continue;
+            }
+
             return PlayerOneHand.RankingCards[i].Value - PlayerTwoHand.RankingCards[i].Value;
         }
+
         return 0;
     }
 
@@ -51,27 +55,41 @@ public class HandComparer
         string finalMessage = $"{name} wins! with {rankings[(int)hand.Ranking]}: ";
 
         if (hand.Ranking == Ranking.FullHouse)
+        {
             finalMessage += $"{hand.RankingCards.Last().ToString().First()} over " +
             hand.RankingCards.First().ToString().First();
-
-        else finalMessage += string.Join<Card>(" ", hand.RankingCards);
+        }
+        else
+        {
+            finalMessage += string.Join<Card>(" ", hand.RankingCards);
+        }
 
         return finalMessage;
     }
 
     public string StartRound()
     {
-        string output = "";
-
+        string output;
         if (PlayerOneHand.Ranking > PlayerTwoHand.Ranking)
+        {
             output = CreateFinalMessage(PlayerOneName, PlayerOneHand);
-
+        }
         else if (PlayerOneHand.Ranking < PlayerTwoHand.Ranking)
+        {
             output = CreateFinalMessage(PlayerTwoName, PlayerTwoHand);
-
-        else if (TieBreaker() > 0) output = CreateFinalMessage(PlayerOneName, PlayerOneHand);
-        else if (TieBreaker() < 0) output = CreateFinalMessage(PlayerTwoName, PlayerTwoHand);
-        else output = "Tie!";
+        }
+        else if (TieBreaker() > 0)
+        {
+            output = CreateFinalMessage(PlayerOneName, PlayerOneHand);
+        }
+        else if (TieBreaker() < 0)
+        {
+            output = CreateFinalMessage(PlayerTwoName, PlayerTwoHand);
+        }
+        else
+        {
+            output = "Tie!";
+        }
 
         return output;
     }

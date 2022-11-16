@@ -1,11 +1,11 @@
-namespace PokerHands.HandsEvaluator.Adriel;
+﻿namespace PokerHands.HandsEvaluator.Adriel;
 
-using Enums.Adriel;
 using Cards.Adriel;
+using Enums.Adriel;
 using Hands.Adriel;
-using HandsRankingEvaluator.Adriel;
 using HandsKickersEvaluator.Adriel;
 using HandsMainEvaluator.Adriel;
+using HandsRankingEvaluator.Adriel;
 
 public class HandEvaluator
 {
@@ -40,19 +40,49 @@ public class HandEvaluator
 
     private Card[] GetRankingCards()
     {
-        if (Ranking == Ranking.Pair) return HandMainEvaluator.Pair(Hand);
-        else if (Ranking == Ranking.TwoPairs) return HandMainEvaluator.TwoPairs(Hand);
-        else if (Ranking == Ranking.ThreeOfAKind) return HandMainEvaluator.ThreeOfAKind(Hand);
-        else if (Ranking == Ranking.FourOfAKind) return HandMainEvaluator.FourOfAKind(Hand);
-        else return HandMainEvaluator.OtherRankings(Hand);
+        if (Ranking == Ranking.Pair)
+        {
+            return HandMainEvaluator.Pair(Hand);
+        }
+        else if (Ranking == Ranking.TwoPairs)
+        {
+            return HandMainEvaluator.TwoPairs(Hand);
+        }
+        else if (Ranking == Ranking.ThreeOfAKind)
+        {
+            return HandMainEvaluator.ThreeOfAKind(Hand);
+        }
+        else if (Ranking == Ranking.FourOfAKind)
+        {
+            return HandMainEvaluator.FourOfAKind(Hand);
+        }
+        else
+        {
+            return HandMainEvaluator.OtherRankings(Hand);
+        }
     }
 
     private Card[] GetKickers()
     {
-        if (Ranking == Ranking.Pair) return HandKickersEvaluator.Pair(Hand);
-        else if (Ranking == Ranking.TwoPairs) return HandKickersEvaluator.TwoPairsOrFourOfAKind(Hand);
-        else if (Ranking == Ranking.ThreeOfAKind) return HandKickersEvaluator.ThreeOfAKind(Hand);
-        else if (Ranking == Ranking.FourOfAKind) return HandKickersEvaluator.TwoPairsOrFourOfAKind(Hand);
-        else return new Card[0];
+        if (Ranking == Ranking.Pair)
+        {
+            return HandKickersEvaluator.Pair(Hand);
+        }
+        else if (Ranking == Ranking.TwoPairs)
+        {
+            return HandKickersEvaluator.TwoPairsOrFourOfAKind(Hand);
+        }
+        else if (Ranking == Ranking.ThreeOfAKind)
+        {
+            return HandKickersEvaluator.ThreeOfAKind(Hand);
+        }
+        else if (Ranking == Ranking.FourOfAKind)
+        {
+            return HandKickersEvaluator.TwoPairsOrFourOfAKind(Hand);
+        }
+        else
+        {
+            return new Card[0];
+        }
     }
 }
