@@ -2,20 +2,20 @@
 using PokerGame.Dictionary.Jorge;
 using PokerGame.Enums.Jorge;
 
-public class PokerGameBlackAndWhite
+public class GameBlackAndWhite
 {
     public ResultsScore ResultsScore { get; }
 
     public string BothHands(string competitorsHand)
     {
-        string[] blackHand = new PokerHand().HandStringToList(competitorsHand.Substring(7, 14));
-        string[] whiteHand = new PokerHand().HandStringToList(competitorsHand.Substring(30, 14));
+        string[] blackHand = new Hand().HandStringToList(competitorsHand.Substring(7, 14));
+        string[] whiteHand = new Hand().HandStringToList(competitorsHand.Substring(30, 14));
 
         if (int.Parse(blackHand[0]) == int.Parse(whiteHand[0]))
         {
             return
-                new PokerDictionary().valueCards[blackHand[1]]
-                > new PokerDictionary().valueCards[whiteHand[1]]
+                new Dictionary().valueCards[blackHand[1]]
+                > new Dictionary().valueCards[whiteHand[1]]
                 ? "Black wins - with "
                     + (ResultsScore)int.Parse(blackHand[0])
                     + " and High Card of "

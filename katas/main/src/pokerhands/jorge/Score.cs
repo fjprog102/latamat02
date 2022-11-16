@@ -2,7 +2,7 @@
 using PokerGame.Dictionary.Jorge;
 using PokerGame.Enums.Jorge;
 
-public class PokerGameScoreGetter
+public class ScoreGetter
 {
     public string[] resultValues = new string[4]; // Array for results
 
@@ -24,8 +24,8 @@ public class PokerGameScoreGetter
                 handScoreValue = highestCard;
                 handScore =
                     (
-                        new PokerDictionary().valueCards[highestCard]
-                            - new PokerDictionary().valueCards[lowestCard]
+                        new Dictionary().valueCards[highestCard]
+                            - new Dictionary().valueCards[lowestCard]
                         == 4
                     )
                         ? 5
@@ -46,8 +46,8 @@ public class PokerGameScoreGetter
         {
             handScore =
                 (
-                    new PokerDictionary().valueCards[highestCard]
-                        - new PokerDictionary().valueCards[lowestCard]
+                    new Dictionary().valueCards[highestCard]
+                        - new Dictionary().valueCards[lowestCard]
                     == 4
                 )
                     ? 9

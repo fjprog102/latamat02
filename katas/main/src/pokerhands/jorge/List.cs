@@ -3,7 +3,7 @@ using System.Linq;
 using PokerGame.Dictionary.Jorge;
 using PokerGame.Score.Jorge;
 
-public class PokerGameOrderList
+public class OrderList
 {
     public List<string> pairArray = new List<string>(); // List to know pairs.
 
@@ -32,18 +32,18 @@ public class PokerGameOrderList
 
         var repeatedCards = handNums.Max(card => card.Count);
         var handScoreValue = handNums[0].Value.ToString();
-        var highestCard = new PokerDictionary().valueCards
+        var highestCard = new Dictionary().valueCards
             .FirstOrDefault(
                 x =>
                     x.Value
-                    == handNums.Max(card => new PokerDictionary().valueCards[card.Value.ToString()])
+                    == handNums.Max(card => new Dictionary().valueCards[card.Value.ToString()])
             )
             .Key;
-        var lowestCard = new PokerDictionary().valueCards
+        var lowestCard = new Dictionary().valueCards
             .FirstOrDefault(
                 x =>
                     x.Value
-                    == handNums.Min(card => new PokerDictionary().valueCards[card.Value.ToString()])
+                    == handNums.Min(card => new Dictionary().valueCards[card.Value.ToString()])
             )
             .Key;
         var pairCount = handNums.Count(x => x.Count == 2);
@@ -55,7 +55,7 @@ public class PokerGameOrderList
             }
         }
 
-        return new PokerGameScoreGetter().Score(
+        return new ScoreGetter().Score(
             repeatedCards,
             highestCard,
             lowestCard,

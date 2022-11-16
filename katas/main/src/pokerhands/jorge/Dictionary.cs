@@ -1,6 +1,6 @@
 ﻿namespace PokerGame.Dictionary.Jorge;
 
-public class PokerDictionary
+public class Dictionary
 {
     public Dictionary<string, int> valueCards = new Dictionary<string, int>
     {
