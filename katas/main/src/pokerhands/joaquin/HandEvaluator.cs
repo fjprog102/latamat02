@@ -1,9 +1,8 @@
-namespace PokerHand.Joaquin;
+﻿namespace PokerHand.Joaquin;
 
 public class HandEvaluator
 {
-
-    List<HandAnalyzer> analyzers = new List<HandAnalyzer>()
+    private readonly List<HandAnalyzer> analyzers = new List<HandAnalyzer>()
     {
         new IsStraightFlushAnalyzer(),
         new IsFourOfAKindAnalyzer(),
@@ -19,8 +18,12 @@ public class HandEvaluator
     {
         foreach (HandAnalyzer analyzer in analyzers)
         {
-            if (analyzer.Match(hand)) return analyzer.GetRank();
+            if (analyzer.Match(hand))
+            {
+                return analyzer.GetRank();
+            }
         }
+
         return 0;
     }
 }

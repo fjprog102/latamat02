@@ -1,19 +1,19 @@
-namespace HandRanking.Test.Joaquin;
+﻿namespace HandRanking.Test.Joaquin;
 
 using PokerHand.Joaquin;
 
 public class HandRankingTest
 {
-    HandRanking ranking = new HandRanking();
-    Hand straightFlush = new Hand("4S 6S 5S 8S 7S");
-    Hand fourOfAKind = new Hand("AS AD AH AC 7S");
-    Hand fullHouse = new Hand("6H 6D 6S 7H 7C");
-    Hand flush = new Hand("3C TC 7C QC KC");
-    Hand straight = new Hand("4S 6D 5H 8S 7S");
-    Hand threeOfAKind = new Hand("2D 2C 6D 2H 4S");
-    Hand twoPairs = new Hand("2D 2C 6D 6H 4S");
-    Hand pair = new Hand("7C AH QD QC KS");
-    Hand highCard = new Hand("7C AH QD 4C KS");
+    private readonly HandRanking ranking = new HandRanking();
+    private readonly Hand straightFlush = new Hand("4S 6S 5S 8S 7S");
+    private readonly Hand fourOfAKind = new Hand("AS AD AH AC 7S");
+    private readonly Hand fullHouse = new Hand("6H 6D 6S 7H 7C");
+    private readonly Hand flush = new Hand("3C TC 7C QC KC");
+    private readonly Hand straight = new Hand("4S 6D 5H 8S 7S");
+    private readonly Hand threeOfAKind = new Hand("2D 2C 6D 2H 4S");
+    private readonly Hand twoPairs = new Hand("2D 2C 6D 6H 4S");
+    private readonly Hand pair = new Hand("7C AH QD QC KS");
+    private readonly Hand highCard = new Hand("7C AH QD 4C KS");
 
     [Fact]
     public void ItShouldReturnTheCorrectHandRanking()

@@ -1,20 +1,19 @@
-namespace Card.Test.Joaquin;
+﻿namespace Card.Test.Joaquin;
 
 using PokerHand.Joaquin;
 
 public class CardTest
 {
-    Deck Deck = new Deck();
-
-    char[] values = { 'A', '9', '4', 'J' };
-    char[] suits = { 'C', 'D', 'H', 'S' };
+    private readonly Deck Deck = new Deck();
+    private readonly char[] values = { 'A', '9', '4', 'J' };
+    private readonly char[] suits = { 'C', 'D', 'H', 'S' };
     [Fact]
     public void ItShouldReturnAValidSuit()
     {
         for (int index = 0; index < values.Length; index++)
         {
             Card card = new Card(values[index], suits[index]);
-            Assert.Contains(card.suit, card.Deck.suits);
+            Assert.Contains(card.suit, card.Deck.Suits);
         }
     }
 
@@ -24,7 +23,7 @@ public class CardTest
         for (int index = 0; index < values.Length; index++)
         {
             Card card = new Card(values[index], suits[index]);
-            Assert.Contains(card.value, card.Deck.cardValues);
+            Assert.Contains(card.value, card.Deck.CardValues);
         }
     }
 

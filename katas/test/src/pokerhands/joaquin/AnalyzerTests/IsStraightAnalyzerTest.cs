@@ -1,4 +1,4 @@
-namespace HandEvaluator.Test.Joaquin;
+﻿namespace HandEvaluator.Test.Joaquin;
 
 using PokerHand.Joaquin;
 

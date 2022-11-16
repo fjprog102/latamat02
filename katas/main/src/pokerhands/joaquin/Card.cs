@@ -1,4 +1,4 @@
-namespace PokerHand.Joaquin;
+﻿namespace PokerHand.Joaquin;
 
 public class Card
 {
@@ -13,7 +13,7 @@ public class Card
     {
         this.value = char.ToUpper(value);
         this.suit = char.ToUpper(suit);
-        this.weight = Deck.valuesRanking[value];
+        weight = Deck.valuesRanking[value];
     }
 
     public string CardToString()

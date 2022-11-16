@@ -1,4 +1,4 @@
-namespace Deck.Test.Joaquin;
+﻿namespace Deck.Test.Joaquin;
 
 using PokerHand.Joaquin;
 
@@ -18,7 +18,7 @@ public class DeckTest
         Deck deck = new Deck();
         int count = 0;
 
-        foreach (char suit in deck.suits)
+        foreach (char suit in deck.Suits)
         {
             foreach (string card in deck.cards)
             {
@@ -27,6 +27,7 @@ public class DeckTest
                     count++;
                 }
             }
+
             Assert.Equal(13, count);
             count = 0;
         }
@@ -38,7 +39,7 @@ public class DeckTest
         Deck deck = new Deck();
         int count = 0;
 
-        foreach (char value in deck.cardValues)
+        foreach (char value in deck.CardValues)
         {
             foreach (string card in deck.cards)
             {
@@ -47,6 +48,7 @@ public class DeckTest
                     count++;
                 }
             }
+
             Assert.Equal(4, count);
             count = 0;
         }

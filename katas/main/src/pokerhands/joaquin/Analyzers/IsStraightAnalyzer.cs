@@ -1,4 +1,4 @@
-namespace PokerHand.Joaquin;
+﻿namespace PokerHand.Joaquin;
 
 using System.Linq;
 
@@ -10,7 +10,10 @@ public class IsStraightAnalyzer : HandAnalyzer
 
         for (int index = 0; index < orderedHand.Length - 1; index++)
         {
-            if (orderedHand[index].weight - 1 != orderedHand[index + 1].weight) return false;
+            if (orderedHand[index].weight - 1 != orderedHand[index + 1].weight)
+            {
+                return false;
+            }
         }
 
         return true;

@@ -1,4 +1,4 @@
-namespace Player.Test.Joaquin;
+﻿namespace Player.Test.Joaquin;
 
 using PokerHand.Joaquin;
 
@@ -7,8 +7,8 @@ public class PlayerTest
     [Fact]
     public void ItShouldCreateAPlayer()
     {
-        Player Black = new Player("Black", new Hand("AS JC 4C 7H 2D"));
-        Player White = new Player("White", new Hand("7H AH 8S QD TS"));
+        _ = new Player("Black", new Hand("AS JC 4C 7H 2D"));
+        _ = new Player("White", new Hand("7H AH 8S QD TS"));
     }
 
     [Fact]

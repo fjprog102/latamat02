@@ -1,10 +1,10 @@
-namespace Hand.Test.Joaquin;
+﻿namespace Hand.Test.Joaquin;
 
 using PokerHand.Joaquin;
 
 public class HandTest
 {
-    List<string> Cards = new List<string>()
+    private readonly List<string> Cards = new List<string>()
     {
         {"AS 7H 8D JS QH"},
         {"3C 3S JS 3H JH"},
@@ -31,9 +31,9 @@ public class HandTest
         foreach (string card in Cards)
         {
             Hand hand = new Hand("AS 7H 8D JS QH");
-            foreach (var Card in hand.Cards)
+            foreach (var cards in hand.Cards)
             {
-                Assert.Contains(Card.CardToString(), deck.cards);
+                Assert.Contains(cards.CardToString(), deck.cards);
             }
         }
     }
