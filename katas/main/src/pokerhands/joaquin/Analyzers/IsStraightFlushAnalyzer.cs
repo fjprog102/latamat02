@@ -1,11 +1,12 @@
-namespace PokerHand.Joaquin;
+﻿namespace Analyzers.Joaquin;
 
 using System.Linq;
+using PokerHands.Joaquin;
 
 public class IsStraightFlushAnalyzer : HandAnalyzer
 {
-    IsFlushAnalyzer FlushAnalyzer = new IsFlushAnalyzer();
-    IsStraightAnalyzer StraightAnalyzer = new IsStraightAnalyzer();
+    private readonly IsFlushAnalyzer FlushAnalyzer = new IsFlushAnalyzer();
+    private readonly IsStraightAnalyzer StraightAnalyzer = new IsStraightAnalyzer();
 
     public override bool Match(Hand hand)
     {

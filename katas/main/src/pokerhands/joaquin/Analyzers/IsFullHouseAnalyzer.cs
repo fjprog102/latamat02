@@ -1,11 +1,12 @@
-namespace PokerHand.Joaquin;
+﻿namespace Analyzers.Joaquin;
 
 using System.Linq;
+using PokerHands.Joaquin;
 
 public class IsFullHouseAnalyzer : HandAnalyzer
 {
-    IsPairAnalyzer PairAnalyzer = new IsPairAnalyzer();
-    IsThreeOfAKindAnalyzer ThreeOfAKindAnalyzer = new IsThreeOfAKindAnalyzer();
+    private readonly IsPairAnalyzer PairAnalyzer = new IsPairAnalyzer();
+    private readonly IsThreeOfAKindAnalyzer ThreeOfAKindAnalyzer = new IsThreeOfAKindAnalyzer();
 
     public override bool Match(Hand hand)
     {
