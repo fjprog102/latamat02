@@ -1,4 +1,4 @@
-﻿namespace Hello.Jorge;
+﻿namespace HelloWorld.Jorge;
 
 public class HelloWorldJorge
 {
