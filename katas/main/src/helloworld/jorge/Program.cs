@@ -1,6 +1,6 @@
 ﻿namespace Hello.Jorge;
 
-public class Hello
+public class HelloWorldJorge
 {
     public string SayHello()
     {
