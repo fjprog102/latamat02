@@ -5,10 +5,12 @@ using PokerHand.Joaquin;
 public class PlayerTest
 {
     [Fact]
-    public void ItShouldCreateAPlayer()
+    public void ItShouldCreateAPlayerWithoutThrowingAnException()
     {
-        _ = new Player("Black", new Hand("AS JC 4C 7H 2D"));
-        _ = new Player("White", new Hand("7H AH 8S QD TS"));
+        Player black = new Player("Black", new Hand("AS JC 4C 7H 2D"));
+        Player white = new Player("White", new Hand("7H AH 8S QD TS"));
+        Assert.Equal("Black", black.name);
+        Assert.Equal("White", white.name);
     }
 
     [Fact]
