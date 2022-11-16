@@ -1,0 +1,40 @@
+name: dotnet package
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        dotnet-version: ['6.0.x' ]
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup dotnet
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '6.0.x'
+      - name: Restore tools
+        run: dotnet tool restore --tool-manifest Game2048/.config/dotnet-tools.json
+      - name: Build
+        run: dotnet build Game2048/
+      - name: Check format issues
+        run: dotnet format --verify-no-changes -v d Game2048/
+      - name: Run tests
+        run: dotnet test Game2048/ -l html --collect:"XPlat Code Coverage" --results-directory "TestResults-${{ matrix.dotnet-version }}"
+      - name: Upload test results
+        uses: actions/upload-artifact@v3
+        with:
+          name: test-results-${{ matrix.dotnet-version }}
+          path: TestResults-${{ matrix.dotnet-version }}
+        # Use always() to always run this step to publish test results when there are test failures
+        if: ${{ always() }}
+      - name: Generate code coverage report
+        run: cd Game2048/; dotnet reportgenerator -reports:"../TestResults-${{ matrix.dotnet-version }}/**/*.cobertura.xml" -targetdir:".coveragereport"
+      - name: Upload code coverage report
+        uses: actions/upload-artifact@v3
+        with:
+          name: code-coverage-${{ matrix.dotnet-version }}
+          path: Game2048/.coveragereport
+        # Use always() to always run this step to publish test results when there are test failures
+        if: ${{ always() }}
