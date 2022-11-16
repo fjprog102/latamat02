@@ -1,4 +1,4 @@
-namespace PokerHand.Joaquin;
+﻿namespace PokerHands.Joaquin;
 
 using System.Collections.Generic;
 
@@ -6,9 +6,9 @@ public class Deck
 {
     public string[] cards = new string[52];
 
-    public readonly char[] suits = { 'C', 'D', 'H', 'S' };
+    public readonly char[] Suits = { 'C', 'D', 'H', 'S' };
 
-    public readonly char[] cardValues = { '2', '3', '4', '5', '6', '7', '8', '9', 'T', 'J', 'Q', 'K', 'A' };
+    public readonly char[] CardValues = { '2', '3', '4', '5', '6', '7', '8', '9', 'T', 'J', 'Q', 'K', 'A' };
 
     public Dictionary<char, int> valuesRanking = new Dictionary<char, int>
     {
@@ -30,9 +30,9 @@ public class Deck
     public Deck()
     {
         int index = 0;
-        foreach (char suit in suits)
+        foreach (char suit in Suits)
         {
-            foreach (char value in cardValues)
+            foreach (char value in CardValues)
             {
                 cards[index] = value.ToString() + suit.ToString();
                 index++;

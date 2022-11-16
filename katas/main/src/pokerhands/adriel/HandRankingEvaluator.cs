@@ -1,4 +1,4 @@
-namespace PokerHands.HandsRankingEvaluator.Adriel;
+﻿namespace PokerHands.HandsRankingEvaluator.Adriel;
 
 using Enums.Adriel;
 using Hands.Adriel;
@@ -7,14 +7,39 @@ public class HandRankingEvaluator
 {
     public static Ranking Evaluate(Hand hand)
     {
-        if (isStraightFlush(hand)) return Ranking.StraightFlush;
-        else if (IsFourOfAKind(hand)) return Ranking.FourOfAKind;
-        else if (IsFullHouse(hand)) return Ranking.FullHouse;
-        else if (IsFlush(hand)) return Ranking.Flush;
-        else if (IsStraight(hand)) return Ranking.Straight;
-        else if (IsThreeOfAKind(hand)) return Ranking.ThreeOfAKind;
-        else if (IsTwoPairs(hand)) return Ranking.TwoPairs;
-        else if (IsPair(hand)) return Ranking.Pair;
+        if (IsStraightFlush(hand))
+        {
+            return Ranking.StraightFlush;
+        }
+        else if (IsFourOfAKind(hand))
+        {
+            return Ranking.FourOfAKind;
+        }
+        else if (IsFullHouse(hand))
+        {
+            return Ranking.FullHouse;
+        }
+        else if (IsFlush(hand))
+        {
+            return Ranking.Flush;
+        }
+        else if (IsStraight(hand))
+        {
+            return Ranking.Straight;
+        }
+        else if (IsThreeOfAKind(hand))
+        {
+            return Ranking.ThreeOfAKind;
+        }
+        else if (IsTwoPairs(hand))
+        {
+            return Ranking.TwoPairs;
+        }
+        else if (IsPair(hand))
+        {
+            return Ranking.Pair;
+        }
+
         return Ranking.HighCard;
     }
 
@@ -40,14 +65,20 @@ public class HandRankingEvaluator
 
     private static bool IsStraight(Hand hand)
     {
-        if (IsAceLowStraight(hand)) return true;
+        if (IsAceLowStraight(hand))
+        {
+            return true;
+        }
 
         var sortedHand = hand.Cards.OrderBy(card => card.Value).ToArray();
         int firstCardOfStraight = (int)sortedHand.First().Value;
 
         for (int i = 1; i < sortedHand.Length; i++)
         {
-            if ((int)sortedHand[i].Value != firstCardOfStraight + i) return false;
+            if ((int)sortedHand[i].Value != firstCardOfStraight + i)
+            {
+                return false;
+            }
         }
 
         return true;
@@ -59,7 +90,6 @@ public class HandRankingEvaluator
             hand.Contains(Value.Four) && hand.Contains(Value.Five);
     }
 
-
     private static bool IsFlush(Hand hand)
     {
         return hand.Cards.GroupBy(card => card.Suit).Count() == 1;
@@ -70,7 +100,7 @@ public class HandRankingEvaluator
         return IsPair(hand) && IsThreeOfAKind(hand);
     }
 
-    private static bool isStraightFlush(Hand hand)
+    private static bool IsStraightFlush(Hand hand)
     {
         return IsStraight(hand) && IsFlush(hand);
     }

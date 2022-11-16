@@ -1,4 +1,4 @@
-namespace PokerHand.Joaquin;
+﻿namespace PokerHands.Joaquin;
 
 public class Hand
 {
@@ -16,6 +16,7 @@ public class Hand
         {
             Cards.Add(new Card(card[0], card[1]));
         }
+
         Cards.GroupBy(card => card.weight);
     }
 }

@@ -1,4 +1,4 @@
-namespace PokerHand.Joaquin;
+﻿namespace PokerHands.Joaquin;
 
 using System.Linq;
 
@@ -8,7 +8,7 @@ public class HandRanking
     public int ranking = 0;
     public string type = "high card";
     public int[] orderedHand = new int[5];
-    Dictionary<string, int> pokerRanking = new Dictionary<string, int>
+    private readonly Dictionary<string, int> pokerRanking = new Dictionary<string, int>
     {
         {"high card", 0},
         {"pair", 1},
@@ -23,15 +23,15 @@ public class HandRanking
 
     public int GetHandRanking(Hand hand)
     {
-        this.ranking = Evaluator.Evaluate(hand);
-        GetRankingType(this.ranking);
-        return this.ranking;
+        ranking = Evaluator.Evaluate(hand);
+        GetRankingType(ranking);
+        return ranking;
 
     }
 
     public string GetRankingType(int ranking)
     {
-        this.type = pokerRanking.FirstOrDefault(x => x.Value == ranking).Key;
+        type = pokerRanking.FirstOrDefault(x => x.Value == ranking).Key;
         return type;
     }
 
@@ -46,8 +46,11 @@ public class HandRanking
         for (int i = 0; i < cards.Count() - 1; i++)
         {
             if (cards[i].weight < cards[i + 1].weight)
-                return isOrdered = false;
+            {
+                return _ = false;
+            }
         }
+
         return isOrdered;
     }
 }

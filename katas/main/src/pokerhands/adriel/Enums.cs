@@ -1,4 +1,4 @@
-namespace PokerHands.Enums.Adriel;
+﻿namespace PokerHands.Enums.Adriel;
 
 public enum Value
 {
