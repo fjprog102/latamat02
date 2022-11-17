@@ -121,7 +121,8 @@ div {
     content: "";
     display: block;
     clear: both;
-    /* margin-bottom: 15px; */
+    height: 106px ;
+    margin-bottom: 15px;
 }
 .grid-cell {
     width: 106.25px;
