@@ -9,7 +9,7 @@
         </div>
     </div>
     <div class="above-game">
-        <p class="game-intro">Join the tiles, get to <strong>2048!</strong><br><a href="javascript:void(0)"
+        <p class="game-intro">Join the tiles, get to <strong>2048!</strong><br><a href="#"
                 class="how-to-play-link">How to play →</a></p><a class="restart-button">New Game</a>
     </div>
     <div class="game-container">
@@ -20,31 +20,17 @@
             </div>
         </div>
         <div class="grid-container">
-            <div class="grid-row">
-                <div class="grid-cell"></div>
-                <div class="grid-cell"></div>
-                <div class="grid-cell"></div>
-                <div class="grid-cell"></div>
-            </div>
-            <div class="grid-row">
-                <div class="grid-cell"></div>
-                <div class="grid-cell"></div>
-                <div class="grid-cell"></div>
-                <div class="grid-cell"></div>
-            </div>
-            <div class="grid-row">
-                <div class="grid-cell"></div>
-                <div class="grid-cell"></div>
-                <div class="grid-cell"></div>
-                <div class="grid-cell"></div>
-            </div>
-            <div class="grid-row">
-                <div class="grid-cell"></div>
-                <div class="grid-cell"></div>
-                <div class="grid-cell"></div>
-                <div class="grid-cell"></div>
-            </div>
+            @for (var i = 0; i < 4; i++)
+            {
+                <div class="grid-row">
+                    @for (var j = 0; j < 4; j++)
+                    {
+                        <div class="grid-cell"></div>
+                    }
+                </div>
+            }
         </div>
+
         <div class="tile-container">
             <div class="tile tile-2 tile-position-4-1 tile-new">
                 <div class="tile-inner">2</div>
@@ -68,19 +54,6 @@
             to move the tiles. Tiles with the same number
             <strong>merge into one</strong> when they touch. Add them up to reach
             <strong>2048!</strong><br><a href="javascript:void(0)" class="start-playing-link">Start playing →</a>
-            <a class="feedback-button"
-                href="mailto:me+f@gabrielecirulli.com?body=Please%20add%20the%20%F0%9F%8D%95%20emoji%20to%20the%20subject%20to%20help%20me%20sort%20legitimate%20email%20from%20spam."
-                target="_blank" rel="noopener noreferrer">Send Feedback</a>
         </p>
-    </div><span id="ezoic-pub-ad-placeholder-136" class="ezoic-adpicker-ad"></span>
-    <hr>
-    <p>You’re playing the <strong>original version of 2048.</strong> Try out
-        the official apps for
-        <a href="https://itunes.apple.com/us/app/2048-by-gabriele-cirulli/id868076805" target="_blank">iOS</a>
-        and
-        <a href="https://play.google.com/store/apps/details?id=com.gabrielecirulli.app2048" target="_blank">Android!</a>
-        All other versions of this game are derivatives and should be used with
-        caution.
-    </p><span id="ezoic-pub-ad-placeholder-137" class="ezoic-adpicker-ad"></span>
-    <hr>  
+    </div>
 </div>
