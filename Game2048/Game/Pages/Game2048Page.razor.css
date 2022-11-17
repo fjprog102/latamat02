@@ -1,3 +1,10 @@
+.game-board{
+  background-color: #edc22e;
+  width: 100%;
+  height: 100%;
+}
+
+
 @charset "UTF-8";
 html,
 body {
@@ -226,7 +233,6 @@ hr {
 .game-container {
   margin-top: 40px;
   position: relative;
-  padding: 15px;
   cursor: default;
   -webkit-touch-callout: none;
   -ms-touch-callout: none;
