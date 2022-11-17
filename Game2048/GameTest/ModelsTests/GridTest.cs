@@ -1,4 +1,4 @@
-namespace ModelsTests;
+﻿namespace ModelsTests;
 
 using Models;
 
