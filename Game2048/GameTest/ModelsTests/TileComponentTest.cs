@@ -1,4 +1,4 @@
-namespace Game2048.Models.Tests;
+﻿namespace Game2048.Models.Tests;
 
 using Game2048.Models;
 
