@@ -1,0 +1,31 @@
+.grid-container-table{
+    width: inherit;
+    height: inherit;
+}
+
+table{
+    border-collapse: separate;
+    border-spacing: 10px;
+}
+
+.tr{
+    background-color: #bbada0;
+    box-sizing: border-box;
+}
+
+.td{
+    background-color: rgba(238, 228, 218, 0.35);
+    height: 20%;
+    width: 20%;
+    border-radius: 10px;
+}
+
+.tile{
+    background-color: #eee4da;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    border-radius: 10px;
+}
