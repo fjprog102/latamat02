@@ -20,31 +20,17 @@
             </div>
         </div>
         <div class="grid-container">
-            <div class="grid-row">
-                <div class="grid-cell"></div>
-                <div class="grid-cell"></div>
-                <div class="grid-cell"></div>
-                <div class="grid-cell"></div>
-            </div>
-            <div class="grid-row">
-                <div class="grid-cell"></div>
-                <div class="grid-cell"></div>
-                <div class="grid-cell"></div>
-                <div class="grid-cell"></div>
-            </div>
-            <div class="grid-row">
-                <div class="grid-cell"></div>
-                <div class="grid-cell"></div>
-                <div class="grid-cell"></div>
-                <div class="grid-cell"></div>
-            </div>
-            <div class="grid-row">
-                <div class="grid-cell"></div>
-                <div class="grid-cell"></div>
-                <div class="grid-cell"></div>
-                <div class="grid-cell"></div>
-            </div>
+            @for (var i = 0; i < 4; i++)
+            {
+                <div class="grid-row">
+                    @for (var j = 0; j < 4; j++)
+                    {
+                        <div class="grid-cell"></div>
+                    }
+                </div>
+            }
         </div>
+
         <div class="tile-container">
             <div class="tile tile-2 tile-position-4-1 tile-new">
                 <div class="tile-inner">2</div>
@@ -82,5 +68,5 @@
         All other versions of this game are derivatives and should be used with
         caution.
     </p><span id="ezoic-pub-ad-placeholder-137" class="ezoic-adpicker-ad"></span>
-    <hr>  
+    <hr>
 </div>
