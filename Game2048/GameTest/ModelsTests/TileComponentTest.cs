@@ -31,13 +31,4 @@ public class TileComponentTest
         Assert.Equal(4, new Tile(4).Value);
         Assert.Equal(8, new Tile(8).Value);
     }
-
-    [Fact]
-    public void TileComponentShouldReturnCorrectBackgroundColorAccordingToItsValue()
-    {
-        Assert.Equal("#fff", new Tile(0).BackgroundColor);
-        Assert.Equal("#aaa", new Tile(2).BackgroundColor);
-        Assert.Equal("#aa0", new Tile(4).BackgroundColor);
-        Assert.Equal("#a00", new Tile(8).BackgroundColor);
-    }
 }
