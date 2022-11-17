@@ -1,27 +1,28 @@
-namespace Models;
+﻿namespace Models;
 
-public class Grid 
+public class Grid
 {
-    private int rows { get; set; }
-    private int columns { get; set; }
-    public int size { get; set; }
+    private int Rows { get; set; }
+    private int Columns { get; set; }
+    public int Size { get; set; }
 
     public List<GridElement> Cells = new List<GridElement>();
 
     public Grid(int rows, int columns)
     {
-        if (rows <= 0  || columns <= 0)
+        if (rows <= 0 || columns <= 0)
         {
             throw new Exception("Rows and columns should bigger than zero.");
         }
-        this.rows = rows;
-        this.columns = columns;
-        size = rows * columns;
+
+        Rows = rows;
+        Columns = columns;
+        Size = rows * columns;
     }
 
-    public void createCells(GridElement element)
+    public void CreateCells(GridElement element)
     {
-        for(int index = 0; index < size; index++)
+        for (int index = 0; index < Size; index++)
         {
             Cells.Add(element);
         }

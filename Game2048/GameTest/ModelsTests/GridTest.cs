@@ -9,8 +9,8 @@ public class GridTest
     {
         Grid grid = new Grid(2, 4);
         Grid gridTwo = new Grid(10, 10);
-        Assert.Equal(8, grid.size);
-        Assert.Equal(100, gridTwo.size);
+        Assert.Equal(8, grid.Size);
+        Assert.Equal(100, gridTwo.Size);
     }
 
     [Fact]

@@ -1,6 +1,6 @@
-namespace Models;
+﻿namespace Models;
 
-public abstract class GridElement 
+public abstract class GridElement
 {
     private int Value { get; set; }
     private string? BackgroundColor { get; set; }
