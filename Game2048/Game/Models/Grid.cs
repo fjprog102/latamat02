@@ -6,7 +6,7 @@ public class Grid
     private int Columns { get; set; }
     public int Size { get; set; }
 
-    public List<GridElement> Cells = new List<GridElement>();
+    public GridElement[,] Cells;
 
     public Grid(int rows, int columns)
     {
@@ -18,13 +18,16 @@ public class Grid
         Rows = rows;
         Columns = columns;
         Size = rows * columns;
+        Cells = new GridElement[rows, columns];
     }
 
-    public void CreateCells(GridElement element)
+    public void InsertElement(int x, int y, GridElement element)
     {
-        for (int index = 0; index < Size; index++)
+        if (x > Cells.GetLength(0) || y > Cells.GetLength(1))
         {
-            Cells.Add(element);
+            throw new IndexOutOfRangeException("Index was outside of the grid.");
         }
+
+        Cells[x, y] = element;
     }
 }
