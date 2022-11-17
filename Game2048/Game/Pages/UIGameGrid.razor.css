@@ -26,8 +26,8 @@
 }
 
 .tile{
-    --x: 1;
-    --y: 1;
+    --x: 0;
+    --y: 2;
     background-color: #eee4da;
     border-radius: 1vmin;
     position: absolute;
