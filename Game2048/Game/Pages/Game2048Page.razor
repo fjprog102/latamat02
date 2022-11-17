@@ -1,0 +1,59 @@
+@page "/"
+
+<div class="container">
+    <div class="heading">
+        <h1 class="title">2048</h1>
+        <div class="scores-container">
+            <div class="score-container">0</div>
+            <div class="best-container">12456</div>
+        </div>
+    </div>
+    <div class="above-game">
+        <p class="game-intro">Join the tiles, get to <strong>2048!</strong><br><a href="#"
+                class="how-to-play-link">How to play →</a></p><a class="restart-button">New Game</a>
+    </div>
+    <div class="game-container">
+        <div class="game-message">
+            <p></p>
+            <div class="lower"><a class="keep-playing-button">Keep going</a>
+                <a class="retry-button">Try again</a>
+            </div>
+        </div>
+        <div class="grid-container">
+            @for (var i = 0; i < 4; i++)
+            {
+                <div class="grid-row">
+                    @for (var j = 0; j < 4; j++)
+                    {
+                        <div class="grid-cell"></div>
+                    }
+                </div>
+            }
+        </div>
+
+        <div class="tile-container">
+            <div class="tile tile-2 tile-position-4-1 tile-new">
+                <div class="tile-inner">2</div>
+            </div>
+            <div class="tile tile-2 tile-position-4-3 tile-new">
+                <div class="tile-inner">2</div>
+            </div>
+        </div>
+    </div>
+    <div class="under-board-container"></div><span id="ezoic-pub-ad-placeholder-147"
+        class="ezoic-adpicker-ad"></span><span
+        class="ezoic-ad ezoic-at-0 box-4 box-4147 adtester-container adtester-container-147"
+        data-ez-name="play2048_co-box-4"><span id="div-gpt-ad-play2048_co-box-4-0" ezaw="300" ezah="250"
+            style="position:relative;z-index:0;display:inline-block;padding:0;min-height:250px;min-width:300px"
+            class="ezoic-ad">
+        </span></span>
+    <div class="game-explanation-container">
+        <p class="game-explanation"><strong class="important">How to play:</strong>
+            <span class="game-explanation-mouse">Use your <strong>arrow keys</strong></span><span
+                class="game-explanation-touch">Swipe with <strong>your fingers</strong></span>
+            to move the tiles. Tiles with the same number
+            <strong>merge into one</strong> when they touch. Add them up to reach
+            <strong>2048!</strong><br><a href="javascript:void(0)" class="start-playing-link">Start playing →</a>
+        </p>
+    </div>
+</div>
