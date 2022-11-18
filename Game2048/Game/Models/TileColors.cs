@@ -7,7 +7,7 @@ public class TileColors
 
     public string GetBackgroundColor(int value)
     {
-        if (value == 0)
+        if (value.Equals(null))
         {
             return "#fff";
         }
@@ -16,18 +16,20 @@ public class TileColors
             colors.Add(value, System.Drawing.Color.FromArgb(random.Next(0, 256), random.Next(0, 256), random.Next(0, 256)));
         }
 
-        System.Drawing.Color color = colors[value];
+        System.Drawing.Color color;
+        colors.TryGetValue(value, out color);
         return "#" + color.R.ToString("X2") + color.G.ToString("X2") + color.B.ToString("X2");
     }
 
     public string GetNumberColor(int value)
     {
-        if (value == 0)
+        if (value.Equals(null))
         {
             return "#000";
         }
 
-        System.Drawing.Color backgroundcolor = colors[value];
+        System.Drawing.Color backgroundcolor;
+        colors.TryGetValue(value, out backgroundcolor);
         int hueTotals = backgroundcolor.R + backgroundcolor.B + backgroundcolor.G;
         return hueTotals > (255 * 3 / 2) ? "#000" : "#fff";
     }
