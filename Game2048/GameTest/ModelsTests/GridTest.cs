@@ -8,8 +8,6 @@ public class GridTest
     [Fact]
     public void ItShouldCreateAGridWithTheCorrectSize()
     {
-        _ = new Tile(4);
-
         Grid grid = new Grid(2, 4);
         Grid gridTwo = new Grid(10, 10);
         Assert.Equal(8, grid.Size);
@@ -30,8 +28,6 @@ public class GridTest
     [Fact]
     public void ItShouldCreateTheCellsOfTheGrid()
     {
-        _ = new Tile(4);
-
         Grid grid = new Grid(10, 8);
         Assert.Equal(10, grid.Cells.GetLength(0));
         Assert.Equal(8, grid.Cells.GetLength(1));
