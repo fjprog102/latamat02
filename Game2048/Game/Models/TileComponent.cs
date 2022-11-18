@@ -1,7 +1,6 @@
-﻿namespace Game2048.Models;
+﻿namespace Models;
 
-// public class Tile : GridElement
-public class Tile
+public class Tile : GridElement
 {
     private static readonly Random random = new Random();
     private static readonly Dictionary<int, System.Drawing.Color> colors = new Dictionary<int, System.Drawing.Color>();

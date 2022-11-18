@@ -1,6 +1,6 @@
-﻿namespace Game2048.Models.Tests;
+﻿namespace ModelsTests;
 
-using Game2048.Models;
+using Models;
 
 public class TileComponentTest
 {
