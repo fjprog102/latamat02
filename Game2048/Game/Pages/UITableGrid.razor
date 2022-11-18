@@ -1,15 +1,16 @@
 @page "/Game"
-@using Models
-
+@using Controllers
 
 <table class="grid-container-table">
-    @for(int i = 0; i < grid.Rows; i++)
+    @for(int i = 0; i < game?.grid?.Rows; i++)
     {
         <tr class="tr">
-            @for(int j = 0; j < grid.Columns; j++)
+            @for(int j = 0; j < game.grid.Columns; j++)
             {
                 <td class="td">
-                <div class="tile">@grid.Cells[i,j]</div>
+                <div class="tile">
+                        @game.grid.Cells[i,j]
+                </div>
                 </td>
             }
         </tr>
@@ -17,5 +18,15 @@
 </table>
 
 @code {
-    Grid grid = new Grid(4, 4);
+    Game2048 game = new Game2048();
+
+    private int currentCount = 0;
+
+    [Parameter]
+    public int IncrementAmount { get; set; } = 1;
+
+    private void IncrementCount()
+    {
+        currentCount += IncrementAmount;
+    }
 }
