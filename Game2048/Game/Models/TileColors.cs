@@ -26,6 +26,7 @@ public class TileColors
         {
             return "#000";
         }
+
         System.Drawing.Color backgroundcolor = colors[value];
         int hueTotals = backgroundcolor.R + backgroundcolor.B + backgroundcolor.G;
         return hueTotals > (255 * 3 / 2) ? "#000" : "#fff";
