@@ -1,10 +1,10 @@
 ﻿namespace ModelsTests;
 
 using Models;
+using System.Text.RegularExpressions;
 
 public class GridTest
 {
-
     [Fact]
     public void ItShouldCreateAGridWithTheCorrectSize()
     {
@@ -42,12 +42,42 @@ public class GridTest
         Tile element = new Tile(4);
 
         Grid grid = new Grid(10, 8);
-        grid.InsertElement(2, 3, element);
-        grid.InsertElement(8, 7, element);
-        grid.InsertElement(7, 4, element);
+        grid.InsertElement(new int[2] { 2, 3 }, element);
+        grid.InsertElement(new int[2] { 8, 7 }, element);
+        grid.InsertElement(new int[2] { 7, 4 }, element);
         Assert.Equal(element, grid.Cells[2, 3]);
         Assert.Equal(element, grid.Cells[8, 7]);
         Assert.Equal(element, grid.Cells[7, 4]);
+    }
+
+    [Fact]
+    public void ItShouldReturnArrayWithLengthOfTwo()
+    {
+        Tile element = new Tile(4);
+
+        Assert.Equal(2, new Grid(10, 8).GetRandomCoordinates().Length);
+        Assert.Equal(2, new Grid(4, 4).GetRandomCoordinates().Length);
+        Assert.Equal(2, new Grid(3, 7).GetRandomCoordinates().Length);
+    }
+
+    [Fact]
+    public void RandomNumberInColumnShouldBeLessThan()
+    {
+        Tile element = new Tile(4);
+
+        Assert.True(8 > new Grid(10, 8).GetRandomCoordinates()[1]);
+        Assert.True(4 > new Grid(4, 4).GetRandomCoordinates()[1]);
+        Assert.True(7 > new Grid(3, 7).GetRandomCoordinates()[1]);
+    }
+
+    [Fact]
+    public void RandomNumberInRowShouldBeLessThan()
+    {
+        Tile element = new Tile(4);
+
+        Assert.True(10 > new Grid(10, 8).GetRandomCoordinates()[0]);
+        Assert.True(4 > new Grid(4, 4).GetRandomCoordinates()[0]);
+        Assert.True(3 > new Grid(3, 7).GetRandomCoordinates()[0]);
     }
 
     [Fact]
@@ -56,8 +86,14 @@ public class GridTest
         Tile element = new Tile(4);
 
         Grid grid = new Grid(10, 8);
-        Assert.Throws<IndexOutOfRangeException>(() => grid.InsertElement(11, 4, element));
-        Assert.Throws<IndexOutOfRangeException>(() => grid.InsertElement(3, 8, element));
-        Assert.Throws<IndexOutOfRangeException>(() => grid.InsertElement(10, 8, element));
+        Assert.Throws<IndexOutOfRangeException>(
+            () => grid.InsertElement(new int[2] { 11, 4 }, element)
+        );
+        Assert.Throws<IndexOutOfRangeException>(
+            () => grid.InsertElement(new int[2] { 3, 8 }, element)
+        );
+        Assert.Throws<IndexOutOfRangeException>(
+            () => grid.InsertElement(new int[2] { 10, 8 }, element)
+        );
     }
 }

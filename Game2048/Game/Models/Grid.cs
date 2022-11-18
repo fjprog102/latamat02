@@ -21,13 +21,20 @@ public class Grid
         Cells = new GridElement[rows, columns];
     }
 
-    public void InsertElement(int x, int y, GridElement element)
+    public int[] GetRandomCoordinates()
     {
-        if (x > Cells.GetLength(0) || y > Cells.GetLength(1))
+        Random r = new Random();
+        int[] coordinates = { r.Next(0, Rows), r.Next(0, Columns) };
+        return coordinates;
+    }
+
+    public void InsertElement(int[] XY, GridElement element)
+    {
+        if (XY[0] > Cells.GetLength(0) || XY[1] > Cells.GetLength(1))
         {
             throw new IndexOutOfRangeException("Index was outside of the grid.");
         }
 
-        Cells[x, y] = element;
+        Cells[XY[0], XY[1]] = element;
     }
 }
