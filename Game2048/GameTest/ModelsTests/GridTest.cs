@@ -4,7 +4,6 @@ using Models;
 
 public class GridTest
 {
-    private readonly Tile element = new Tile(4);
 
     [Fact]
     public void ItShouldCreateAGridWithTheCorrectSize()
@@ -18,6 +17,8 @@ public class GridTest
     [Fact]
     public void ItShouldThrownAnExceptionWithNegativeInputsAndZeros()
     {
+        Tile element = new Tile(4);
+
         Assert.Throws<Exception>(() => new Grid(0, 4));
         Assert.Throws<Exception>(() => new Grid(-2, 2));
         Assert.Throws<Exception>(() => new Grid(4, -8));
@@ -38,6 +39,8 @@ public class GridTest
     [Fact]
     public void ItShouldInsertAnElementOnTheGrid()
     {
+        Tile element = new Tile(4);
+
         Grid grid = new Grid(10, 8);
         grid.InsertElement(2, 3, element);
         grid.InsertElement(8, 7, element);
@@ -50,6 +53,8 @@ public class GridTest
     [Fact]
     public void ItShouldThrownAnExceptionWithInvalidCoordinatesInputs()
     {
+        Tile element = new Tile(4);
+
         Grid grid = new Grid(10, 8);
         Assert.Throws<IndexOutOfRangeException>(() => grid.InsertElement(11, 4, element));
         Assert.Throws<IndexOutOfRangeException>(() => grid.InsertElement(3, 8, element));
