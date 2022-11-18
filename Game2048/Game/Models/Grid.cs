@@ -28,13 +28,13 @@ public class Grid
         return coordinates;
     }
 
-    public void InsertElement(int[] XY, GridElement element)
+    public void InsertElement(int[] xy, GridElement element)
     {
-        if (XY[0] > Cells.GetLength(0) || XY[1] > Cells.GetLength(1))
+        if (xy[0] > Cells.GetLength(0) || xy[1] > Cells.GetLength(1))
         {
             throw new IndexOutOfRangeException("Index was outside of the grid.");
         }
 
-        Cells[XY[0], XY[1]] = element;
+        Cells[xy[0], xy[1]] = element;
     }
 }
