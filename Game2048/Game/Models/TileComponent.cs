@@ -5,7 +5,7 @@ public class Tile : GridElement
     private static readonly Random random = new Random();
     private static readonly Dictionary<int, System.Drawing.Color> colors = new Dictionary<int, System.Drawing.Color>();
     public int? Value { get; set; }
-    public string BackgroundColor
+    public string? BackgroundColor
     {
         get
         {
@@ -23,7 +23,7 @@ public class Tile : GridElement
         }
     }
 
-    public string Color
+    public string? NumberColor
     {
         get
         {
