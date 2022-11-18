@@ -1,7 +1,7 @@
 ﻿namespace ModelsTests;
 
-using Models;
 using System.Text.RegularExpressions;
+using Models;
 
 public class GridTest
 {
