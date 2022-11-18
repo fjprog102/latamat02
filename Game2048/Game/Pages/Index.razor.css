@@ -1,10 +1,10 @@
-.heading[b-a8j2c0u4qu]:after {
+.heading:after {
   content: "";
   display: block;
   clear: both;
 }
 
-h1.title[b-a8j2c0u4qu] {
+h1.title {
   font-size: 80px;
   font-weight: bold;
   margin: 0;
@@ -12,17 +12,17 @@ h1.title[b-a8j2c0u4qu] {
   float: left;
   color: #776e65;
 }
-.scores-container[b-a8j2c0u4qu] {
+.scores-container {
   float: right;
   display: flex;
 }
 
-.scores-container * + *[b-a8j2c0u4qu] {
+.scores-container * + * {
   margin-left: 5px;
 }
 
-.score-container[b-a8j2c0u4qu],
-.best-container[b-a8j2c0u4qu] {
+.score-container,
+.best-container {
   position: relative;
   display: block;
   background: #bbada0;
@@ -37,8 +37,8 @@ h1.title[b-a8j2c0u4qu] {
   text-align: center;
 }
 
-.score-container[b-a8j2c0u4qu]:after,
-.best-container[b-a8j2c0u4qu]:after {
+.score-container:after,
+.best-container:after {
   position: absolute;
   width: 100%;
   top: 10px;
@@ -50,38 +50,38 @@ h1.title[b-a8j2c0u4qu] {
   color: #eee4da;
 }
 
-.score-container[b-a8j2c0u4qu]:after {
+.score-container:after {
   content: "Score";
 }
 
-.best-container[b-a8j2c0u4qu]:after {
+.best-container:after {
   content: "Best";
 }
 
-p[b-a8j2c0u4qu] {
+p {
   margin-top: 0;
   margin-bottom: 10px;
   line-height: 1.65;
 }
 
-a[b-a8j2c0u4qu], .cc_container a:not(.cc_btn)[b-a8j2c0u4qu] {
+a, .cc_container a:not(.cc_btn) {
   color: #776e65;
   font-weight: bold;
   text-decoration: underline;
   cursor: pointer;
 }
 
-strong.important[b-a8j2c0u4qu] {
+strong.important {
   text-transform: uppercase;
 }
 
-.container[b-a8j2c0u4qu] {
+.container {
   width: 500px;
   margin: 0 auto;
   margin-top: 30px;
 }
 
-.game-container[b-a8j2c0u4qu] {
+.game-container {
   margin-top: 40px;
   position: relative;
   cursor: default;
@@ -101,7 +101,7 @@ strong.important[b-a8j2c0u4qu] {
   box-sizing: border-box;
 }
 
-.game-message[b-a8j2c0u4qu] {
+.game-message {
   display: none;
   position: absolute;
   top: 0;
@@ -122,24 +122,24 @@ strong.important[b-a8j2c0u4qu] {
   animation-fill-mode: both;
 }
 
-.above-game[b-a8j2c0u4qu] {
+.above-game {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.game-intro[b-a8j2c0u4qu] {
+.game-intro {
   line-height: 1.2;
   margin-bottom: 0;
   margin-right: 10px;
   color: #776e65;
 }
 
-.how-to-play-link[b-a8j2c0u4qu] {
+.how-to-play-link {
   display: inline-block;
 }
 
-.restart-button[b-a8j2c0u4qu] {
+.restart-button {
   display: inline-block;
   background: #8f7a66;
   border-radius: 3px;
@@ -154,50 +154,50 @@ strong.important[b-a8j2c0u4qu] {
   flex-shrink: 0;
 }
 
-.game-explanation[b-a8j2c0u4qu] {
+.game-explanation {
   display: block;
   margin-top: 30px;
   border-radius: 1px;
 }
 
-.game-explanation-touch[b-a8j2c0u4qu] {
+.game-explanation-touch {
   display: none;
 }
 
-.under-board-container[b-a8j2c0u4qu],
-.under-board-container .adsbygoogle[b-a8j2c0u4qu] {
+.under-board-container,
+.under-board-container .adsbygoogle {
   width: 100%;
   height: 0;
   max-height: 0;
 }
 
-.start-playing-link[b-a8j2c0u4qu] {
+.start-playing-link {
   margin-right: 15px;
 }
 
-.grid-container-table[b-f9ruowr4ym]{
+.grid-container-table{
   width: inherit;
   height: inherit;
 }
 
-table[b-f9ruowr4ym]{
+table{
   border-collapse: separate;
   border-spacing: 10px;
 }
 
-.tr[b-f9ruowr4ym]{
+.tr{
   background-color: #bbada0;
   box-sizing: border-box;
 }
 
-.td[b-f9ruowr4ym]{
+.td{
   background-color: rgba(238, 228, 218, 0.35);
   height: 20%;
   width: 20%;
   border-radius: 10px;
 }
 
-.tile[b-f9ruowr4ym]{
+.tile{
   background-color: #eee4da;
   display: flex;
   justify-content: center;
@@ -207,22 +207,22 @@ table[b-f9ruowr4ym]{
   border-radius: 10px;
 }
 /* _content/Game2048/Shared/MainLayout.razor.rz.scp.css */
-.page[b-jgchtsz1ba] {
+.page {
   position: relative;
   display: flex;
   flex-direction: column;
 }
 
-main[b-jgchtsz1ba] {
+main {
   flex: 1;
 }
 
 @media (min-width: 641px) {
-  .page[b-jgchtsz1ba] {
+  .page {
       flex-direction: row;
   }
 
-  .top-row[b-jgchtsz1ba], article[b-jgchtsz1ba] {
+  .top-row, article {
     padding-left: 2rem !important;
     padding-right: 1.5rem !important;
 }
