@@ -1,16 +1,22 @@
 @page "/Game"
+@using Models
 
-<table class="grid-container-table">
-    @for(int i = 0; i < 4; i++)
-    {
-        <tr class="tr">
-            @for(int j = 0; j < 4; j++)
-            {
-                <td class="td">
-                    <div class="tile">4</div>
-                </td>
-            }
-        </tr>
-    }
+<div>
+    <table class="grid-container-table">
+        @for(int i = 0; i < grid.Rows; i++)
+        {
+            <tr class="tr">
+                @for(int j = 0; j < grid.Columns; j++)
+                {
+                    <td class="td">
+                        <div class="tile">@grid.Cells[i,j]</div>
+                    </td>
+                }
+            </tr>
+        }
+    </table>
+</div>
 
-</table>
+@code {
+    Grid grid = new Grid(4, 4);
+}

@@ -2,8 +2,8 @@
 
 public class Grid
 {
-    private int Rows { get; set; }
-    private int Columns { get; set; }
+    public int Rows { get; set; }
+    public int Columns { get; set; }
     public int Size { get; set; }
 
     public GridElement[,] Cells;
