@@ -1,5 +1,5 @@
-﻿using AbstractActionClass;
-using ActionClass;
+﻿using Actions;
+using Actions.Movements;
 
 namespace ActionsTests
 {

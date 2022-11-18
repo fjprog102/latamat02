@@ -18,20 +18,8 @@
                 <a class="retry-button">Try again</a>
             </div>
         </div>
-        <div class="grid-container">
-            @for (var i = 0; i < 4; i++)
-            {
-                <div class="grid-row">
-                    @for (var j = 0; j < 4; j++)
-                    {
-                        <div class="grid-cell"></div>
-                    }
-                </div>
-            }
-        </div>
-
+        <UITableGrid />
         <TailContainer></TailContainer>
-        
     </div>
     <div class="under-board-container"></div>
     <div class="game-explanation-container">
