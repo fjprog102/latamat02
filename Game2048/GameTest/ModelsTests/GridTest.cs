@@ -53,8 +53,6 @@ public class GridTest
     [Fact]
     public void ItShouldReturnArrayWithLengthOfTwo()
     {
-        Tile element = new Tile(4);
-
         Assert.Equal(2, new Grid(10, 8).GetRandomCoordinates().Length);
         Assert.Equal(2, new Grid(4, 4).GetRandomCoordinates().Length);
         Assert.Equal(2, new Grid(3, 7).GetRandomCoordinates().Length);
@@ -63,8 +61,6 @@ public class GridTest
     [Fact]
     public void RandomNumberInColumnShouldBeLessThan()
     {
-        Tile element = new Tile(4);
-
         Assert.True(8 > new Grid(10, 8).GetRandomCoordinates()[1]);
         Assert.True(4 > new Grid(4, 4).GetRandomCoordinates()[1]);
         Assert.True(7 > new Grid(3, 7).GetRandomCoordinates()[1]);
@@ -73,8 +69,6 @@ public class GridTest
     [Fact]
     public void RandomNumberInRowShouldBeLessThan()
     {
-        Tile element = new Tile(4);
-
         Assert.True(10 > new Grid(10, 8).GetRandomCoordinates()[0]);
         Assert.True(4 > new Grid(4, 4).GetRandomCoordinates()[0]);
         Assert.True(3 > new Grid(3, 7).GetRandomCoordinates()[0]);
