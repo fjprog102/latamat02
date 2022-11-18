@@ -7,7 +7,11 @@ public class TileColors
 
     public string GetBackgroundColor(int value)
     {
-        if (!colors.ContainsKey(value))
+        if (value == 0)
+        {
+            return "#fff";
+        }
+        else if (!colors.ContainsKey(value))
         {
             colors.Add(value, System.Drawing.Color.FromArgb(random.Next(0, 256), random.Next(0, 256), random.Next(0, 256)));
         }
@@ -18,6 +22,10 @@ public class TileColors
 
     public string GetNumberColor(int value)
     {
+        if (value == 0)
+        {
+            return "#000";
+        }
         System.Drawing.Color backgroundcolor = colors[value];
         int hueTotals = backgroundcolor.R + backgroundcolor.B + backgroundcolor.G;
         return hueTotals > (255 * 3 / 2) ? "#000" : "#fff";
