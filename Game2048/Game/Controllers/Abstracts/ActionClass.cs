@@ -1,4 +1,4 @@
-﻿namespace AbstractActionClass
+﻿namespace Actions
 {
     public abstract class AbstractAction<T> where T : AbstractAction<T>, new()
     {

@@ -1,6 +1,4 @@
-﻿using AbstractActionClass;
-
-namespace ActionClass
+﻿namespace Actions.Movements
 {
     public class MoveDown : AbstractAction<MoveDown>
     {
