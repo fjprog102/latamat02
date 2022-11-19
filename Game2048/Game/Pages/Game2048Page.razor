@@ -1,6 +1,8 @@
 @page "/"
 
-<div class="container">
+@using Actions.Movements;
+
+<div class="container" @onkeydown="@KeyDown" tabindex="0">
     <div class="heading">
         <h1 class="title">2048</h1>
         <div class="scores-container">
@@ -38,3 +40,17 @@
         </p>
     </div>
 </div>
+
+@code{
+    public void KeyDown(KeyboardEventArgs e)
+    {
+		switch (e.Key)
+		{
+			case "ArrowLeft":  new MoveLeft().Execute(); break;
+			case "ArrowRight": new MoveRight().Execute(); break;
+			case "ArrowUp":    new MoveUp().Execute(); break;
+			case "ArrowDown":  new MoveDown().Execute(); break;
+			default: return;
+		}
+    }
+}
