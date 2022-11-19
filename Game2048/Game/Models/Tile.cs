@@ -3,9 +3,6 @@
 public class Tile : GridElement
 {
     private readonly TileColors _tileColors = new TileColors();
-    public new int Value { get; set; }
-    public string? BackgroundColor;
-    public string? NumberColor;
 
     public Tile(int value)
     {

@@ -13,24 +13,20 @@ public class Score2048Test
     }
 
     [Fact]
-    public void ItShouldChangeTheScore()
+    public void ItShouldUpdateScore()
     {
-        Assert.Equal(0, score.Value);
-        score.UpdateScore(16);
-        Assert.Equal(16, score.Value);
-        score.UpdateScore(24);
-        Assert.Equal(24, score.Value);
-        score.UpdateScore(256);
-        Assert.Equal(256, score.Value);
-    }
-
-    [Fact]
-    public void ItShouldReturnValueToZeroWhenIsNegative()
-    {
-        Assert.Equal(0, score.Value);
-        score.UpdateScore(-10);
-        Assert.Equal(0, score.Value);
-        score.UpdateScore(-124);
-        Assert.Equal(0, score.Value);
+        var grid = new Grid(4, 4);
+        grid.InsertElement(2, 2, new Tile(2));
+        Assert.Equal(2, score.UpdateScore(grid));
+        grid.InsertElement(0, 2, new Tile(4));
+        Assert.Equal(6, score.UpdateScore(grid));
+        grid.InsertElement(1, 2, new Tile(2));
+        Assert.Equal(8, score.UpdateScore(grid));
+        grid.InsertElement(2, 3, new Tile(4));
+        Assert.Equal(12, score.UpdateScore(grid));
+        grid.InsertElement(3, 2, new Tile(2));
+        Assert.Equal(14, score.UpdateScore(grid));
+        grid.InsertElement(3, 0, new Tile(4));
+        Assert.Equal(18, score.UpdateScore(grid));
     }
 }
