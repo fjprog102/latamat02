@@ -8,7 +8,7 @@ namespace Actions
 
         public abstract void Execute();
 
-        public List<Tile> MergeRow(List<Tile> values)
+        public List<Tile?> MergeRow(List<Tile?> values)
         {
             for (int i = values.Count() - 1; i > 0; i--)
             {
@@ -19,7 +19,7 @@ namespace Actions
                         if (IsSameValue(values, i, j))
                         {
                             values[j] = null;
-                            values[i].IncreaseValue();
+                            values[i]!.IncreaseValue();
                             break;
                         }
                     }
@@ -29,7 +29,7 @@ namespace Actions
             return values;
         }
 
-        public List<Tile> MoveRow(List<Tile> values)
+        public List<Tile?> MoveRow(List<Tile?> values)
         {
             for (int i = values.Count() - 1; i > 0; i--)
             {
@@ -47,14 +47,14 @@ namespace Actions
             return values;
         }
 
-        public bool IsEmpty(List<Tile> values, int index)
+        public bool IsEmpty(List<Tile?> values, int index)
         {
             return values.ElementAt(index) == null;
         }
 
-        public bool IsSameValue(List<Tile> values, int indexA, int indexB)
+        public bool IsSameValue(List<Tile?> values, int indexA, int indexB)
         {
-            return values.ElementAt(indexA).Value == values.ElementAt(indexB).Value;
+            return values.ElementAt(indexA)!.Value == values.ElementAt(indexB)!.Value;
         }
 
         public T Instance => _instance;
