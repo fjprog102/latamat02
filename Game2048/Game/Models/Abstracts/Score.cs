@@ -3,5 +3,5 @@
 public abstract class Score
 {
     public int Value { get; set; }
-    public abstract void UpdateScore(int points);
+    public abstract int UpdateScore(Grid grid);
 }
