@@ -5,6 +5,7 @@ public class Grid
     public int Rows { get; set; }
     public int Columns { get; set; }
     public int Size { get; set; }
+    public List<int[]> EmptyCells = new List<int[]>();
 
     public Tile?[,] Cells;
 
@@ -21,6 +22,20 @@ public class Grid
         Cells = new Tile[rows, columns];
     }
 
+    public void VerifyEmptyCells()
+    {
+        EmptyCells.Clear();
+        for (int i = 0; i < Rows; i++)
+        {
+            for (int j = 0; j < Columns; j++)
+            {
+                if (Cells[i, j] == null)
+                {
+                    EmptyCells.Add(new int[] { i, j });
+                }
+            }
+        }
+    }
     public void InsertElement(int x, int y, Tile element)
     {
         if (x > Cells.GetLength(0) || y > Cells.GetLength(1))
@@ -29,5 +44,13 @@ public class Grid
         }
 
         Cells[x, y] = element;
+    }
+    public void GenerateRandomTile(Tile element)
+    {
+        VerifyEmptyCells();
+        Random random = new Random();
+        int randomPosition = random.Next(EmptyCells.Count);
+        InsertElement(EmptyCells[randomPosition][0], EmptyCells[randomPosition][1], element);
+        VerifyEmptyCells();
     }
 }
