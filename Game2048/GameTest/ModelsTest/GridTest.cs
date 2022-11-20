@@ -1,4 +1,4 @@
-﻿namespace ModelsTests
+﻿namespace ModelsTestsGrid
 {
     using Models;
 
@@ -60,23 +60,6 @@
             Assert.Throws<IndexOutOfRangeException>(() => grid.InsertElement(10, 8, element));
         }
 
-        [Fact]
-        public void ItShouldVerifyIfACellEmpty()
-        {
-            Tile tile = new Tile(4);
-
-            Grid grid = new Grid(10, 8);
-            grid.InsertElement(2, 3, tile);
-            grid.InsertElement(8, 7, tile);
-            grid.InsertElement(7, 4, tile);
-            Assert.False(grid.IsEmpty(2, 3));
-            Assert.False(grid.IsEmpty(8, 7));
-            Assert.False(grid.IsEmpty(7, 4));
-
-            Assert.True(grid.IsEmpty(3, 3));
-            Assert.True(grid.IsEmpty(1, 3));
-            Assert.True(grid.IsEmpty(2, 4));
-        }
 
         [Fact]
         public void ItShouldGenerateANewTileInRandomPosition()
@@ -86,7 +69,7 @@
             Grid grid = new Grid(10, 8);
             grid.GenerateRandomTile(tile4);
             grid.GenerateRandomTile(tile2);
-            Assert.Equal(2, grid.NotEmptyCells.Count);
+            Assert.Equal(78, grid.EmptyCells.Count);
         }
     }
 }
