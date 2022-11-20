@@ -6,9 +6,9 @@ namespace Actions
     {
         private static readonly T _instance = new T();
 
-        public abstract void Execute();
+        public abstract void Execute(Grid grid);
 
-        public List<Tile?> MergeRow(List<Tile?> values)
+        public List<Tile?> MergeList(List<Tile?> values)
         {
             for (int i = values.Count() - 1; i > 0; i--)
             {
@@ -29,7 +29,7 @@ namespace Actions
             return values;
         }
 
-        public List<Tile?> MoveRow(List<Tile?> values)
+        public List<Tile?> MoveList(List<Tile?> values)
         {
             for (int i = values.Count() - 1; i > 0; i--)
             {
@@ -45,6 +45,38 @@ namespace Actions
             }
 
             return values;
+        }
+
+        public List<Tile?> GetRow(Grid grid, int rowNumber)
+        {
+            return Enumerable
+                .Range(0, grid.Columns)
+                .Select(x => grid.Cells[rowNumber, x])
+                .ToList()!;
+        }
+
+        public List<Tile?> GetColumn(Grid grid, int columnNumber)
+        {
+            return Enumerable
+                .Range(0, grid.Rows)
+                .Select(x => grid.Cells[x, columnNumber])
+                .ToList()!;
+        }
+
+        public void SetRow(Grid grid, List<Tile?> row, int rowNumber)
+        {
+            for (int i = 0; i < row.Count(); i++)
+            {
+                grid.Cells[rowNumber, i] = row.ElementAt(i);
+            }
+        }
+
+        public void SetColumn(Grid grid, List<Tile?> row, int columnNumber)
+        {
+            for (int i = 0; i < row.Count(); i++)
+            {
+                grid.Cells[i, columnNumber] = row.ElementAt(i);
+            }
         }
 
         public bool IsEmpty(List<Tile?> values, int index)
