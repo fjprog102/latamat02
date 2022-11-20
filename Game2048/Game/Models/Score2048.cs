@@ -11,7 +11,7 @@ public class Score2048 : Score
             {
                 if (grid.Cells[index, j]?.Value > 0)
                 {
-                    Value += grid.Cells[index, j].Value;
+                    Value += grid.Cells[index, j]!.Value;
                 }
             }
         }
