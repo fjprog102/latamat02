@@ -60,7 +60,6 @@
             Assert.Throws<IndexOutOfRangeException>(() => grid.InsertElement(10, 8, element));
         }
 
-
         [Fact]
         public void ItShouldGenerateANewTileInRandomPosition()
         {
