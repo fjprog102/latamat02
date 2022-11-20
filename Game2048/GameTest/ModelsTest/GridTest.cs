@@ -1,4 +1,4 @@
-﻿namespace ModelsTestsGrid
+﻿namespace ModelsTests
 {
     using Models;
 

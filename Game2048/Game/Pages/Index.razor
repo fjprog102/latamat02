@@ -46,11 +46,15 @@
     {
 		switch (e.Key)
 		{
-			case "ArrowLeft":  new MoveLeft().Execute(); break;
-			case "ArrowRight": new MoveRight().Execute(); break;
-			case "ArrowUp":    new MoveUp().Execute(); break;
-			case "ArrowDown":  new MoveDown().Execute(); break;
+			case "ArrowLeft":  new MoveLeft().Execute(GetDummyInstance()); break;
+			case "ArrowRight": new MoveRight().Execute(GetDummyInstance()); break;
+			case "ArrowUp":    new MoveUp().Execute(GetDummyInstance()); break;
+			case "ArrowDown":  new MoveDown().Execute(GetDummyInstance()); break;
 			default: return;
 		}
+    }
+
+    public Grid GetDummyInstance(){
+        return new Grid(0,0);
     }
 }
