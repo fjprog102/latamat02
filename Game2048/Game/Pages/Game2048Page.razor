@@ -1,5 +1,6 @@
 @page "/"
 
+
 <div class="container" @onkeydown="@KeyDown">
     <div class="heading">
         <h1 class="title">2048</h1>
@@ -18,8 +19,10 @@
                 <a class="retry-button">Try again</a>
             </div>
         </div>
-        <UITableBoard></UITableBoard>
-        <TailContainer></TailContainer>
+        <Game2048.Pages.UITableBoard></Game2048.Pages.UITableBoard>
+
+        <TailContainer ArrowDirection="@ArrowDirection"></TailContainer>
+
     </div>
     <div class="under-board-container"></div>
     <div class="game-explanation-container">
@@ -33,11 +36,12 @@
     </div>
 </div>
 
-@code{
-        public void KeyDown(KeyboardEventArgs args)
+@code {
+    @namespace MainPage
+
+    public string ArrowDirection = "";
+    public void KeyDown(KeyboardEventArgs args)
     {
-        Board MyBoard = new Board();
-        MyBoard.MovementInput = args.Key.ToString();
-        Console.WriteLine(MyBoard.MovementInput);
+        ArrowDirection = args.Key.ToString();
     }
 }

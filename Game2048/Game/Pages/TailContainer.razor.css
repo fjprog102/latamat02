@@ -1,6 +1,7 @@
 .tile-container {
     position: absolute;
     z-index: 2;
+    padding: 15px;
   }
 .keyboardListener{
     height: 50px; 

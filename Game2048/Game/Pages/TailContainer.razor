@@ -1,8 +1,48 @@
+@namespace MainPage
+
 <div class="tile-container">
-    <div class="tile tile-2 tile-position-4-1 tile-new">
+    <div class="@classTile">
         <div class="tile-inner">2</div>
     </div>
-    <div class="tile tile-2 tile-position-4-3 tile-new">
+    @* <div class="tile tile-2 tile-position-4-3 tile-new">
         <div class="tile-inner">2</div>
-    </div>
+        </div> *@
+
+
 </div>
+
+<p>@ArrowDirection</p>
+@code {
+    [Parameter]
+    public string ArrowDirection { get; set; }
+
+    public string classTile = "tile tile-2 tile-position-4-1 tile-new";
+
+    public override async Task SetParametersAsync(ParameterView parameters)
+    {
+        Tile myTile = new Tile(2);
+        if (parameters.TryGetValue<string>(nameof(ArrowDirection), out var value))
+        {
+            if (value is "ArrowDown")
+            {
+                classTile = "tile tile-2 tile-position-4-4";
+            }
+            if (value is "ArrowUp")
+            {
+                classTile = "tile tile-2 tile-position-4-1";
+            }
+            if (value is "ArrowRight")
+            {
+                classTile = "tile tile-2 tile-position-4-1";
+            }
+            if (value is "ArrowLeft")
+            {
+                classTile = "tile tile-2 tile-position-1-1";
+            }
+
+        }
+        await base.SetParametersAsync(parameters);
+        Console.WriteLine(classTile);
+    }
+
+}

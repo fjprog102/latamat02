@@ -6,6 +6,7 @@ public class Tile : GridElement
     public new int Value { get; set; }
     public string? BackgroundColor;
     public string? NumberColor;
+    public bool IsNewTile { get; set; }
 
     public Tile(int value)
     {
@@ -15,6 +16,7 @@ public class Tile : GridElement
         }
 
         Value = value;
+        IsNewTile = true;
         BackgroundColor = _tileColors.GetBackgroundColor(value);
         NumberColor = _tileColors.GetNumberColor(value);
     }
