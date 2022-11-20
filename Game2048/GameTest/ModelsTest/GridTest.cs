@@ -1,5 +1,4 @@
-﻿// namespace ModelsTests;
-namespace GridTest.Test
+﻿namespace ModelsTests
 {
     using Models;
 
