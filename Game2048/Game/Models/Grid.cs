@@ -7,7 +7,7 @@ public class Grid
     public int Size { get; set; }
     public List<int[]> EmptyCells = new List<int[]>();
 
-    public GridElement[,] Cells;
+    public Tile?[,] Cells;
 
     public Grid(int rows, int columns)
     {
@@ -19,7 +19,7 @@ public class Grid
         Rows = rows;
         Columns = columns;
         Size = rows * columns;
-        Cells = new GridElement[rows, columns];
+        Cells = new Tile[rows, columns];
     }
 
     public void VerifyEmptyCells()
@@ -37,7 +37,8 @@ public class Grid
         }
     }
 
-    public void InsertElement(int x, int y, GridElement element)
+
+    public void InsertElement(int x, int y, Tile element)
     {
         if (x > Cells.GetLength(0) || y > Cells.GetLength(1))
         {
