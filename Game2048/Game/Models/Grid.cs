@@ -52,7 +52,8 @@ public class Grid
         Random random = new Random();
         int xPosition = random.Next(1, Rows);
         int yPosition = random.Next(1, Columns);
-        if (IsEmpty(xPosition, yPosition)){ 
+        if (IsEmpty(xPosition, yPosition))
+        {
             InsertElement(xPosition, yPosition, element);
         }
         else
