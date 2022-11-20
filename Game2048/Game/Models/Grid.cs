@@ -36,7 +36,6 @@ public class Grid
             }
         }
     }
-
     public void InsertElement(int x, int y, GridElement element)
     {
         if (x > Cells.GetLength(0) || y > Cells.GetLength(1))
