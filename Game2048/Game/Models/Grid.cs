@@ -47,13 +47,13 @@ public class Grid
         Cells[x, y] = element;
     }
 
-    public void GenerateRandomTile(Tile element)
+    public void GenerateRandomTile()
     {
         VerifyEmptyCells();
         Random random = new Random();
         int randomPosition = random.Next(EmptyCells.Count);
         int[] tileValues = { 2, 4 };
-        element.Value = tileValues[random.Next(tileValues.Length)];
-        InsertElement(EmptyCells[randomPosition][0], EmptyCells[randomPosition][1], element);
+        Tile tile = new Tile(tileValues[random.Next(tileValues.Length - 1)]);
+        InsertElement(EmptyCells[randomPosition][0], EmptyCells[randomPosition][1], tile);
     }
 }
