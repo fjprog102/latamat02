@@ -70,13 +70,13 @@ namespace GridTest.Test
             grid.InsertElement(2, 3, tile);
             grid.InsertElement(8, 7, tile);
             grid.InsertElement(7, 4, tile);
-            Assert.Equal(false, grid.IsEmpty(2, 3));
-            Assert.Equal(false, grid.IsEmpty(8, 7));
-            Assert.Equal(false, grid.IsEmpty(7, 4));
+            Assert.False(grid.IsEmpty(2, 3));
+            Assert.False(grid.IsEmpty(8, 7));
+            Assert.False(grid.IsEmpty(7, 4));
 
-            Assert.Equal(true, grid.IsEmpty(3, 3));
-            Assert.Equal(true, grid.IsEmpty(1, 3));
-            Assert.Equal(true, grid.IsEmpty(2, 4));
+            Assert.True(grid.IsEmpty(3, 3));
+            Assert.True(grid.IsEmpty(1, 3));
+            Assert.True(grid.IsEmpty(2, 4));
         }
 
         [Fact]
