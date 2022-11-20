@@ -52,9 +52,8 @@ public class Grid
         VerifyEmptyCells();
         Random random = new Random();
         int randomPosition = random.Next(EmptyCells.Count);
-        int[] TileValues = { 2, 4 };
-        element.Value = TileValues[random.Next(TileValues.Length)];
+        int[] tileValues = { 2, 4 };
+        element.Value = tileValues[random.Next(tileValues.Length)];
         InsertElement(EmptyCells[randomPosition][0], EmptyCells[randomPosition][1], element);
-        VerifyEmptyCells();
     }
 }
