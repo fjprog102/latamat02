@@ -20,7 +20,7 @@ public class Game2048
 
     public void Restart()
     {
-        TileColors.colors.Clear();
+        TileColors.Colors.Clear();
         UpdateBestScore();
         grid = new Grid(4, 4);
         score = new Score2048();
