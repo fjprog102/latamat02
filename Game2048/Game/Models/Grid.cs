@@ -50,6 +50,11 @@ public class Grid
     public void GenerateRandomTile()
     {
         VerifyEmptyCells();
+        if (EmptyCells.Count == 0)
+        {
+            return;
+        }
+
         Random random = new Random();
         int randomPosition = random.Next(EmptyCells.Count);
         int[] tileValues = { 2, 4 };
