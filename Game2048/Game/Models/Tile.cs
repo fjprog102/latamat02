@@ -15,9 +15,4 @@ public class Tile : GridElement
         BackgroundColor = _tileColors.GetBackgroundColor(value);
         NumberColor = _tileColors.GetNumberColor(value);
     }
-
-    // public void IncreaseValue()
-    // {
-    //     Value = Value * 2;
-    // }
 }
