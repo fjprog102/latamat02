@@ -21,7 +21,22 @@
                 <a class="retry-button">Try again</a>
             </div>
         </div>
-        <UITableGrid />
+        @* <UITableGrid game="@CurrentGame" /> *@
+        <table class="grid-container-table">
+            @for(int i = 0; i < CurrentGame.grid.Rows; i++)
+            {
+        <tr class="tr">
+            @for(int j = 0; j < CurrentGame.grid.Columns; j++)
+            {
+                <td class="td">
+                <div class="tile" style="background-color: @CurrentGame.grid.Cells[i,j]?.BackgroundColor; color: @CurrentGame.grid.Cells[i,j]?.NumberColor;">
+                        @CurrentGame.grid.Cells[i,j]?.Value
+                </div>
+                </td>
+            }
+        </tr>
+    }
+</table>
     </div>
     <div class="under-board-container"></div><span id="ezoic-pub-ad-placeholder-147"
         class="ezoic-adpicker-ad"></span><span

@@ -19,7 +19,8 @@ namespace Actions
                         if (IsSameValue(values, i, j))
                         {
                             values[j] = null;
-                            values[i]!.IncreaseValue();
+                            // values[i]!.IncreaseValue();
+                            values[i] = new Tile(values[i].Value * 2);
                             break;
                         }
                     }
