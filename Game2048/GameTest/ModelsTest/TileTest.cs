@@ -1,9 +1,8 @@
 ﻿namespace ModelsTests;
 
-using System.Text.RegularExpressions;
 using Models;
 
-public class TileComponentTest
+public class TileTest
 {
     [Fact]
     public void TileComponentShouldThrowAnArgumentErrorIfCreatedWithIncorrectValue()
@@ -31,23 +30,5 @@ public class TileComponentTest
         Assert.Equal(2, new Tile(2).Value);
         Assert.Equal(4, new Tile(4).Value);
         Assert.Equal(8, new Tile(8).Value);
-    }
-
-    [Fact]
-    public void BackgroundColorPropertyShouldHaveARandomColorString()
-    {
-        Assert.Matches("^#[\\w]{6}$", new Tile(2).BackgroundColor);
-        Assert.Matches("^#[\\w]{6}$", new Tile(4).BackgroundColor);
-        Assert.Matches("^#[\\w]{6}$", new Tile(6).BackgroundColor);
-        Assert.Matches("^#[\\w]{6}$", new Tile(8).BackgroundColor);
-    }
-
-    [Fact]
-    public void NumberColorPropertyShouldHaveABlackOrWhiteColorString()
-    {
-        Assert.Matches("#[fff|000]", new Tile(2).NumberColor);
-        Assert.Matches("#[fff|000]", new Tile(4).NumberColor);
-        Assert.Matches("#[fff|000]", new Tile(6).NumberColor);
-        Assert.Matches("#[fff|000]", new Tile(8).NumberColor);
     }
 }
