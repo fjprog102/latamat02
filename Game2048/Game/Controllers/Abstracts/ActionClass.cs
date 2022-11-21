@@ -23,6 +23,8 @@ namespace Actions
                             values[i] = new Tile(values[i].Value * 2);
                             break;
                         }
+
+                        break;
                     }
                 }
             }

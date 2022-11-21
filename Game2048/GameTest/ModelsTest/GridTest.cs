@@ -62,11 +62,10 @@
         [Fact]
         public void ItShouldGenerateANewTileInRandomPosition()
         {
-            Tile tile4 = new Tile(4);
-            Tile tile2 = new Tile(2);
             Grid grid = new Grid(10, 8);
-            grid.GenerateRandomTile(tile4);
-            grid.GenerateRandomTile(tile2);
+            grid.GenerateRandomTile();
+            grid.GenerateRandomTile();
+            grid.VerifyEmptyCells();
             Assert.Equal(78, grid.EmptyCells.Count);
         }
     }
