@@ -30,7 +30,7 @@
             @for(int j = 0; j < CurrentGame.grid.Columns; j++)
             {
                 <td class="td">
-                <div class="tile">
+                <div class="tile" style="background-color: @CurrentGame.grid.Cells[i,j]?.BackgroundColor; color: @CurrentGame.grid.Cells[i,j]?.NumberColor;">
                         @CurrentGame.grid.Cells[i,j]?.Value
                 </div>
                 </td>

@@ -16,8 +16,8 @@ public class Tile : GridElement
         NumberColor = _tileColors.GetNumberColor(value);
     }
 
-    public void IncreaseValue()
-    {
-        Value = Value * 2;
-    }
+    // public void IncreaseValue()
+    // {
+    //     Value = Value * 2;
+    // }
 }
