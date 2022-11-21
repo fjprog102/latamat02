@@ -1,4 +1,4 @@
-namespace ModelsTests;
+﻿namespace ModelsTests;
 
 using System.Text.RegularExpressions;
 using Models;
