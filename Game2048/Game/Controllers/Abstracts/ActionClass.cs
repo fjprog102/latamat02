@@ -22,6 +22,8 @@ namespace Actions
                             values[i]!.IncreaseValue();
                             break;
                         }
+
+                        break;
                     }
                 }
             }
