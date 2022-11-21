@@ -5,7 +5,7 @@ using System.Collections.Concurrent;
 public class TileColors
 {
     private static readonly Random random = new Random();
-    private static readonly ConcurrentDictionary<int, System.Drawing.Color> colors = new ConcurrentDictionary<int, System.Drawing.Color>();
+    public static readonly ConcurrentDictionary<int, System.Drawing.Color> colors = new ConcurrentDictionary<int, System.Drawing.Color>();
 
     public string GetBackgroundColor(int value)
     {
