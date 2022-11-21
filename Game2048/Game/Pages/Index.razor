@@ -1,18 +1,19 @@
 @page "/"
 
+@using Controllers
 @using Actions.Movements;
 
 <div class="container" @onkeydown="@KeyDown" tabindex="0">
     <div class="heading">
         <h1 class="title">2048</h1>
         <div class="scores-container">
-            <div class="score-container">0</div>
-            <div class="best-container">12456</div>
+            <div class="score-container">@CurrentGame.score.Value</div>
+            <div class="best-container">@CurrentGame.BestScore</div>
         </div>
     </div>
     <div class="above-game">
         <p class="game-intro">Join the tiles, get to <strong>2048!</strong><br><a href="#"
-                class="how-to-play-link">How to play →</a></p><a class="restart-button">New Game</a>
+                class="how-to-play-link">How to play →</a></p><button class="restart-button" @onclick="@CurrentGame.Restart">New Game</button>
     </div>
     <div class="game-container">
         <div class="game-message">
@@ -21,7 +22,22 @@
                 <a class="retry-button">Try again</a>
             </div>
         </div>
-        <UITableGrid />
+        @* <UITableGrid game="@CurrentGame" /> *@
+        <table class="grid-container-table">
+            @for(int i = 0; i < CurrentGame.grid.Rows; i++)
+            {
+        <tr class="tr">
+            @for(int j = 0; j < CurrentGame.grid.Columns; j++)
+            {
+                <td class="td">
+                <div class="tile">
+                        @CurrentGame.grid.Cells[i,j]?.Value
+                </div>
+                </td>
+            }
+        </tr>
+    }
+</table>
     </div>
     <div class="under-board-container"></div><span id="ezoic-pub-ad-placeholder-147"
         class="ezoic-adpicker-ad"></span><span
@@ -42,19 +58,20 @@
 </div>
 
 @code{
+
+    public Game2048 CurrentGame = new Game2048();
+
     public void KeyDown(KeyboardEventArgs e)
     {
 		switch (e.Key)
 		{
-			case "ArrowLeft":  new MoveLeft().Execute(GetDummyInstance()); break;
-			case "ArrowRight": new MoveRight().Execute(GetDummyInstance()); break;
-			case "ArrowUp":    new MoveUp().Execute(GetDummyInstance()); break;
-			case "ArrowDown":  new MoveDown().Execute(GetDummyInstance()); break;
+			case "ArrowLeft":  new MoveLeft().Execute(CurrentGame.grid); break;
+			case "ArrowRight": new MoveRight().Execute(CurrentGame.grid); break;
+			case "ArrowUp":    new MoveUp().Execute(CurrentGame.grid); break;
+			case "ArrowDown":  new MoveDown().Execute(CurrentGame.grid); break;
 			default: return;
 		}
-    }
-
-    public Grid GetDummyInstance(){
-        return new Grid(0,0);
+        CurrentGame.grid.GenerateRandomTile();
+        CurrentGame.score.UpdateScore(CurrentGame.grid);
     }
 }

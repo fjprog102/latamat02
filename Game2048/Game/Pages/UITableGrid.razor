@@ -18,15 +18,6 @@
 </table>
 
 @code {
-    Game2048 game = new Game2048();
-
-    private int currentCount = 0;
-
     [Parameter]
-    public int IncrementAmount { get; set; } = 1;
-
-    private void IncrementCount()
-    {
-        currentCount += IncrementAmount;
-    }
+    public Game2048? game { get; set; }
 }

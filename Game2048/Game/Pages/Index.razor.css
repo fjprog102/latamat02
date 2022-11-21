@@ -2,6 +2,7 @@
   content: "";
   display: block;
   clear: both;
+  width: 100vw;
 }
 
 h1.title {
@@ -198,7 +199,7 @@ table{
 }
 
 .tile{
-  background-color: #eee4da;
+  background-color: rgba(238, 228, 218, 0.35);
   display: flex;
   justify-content: center;
   align-items: center;
