@@ -1,4 +1,4 @@
-namespace KOTGame.Models;
+﻿namespace KOTGame.Models;
 
 public class Game
 {

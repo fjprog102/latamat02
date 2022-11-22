@@ -1,4 +1,4 @@
-namespace KOT.Models.Test;
+﻿namespace KOT.Models.Test;
 
 using KOTGame.Models;
 
