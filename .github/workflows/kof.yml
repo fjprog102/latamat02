@@ -31,13 +31,13 @@ jobs:
           name: test-results-${{ matrix.dotnet-version }}
           path: TestResults-${{ matrix.dotnet-version }}
         # Use always() to always run this step to publish test results when there are test failures
-       if: ${{ always() }}
+        if: ${{ always() }}
       - name: Generate code coverage report
-       run: cd KOF/; dotnet reportgenerator -reports:"../TestResults-${{ matrix.dotnet-version }}/**/*.cobertura.xml" -targetdir:".coveragereport"
+        run: cd KOF/; dotnet reportgenerator -reports:"../TestResults-${{ matrix.dotnet-version }}/**/*.cobertura.xml" -targetdir:".coveragereport"
       - name: Upload code coverage report
-       uses: actions/upload-artifact@v3
-       with:
-         name: code-coverage-${{ matrix.dotnet-version }}
-         path: KOF/.coveragereport
-        Use always() to always run this step to publish test results when there are test failures
-       if: ${{ always() }}
+        uses: actions/upload-artifact@v3
+        with:
+          name: code-coverage-${{ matrix.dotnet-version }}
+          path: KOF/.coveragereport
+        # Use always() to always run this step to publish test results when there are test failures
+        if: ${{ always() }}
