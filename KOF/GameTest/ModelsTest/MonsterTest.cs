@@ -4,8 +4,8 @@ using KOF.Models;
 
 public class MonsterTest
 {
-    Monster monster = new Monster();
-    
+    private readonly Monster monster = new Monster();
+
     [Fact]
     public void ShouldReturnPropertyNameAsString()
     {
@@ -38,10 +38,10 @@ public class MonsterTest
     {
         monster.LifePoints = 10;
         Assert.Equal(10, monster.LifePoints);
-        
+
         monster.LifePoints = 0;
         Assert.Equal(0, monster.LifePoints);
-        
+
         monster.LifePoints = 5;
         Assert.Equal(5, monster.LifePoints);
     }
