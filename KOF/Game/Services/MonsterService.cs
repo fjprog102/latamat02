@@ -1,12 +1,12 @@
-namespace KOF.Services;
+﻿namespace KOF.Services;
 
 using KOF.Models;
 
-
 public static class MonsterService
 {
-    static List<Monster> Monsters { get; }
-    static int nextId = 3;
+    private static List<Monster> Monsters { get; }
+
+    private static int nextId = 3;
     static MonsterService()
     {
         Monsters = new List<Monster>
