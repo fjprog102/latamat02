@@ -30,7 +30,7 @@ jobs:
         with:
           name: test-results-${{ matrix.dotnet-version }}
           path: TestResults-${{ matrix.dotnet-version }}
-        Use always() to always run this step to publish test results when there are test failures
+        # Use always() to always run this step to publish test results when there are test failures
        if: ${{ always() }}
       - name: Generate code coverage report
        run: cd KOF/; dotnet reportgenerator -reports:"../TestResults-${{ matrix.dotnet-version }}/**/*.cobertura.xml" -targetdir:".coveragereport"
