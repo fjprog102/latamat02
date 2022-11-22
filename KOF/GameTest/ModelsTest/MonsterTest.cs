@@ -7,9 +7,23 @@ public class MonsterTest
     private readonly Monster monster = new Monster();
 
     [Fact]
+    public void ShouldReturnPropertyIdAsInt()
+    {
+        monster.Id = 1;
+        Assert.Equal(1, monster.Id);
+
+        Monster monster2 = new Monster();
+        monster2.Id = 2;
+        Assert.Equal(2, monster2.Id);
+
+        Monster monster3 = new Monster();
+        monster3.Id = 3;
+        Assert.Equal(3, monster3.Id);
+    }
+
+    [Fact]
     public void ShouldReturnPropertyNameAsString()
     {
-
         monster.Name = "Monster";
         Assert.Equal("Monster", monster.Name);
 
