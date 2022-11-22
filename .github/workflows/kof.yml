@@ -1,4 +1,4 @@
-name: dotnet package
+name: King of Tokyo
 
 on:
   push:
