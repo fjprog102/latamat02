@@ -1,4 +1,4 @@
-﻿namespace KOF;
+﻿namespace KOF.Models;
 
 public class Monster
 {
