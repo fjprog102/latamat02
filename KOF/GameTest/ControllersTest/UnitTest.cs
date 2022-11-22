@@ -2,4 +2,11 @@
 
 // using Controllers;
 
-public class UnitTest1 { }
+public class UnitTest2
+{
+    [Fact]
+    public void TestName()
+    {
+        Assert.True(true);
+    }
+}
