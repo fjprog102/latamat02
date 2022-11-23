@@ -48,6 +48,21 @@ namespace KOF.Models.Test
         }
 
         [Fact]
+        public void ShouldReturnPasswordAsString()
+        {
+            player1.Password = "XslT@dfQ5F";
+            Assert.Equal("XslT@dfQ5F", player1.Password);
+
+            Player player2 = new Player();
+            player2.Password = "AgSD$Fgkdf";
+            Assert.Equal("AgSD$Fgkdf", player2.Password);
+
+            Player player3 = new Player();
+            player3.Password = "5Fdf9&plGx";
+            Assert.Equal("5Fdf9&plGx", player3.Password);
+        }
+
+        [Fact]
         public void ShouldReturnPropertyPhotoIdAsString()
         {
             player1.PID = "asDFx#1tRm";
@@ -60,16 +75,6 @@ namespace KOF.Models.Test
             Player player3 = new Player();
             player3.PID = "&3$fPxX12V";
             Assert.Equal("&3$fPxX12V", player3.PID);
-        }
-
-        [Fact]
-        public void ShouldReturnPropertyIsPaidUserAsBool()
-        {
-            player1.IsPaidUser = false;
-            Assert.False(player1.IsPaidUser);
-
-            player1.IsPaidUser = true;
-            Assert.True(player1.IsPaidUser);
         }
     }
 }
