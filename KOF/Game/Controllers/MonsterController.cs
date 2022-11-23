@@ -1,4 +1,4 @@
-namespace KOF.Controllers;
+﻿namespace KOF.Controllers;
 
 using KOF.Models;
 using KOF.Services;
@@ -18,7 +18,7 @@ public class MonsterController : ControllerBase
 
     [HttpPost]
     public IActionResult Create(Monster monster)
-    {            
+    {
         MonsterService.Add(monster);
         return CreatedAtAction(nameof(Create), new { id = monster.Id }, monster);
     }
