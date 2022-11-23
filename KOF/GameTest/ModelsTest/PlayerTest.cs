@@ -9,72 +9,42 @@ namespace KOF.Models.Test
         [Fact]
         public void ShouldReturnPropertyId()
         {
-            player1.PID = "XslT@dfQ5F";
-            Assert.Equal("XslT@dfQ5F", player1.PID);
+            player1.PID = 1;
+            Assert.Equal(1, player1.PID);
 
             Player player2 = new Player();
-            player2.PID = "AgSD$Fgkdf";
-            Assert.Equal("AgSD$Fgkdf", player2.PID);
+            player2.PID = 2;
+            Assert.Equal(2, player2.PID);
 
             Player player3 = new Player();
-            player3.PID = "5Fdf9&plGx";
-            Assert.Equal("5Fdf9&plGx", player3.PID);
+            player3.PID = 3;
+            Assert.Equal(3, player3.PID);
         }
 
         [Fact]
         public void ShouldReturnPropertyNameAsString()
         {
-            player1.DisplayName = "Pablo";
-            Assert.Equal("Pablo", player1.DisplayName);
+            player1.Name = "Pablo";
+            Assert.Equal("Pablo", player1.Name);
 
-            player1.DisplayName = "Patrick";
-            Assert.Equal("Patrick", player1.DisplayName);
+            player1.Name = "Patrick";
+            Assert.Equal("Patrick", player1.Name);
 
-            player1.DisplayName = "Bob";
-            Assert.Equal("Bob", player1.DisplayName);
+            player1.Name = "Bob";
+            Assert.Equal("Bob", player1.Name);
         }
 
         [Fact]
-        public void ShouldReturnEmailAsString()
+        public void ShouldReturnMonsterAsObjectWhenMonsterIsDeclared()
         {
-            player1.Email = "pablo@gmail.com";
-            Assert.Equal("pablo@gmail.com", player1.Email);
-
-            player1.Email = "patrick@gmail.com";
-            Assert.Equal("patrick@gmail.com", player1.Email);
-
-            player1.Email = "bob123@gmail.com";
-            Assert.Equal("bob123@gmail.com", player1.Email);
+            player1.MyMonster = new Monster();
+            Assert.False(object.ReferenceEquals(null, player1.MyMonster));
         }
 
         [Fact]
-        public void ShouldReturnPasswordAsString()
+        public void ShouldReturnMonsterAsNullWhenMonsterIsNotDeclared()
         {
-            player1.Password = "XslT@dfQ5F";
-            Assert.Equal("XslT@dfQ5F", player1.Password);
-
-            Player player2 = new Player();
-            player2.Password = "AgSD$Fgkdf";
-            Assert.Equal("AgSD$Fgkdf", player2.Password);
-
-            Player player3 = new Player();
-            player3.Password = "5Fdf9&plGx";
-            Assert.Equal("5Fdf9&plGx", player3.Password);
-        }
-
-        [Fact]
-        public void ShouldReturnPropertyPhotoIdAsString()
-        {
-            player1.PID = "asDFx#1tRm";
-            Assert.Equal("asDFx#1tRm", player1.PID);
-
-            Player player2 = new Player();
-            player2.PID = "Ap5dgOmNi$";
-            Assert.Equal("Ap5dgOmNi$", player2.PID);
-
-            Player player3 = new Player();
-            player3.PID = "&3$fPxX12V";
-            Assert.Equal("&3$fPxX12V", player3.PID);
+            Assert.True(object.ReferenceEquals(null, player1.MyMonster));
         }
     }
 }
