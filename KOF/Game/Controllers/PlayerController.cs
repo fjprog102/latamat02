@@ -1,22 +1,24 @@
+namespace KOF.Controllers;
+
 using KOF.Models;
 using KOF.Services;
 using Microsoft.AspNetCore.Mvc;
-
-namespace KOTGame.Controllers;
 
 [ApiController]
 [Route("[controller]")]
 public class PlayerController : ControllerBase
 {
+    PlayerService playerService = new PlayerService();
+
     public PlayerController() { }
 
     [HttpGet]
-    public ActionResult<List<Player>> GetAll() => PlayerService.GetAll();
+    public ActionResult<List<Player>> GetAll() => playerService.GetAll();
 
-    [HttpGet("{id}")]
-    public ActionResult<Player> Get(int id)
+    [HttpGet("{pid}")]
+    public ActionResult<Player> Get(int pid)
     {
-        var player = PlayerService.Get(id);
+        var player = playerService.Get(pid);
 
         if (player == null)
             return NotFound();
@@ -24,15 +26,39 @@ public class PlayerController : ControllerBase
         return player;
     }
 
-    // POST action
     [HttpPost]
     public IActionResult Create(Player player)
     {
-        PlayerService.Add(player);
-        return CreatedAtAction(nameof(Create), new { id = Player.PID }, player);
+        player.MyMonster = new Monster();
+        playerService.Add(player);
+        return CreatedAtAction(nameof(Create), new { id = player.PID }, player);
     }
 
-    // PUT action
+    [HttpPut("{pid}")]
+    public IActionResult Update(int pid, Player player)
+    {
+        if (pid != player.PID)
+            return BadRequest();
 
-    // DELETE action
+        var existingPlayer = playerService.Get(pid);
+        if (existingPlayer is null)
+            return NotFound();
+
+        playerService.Update(player);
+
+        return NoContent();
+    }
+
+    [HttpDelete("{pid}")]
+    public IActionResult Delete(int pid)
+    {
+        var player = playerService.Get(pid);
+
+        if (player is null)
+            return NotFound();
+
+        playerService.Delete(pid);
+
+        return NoContent();
+    }
 }
