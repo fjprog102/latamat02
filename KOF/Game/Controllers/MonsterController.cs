@@ -4,7 +4,6 @@ using KOF.Models;
 using KOF.Services;
 using Microsoft.AspNetCore.Mvc;
 
-
 [ApiController]
 [Route("[controller]")]
 public class MonsterController : ControllerBase
