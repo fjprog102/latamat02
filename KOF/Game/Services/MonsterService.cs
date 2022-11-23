@@ -29,17 +29,21 @@ public class MonsterService
     public void Update(Monster monster)
     {
         var index = Monsters.FindIndex(m => m.Id == monster.Id);
-        if(index == -1)
+        if (index == -1)
+        {
             return;
+        }
 
         Monsters[index] = monster;
     }
-    
+
     public void Delete(int id)
     {
         var monster = new MonsterService().GetById(id);
-        if(monster is null)
+        if (monster is null)
+        {
             return;
+        }
 
         Monsters.Remove(monster);
     }
