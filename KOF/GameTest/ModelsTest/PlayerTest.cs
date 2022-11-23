@@ -37,7 +37,7 @@ namespace KOF.Models.Test
         [Fact]
         public void ShouldReturnMonsterAsObjectWhenMonsterIsDeclared()
         {
-            player1.MyMonster =  new Monster();
+            player1.MyMonster = new Monster();
             Assert.False(object.ReferenceEquals(null, player1.MyMonster));
         }
 
