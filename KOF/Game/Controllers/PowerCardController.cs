@@ -1,4 +1,6 @@
 ﻿using KOF.Models;
+using KOF.Services;
+using KOF.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace KOF.Controllers;
@@ -7,38 +9,22 @@ namespace KOF.Controllers;
 [Route("[controller]")]
 public class PowerCardController : ControllerBase
 {
-    public List<PowerCard>? _powerCards;
-    private readonly PowerCardController _instance;
+    private readonly IPowerCard powerCardService;
 
-    public PowerCardController()
+    public PowerCardController(IPowerCard instance)
     {
-        _instance = this;
+        powerCardService = instance;
     }
 
     [HttpGet(Name = "GetPowerCard")]
     public IEnumerable<PowerCard> Get()
     {
-        /*Future fetch to db when id is passed
-
-        if (id != null)
-        {
-            return _powerCards!.Select(card => card).Where(card => card.id == id).ToArray();
-        }
-        */
-        return _powerCards!.Select(card => card).ToArray();
+        return powerCardService.GetMethod();
     }
 
     [HttpPost(Name = "PostPowerCard")]
-    public IActionResult Post([FromForm] string name, int cost, int type)
+    public IEnumerable<PowerCard> Post([FromForm] string name, int cost, int type)
     {
-        var card = new PowerCard(name, cost, type);
-        /*Future insert to db when id is passed
-
-        if (input!= null)
-        {
-            insert
-        }
-        */
-        return Ok(card);
+        return powerCardService.PostMethod(name, cost, type);
     }
 }
