@@ -1,5 +1,5 @@
-﻿using System.Text.Json;
-using KOF.Models;
+﻿using KOF.Models;
+using KOF.Models.Abstracts;
 using KOF.Services.Interfaces;
 
 namespace KOF.Services;
@@ -8,35 +8,51 @@ public class PowerCardService : IDataService
 {
     private readonly List<PowerCard> cards = new List<PowerCard> { };
 
-    ServiceResponse<DataHolder> IDataService.Read(string? id)
+    IEnumerable<Element> IDataService.Read(DataHolder payload)
     {
-        if (id != null)
+        if (payload.Id != null)
         {
-            return cards.Select(card => card).Where(card => card.IdAttr == id).ToArray();
+            return cards
+                .Select(card => card)
+                .Where(card => card.IdAttr!.Equals(payload.Id))
+                .ToArray();
         }
 
-        return cards;
+        return new Element[0];
     }
 
-    ServiceResponse<DataHolder> IDataService.Create(DataHolder data)
+    IEnumerable<Element> IDataService.Create(DataHolder payload)
     {
-        List<PowerCard> newCards = new List<PowerCard>();
-        if (name != null)
+        if (payload.GetType().IsInstanceOfType(typeof(PowerCardPayload)))
         {
-            cards.Add(new PowerCard(name, cost, type));
-            newCards.Add(new PowerCard(name, cost, type));
+            PowerCardPayload args = (PowerCardPayload)payload;
+            var newCard = new PowerCard((string)args.Name!, (int)args.Cost!, (int)args.Type!);
+            cards.Append(newCard);
+            return new Element[] { newCard };
         }
 
-        return newCards;
+        return new Element[0];
     }
 
-    public ServiceResponse<DataHolder> IDataService.Delete(DataHolder data)
+    IEnumerable<Element> IDataService.Delete(DataHolder payload)
     {
-        return null;
+        if (payload.Id != null)
+        {
+            var card = cards
+                .Select(card => card)
+                .Where(card => card.IdAttr!.Equals(payload.Id))
+                .ToArray();
+
+            cards.Remove(card.First());
+
+            return card;
+        }
+
+        return new Element[0];
     }
 
-    public ServiceResponse<DataHolder> IDataService.Update(DataHolder data)
+    IEnumerable<Element> IDataService.Update(DataHolder payload)
     {
-        return null;
+        return new Element[0];
     }
 }

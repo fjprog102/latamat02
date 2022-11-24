@@ -9,6 +9,6 @@ public class ServiceInjector
     public void InjectServices(IServiceCollection services)
     {
         //Add new services creating the respective interface
-        services.AddSingleton<IPowerCard, PowerCardService>();
+        services.AddSingleton<IDataService, PowerCardService>();
     }
 }
