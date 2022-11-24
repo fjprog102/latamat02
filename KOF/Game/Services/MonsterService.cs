@@ -4,10 +4,10 @@ using KOF.Models;
 
 public class MonsterService
 {
-    private static List<Monster> Monsters { get; }
+    private List<Monster> Monsters { get; }
 
-    private static int nextId = 3;
-    static MonsterService()
+    private int nextId = 3;
+    public MonsterService()
     {
         Monsters = new List<Monster>
         {
@@ -39,7 +39,7 @@ public class MonsterService
 
     public void Delete(int id)
     {
-        var monster = new MonsterService().GetById(id);
+        var monster = GetById(id);
         if (monster is null)
         {
             return;

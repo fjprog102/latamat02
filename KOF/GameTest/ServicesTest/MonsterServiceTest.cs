@@ -40,26 +40,27 @@ public class MonsterServiceTest
         Assert.Equal(4, service.GetAll().Count);
     }
 
-    // [Fact]
-    // public void ShouldSuccessfullyUpdateAMonsterInTheList()
-    // {
-    //     MonsterService service = new MonsterService();
+    [Fact]
+    public void ShouldSuccessfullyUpdateAMonsterInTheList()
+    {
+        MonsterService service = new MonsterService();
 
-    //     Assert.Equal("CyberKitty", service.GetById(1)?.Name);
+        Assert.Equal("CyberKitty", service.GetById(1)?.Name);
 
-    //     service.Update(new Monster { Id = 1, Name = "New Monster", VictoryPoints = 10, LifePoints = 10 });
+        service.Update(new Monster { Id = 1, Name = "New Monster", VictoryPoints = 10, LifePoints = 10 });
 
-    //     Assert.Equal("New Monster", service.GetById(1)?.Name);
-    // }
+        Assert.Equal("New Monster", service.GetById(1)?.Name);
+    }
 
-    // [Fact]
-    // public void ShouldSuccessfullyDeleteAMonsterInTheList()
-    // {
-    //     MonsterService service = new MonsterService();
-    //     Assert.Equal(2, service.GetAll()?.Count);
+    [Fact]
+    public void ShouldSuccessfullyDeleteAMonsterInTheList()
+    {
+        MonsterService service = new MonsterService();
 
-    //     service.Delete(1);
+        Assert.Equal(2, service.GetAll()?.Count);
 
-    //     Assert.Equal(1, service.GetAll()?.Count);
-    // }
+        service.Delete(1);
+
+        Assert.Equal(1, service.GetAll()?.Count);
+    }
 }
