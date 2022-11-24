@@ -2,7 +2,7 @@
 
 using KOF.Models;
 
-public class MonsterService
+public class MonsterService : IDataService
 {
     private List<Monster> Monsters { get; }
 

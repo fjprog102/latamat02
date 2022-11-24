@@ -4,11 +4,11 @@ using KOF.Services.Interfaces;
 
 namespace KOF.Services;
 
-public class PowerCardService : IPowerCard
+public class PowerCardService : IDataService
 {
     private readonly List<PowerCard> cards = new List<PowerCard> { };
 
-    IEnumerable<PowerCard> IPowerCard.GetMethod(string? id)
+    ServiceResponse<DataHolder> IDataService.Read(string? id)
     {
         if (id != null)
         {
@@ -18,7 +18,7 @@ public class PowerCardService : IPowerCard
         return cards;
     }
 
-    IEnumerable<PowerCard> IPowerCard.PostMethod(string? name, int cost, int type)
+    ServiceResponse<DataHolder> IDataService.Create(DataHolder data)
     {
         List<PowerCard> newCards = new List<PowerCard>();
         if (name != null)
@@ -28,5 +28,15 @@ public class PowerCardService : IPowerCard
         }
 
         return newCards;
+    }
+
+    public ServiceResponse<DataHolder> IDataService.Delete(DataHolder data)
+    {
+        return null;
+    }
+
+    public ServiceResponse<DataHolder> IDataService.Update(DataHolder data)
+    {
+        return null;
     }
 }
