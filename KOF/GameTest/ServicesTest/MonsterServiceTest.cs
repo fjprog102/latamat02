@@ -44,7 +44,7 @@ public class MonsterServiceTest
     public void ShouldSuccessfullyUpdateAMonsterInTheList()
     {
         MonsterService service = new MonsterService();
-        
+
         Assert.Equal("CyberKitty", service.GetById(1)?.Name);
 
         service.Update(new Monster { Id = 1, Name = "New Monster", VictoryPoints = 10, LifePoints = 10 });
