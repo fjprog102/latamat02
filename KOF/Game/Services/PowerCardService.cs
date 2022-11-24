@@ -6,28 +6,26 @@ namespace KOF.Services;
 
 public class PowerCardService : IDataService
 {
-    private readonly List<PowerCard> cards = new List<PowerCard> { };
+    private readonly List<PowerCard> cards = new List<PowerCard> { new PowerCard("testA", 1, 1) };
 
     IEnumerable<Element> IDataService.Read(DataHolder payload)
     {
         if (payload.Id != null)
         {
-            return cards
-                .Select(card => card)
-                .Where(card => card.IdAttr!.Equals(payload.Id))
-                .ToArray();
+            return cards.Select(card => card).Where(card => card.IdAttr!.Equals(payload.Id));
         }
 
-        return new Element[0];
+        return cards;
     }
 
     IEnumerable<Element> IDataService.Create(DataHolder payload)
     {
-        if (payload.GetType().IsInstanceOfType(typeof(PowerCardPayload)))
+        if (payload.GetType() == typeof(PowerCardPayload))
         {
             PowerCardPayload args = (PowerCardPayload)payload;
             var newCard = new PowerCard((string)args.Name!, (int)args.Cost!, (int)args.Type!);
-            cards.Append(newCard);
+            cards.Add(newCard);
+            //return cards.Select(card => card).Where(card => card.IdAttr!.Equals(payload.Id));
             return new Element[] { newCard };
         }
 

@@ -1,4 +1,5 @@
-﻿using KOF.Models;
+﻿using System.Text.Json;
+using KOF.Models;
 using KOF.Models.Abstracts;
 using KOF.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
@@ -17,17 +18,15 @@ public class PowerCardController : ControllerBase
     }
 
     [HttpGet(Name = "GetPowerCard")]
-    public IActionResult Get([FromForm] string? id = null)
+    public IActionResult Get([FromBody] PowerCardPayload payload)
     {
-        var payload = new PowerCardPayload(id: id);
         var result = powerCardService.Read(payload);
         return Ok(result);
     }
 
     [HttpPost(Name = "PostPowerCard")]
-    public IActionResult Post([FromForm] string name, int cost, int type, string? id = null)
+    public IActionResult Post([FromBody] PowerCardPayload payload)
     {
-        var payload = new PowerCardPayload(id: id, name: name, cost: cost, type: type);
         var result = powerCardService.Create(payload);
         return Ok(result);
     }
