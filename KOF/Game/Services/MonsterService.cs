@@ -2,12 +2,12 @@
 
 using KOF.Models;
 
-public static class MonsterService
+public class MonsterService
 {
-    private static List<Monster> Monsters { get; }
+    private List<Monster> Monsters { get; }
 
-    private static int nextId = 3;
-    static MonsterService()
+    private int nextId = 3;
+    public MonsterService()
     {
         Monsters = new List<Monster>
         {
@@ -16,11 +16,35 @@ public static class MonsterService
         };
     }
 
-    public static List<Monster> GetAll() => Monsters;
+    public Monster? GetById(int id) => Monsters.FirstOrDefault(monster => monster.Id == id);
 
-    public static void Add(Monster monster)
+    public List<Monster> GetAll() => Monsters;
+
+    public void Add(Monster monster)
     {
         monster.Id = nextId++;
         Monsters.Add(monster);
+    }
+
+    public void Update(Monster monster)
+    {
+        var index = Monsters.FindIndex(m => m.Id == monster.Id);
+        if (index == -1)
+        {
+            return;
+        }
+
+        Monsters[index] = monster;
+    }
+
+    public void Delete(int id)
+    {
+        var monster = GetById(id);
+        if (monster is null)
+        {
+            return;
+        }
+
+        Monsters.Remove(monster);
     }
 }
