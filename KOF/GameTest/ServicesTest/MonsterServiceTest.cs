@@ -6,27 +6,53 @@ using KOF.Services;
 public class MonsterServiceTest
 {
     [Fact]
+    public void ShouldReturnAMonster()
+    {
+        MonsterService service = new MonsterService();
+
+        Assert.Equal("CyberKitty", service.GetById(1)?.Name);
+        Assert.Equal("Gigazaur", service.GetById(2)?.Name);
+    }
+
+    [Fact]
     public void ShouldReturnAListWithAllMonsters()
     {
-        //Is type List<Monster>
-        Assert.IsType<List<Monster>>(MonsterService.GetAll());
+        MonsterService service = new MonsterService();
 
-        //There is at least one element in the list
-        Assert.True(MonsterService.GetAll().Any());
+        Assert.IsType<List<Monster>>(service.GetAll());
+        Assert.True(service.GetAll().Any());
     }
 
     [Fact]
     public void ShouldSuccessfullyAddAMonsterToTheList()
     {
-        //Asserts that the list contains two elements before adding
-        Assert.Equal(2, MonsterService.GetAll().Count);
-        //Adds a new monster
-        MonsterService.Add(new Monster { Name = "New Monster", VictoryPoints = 10, LifePoints = 10 });
-        //Asserts that the list contains three elements after adding a new monster
-        Assert.Equal(3, MonsterService.GetAll().Count);
-        //Adds a new monster
-        MonsterService.Add(new Monster { Name = "Another New Monster", VictoryPoints = 10, LifePoints = 10 });
-        //Asserts that the list contains four elements after adding another monster
-        Assert.Equal(4, MonsterService.GetAll().Count);
+        MonsterService service = new MonsterService();
+        Assert.Equal(2, service.GetAll().Count);
+
+        service.Add(new Monster { Name = "New Monster", VictoryPoints = 10, LifePoints = 10 });
+        Assert.Equal(3, service.GetAll().Count);
+
+        service.Add(new Monster { Name = "Another New Monster", VictoryPoints = 10, LifePoints = 10 });
+        Assert.Equal(4, service.GetAll().Count);
+    }
+
+    [Fact]
+    public void ShouldSuccessfullyUpdateAMonsterInTheList()
+    {
+        MonsterService service = new MonsterService();
+        Assert.Equal("CyberKitty", service.GetById(1)?.Name);
+
+        service.Update(new Monster { Id = 1, Name = "New Monster", VictoryPoints = 10, LifePoints = 10 });
+        Assert.Equal("New Monster", service.GetById(1)?.Name);
+    }
+
+    [Fact]
+    public void ShouldSuccessfullyDeleteAMonsterInTheList()
+    {
+        MonsterService service = new MonsterService();
+        Assert.Equal(2, service.GetAll()?.Count);
+
+        service.Delete(1);
+        Assert.Equal(1, service.GetAll()?.Count);
     }
 }
