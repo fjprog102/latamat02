@@ -1,6 +1,6 @@
-﻿namespace KOF.Models.Test;
+﻿namespace KOT.Models.Test;
 
-using KOF.Models;
+using KOT.Models;
 
 public class MonsterTest
 {

@@ -1,4 +1,4 @@
-﻿namespace KOF.Models
+﻿namespace KOT.Models
 {
     public class Player
     {

@@ -1,6 +1,6 @@
-﻿namespace Models;
+﻿namespace KOT.Models;
 
-using Models.Abstracts;
+using KOT.Models.Abstracts;
 
 public class KofDice : Dice
 {

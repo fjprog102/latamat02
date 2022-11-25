@@ -1,7 +1,7 @@
-﻿namespace KOF.Controllers;
+﻿namespace KOT.Controllers;
 
-using KOF.Models;
-using KOF.Services;
+using KOT.Models;
+using KOT.Services;
 using Microsoft.AspNetCore.Mvc;
 
 [ApiController]

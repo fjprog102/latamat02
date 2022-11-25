@@ -1,8 +1,8 @@
-﻿namespace KOF.Controllers.Test;
+﻿namespace KOT.Controllers.Test;
 
-using KOF.Controllers;
-using KOF.Models;
-using KOF.Services;
+using KOT.Controllers;
+using KOT.Models;
+using KOT.Services;
 using Microsoft.AspNetCore.Mvc;
 
 public class MonsterControllerTest

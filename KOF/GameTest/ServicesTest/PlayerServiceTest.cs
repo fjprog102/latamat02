@@ -1,7 +1,7 @@
-﻿namespace KOF.Services.Test;
+﻿namespace KOT.Services.Test;
 
-using KOF.Models;
-using KOF.Services;
+using KOT.Models;
+using KOT.Services;
 
 public class PlayerServiceTest
 {

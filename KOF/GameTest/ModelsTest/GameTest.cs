@@ -1,6 +1,6 @@
 ﻿namespace KOT.Models.Test;
 
-using KOTGame.Models;
+using KOT.Models;
 
 public class GameTest
 {

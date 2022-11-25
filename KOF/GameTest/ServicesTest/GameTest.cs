@@ -1,7 +1,7 @@
 ﻿namespace KOTGameServices.Test;
 
-using KOTGame.Models;
-using KOTGame.Services;
+using KOT.Models;
+using KOT.Services;
 
 public class GameServiceTest
 {

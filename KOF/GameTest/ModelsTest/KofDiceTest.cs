@@ -1,6 +1,6 @@
 ﻿namespace ModelsTests;
 
-using Models;
+using KOT.Models;
 
 public class KofDiceTest
 {
