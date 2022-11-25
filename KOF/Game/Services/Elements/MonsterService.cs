@@ -7,12 +7,25 @@ public class MonsterService
     private List<Monster> Monsters { get; }
 
     private int nextId = 3;
+
     public MonsterService()
     {
         Monsters = new List<Monster>
         {
-            new Monster { Id = 1, Name = "CyberKitty", VictoryPoints = 5, LifePoints = 10 },
-            new Monster { Id = 2, Name = "Gigazaur", VictoryPoints = 7, LifePoints = 10 }
+            new Monster
+            {
+                Id = 1,
+                Name = "CyberKitty",
+                VictoryPoints = 5,
+                LifePoints = 10
+            },
+            new Monster
+            {
+                Id = 2,
+                Name = "Gigazaur",
+                VictoryPoints = 7,
+                LifePoints = 10
+            }
         };
     }
 
