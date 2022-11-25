@@ -1,6 +1,6 @@
-﻿using KOF.Services.Interfaces;
+﻿using KOT.Services.Interfaces;
 
-namespace KOF.Services.Injector;
+namespace KOT.Services.Injector;
 
 public class ServiceInjector
 {

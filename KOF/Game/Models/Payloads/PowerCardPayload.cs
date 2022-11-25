@@ -1,6 +1,6 @@
-﻿using KOF.Models.Abstracts;
+﻿using KOT.Models.Abstracts;
 
-namespace KOF.Models;
+namespace KOT.Models;
 
 public class PowerCardPayload : DataHolder
 {

@@ -1,5 +1,5 @@
-﻿using KOF.Models;
-using KOF.Models.Abstracts;
+﻿using KOT.Models;
+using KOT.Models.Abstracts;
 
 public class PowerCardTests
 {

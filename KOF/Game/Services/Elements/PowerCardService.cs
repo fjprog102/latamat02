@@ -1,8 +1,8 @@
-﻿using KOF.Models;
-using KOF.Models.Abstracts;
-using KOF.Services.Interfaces;
+﻿using KOT.Models;
+using KOT.Models.Abstracts;
+using KOT.Services.Interfaces;
 
-namespace KOF.Services;
+namespace KOT.Services;
 
 public class PowerCardService : IDataService
 {
