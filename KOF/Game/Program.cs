@@ -1,11 +1,17 @@
-﻿var builder = WebApplication.CreateBuilder(args);
+﻿using KOF.Services.Injector;
+
+var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
 builder.Services.AddControllers();
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+// Inject service dependencies
+var serviceInjector = new ServiceInjector();
+serviceInjector.InjectServices(builder.Services);
 
 var app = builder.Build();
 
