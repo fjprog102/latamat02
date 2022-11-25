@@ -1,9 +1,6 @@
-﻿namespace KOF.Models;
+﻿using KOF.Models.Abstracts;
 
-public abstract class DataHolder
-{
-    public string? Id { get; set; }
-}
+namespace KOF.Models;
 
 public class PowerCardPayload : DataHolder
 {

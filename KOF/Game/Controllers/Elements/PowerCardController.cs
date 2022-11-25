@@ -20,14 +20,28 @@ public class PowerCardController : ControllerBase
     [HttpGet(Name = "GetPowerCard")]
     public IActionResult Get([FromBody] PowerCardPayload payload)
     {
-        var result = powerCardService.Read(payload);
-        return Ok(result);
+        try
+        {
+            var result = powerCardService.Read(payload);
+            return Ok(result);
+        }
+        catch (Exception)
+        {
+            return BadRequest();
+        }
     }
 
     [HttpPost(Name = "PostPowerCard")]
     public IActionResult Post([FromBody] PowerCardPayload payload)
     {
-        var result = powerCardService.Create(payload);
-        return Ok(result);
+        try
+        {
+            var result = powerCardService.Create(payload);
+            return Created("Tests", result.First());
+        }
+        catch (Exception)
+        {
+            return BadRequest();
+        }
     }
 }

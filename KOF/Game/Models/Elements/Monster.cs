@@ -1,8 +1,8 @@
 ﻿namespace KOF.Models;
 
-public class Monster : DataHolder
+public class Monster
 {
-    public new int Id { get; set; }
+    public int Id { get; set; }
     public string? Name { get; set; }
     public int VictoryPoints { get; set; }
     public int LifePoints { get; set; }

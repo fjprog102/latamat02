@@ -25,7 +25,6 @@ public class PowerCardService : IDataService
             PowerCardPayload args = (PowerCardPayload)payload;
             var newCard = new PowerCard((string)args.Name!, (int)args.Cost!, (int)args.Type!);
             cards.Add(newCard);
-            //return cards.Select(card => card).Where(card => card.IdAttr!.Equals(payload.Id));
             return new Element[] { newCard };
         }
 
