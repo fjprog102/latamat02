@@ -15,10 +15,10 @@ public class TokyoBoard
         }
     }
 
-    public void ChangePlayerBoardPlace(Player player, List<Player> originalPlace, List<Player> newPlace)
+    public void ChangePlayerBoardPlace(Player player, List<Player>? originalPlace, List<Player>? newPlace)
     {
-        originalPlace.Remove(player);
-        newPlace.Add(player);
+        originalPlace?.Remove(player);
+        newPlace?.Add(player);
     }
 
     public void CheckAmountOfPlayers(List<Player> players)

@@ -15,10 +15,12 @@ public class KofDiceTest
     [Fact]
     public void AKofDiceFaceShouldHaveAValidSymbol()
     {
-        foreach (string face in kofDice.Faces)
-        {
-            Assert.Contains(face, kofDice.Symbols);
-        }
+        Assert.Equal("one", kofDice.Faces[0]);
+        Assert.Equal("two", kofDice.Faces[1]);
+        Assert.Equal("three", kofDice.Faces[2]);
+        Assert.Equal("heart", kofDice.Faces[3]);
+        Assert.Equal("energy", kofDice.Faces[4]);
+        Assert.Equal("smash", kofDice.Faces[5]);
     }
 
     [Fact]
@@ -26,20 +28,21 @@ public class KofDiceTest
     {
         Assert.Equal(6, kofDice.BlackDices.Length);
 
-        foreach (List<string> dice in kofDice.BlackDices)
-        {
-            Assert.Equal(dice, kofDice.Faces);
-        }
+        Assert.Equal(kofDice.BlackDices[0], kofDice.Faces);
+        Assert.Equal(kofDice.BlackDices[1], kofDice.Faces);
+        Assert.Equal(kofDice.BlackDices[2], kofDice.Faces);
+        Assert.Equal(kofDice.BlackDices[3], kofDice.Faces);
+        Assert.Equal(kofDice.BlackDices[4], kofDice.Faces);
+        Assert.Equal(kofDice.BlackDices[5], kofDice.Faces);
     }
 
     [Fact]
     public void ItShouldHaveTwoGreenDicesWithSixFaces()
     {
         Assert.Equal(2, kofDice.GreenDices.Length);
-        foreach (List<string> dice in kofDice.GreenDices)
-        {
-            Assert.Equal(dice, kofDice.Faces);
-        }
+
+        Assert.Equal(kofDice.GreenDices[0], kofDice.Faces);
+        Assert.Equal(kofDice.GreenDices[1], kofDice.Faces);
     }
 
     [Fact]
