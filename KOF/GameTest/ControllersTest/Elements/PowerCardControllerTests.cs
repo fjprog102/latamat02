@@ -1,10 +1,10 @@
 ﻿using System.Text.Json;
-using KOF.Controllers;
-using KOF.Models;
-using KOF.Services.Interfaces;
+using KOT.Controllers;
+using KOT.Models;
+using KOT.Services.Interfaces;
 using Moq;
 
-namespace KOF.Tests;
+namespace KOT.Tests;
 
 public class PowerCardControllerMockData
 {

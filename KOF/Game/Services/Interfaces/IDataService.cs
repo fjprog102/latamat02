@@ -1,7 +1,7 @@
-﻿using KOF.Models;
-using KOF.Models.Abstracts;
+﻿using KOT.Models;
+using KOT.Models.Abstracts;
 
-namespace KOF.Services.Interfaces;
+namespace KOT.Services.Interfaces;
 
 public interface IDataService
 {

@@ -1,6 +1,6 @@
-﻿namespace KOF.Services;
+﻿namespace KOT.Services;
 
-using KOF.Models;
+using KOT.Models;
 
 public class PlayerService
 {

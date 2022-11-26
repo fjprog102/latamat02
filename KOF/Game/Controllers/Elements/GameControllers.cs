@@ -1,8 +1,8 @@
-﻿using KOTGame.Models;
-using KOTGame.Services;
+﻿using KOT.Models;
+using KOT.Services;
 using Microsoft.AspNetCore.Mvc;
 
-namespace KOTGame.Controllers;
+namespace KOT.Controllers;
 
 [ApiController]
 [Route("[controller]")]

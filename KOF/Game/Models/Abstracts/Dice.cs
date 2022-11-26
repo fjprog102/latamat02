@@ -1,4 +1,4 @@
-﻿namespace Models.Abstracts;
+﻿namespace KOT.Models.Abstracts;
 
 public abstract class Dice
 {

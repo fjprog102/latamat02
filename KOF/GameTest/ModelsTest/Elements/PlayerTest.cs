@@ -1,6 +1,6 @@
-﻿using KOF.Models;
+﻿using KOT.Models;
 
-namespace KOF.Models.Test
+namespace KOT.Models.Test
 {
     public class PlayerTest
     {

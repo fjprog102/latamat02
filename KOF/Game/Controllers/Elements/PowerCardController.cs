@@ -1,10 +1,10 @@
 ﻿using System.Text.Json;
-using KOF.Models;
-using KOF.Models.Abstracts;
-using KOF.Services.Interfaces;
+using KOT.Models;
+using KOT.Models.Abstracts;
+using KOT.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
-namespace KOF.Controllers;
+namespace KOT.Controllers;
 
 [ApiController]
 [Route("[controller]")]

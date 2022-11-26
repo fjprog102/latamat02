@@ -1,6 +1,6 @@
-﻿namespace KOTGame.Services;
+﻿namespace KOT.Services;
 
-using KOTGame.Models;
+using KOT.Models;
 
 public static class GameService
 {

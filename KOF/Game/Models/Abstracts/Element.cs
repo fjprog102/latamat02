@@ -1,3 +1,3 @@
-﻿namespace KOF.Models.Abstracts;
+﻿namespace KOT.Models.Abstracts;
 
 public abstract class Element { }

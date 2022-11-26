@@ -1,4 +1,4 @@
-﻿using KOF.Services.Injector;
+﻿using KOT.Services.Injector;
 
 var builder = WebApplication.CreateBuilder(args);
 
