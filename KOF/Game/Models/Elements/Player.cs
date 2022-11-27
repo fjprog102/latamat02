@@ -1,9 +1,10 @@
-﻿namespace KOT.Models
+﻿using KOT.Models.Abstracts;
+
+namespace KOT.Models;
+
+public class Player : Element
 {
-    public class Player
-    {
-        public int? PID { get; set; }
-        public string? Name { get; set; }
-        public Monster? MyMonster { get; set; }
-    }
+    public int? PID { get; set; }
+    public string? Name { get; set; }
+    public Monster? MyMonster { get; set; }
 }
