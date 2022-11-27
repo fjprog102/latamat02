@@ -1,7 +1,7 @@
 ﻿using KOT.Models;
 using KOT.Models.Abstracts;
 
-namespace KOT.Models.PlayerTest;
+namespace KOT.Models.Test;
 
 public class PlayerTest
 {
