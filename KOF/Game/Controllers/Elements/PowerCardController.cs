@@ -1,6 +1,4 @@
-﻿using System.Text.Json;
-using KOT.Models;
-using KOT.Models.Abstracts;
+﻿using KOT.Models;
 using KOT.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
@@ -11,6 +9,8 @@ namespace KOT.Controllers;
 public class PowerCardController : ControllerBase
 {
     private readonly IDataService powerCardService;
+
+    private readonly string uriString = "localhost:<port>/powercard";
 
     public PowerCardController(IDataService instance)
     {
@@ -37,7 +37,7 @@ public class PowerCardController : ControllerBase
         try
         {
             var result = powerCardService.Create(payload);
-            return Created("Tests", result.First());
+            return Created(uriString, result.First());
         }
         catch (Exception)
         {
