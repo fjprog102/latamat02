@@ -1,4 +1,4 @@
-namespace KOT.Models;
+﻿namespace KOT.Models;
 
 using KOT.Models.Abstracts;
 

@@ -1,12 +1,12 @@
 ﻿namespace KOT.Controllers.Test;
 
-using Moq;
+using System.Text.Json;
 using KOT.Controllers;
 using KOT.Models;
 using KOT.Services;
-using System.Text.Json;
 using KOT.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
+using Moq;
 
 public class MonsterControllerMockData
 {
