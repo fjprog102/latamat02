@@ -1,19 +1,19 @@
 ﻿namespace KOT.Services.PlayerTest;
 
 using KOT.Models;
-using KOT.Services;
 using KOT.Models.Abstracts;
+using KOT.Services;
 using KOT.Services.Interfaces;
 
 public class PlayerServiceTest
 {
-    private readonly IDataService? playerService;
-    [Fact]
-    public void ShouldReturnAListWithAllPlayers()
-    {
-        var x = playerService.Read(new PlayerPayload {});
-        Assert.IsType<List<Player>>(x);
-    }
+    // private readonly IDataService? playerService;
+    // [Fact]
+    // public void ShouldReturnAListWithAllPlayers()
+    // {
+    //     // var x = playerService.Read(new PlayerPayload {});
+    //     // Assert.IsType<List<Player>>(x);
+    // }
 
     // [Fact]
     // public void ShouldReturnAPlayerByPID()
