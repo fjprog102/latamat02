@@ -6,7 +6,7 @@ using KOT.Services.Interfaces;
 public class PlayerService : IDataService
 {
     private List<Player> Players { get; }
-    private int nextId = 3;
+    private readonly int nextId = 3;
 
     public PlayerService()
     {
@@ -53,17 +53,17 @@ public class PlayerService : IDataService
     }
     IEnumerable<Element> IDataService.Delete(DataHolder payload)
     {
-    //     if (payload.Id != null)
-    //     {
-    //         var card = cards
-    //             .Select(card => card)
-    //             .Where(card => card.IdAttr!.Equals(payload.Id))
-    //             .ToArray();
+        //     if (payload.Id != null)
+        //     {
+        //         var card = cards
+        //             .Select(card => card)
+        //             .Where(card => card.IdAttr!.Equals(payload.Id))
+        //             .ToArray();
 
-    //         cards.Remove(card.First());
+        //         cards.Remove(card.First());
 
-    //         return card;
-    //     }
+        //         return card;
+        //     }
 
         return new Element[0];
     }
