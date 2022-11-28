@@ -2,24 +2,46 @@
 
 using KOT.Models;
 using KOT.Services;
+using System.Text.Json;
+using KOT.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 [ApiController]
 [Route("[controller]")]
 public class MonsterController : ControllerBase
 {
-    public MonsterController()
+    private readonly IMonsterService MonsterService;
+
+    public MonsterController(IMonsterService instance)
     {
+        MonsterService = instance;
     }
 
-    [HttpGet("GetAll")]
-    public ActionResult<List<Monster>> GetAll() =>
-        new MonsterService().GetAll();
-
     [HttpPost]
-    public IActionResult Create(Monster monster)
+    public IActionResult Post([FromBody] MonsterPayload payload)
     {
-        new MonsterService().Add(monster);
-        return CreatedAtAction(nameof(Create), new { id = monster.Id }, monster);
+        try
+        {
+            var result = MonsterService.Create(payload);
+            return Created("Monster", result.First());
+        }
+        catch (Exception)
+        {
+            return BadRequest();
+        }
+    }
+
+    [HttpGet]
+    public IActionResult Get([FromBody] MonsterPayload payload)
+    {
+        try
+        {
+            var result = MonsterService.Read(payload);
+            return Ok(result);
+        }
+        catch (Exception)
+        {
+            return BadRequest();
+        }
     }
 }

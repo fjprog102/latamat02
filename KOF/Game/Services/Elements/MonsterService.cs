@@ -1,63 +1,59 @@
 ﻿namespace KOT.Services;
 
 using KOT.Models;
+using KOT.Models.Abstracts;
+using KOT.Services.Interfaces;
 
-public class MonsterService
+public class MonsterService : IMonsterService
 {
-    private List<Monster> Monsters { get; }
-
-    private int nextId = 3;
-
-    public MonsterService()
+    private readonly List<Monster> Monsters = new List<Monster>
     {
-        Monsters = new List<Monster>
+        new Monster("CyberKitty", 5, 10),
+        new Monster("Gigazaur", 7, 10)
+    };
+
+    IEnumerable<Element> IMonsterService.Create(DataHolder payload)
+    {
+        if (payload.GetType() == typeof(MonsterPayload))
         {
-            new Monster
-            {
-                Id = 1,
-                Name = "CyberKitty",
-                VictoryPoints = 5,
-                LifePoints = 10
-            },
-            new Monster
-            {
-                Id = 2,
-                Name = "Gigazaur",
-                VictoryPoints = 7,
-                LifePoints = 10
-            }
-        };
-    }
-
-    public Monster? GetById(int id) => Monsters.FirstOrDefault(monster => monster.Id == id);
-
-    public List<Monster> GetAll() => Monsters;
-
-    public void Add(Monster monster)
-    {
-        monster.Id = nextId++;
-        Monsters.Add(monster);
-    }
-
-    public void Update(Monster monster)
-    {
-        var index = Monsters.FindIndex(m => m.Id == monster.Id);
-        if (index == -1)
-        {
-            return;
+            MonsterPayload args = (MonsterPayload)payload;
+            var newMonster = new Monster((string)args.Name!, (int)args.VictoryPoints!, (int)args.LifePoints!);
+            Monsters.Add(newMonster);
+            return new Element[] { newMonster };
         }
 
-        Monsters[index] = monster;
+        return new Element[0];
     }
 
-    public void Delete(int id)
+    IEnumerable<Element> IMonsterService.Read(DataHolder payload)
     {
-        var monster = GetById(id);
-        if (monster is null)
+        if (payload.Id != null)
         {
-            return;
+            return Monsters.Select(monster => monster).Where(monster => monster.IdAttr!.Equals(payload.Id));
         }
 
-        Monsters.Remove(monster);
+        return Monsters;
+    }
+
+    IEnumerable<Element> IMonsterService.Update(DataHolder payload)
+    {
+        return new Element[0];
+    }
+
+    IEnumerable<Element> IMonsterService.Delete(DataHolder payload)
+    {
+        if (payload.Id != null)
+        {
+            var monster = Monsters
+                .Select(monster => monster)
+                .Where(monster => monster.IdAttr!.Equals(payload.Id))
+                .ToArray();
+
+            Monsters.Remove(monster.First());
+
+            return monster;
+        }
+
+        return new Element[0];
     }
 }
