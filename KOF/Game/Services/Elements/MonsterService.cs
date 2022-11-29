@@ -33,10 +33,10 @@ public class MonsterService : IMonsterService
             return Monsters.Where(monster => monster.IdAttr!.Equals(payload.Id));
         }
 
-        if (payload.Name != null)
-        {
-            return Monsters.Where(monster => monster.NameAttr!.Equals(payload.Name));
-        }
+        // if (payload.Name != null)
+        // {
+        //     return Monsters.Where(monster => monster.NameAttr!.Equals(payload.Name));
+        // }
 
         return Monsters;
     }

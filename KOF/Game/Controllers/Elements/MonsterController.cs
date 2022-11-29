@@ -32,11 +32,27 @@ public class MonsterController : ControllerBase
         }
     }
 
-    [HttpGet]
-    public IActionResult Get([FromBody] MonsterPayload payload)
+    [HttpGet("{id}")]
+    public IActionResult Get(string? id)
     {
         try
         {
+            var payload = new MonsterPayload(id);
+            var result = MonsterService.Read(payload);
+            return Ok(result);
+        }
+        catch (Exception)
+        {
+            return BadRequest();
+        }
+    }
+
+    [HttpGet("GetAll")]
+    public IActionResult GetAll()
+    {
+        try
+        {
+            var payload = new MonsterPayload();
             var result = MonsterService.Read(payload);
             return Ok(result);
         }
