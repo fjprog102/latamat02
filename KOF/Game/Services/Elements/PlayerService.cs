@@ -10,7 +10,6 @@ public class PlayerService : IPlayerService
          new Player("player2", new Monster(){}) 
          };
     // private int nextId = 3;
-
     IEnumerable<Element> IPlayerService.Read(DataHolder payload)
     {
         if (payload.Id != null)
