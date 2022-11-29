@@ -4,11 +4,11 @@ using KOT.Services.Interfaces;
 
 namespace KOT.Services;
 
-public class PowerCardService : IDataService
+public class PowerCardService : IPowerCardService
 {
     private readonly List<PowerCard> cards = new List<PowerCard> { new PowerCard("testA", 1, 1) };
 
-    IEnumerable<Element> IDataService.Read(DataHolder payload)
+    IEnumerable<Element> IPowerCardService.Read(DataHolder payload)
     {
         if (payload.Id != null)
         {
@@ -18,7 +18,7 @@ public class PowerCardService : IDataService
         return cards;
     }
 
-    IEnumerable<Element> IDataService.Create(DataHolder payload)
+    IEnumerable<Element> IPowerCardService.Create(DataHolder payload)
     {
         if (payload.GetType() == typeof(PowerCardPayload))
         {
@@ -31,7 +31,7 @@ public class PowerCardService : IDataService
         return new Element[0];
     }
 
-    IEnumerable<Element> IDataService.Delete(DataHolder payload)
+    IEnumerable<Element> IPowerCardService.Delete(DataHolder payload)
     {
         if (payload.Id != null)
         {
@@ -48,7 +48,7 @@ public class PowerCardService : IDataService
         return new Element[0];
     }
 
-    IEnumerable<Element> IDataService.Update(DataHolder payload)
+    IEnumerable<Element> IPowerCardService.Update(DataHolder payload)
     {
         return new Element[0];
     }
