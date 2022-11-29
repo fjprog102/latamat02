@@ -12,7 +12,7 @@ public class MonsterService : IMonsterService
         new Monster("Gigazaur", 7, 10)
     };
 
-    IEnumerable<Element> IMonsterService.Create(DataHolder payload)
+    IEnumerable<Element> IMonsterService.Create(MonsterPayload payload)
     {
         if (payload.GetType() == typeof(MonsterPayload))
         {
@@ -25,22 +25,27 @@ public class MonsterService : IMonsterService
         return new Element[0];
     }
 
-    IEnumerable<Element> IMonsterService.Read(DataHolder payload)
+    IEnumerable<Element> IMonsterService.Read(MonsterPayload payload)
     {
         if (payload.Id != null)
         {
             return Monsters.Select(monster => monster).Where(monster => monster.IdAttr!.Equals(payload.Id));
         }
 
+        if (payload.Name != null)
+        {
+            return Monsters.Select(monster => monster).Where(monster => monster.NameAttr!.Equals(payload.Name));
+        }
+
         return Monsters;
     }
 
-    IEnumerable<Element> IMonsterService.Update(DataHolder payload)
+    IEnumerable<Element> IMonsterService.Update(MonsterPayload payload)
     {
         return new Element[0];
     }
 
-    IEnumerable<Element> IMonsterService.Delete(DataHolder payload)
+    IEnumerable<Element> IMonsterService.Delete(MonsterPayload payload)
     {
         if (payload.Id != null)
         {

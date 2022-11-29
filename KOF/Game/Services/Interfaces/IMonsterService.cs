@@ -5,8 +5,8 @@ using KOT.Models.Abstracts;
 
 public interface IMonsterService
 {
-    public IEnumerable<Element> Read(DataHolder data);
-    public IEnumerable<Element> Create(DataHolder data);
-    public IEnumerable<Element> Delete(DataHolder data);
-    public IEnumerable<Element> Update(DataHolder data);
+    public IEnumerable<Element> Read(MonsterPayload data);
+    public IEnumerable<Element> Create(MonsterPayload data);
+    public IEnumerable<Element> Delete(MonsterPayload data);
+    public IEnumerable<Element> Update(MonsterPayload data);
 }
