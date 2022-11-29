@@ -3,7 +3,7 @@ using KOT.Models.Abstracts;
 
 namespace KOT.Services.Interfaces;
 
-public interface IDataService
+public interface IPowerCardService
 {
     public IEnumerable<Element> Read(DataHolder data);
     public IEnumerable<Element> Create(DataHolder data);

@@ -1,6 +1,4 @@
-﻿using System.Text.Json;
-using KOT.Models;
-using KOT.Models.Abstracts;
+﻿using KOT.Models;
 using KOT.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
@@ -10,19 +8,21 @@ namespace KOT.Controllers;
 [Route("[controller]")]
 public class PowerCardController : ControllerBase
 {
-    private readonly IDataService powerCardService;
+    private readonly IPowerCardService powerCardService;
 
-    public PowerCardController(IDataService instance)
+    private readonly string uriString = "localhost:<port>/powercard";
+
+    public PowerCardController(IPowerCardService instance)
     {
         powerCardService = instance;
     }
 
     [HttpGet(Name = "GetPowerCard")]
-    public IActionResult Get([FromBody] PowerCardPayload payload)
+    public IActionResult Get(string? id)
     {
         try
         {
-            var result = powerCardService.Read(payload);
+            var result = powerCardService.Read(new PowerCardPayload(id: id));
             return Ok(result);
         }
         catch (Exception)
@@ -37,7 +37,7 @@ public class PowerCardController : ControllerBase
         try
         {
             var result = powerCardService.Create(payload);
-            return Created("Tests", result.First());
+            return Created(uriString, result.First());
         }
         catch (Exception)
         {
