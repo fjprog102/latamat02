@@ -18,6 +18,7 @@ public class MonsterService : IMonsterService
         {
             MonsterPayload args = (MonsterPayload)payload;
             var newMonster = new Monster((string)args.Name!, (int)args.VictoryPoints!, (int)args.LifePoints!);
+            
             Monsters.Add(newMonster);
             return new Element[] { newMonster };
         }
@@ -29,12 +30,12 @@ public class MonsterService : IMonsterService
     {
         if (payload.Id != null)
         {
-            return Monsters.Select(monster => monster).Where(monster => monster.IdAttr!.Equals(payload.Id));
+            return Monsters.Where(monster => monster.IdAttr!.Equals(payload.Id));
         }
 
         if (payload.Name != null)
         {
-            return Monsters.Select(monster => monster).Where(monster => monster.NameAttr!.Equals(payload.Name));
+            return Monsters.Where(monster => monster.NameAttr!.Equals(payload.Name));
         }
 
         return Monsters;
@@ -42,6 +43,16 @@ public class MonsterService : IMonsterService
 
     IEnumerable<Element> IMonsterService.Update(MonsterPayload payload)
     {
+        if (payload.Id != null || payload.GetType() == typeof(MonsterPayload))
+        {
+            MonsterPayload args = (MonsterPayload)payload;
+            var newMonster = new Monster((string)args.Name!, (int)args.VictoryPoints!, (int)args.LifePoints!);
+
+            Monsters[Monsters.FindIndex(monster => monster.IdAttr == payload.Id)] = newMonster;
+
+            return new Element[] { newMonster };
+        }
+
         return new Element[0];
     }
 
@@ -50,7 +61,6 @@ public class MonsterService : IMonsterService
         if (payload.Id != null)
         {
             var monster = Monsters
-                .Select(monster => monster)
                 .Where(monster => monster.IdAttr!.Equals(payload.Id))
                 .ToArray();
 
@@ -62,7 +72,6 @@ public class MonsterService : IMonsterService
         if (payload.Name != null)
         {
             var monster = Monsters
-                .Select(monster => monster)
                 .Where(monster => monster.NameAttr!.Equals(payload.Name))
                 .ToArray();
 

@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 [Route("[controller]")]
 public class MonsterController : ControllerBase
 {
+    private readonly string uriString = "localhost:<port>/monster";
     private readonly IMonsterService MonsterService;
 
     public MonsterController(IMonsterService instance)
@@ -23,7 +24,7 @@ public class MonsterController : ControllerBase
         try
         {
             var result = MonsterService.Create(payload);
-            return Created("Monster", result.First());
+            return Created(uriString, result.First());
         }
         catch (Exception)
         {
@@ -45,22 +46,22 @@ public class MonsterController : ControllerBase
         }
     }
 
-    // [HttpPut]
-    // public IActionResult Put([FromBody] MonsterPayload payload)
-    // {
-    //     try
-    //     {
-    //         var result = MonsterService.Update(payload);
-    //         return Ok(result);
-    //     }
-    //     catch (Exception)
-    //     {
-    //         return BadRequest();
-    //     }
-    // }
+    [HttpPut]
+    public IActionResult Put([FromBody] MonsterPayload payload)
+    {
+        try
+        {
+            var result = MonsterService.Update(payload);
+            return Created(uriString, result.First());
+        }
+        catch (Exception)
+        {
+            return BadRequest();
+        }
+    }
 
     [HttpDelete]
-    public IActionResult Put([FromBody] MonsterPayload payload)
+    public IActionResult Delete([FromBody] MonsterPayload payload)
     {
         try
         {
