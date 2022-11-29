@@ -59,6 +59,18 @@ public class MonsterService : IMonsterService
             return monster;
         }
 
+        if (payload.Name != null)
+        {
+            var monster = Monsters
+                .Select(monster => monster)
+                .Where(monster => monster.NameAttr!.Equals(payload.Name))
+                .ToArray();
+
+            Monsters.Remove(monster.First());
+
+            return monster;
+        }
+
         return new Element[0];
     }
 }

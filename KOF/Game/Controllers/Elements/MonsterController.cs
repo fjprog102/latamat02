@@ -44,4 +44,32 @@ public class MonsterController : ControllerBase
             return BadRequest();
         }
     }
+
+    // [HttpPut]
+    // public IActionResult Put([FromBody] MonsterPayload payload)
+    // {
+    //     try
+    //     {
+    //         var result = MonsterService.Update(payload);
+    //         return Ok(result);
+    //     }
+    //     catch (Exception)
+    //     {
+    //         return BadRequest();
+    //     }
+    // }
+
+    [HttpDelete]
+    public IActionResult Put([FromBody] MonsterPayload payload)
+    {
+        try
+        {
+            var result = MonsterService.Delete(payload);
+            return Ok(result);
+        }
+        catch (Exception)
+        {
+            return BadRequest();
+        }
+    }
 }
