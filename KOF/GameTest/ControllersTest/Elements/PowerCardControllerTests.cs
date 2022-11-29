@@ -4,6 +4,7 @@ using KOT.Models;
 using KOT.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Moq;
+using Xunit.Abstractions;
 
 namespace KOT.Tests;
 
@@ -31,14 +32,13 @@ public class PowerCardControllerTests
     public void TestsGetMethod200Response()
     {
         var powerCardService = new Mock<IPowerCardService>();
-        var payload = new PowerCardPayload();
         powerCardService
-            .Setup(mock => mock.Read(payload))
+            .Setup(mock => mock.Read(It.IsAny<PowerCardPayload>()))
             .Returns(PowerCardControllerMockData.GetMethodMock());
 
         var patched = new PowerCardController(powerCardService.Object);
 
-        var result = (OkObjectResult)patched.Get(payload);
+        var result = (OkObjectResult)patched.Get(id: null);
         Assert.Equal(200, result.StatusCode);
     }
 
@@ -46,12 +46,13 @@ public class PowerCardControllerTests
     public void TestsGetMethod400Response()
     {
         var powerCardService = new Mock<IPowerCardService>();
-        var payload = new PowerCardPayload();
-        powerCardService.Setup(mock => mock.Read(payload)).Throws(new Exception());
+        powerCardService
+            .Setup(mock => mock.Read(It.IsAny<PowerCardPayload>()))
+            .Throws(new Exception());
 
         var patched = new PowerCardController(powerCardService.Object);
 
-        var result = (BadRequestResult)patched.Get(payload);
+        var result = (BadRequestResult)patched.Get(id: null);
         Assert.Equal(400, result.StatusCode);
     }
 

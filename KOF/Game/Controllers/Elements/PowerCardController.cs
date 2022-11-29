@@ -18,11 +18,11 @@ public class PowerCardController : ControllerBase
     }
 
     [HttpGet(Name = "GetPowerCard")]
-    public IActionResult Get([FromBody] PowerCardPayload payload)
+    public IActionResult Get(string? id)
     {
         try
         {
-            var result = powerCardService.Read(payload);
+            var result = powerCardService.Read(new PowerCardPayload(id: id));
             return Ok(result);
         }
         catch (Exception)
