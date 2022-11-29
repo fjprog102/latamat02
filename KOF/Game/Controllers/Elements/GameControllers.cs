@@ -17,27 +17,12 @@ public class GameController : ControllerBase
         gameService = instance;
     }
 
-    [HttpGet(Name = "GetName")]
-    public IActionResult GetAll([FromBody] GamePayload payload)
+    [HttpGet(Name = "GetGame")]
+    public IActionResult Get(string? id)
     {
         try
         {
-            var result = gameService.Read(payload);
-            return Ok(result);
-        }
-        catch (Exception)
-        {
-            return BadRequest();
-        }
-    }
-
-    [HttpGet("{id}")]
-    public IActionResult Get(string id)
-    {
-        try
-        {
-            var payload = new GamePayload(id);
-            var result = gameService.Read(payload);
+            var result = gameService.Read(new GamePayload(id: id));
             return Ok(result);
         }
         catch (Exception)
