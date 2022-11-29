@@ -6,10 +6,9 @@ using KOT.Services.Interfaces;
 public class PlayerService : IPlayerService
 {
     private readonly List<Player> Players = new List<Player> {
-         new Player("player1", new Monster(){}),
-         new Player("player2", new Monster(){})
+         new Player("player1", new Monster("monster1", 10, 10){}),
+         new Player("player2", new Monster("monster2", 10, 10){})
          };
-    // private int nextId = 3;
     IEnumerable<Element> IPlayerService.Read(DataHolder payload)
     {
         if (payload.Id != null)
@@ -53,35 +52,4 @@ public class PlayerService : IPlayerService
     {
         return new Element[0];
     }
-    // public List<Player> GetAll() => Players;
-
-    // public Player? Get(int pid) => Players.FirstOrDefault(p => p.PID == pid);
-
-    // public void Add(Player player)
-    // {
-    //     player.PID = nextId++;
-    //     Players.Add(player);
-    // }
-
-    // public void Delete(int pid)
-    // {
-    //     var player = Get(pid);
-    //     if (player is null)
-    //     {
-    //         return;
-    //     }
-
-    //     Players.Remove(player);
-    // }
-
-    // public void Update(Player player)
-    // {
-    //     var index = Players.FindIndex(p => p.PID == player.PID);
-    //     if (index == -1)
-    //     {
-    //         return;
-    //     }
-
-    //     Players[index] = player;
-    // }
 }

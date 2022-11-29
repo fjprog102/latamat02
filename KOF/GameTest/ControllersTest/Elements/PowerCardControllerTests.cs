@@ -2,7 +2,9 @@
 using KOT.Controllers;
 using KOT.Models;
 using KOT.Services.Interfaces;
+using Microsoft.AspNetCore.Mvc;
 using Moq;
+using Xunit.Abstractions;
 
 namespace KOT.Tests;
 
@@ -22,14 +24,6 @@ public class PowerCardControllerMockData
     {
         return new List<PowerCard> { new PowerCard("name4", 1, 1) };
     }
-
-    /*
-        public static string ExpectedGet =
-            "[{\"IdAttr\":\"12345678\",\"NameAttr\":\"name1\",\"CostAttr\":1,\"TypeAttr\":0},{\"IdAttr\":\"12345678\",\"NameAttr\":\"name2\",\"CostAttr\":2,\"TypeAttr\":1},{\"IdAttr\":\"12345678\",\"NameAttr\":\"name3\",\"CostAttr\":3,\"TypeAttr\":0}]";
-        public static string ExpectedPost =
-            "[{\"IdAttr\":\"12345678\",\"NameAttr\":\"name4\",\"CostAttr\":1,\"TypeAttr\":1}]";
-    
-            */
 }
 
 public class PowerCardControllerTests
@@ -37,34 +31,56 @@ public class PowerCardControllerTests
     [Fact]
     public void TestsGetMethod200Response()
     {
-        /*
-        var powerCardService = new Mock<IPowerCard>();
+        var powerCardService = new Mock<IPowerCardService>();
         powerCardService
-            .Setup(mock => mock.GetMethod(null))
+            .Setup(mock => mock.Read(It.IsAny<PowerCardPayload>()))
             .Returns(PowerCardControllerMockData.GetMethodMock());
 
         var patched = new PowerCardController(powerCardService.Object);
 
-        var result = patched.Get();
-        string jsonString = JsonSerializer.Serialize<IEnumerable<PowerCard>>(result);
-        Assert.Equal(PowerCardControllerMockData.ExpectedGet, jsonString);
-        */
+        var result = (OkObjectResult)patched.Get(id: null);
+        Assert.Equal(200, result.StatusCode);
     }
 
     [Fact]
-    public void TestsPostMethod200Response()
+    public void TestsGetMethod400Response()
     {
-        /*
-        var powerCardService = new Mock<IPowerCard>();
+        var powerCardService = new Mock<IPowerCardService>();
         powerCardService
-            .Setup(mock => mock.PostMethod("", 0, 0))
+            .Setup(mock => mock.Read(It.IsAny<PowerCardPayload>()))
+            .Throws(new Exception());
+
+        var patched = new PowerCardController(powerCardService.Object);
+
+        var result = (BadRequestResult)patched.Get(id: null);
+        Assert.Equal(400, result.StatusCode);
+    }
+
+    [Fact]
+    public void TestsPostMethod201Response()
+    {
+        var powerCardService = new Mock<IPowerCardService>();
+        var payload = new PowerCardPayload(name: "name4", cost: 1, type: 1);
+        powerCardService
+            .Setup(mock => mock.Create(payload))
             .Returns(PowerCardControllerMockData.PostMethodMock());
 
         var patched = new PowerCardController(powerCardService.Object);
 
-        var result = patched.Post("", 0, 0);
-        string jsonString = JsonSerializer.Serialize<IEnumerable<PowerCard>>(result);
-        Assert.Equal(PowerCardControllerMockData.ExpectedPost, jsonString);
-        */
+        var result = (CreatedResult)patched.Post(payload);
+        Assert.Equal(201, result.StatusCode);
+    }
+
+    [Fact]
+    public void TestsPostMethod400Response()
+    {
+        var powerCardService = new Mock<IPowerCardService>();
+        var payload = new PowerCardPayload(name: "name4", cost: 1, type: 1);
+        powerCardService.Setup(mock => mock.Create(payload)).Throws(new Exception());
+
+        var patched = new PowerCardController(powerCardService.Object);
+
+        var result = (BadRequestResult)patched.Post(payload);
+        Assert.Equal(400, result.StatusCode);
     }
 }
