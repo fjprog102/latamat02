@@ -1,6 +1,6 @@
-﻿using KOT.Models;
+﻿using System.Text.Json;
+using KOT.Models;
 using KOT.Services;
-using System.Text.Json;
 using KOT.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 

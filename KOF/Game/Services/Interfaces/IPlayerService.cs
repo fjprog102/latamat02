@@ -1,4 +1,4 @@
-namespace KOT.Services.Interfaces;
+﻿namespace KOT.Services.Interfaces;
 
 using KOT.Models.Abstracts;
 

@@ -5,9 +5,9 @@ using KOT.Services.Interfaces;
 
 public class PlayerService : IPlayerService
 {
-    private List<Player> Players = new List<Player> {
+    private readonly List<Player> Players = new List<Player> {
          new Player("player1", new Monster(){}),
-         new Player("player2", new Monster(){}) 
+         new Player("player2", new Monster(){})
          };
     // private int nextId = 3;
     IEnumerable<Element> IPlayerService.Read(DataHolder payload)
@@ -16,7 +16,7 @@ public class PlayerService : IPlayerService
         {
             return Players.Select(player => player).Where(player => player.IdAttr!.Equals(payload.Id));
         }
-       
+
         return Players;
     }
 
@@ -34,17 +34,17 @@ public class PlayerService : IPlayerService
     }
     IEnumerable<Element> IPlayerService.Delete(DataHolder payload)
     {
-            if (payload.Id != null)
-            {
-                var player = Players
-                    .Select(player => player)
-                    .Where(player => player.IdAttr!.Equals(payload.Id))
-                    .ToArray();
+        if (payload.Id != null)
+        {
+            var player = Players
+                .Select(player => player)
+                .Where(player => player.IdAttr!.Equals(payload.Id))
+                .ToArray();
 
-                Players.Remove(player.First());
+            Players.Remove(player.First());
 
-                return player;
-            }
+            return player;
+        }
 
         return new Element[0];
     }
