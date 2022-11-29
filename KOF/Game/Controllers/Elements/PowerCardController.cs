@@ -8,11 +8,11 @@ namespace KOT.Controllers;
 [Route("[controller]")]
 public class PowerCardController : ControllerBase
 {
-    private readonly IDataService powerCardService;
+    private readonly IPowerCardService powerCardService;
 
     private readonly string uriString = "localhost:<port>/powercard";
 
-    public PowerCardController(IDataService instance)
+    public PowerCardController(IPowerCardService instance)
     {
         powerCardService = instance;
     }

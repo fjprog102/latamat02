@@ -14,8 +14,8 @@ public class InjectorTests
 
         var serviceMatches = builder.Services
             .Select(service => service)
-            .Where(service => service.ServiceType == typeof(IDataService));
+            .Where(service => service.ServiceType == typeof(IPowerCardService));
 
-        Assert.Equal(1, serviceMatches.Count());
+        Assert.Single(serviceMatches);
     }
 }

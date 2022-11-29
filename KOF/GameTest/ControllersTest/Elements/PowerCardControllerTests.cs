@@ -30,7 +30,7 @@ public class PowerCardControllerTests
     [Fact]
     public void TestsGetMethod200Response()
     {
-        var powerCardService = new Mock<IDataService>();
+        var powerCardService = new Mock<IPowerCardService>();
         var payload = new PowerCardPayload();
         powerCardService
             .Setup(mock => mock.Read(payload))
@@ -45,7 +45,7 @@ public class PowerCardControllerTests
     [Fact]
     public void TestsGetMethod400Response()
     {
-        var powerCardService = new Mock<IDataService>();
+        var powerCardService = new Mock<IPowerCardService>();
         var payload = new PowerCardPayload();
         powerCardService.Setup(mock => mock.Read(payload)).Throws(new Exception());
 
@@ -58,7 +58,7 @@ public class PowerCardControllerTests
     [Fact]
     public void TestsPostMethod201Response()
     {
-        var powerCardService = new Mock<IDataService>();
+        var powerCardService = new Mock<IPowerCardService>();
         var payload = new PowerCardPayload(name: "name4", cost: 1, type: 1);
         powerCardService
             .Setup(mock => mock.Create(payload))
@@ -73,7 +73,7 @@ public class PowerCardControllerTests
     [Fact]
     public void TestsPostMethod400Response()
     {
-        var powerCardService = new Mock<IDataService>();
+        var powerCardService = new Mock<IPowerCardService>();
         var payload = new PowerCardPayload(name: "name4", cost: 1, type: 1);
         powerCardService.Setup(mock => mock.Create(payload)).Throws(new Exception());
 
