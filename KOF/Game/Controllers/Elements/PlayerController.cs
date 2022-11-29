@@ -17,7 +17,7 @@ public class PlayerController : ControllerBase
         playerService = instance;
     }
 
-    [HttpGet]
+    [HttpGet(Name = "GetPlayers")]
     public IActionResult Get([FromBody] PlayerPayload payload)
     {
         try
