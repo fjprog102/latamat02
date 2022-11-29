@@ -3,72 +3,54 @@ using KOT.Models;
 using KOT.Models.Abstracts;
 using KOT.Services.Interfaces;
 
-public class PlayerService : IDataService
+public class PlayerService : IPlayerService
 {
-    private List<Player> Players { get; }
-    private readonly int nextId = 3;
+    private List<Player> Players = new List<Player> {
+         new Player("player1", new Monster(){}),
+         new Player("player2", new Monster(){}) 
+         };
+    // private int nextId = 3;
 
-    public PlayerService()
-    {
-        Players = new List<Player>
-        {
-            new Player
-            {
-                PID = 1,
-                Name = "Pedro",
-                MyMonster = new Monster()
-            },
-            new Player
-            {
-                PID = 2,
-                Name = "Pablo",
-                MyMonster = new Monster()
-            }
-        };
-    }
-    IEnumerable<Element> IDataService.Read(DataHolder payload)
+    IEnumerable<Element> IPlayerService.Read(DataHolder payload)
     {
         if (payload.Id != null)
         {
-            return Players.Select(player => player).Where(player => player.PID!.Equals(payload.Id));
+            return Players.Select(player => player).Where(player => player.IdAttr!.Equals(payload.Id));
         }
-
+       
         return Players;
     }
 
-    IEnumerable<Element> IDataService.Create(DataHolder payload)
+    IEnumerable<Element> IPlayerService.Create(DataHolder payload)
     {
         if (payload.GetType() == typeof(PlayerPayload))
         {
             PlayerPayload args = (PlayerPayload)payload;
-            var player = new Player();
-            player.PID = nextId;
-            player.Name = args.Name;
-            player.MyMonster = args.MyMonster;
+            var player = new Player((string)args.Name!, (Monster)args.MyMonster!);
             Players.Add(player);
             return new Element[] { player };
         }
 
         return new Element[0];
     }
-    IEnumerable<Element> IDataService.Delete(DataHolder payload)
+    IEnumerable<Element> IPlayerService.Delete(DataHolder payload)
     {
-        //     if (payload.Id != null)
-        //     {
-        //         var card = cards
-        //             .Select(card => card)
-        //             .Where(card => card.IdAttr!.Equals(payload.Id))
-        //             .ToArray();
+            if (payload.Id != null)
+            {
+                var player = Players
+                    .Select(player => player)
+                    .Where(player => player.IdAttr!.Equals(payload.Id))
+                    .ToArray();
 
-        //         cards.Remove(card.First());
+                Players.Remove(player.First());
 
-        //         return card;
-        //     }
+                return player;
+            }
 
         return new Element[0];
     }
 
-    IEnumerable<Element> IDataService.Update(DataHolder payload)
+    IEnumerable<Element> IPlayerService.Update(DataHolder payload)
     {
         return new Element[0];
     }

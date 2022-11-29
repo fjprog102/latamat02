@@ -1,6 +1,6 @@
-﻿using System.Text.Json;
-using KOT.Models;
-using KOT.Models.Abstracts;
+﻿using KOT.Models;
+using KOT.Services;
+using System.Text.Json;
 using KOT.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
@@ -10,14 +10,14 @@ namespace KOT.Controllers;
 [Route("[controller]")]
 public class PlayerController : ControllerBase
 {
-    private readonly IDataService playerService;
+    private readonly IPlayerService playerService;
 
-    public PlayerController(IDataService instance)
+    public PlayerController(IPlayerService instance)
     {
         playerService = instance;
     }
 
-    [HttpGet(Name = "GetPlayer")]
+    [HttpGet]
     public IActionResult Get([FromBody] PlayerPayload payload)
     {
         try
@@ -31,13 +31,13 @@ public class PlayerController : ControllerBase
         }
     }
 
-    [HttpPost(Name = "PostPlayer")]
+    [HttpPost]
     public IActionResult Post([FromBody] PlayerPayload payload)
     {
         try
         {
             var result = playerService.Create(payload);
-            return Created("Tests", result.First());
+            return Created("PlayerTest", result.First());
         }
         catch (Exception)
         {

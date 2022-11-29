@@ -8,12 +8,12 @@ public class PlayerPayload : DataHolder
     public Monster? MyMonster { get; set; }
 
     public PlayerPayload(
-        int? pid = null,
+        string? id = null,
         string? name = null,
         Monster? monster = null
     )
     {
-        Id = pid.ToString();
+        Id = id;
         Name = name;
         MyMonster = monster;
     }
