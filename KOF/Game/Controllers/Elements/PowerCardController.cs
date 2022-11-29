@@ -44,4 +44,18 @@ public class PowerCardController : ControllerBase
             return BadRequest();
         }
     }
+
+    [HttpDelete(Name = "DeletePowerCard")]
+    public IActionResult Delete(string id)
+    {
+        try
+        {
+            var result = powerCardService.Delete(new PowerCardPayload(id: id));
+            return Ok(result.First());
+        }
+        catch (Exception)
+        {
+            return BadRequest();
+        }
+    }
 }
