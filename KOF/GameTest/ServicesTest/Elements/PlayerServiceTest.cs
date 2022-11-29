@@ -30,7 +30,7 @@ public class PlayerServiceTest
             {
                 PID = 3,
                 Name = "Kive",
-                MyMonster = new Monster()
+                MyMonster = new Monster("Monster", 1, 1)
             }
         );
         Assert.False(object.ReferenceEquals(null, playerService.Get(3)));
@@ -53,7 +53,7 @@ public class PlayerServiceTest
         {
             PID = 2,
             Name = "Jose",
-            MyMonster = new Monster()
+            MyMonster = new Monster("Monster", 1, 1)
         };
         playerService.Update(player);
         Assert.Equal("Jose", playerService.Get(2)?.Name);
