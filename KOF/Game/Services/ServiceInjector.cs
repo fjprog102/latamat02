@@ -10,6 +10,10 @@ public class ServiceInjector
     {
         //Add new services creating the respective interface
         services.AddSingleton<IDataService, PowerCardService>();
+<<<<<<< HEAD
         services.AddSingleton<IGameService, GameService>();
+=======
+        services.AddSingleton<IMonsterService, MonsterService>();
+>>>>>>> main
     }
 }

@@ -15,13 +15,13 @@ public class PlayerService
             {
                 PID = 1,
                 Name = "Pedro",
-                MyMonster = new Monster()
+                MyMonster = new Monster("Monster1", 5, 5)
             },
             new Player
             {
                 PID = 2,
                 Name = "Pablo",
-                MyMonster = new Monster()
+                MyMonster = new Monster("Monster2", 5, 5)
             }
         };
     }
