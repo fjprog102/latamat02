@@ -18,7 +18,7 @@ public class MonsterService : IMonsterService
         {
             MonsterPayload args = (MonsterPayload)payload;
             var newMonster = new Monster((string)args.Name!, (int)args.VictoryPoints!, (int)args.LifePoints!);
-            
+
             Monsters.Add(newMonster);
             return new Element[] { newMonster };
         }
