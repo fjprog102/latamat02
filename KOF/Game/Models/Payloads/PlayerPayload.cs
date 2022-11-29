@@ -10,11 +10,11 @@ public class PlayerPayload : DataHolder
     public PlayerPayload(
         string? id = null,
         string? name = null,
-        Monster? monster = null
+        Monster? myMonster = null
     )
     {
         Id = id;
         Name = name;
-        MyMonster = monster;
+        MyMonster = myMonster;
     }
 }

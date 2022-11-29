@@ -2,9 +2,9 @@
 using KOT.Models.Abstracts;
 public class Player : Element
 {
-    public string Id { get; set; }
-    public string Name { get; set; }
-    public Monster? MyMonster { get; set; }
+    private string Id { get; set; }
+    private string Name { get; set; }
+    private Monster? MyMonster { get; set; }
 
     public Player(string name, Monster monster)
     {
