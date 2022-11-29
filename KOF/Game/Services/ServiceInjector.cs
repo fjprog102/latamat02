@@ -9,6 +9,7 @@ public class ServiceInjector
     public void InjectServices(IServiceCollection services)
     {
         //Add new services creating the respective interface
+        services.AddSingleton<IGameService, GameService>();
         services.AddSingleton<IPowerCardService, PowerCardService>();
         services.AddSingleton<IMonsterService, MonsterService>();
     }

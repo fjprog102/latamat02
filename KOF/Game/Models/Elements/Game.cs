@@ -1,9 +1,15 @@
 ﻿namespace KOT.Models;
 
-public class Game
+using KOT.Models.Abstracts;
+
+public class Game : Element
 {
-    public int Id { get; set; }
-    public string? TokyoBoard { get; set; }
-    public int NumberOfPlayers { get; set; }
-    public int ActiveUser { get; set; }
+    public string Id { get; set; }
+    public TokyoBoard? Board { get; set; }
+
+    public Game(TokyoBoard board)
+    {
+        Id = "12345678"; //Pending for bson ObjectId
+        Board = board ?? throw new Exception("The board must be ready to initiliaze the Game.");
+    }
 }
