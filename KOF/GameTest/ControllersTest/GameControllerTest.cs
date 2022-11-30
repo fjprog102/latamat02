@@ -10,7 +10,7 @@ public class GameControllerMockData
 {
     public static List<Game> GetMethodMock()
     {
-        TokyoBoard board = new TokyoBoard(new List<Player>() { new Player(), new Player() });
+        TokyoBoard board = new TokyoBoard(new List<Player>() { new Player("player1", null), new Player("player2", null) });
 
         return new List<Game>
         {
@@ -22,7 +22,7 @@ public class GameControllerMockData
 
     public static List<Game> PostMethodMock()
     {
-        TokyoBoard board = new TokyoBoard(new List<Player>() { new Player(), new Player() });
+        TokyoBoard board = new TokyoBoard(new List<Player>() { new Player("player1", null), new Player("player2", null) });
         return new List<Game> { new Game(board) };
     }
 }
