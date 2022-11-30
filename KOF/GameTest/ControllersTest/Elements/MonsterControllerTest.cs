@@ -131,14 +131,13 @@ public class MonsterControllerTest
     public void TestsDeleteMethod201Response()
     {
         var monsterService = new Mock<IMonsterService>();
-        var payload = new MonsterPayload(id: "123", name: "Monster6", victoryPoints: 1, lifePoints: 1);
         monsterService
-            .Setup(mock => mock.Delete(payload))
+            .Setup(mock => mock.Delete(It.IsAny<MonsterPayload>()))
             .Returns(MonsterControllerMockData.DeleteMethodMock());
 
         var patched = new MonsterController(monsterService.Object);
 
-        var result = (OkObjectResult)patched.Delete(payload);
+        var result = (OkObjectResult)patched.Delete("123");
         Assert.Equal(200, result.StatusCode);
     }
 
@@ -146,14 +145,13 @@ public class MonsterControllerTest
     public void TestsDeleteMethod400Response()
     {
         var monsterService = new Mock<IMonsterService>();
-        var payload = new MonsterPayload(id: "123", name: "Monster6", victoryPoints: 1, lifePoints: 1);
         monsterService
-            .Setup(mock => mock.Delete(payload))
+            .Setup(mock => mock.Delete(It.IsAny<MonsterPayload>()))
             .Throws(new Exception());
 
         var patched = new MonsterController(monsterService.Object);
 
-        var result = (BadRequestResult)patched.Delete(payload);
+        var result = (BadRequestResult)patched.Delete("123");
         Assert.Equal(400, result.StatusCode);
     }
 }
