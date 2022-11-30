@@ -1,16 +1,14 @@
-﻿using System.Text.Json;
-using KOT.Controllers;
+﻿using KOT.Controllers;
 using KOT.Models;
 using KOT.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Moq;
-using Xunit.Abstractions;
 
 namespace KOT.Tests;
 
 public class PowerCardControllerMockData
 {
-    public static List<PowerCard> GetMethodMock()
+    public static List<PowerCard> GetListMock()
     {
         return new List<PowerCard>
         {
@@ -20,9 +18,9 @@ public class PowerCardControllerMockData
         };
     }
 
-    public static List<PowerCard> PostMethodMock()
+    public static List<PowerCard> GetSingleMock()
     {
-        return new List<PowerCard> { new PowerCard("name4", 1, 1) };
+        return new List<PowerCard> { new PowerCard("name", 1, 1) };
     }
 }
 
@@ -34,7 +32,7 @@ public class PowerCardControllerTests
         var powerCardService = new Mock<IPowerCardService>();
         powerCardService
             .Setup(mock => mock.Read(It.IsAny<PowerCardPayload>()))
-            .Returns(PowerCardControllerMockData.GetMethodMock());
+            .Returns(PowerCardControllerMockData.GetListMock());
 
         var patched = new PowerCardController(powerCardService.Object);
 
@@ -60,10 +58,10 @@ public class PowerCardControllerTests
     public void TestsPostMethod201Response()
     {
         var powerCardService = new Mock<IPowerCardService>();
-        var payload = new PowerCardPayload(name: "name4", cost: 1, type: 1);
+        var payload = new PowerCardPayload(name: "name", cost: 1, type: 1);
         powerCardService
             .Setup(mock => mock.Create(payload))
-            .Returns(PowerCardControllerMockData.PostMethodMock());
+            .Returns(PowerCardControllerMockData.GetSingleMock());
 
         var patched = new PowerCardController(powerCardService.Object);
 
@@ -75,12 +73,42 @@ public class PowerCardControllerTests
     public void TestsPostMethod400Response()
     {
         var powerCardService = new Mock<IPowerCardService>();
-        var payload = new PowerCardPayload(name: "name4", cost: 1, type: 1);
+        var payload = new PowerCardPayload(name: "name", cost: 1, type: 1);
         powerCardService.Setup(mock => mock.Create(payload)).Throws(new Exception());
 
         var patched = new PowerCardController(powerCardService.Object);
 
         var result = (BadRequestResult)patched.Post(payload);
+        Assert.Equal(400, result.StatusCode);
+    }
+
+    [Fact]
+    public void TestsDeleteMethod200Response()
+    {
+        var powerCardService = new Mock<IPowerCardService>();
+        var payload = new PowerCardPayload();
+        powerCardService
+            .Setup(mock => mock.Delete(It.IsAny<PowerCardPayload>()))
+            .Returns(PowerCardControllerMockData.GetSingleMock());
+
+        var patched = new PowerCardController(powerCardService.Object);
+
+        var result = (OkObjectResult)patched.Delete(id: null);
+        Assert.Equal(200, result.StatusCode);
+    }
+
+    [Fact]
+    public void TestsDeleteMethod400Response()
+    {
+        var powerCardService = new Mock<IPowerCardService>();
+        var payload = new PowerCardPayload();
+        powerCardService
+            .Setup(mock => mock.Delete(It.IsAny<PowerCardPayload>()))
+            .Throws(new Exception());
+
+        var patched = new PowerCardController(powerCardService.Object);
+
+        var result = (BadRequestResult)patched.Delete(id: null);
         Assert.Equal(400, result.StatusCode);
     }
 }

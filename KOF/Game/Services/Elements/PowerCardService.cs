@@ -8,9 +8,7 @@ namespace KOT.Services;
 
 public class PowerCardService : IPowerCardService
 {
-    private readonly List<PowerCard> cards = new List<PowerCard> { new PowerCard("testA", 1, 1) };
-
-    private readonly IMongoCollection<PowerCard> PowerCardCollection;
+    public readonly IMongoCollection<PowerCard> PowerCardCollection;
 
     public PowerCardService(IOptions<KOTDatabaseSettings> kotDatabaseSettings)
     {
@@ -21,25 +19,22 @@ public class PowerCardService : IPowerCardService
         );
     }
 
-    IEnumerable<Element> IPowerCardService.Read(DataHolder payload)
+    public IEnumerable<Element> Read(DataHolder payload)
     {
         if (payload.Id != null)
         {
             return PowerCardCollection.Find(x => x.Id!.Equals(payload.Id)).ToList();
-            //return cards.Select(card => card).Where(card => card.IdAttr!.Equals(payload.Id));
         }
 
         return PowerCardCollection.Find(x => true).ToList();
-        //return cards;
     }
 
-    IEnumerable<Element> IPowerCardService.Create(DataHolder payload)
+    public IEnumerable<Element> Create(DataHolder payload)
     {
         if (payload.GetType() == typeof(PowerCardPayload))
         {
             PowerCardPayload args = (PowerCardPayload)payload;
             var newCard = new PowerCard((string)args.Name!, (int)args.Cost!, (int)args.Type!);
-            //cards.Add(newCard);
             PowerCardCollection.InsertOne(newCard);
             return new Element[] { newCard };
         }
@@ -47,7 +42,7 @@ public class PowerCardService : IPowerCardService
         return new Element[0];
     }
 
-    IEnumerable<Element> IPowerCardService.Delete(DataHolder payload)
+    public IEnumerable<Element> Delete(DataHolder payload)
     {
         if (payload.Id != null)
         {
@@ -58,7 +53,7 @@ public class PowerCardService : IPowerCardService
         return new Element[0];
     }
 
-    IEnumerable<Element> IPowerCardService.Update(DataHolder payload)
+    public IEnumerable<Element> Update(DataHolder payload)
     {
         return new Element[0];
     }

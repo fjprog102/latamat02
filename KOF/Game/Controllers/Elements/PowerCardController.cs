@@ -17,7 +17,7 @@ public class PowerCardController : ControllerBase
         powerCardService = instance;
     }
 
-    [HttpGet(Name = "GetPowerCard")]
+    [HttpGet("{id?}")]
     public IActionResult Get(string? id)
     {
         try
@@ -31,7 +31,7 @@ public class PowerCardController : ControllerBase
         }
     }
 
-    [HttpPost(Name = "PostPowerCard")]
+    [HttpPost()]
     public IActionResult Post([FromBody] PowerCardPayload payload)
     {
         try
@@ -45,8 +45,8 @@ public class PowerCardController : ControllerBase
         }
     }
 
-    [HttpDelete(Name = "DeletePowerCard")]
-    public IActionResult Delete(string id)
+    [HttpDelete("{id?}")]
+    public IActionResult Delete(string? id)
     {
         try
         {

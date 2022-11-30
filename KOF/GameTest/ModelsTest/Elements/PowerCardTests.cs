@@ -11,5 +11,6 @@ public class PowerCardTests
         Assert.True(card.Name.GetType() == typeof(string));
         Assert.True(card.Cost.GetType() == typeof(int));
         Assert.True(card.Type.GetType() == typeof(AbstractCard.CardTypes));
+        Assert.True(card.Id! == null);
     }
 }
