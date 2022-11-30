@@ -7,7 +7,7 @@ using KOT.Services.Interfaces;
 public class GameService : IGameService
 {
 
-    private static readonly TokyoBoard Board = new TokyoBoard(new List<Player>() { new Player(), new Player() });
+    private static readonly TokyoBoard Board = new TokyoBoard(new List<Player>() { new Player("player1", null), new Player("player2", null) });
     private readonly List<Game> Games = new List<Game> { new Game(Board) };
 
     IEnumerable<Element> IGameService.Read(DataHolder payload)

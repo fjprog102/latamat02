@@ -4,7 +4,7 @@ using KOT.Models;
 
 public class GameTest
 {
-    private readonly TokyoBoard board = new TokyoBoard(new List<Player>() { new Player(), new Player() });
+    private readonly TokyoBoard board = new TokyoBoard(new List<Player>() { new Player("player1", null), new Player("player2", null) });
 
     [Fact]
     public void ItShouldThrownAnExceptionIfThenullBoardIsNull()

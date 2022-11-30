@@ -18,4 +18,19 @@ public class InjectorTests
 
         Assert.Single(serviceMatches);
     }
+
+    [Fact]
+    public void TestInjectorForGameService()
+    {
+        var builder = WebApplication.CreateBuilder();
+
+        var serviceInjector = new ServiceInjector();
+        serviceInjector.InjectServices(builder.Services);
+
+        var serviceMatches = builder.Services
+            .Select(service => service)
+            .Where(service => service.ServiceType == typeof(IGameService));
+
+        Assert.Single(serviceMatches);
+    }
 }
