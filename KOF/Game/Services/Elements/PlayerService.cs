@@ -1,60 +1,55 @@
 ﻿namespace KOT.Services;
-
 using KOT.Models;
+using KOT.Models.Abstracts;
+using KOT.Services.Interfaces;
 
-public class PlayerService
+public class PlayerService : IPlayerService
 {
-    private List<Player> Players { get; }
-    private int nextId = 3;
-
-    public PlayerService()
+    private readonly List<Player> Players = new List<Player> {
+         new Player("player1", new Monster("monster1", 10, 10){}),
+         new Player("player2", new Monster("monster2", 10, 10){})
+         };
+    IEnumerable<Element> IPlayerService.Read(DataHolder payload)
     {
-        Players = new List<Player>
+        if (payload.Id != null)
         {
-            new Player
-            {
-                PID = 1,
-                Name = "Pedro",
-                MyMonster = new Monster("Monster1", 5, 5)
-            },
-            new Player
-            {
-                PID = 2,
-                Name = "Pablo",
-                MyMonster = new Monster("Monster2", 5, 5)
-            }
-        };
-    }
-
-    public List<Player> GetAll() => Players;
-
-    public Player? Get(int pid) => Players.FirstOrDefault(p => p.PID == pid);
-
-    public void Add(Player player)
-    {
-        player.PID = nextId++;
-        Players.Add(player);
-    }
-
-    public void Delete(int pid)
-    {
-        var player = Get(pid);
-        if (player is null)
-        {
-            return;
+            return Players.Select(player => player).Where(player => player.IdAttr!.Equals(payload.Id));
         }
 
-        Players.Remove(player);
+        return Players;
     }
 
-    public void Update(Player player)
+    IEnumerable<Element> IPlayerService.Create(DataHolder payload)
     {
-        var index = Players.FindIndex(p => p.PID == player.PID);
-        if (index == -1)
+        if (payload.GetType() == typeof(PlayerPayload))
         {
-            return;
+            PlayerPayload args = (PlayerPayload)payload;
+            var player = new Player((string)args.Name!, (Monster)args.MyMonster!);
+            Players.Add(player);
+            return new Element[] { player };
         }
 
-        Players[index] = player;
+        return new Element[0];
+    }
+    IEnumerable<Element> IPlayerService.Delete(DataHolder payload)
+    {
+        if (payload.Id != null)
+        {
+            var player = Players
+                .Select(player => player)
+                .Where(player => player.IdAttr!.Equals(payload.Id))
+                .ToArray();
+
+            Players.Remove(player.First());
+
+            return player;
+        }
+
+        return new Element[0];
+    }
+
+    IEnumerable<Element> IPlayerService.Update(DataHolder payload)
+    {
+        return new Element[0];
     }
 }
