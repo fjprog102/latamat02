@@ -4,18 +4,6 @@ using KOT.Models.Abstracts;
 
 public class TokyoBoardProcessor
 {
-    // public void SetElement(List<Player> players, TokyoBoard board)
-    // {
-    //     if(players.Count() > 4 && players.Count() < 7)
-    //     {
-    //         board.TokyoBay = new List<Player>();
-    //     }
-    //     foreach (Player player in players)
-    //     {
-    //         board.OutsideTokyo.Add(player);
-    //     } 
-    // }
-
     public void ChangePlayerBoardPlace(Player player, List<Player>? originalPlace, List<Player>? newPlace)
     {
         originalPlace?.Remove(player);
