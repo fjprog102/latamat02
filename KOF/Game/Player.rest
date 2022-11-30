@@ -1,6 +1,0 @@
-
-### get Players
-GET http://localhost:7021/api/Player
-
-### get with param Player
-GET http://localhost:7021/api/Player/1
