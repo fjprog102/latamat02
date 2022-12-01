@@ -1,10 +1,10 @@
-﻿using System.Text.Json;
+﻿namespace KOT.Controllers;
+
+using System.Text.Json;
 using KOT.Models;
 using KOT.Models.Abstracts;
 using KOT.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
-
-namespace KOT.Controllers;
 
 [ApiController]
 [Route("[controller]")]
@@ -17,12 +17,13 @@ public class GameController : ControllerBase
         gameService = instance;
     }
 
-    [HttpGet(Name = "GetGame")]
+    [HttpGet("{id?}")]
     public IActionResult Get(string? id)
     {
         try
         {
-            var result = gameService.Read(new GamePayload(id: id));
+            var payload = new GamePayload(id);
+            var result = gameService.Read(payload);
             return Ok(result);
         }
         catch (Exception)
@@ -31,7 +32,7 @@ public class GameController : ControllerBase
         }
     }
 
-    [HttpPost(Name = "PostGame")]
+    [HttpPost()]
     public IActionResult Post([FromBody] GamePayload payload)
     {
         try
@@ -45,7 +46,7 @@ public class GameController : ControllerBase
         }
     }
 
-    [HttpPut(Name = "PutGame")]
+    [HttpPut]
     public IActionResult Put([FromBody] GamePayload payload)
     {
         try
@@ -59,12 +60,14 @@ public class GameController : ControllerBase
         }
     }
 
-    [HttpDelete(Name = "DeleteGame")]
-    public IActionResult Delete([FromBody] GamePayload payload)
+    [HttpDelete("{id?}")]
+    public IActionResult Delete(string? id)
     {
         try
         {
+            var payload = new GamePayload(id);
             var result = gameService.Delete(payload);
+
             return Ok(result);
         }
         catch (Exception)
@@ -73,4 +76,3 @@ public class GameController : ControllerBase
         }
     }
 }
-
