@@ -1,24 +1,28 @@
 ﻿using KOT.Models.Abstracts;
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
 
 namespace KOT.Models;
 
 public class PowerCard : AbstractCard
 {
-    private string Id { get; set; }
-    private string Name { get; set; }
-    private int Cost { get; set; }
-    private CardTypes Type { get; set; }
+    [BsonId]
+    [BsonRepresentation(BsonType.ObjectId)]
+    public string? Id { get; set; }
+
+    [BsonElement("Name")]
+    public string Name { get; set; }
+
+    [BsonElement("Cost")]
+    public int Cost { get; set; }
+
+    [BsonElement("Type")]
+    public CardTypes Type { get; set; }
 
     public PowerCard(string name, int cost, int type)
     {
-        Id = "12345678"; //Pending for bson ObjectId
         Name = name;
         Cost = cost;
         Type = (CardTypes)type;
     }
-
-    public string? IdAttr => Id;
-    public string NameAttr => Name;
-    public int CostAttr => Cost;
-    public CardTypes TypeAttr => Type;
 }
