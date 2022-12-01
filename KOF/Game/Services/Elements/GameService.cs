@@ -28,12 +28,12 @@ public class GameService : IGameService
     {
         if (payload.Id != null)
         {
-            return Games.Where(game => game.Id!.Equals(payload.Id));
-            //return GameCollection.Find(x => x.Id!.Equals(payload.Id)).ToList();
+            // return Games.Where(game => game.Id!.Equals(payload.Id));
+            return GameCollection.Find(x => x.Id!.Equals(payload.Id)).ToList();
         }
 
-        return Games;
-        // return GameCollection.Find(x => true).ToList();
+        // return Games;
+        return GameCollection.Find(x => true).ToList();
     }
 
     IEnumerable<Element> IGameService.Create(DataHolder payload)
@@ -43,8 +43,8 @@ public class GameService : IGameService
         {
             GamePayload args = (GamePayload)payload;
             var newGame = new Game((TokyoBoard)args.Board!);
-            Games.Add(newGame);
-            // GameCollection.InsertOne(newGame);
+            // Games.Add(newGame);
+            GameCollection.InsertOne(newGame);
             return new Element[] { newGame };
         }
 
@@ -56,13 +56,13 @@ public class GameService : IGameService
     {
         if (payload.Id != null)
         {
-            var game = Games.Where(game => game.Id!.Equals(payload.Id)).ToArray();
+            // var game = Games.Where(game => game.Id!.Equals(payload.Id)).ToArray();
 
-            Games.Remove(game.First());
+            // Games.Remove(game.First());
 
-            return game;
-            // var deleted = GameCollection.FindOneAndDelete(x => x.Id!.Equals(payload.Id));
-            // return new Element[] { deleted };
+            // return game;
+            var deleted = GameCollection.FindOneAndDelete(x => x.Id!.Equals(payload.Id));
+            return new Element[] { deleted };
         }
 
         return new Element[0];
