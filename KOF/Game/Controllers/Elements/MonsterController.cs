@@ -55,9 +55,8 @@ public class MonsterController : ControllerBase
             var result = MonsterService.Update(payload);
             return Created(uriString, result.First());
         }
-        catch (Exception e)
+        catch (Exception)
         {
-            System.Console.WriteLine(e.Message);
             return BadRequest();
         }
     }
