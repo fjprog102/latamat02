@@ -8,13 +8,6 @@ public class PlayerTest
     private readonly Player player1 = new Player("Pablo", new Monster("monster1", 10, 10));
 
     [Fact]
-    public void ShouldReturnPropertyIdAsString()
-    {
-        Assert.True(player1.Id?.Length > 0);
-        Assert.IsType<string>(player1.Id);
-    }
-
-    [Fact]
     public void ShouldReturnPropertyNameAsString()
     {
         Assert.Equal("Pablo", player1.Name);
