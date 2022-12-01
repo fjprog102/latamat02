@@ -66,7 +66,6 @@ public class GameController : ControllerBase
         try
         {
             var payload = new GamePayload(id);
-
             var result = gameService.Delete(payload);
 
             return Ok(result);
