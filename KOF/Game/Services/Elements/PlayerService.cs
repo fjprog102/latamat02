@@ -24,6 +24,7 @@ public class PlayerService : IPlayerService
         {
             return PlayerCollection.Find(x => x.Id!.Equals(payload.Id)).ToList();
         }
+
         return PlayerCollection.Find(x => true).ToList();
     }
 
