@@ -7,26 +7,26 @@ public class MonsterTest
     private readonly Monster monster = new Monster("Monster", 10, 10);
 
     [Fact]
-    public void ShouldReturnPropertyIdAsString()
+    public void ShouldReturnPropertyIdAsNull()
     {
-        Assert.Equal("123", monster.IdAttr);
+        Assert.True(monster.Id == null);
     }
 
     [Fact]
     public void ShouldReturnPropertyNameAsString()
     {
-        Assert.Equal("Monster", monster.NameAttr);
+        Assert.Equal("Monster", monster.Name);
     }
 
     [Fact]
     public void ShouldReturnPropertyVictoryPointsAsInt()
     {
-        Assert.Equal(10, monster.VictoryPointsAttr);
+        Assert.Equal(10, monster.VictoryPoints);
     }
 
     [Fact]
     public void ShouldReturnPropertyLifePointsAsInt()
     {
-        Assert.Equal(10, monster.LifePointsAttr);
+        Assert.Equal(10, monster.LifePoints);
     }
 }
