@@ -1,19 +1,23 @@
 ﻿namespace KOT.Models;
 using KOT.Models.Abstracts;
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
+
 public class Player : Element
 {
-    private string Id { get; set; }
-    private string Name { get; set; }
-    private Monster? MyMonster { get; set; }
+    [BsonId]
+    [BsonRepresentation(BsonType.ObjectId)]
+    public string? Id { get; set; }
 
-    public Player(string name, Monster? monster)
+    [BsonElement("Name")]
+    public string Name { get; set; }
+
+    [BsonElement("MyMonster")]
+    public Monster MyMonster { get; set; }
+
+    public Player(string name, Monster monster)
     {
-        Id = "123456789";
         Name = name;
         MyMonster = monster;
     }
-
-    public string? IdAttr => Id;
-    public string NameAttr => Name;
-    public Monster? MonsterAttr => MyMonster;
 }
