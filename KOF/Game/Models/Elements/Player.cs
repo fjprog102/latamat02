@@ -13,9 +13,9 @@ public class Player : Element
     public string Name { get; set; }
 
     [BsonElement("MyMonster")]
-    public Monster MyMonster { get; set; }
+    public Monster? MyMonster { get; set; }
 
-    public Player(string name, Monster monster)
+    public Player(string name, Monster? monster)
     {
         Name = name;
         MyMonster = monster;
