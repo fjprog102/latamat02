@@ -1,6 +1,10 @@
-﻿using KOT.Services.Injector;
+﻿using KOT.Models;
+using KOT.Services.Injector;
 
 var builder = WebApplication.CreateBuilder(args);
+
+// Load model configuration for mongodb connection
+builder.Services.Configure<KOTDatabaseSettings>(builder.Configuration.GetSection("KOTDataBase"));
 
 // Add services to the container.
 builder.Services.AddControllers();

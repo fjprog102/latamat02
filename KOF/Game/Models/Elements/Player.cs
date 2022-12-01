@@ -6,7 +6,7 @@ public class Player : Element
     private string Name { get; set; }
     private Monster? MyMonster { get; set; }
 
-    public Player(string name, Monster monster)
+    public Player(string name, Monster? monster)
     {
         Id = "123456789";
         Name = name;

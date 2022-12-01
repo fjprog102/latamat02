@@ -1,5 +1,7 @@
-﻿using KOT.Models;
-using KOT.Services;
+﻿using System.Text.Json;
+using KOT.Models;
+using KOT.Models.Abstracts;
+using KOT.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace KOT.Controllers;
@@ -8,21 +10,67 @@ namespace KOT.Controllers;
 [Route("[controller]")]
 public class GameController : ControllerBase
 {
-    public GameController() { }
+    private readonly IGameService gameService;
 
-    // GET all action
-    [HttpGet]
-    public ActionResult<List<Game>> GetAll() => GameService.GetAll();
-
-    // POST action
-    [HttpPost]
-    public IActionResult Create(Game game)
+    public GameController(IGameService instance)
     {
-        GameService.Add(game);
-        return CreatedAtAction(nameof(Create), new { id = game.Id }, game);
+        gameService = instance;
     }
 
-    // PUT action
+    [HttpGet(Name = "GetGame")]
+    public IActionResult Get(string? id)
+    {
+        try
+        {
+            var result = gameService.Read(new GamePayload(id: id));
+            return Ok(result);
+        }
+        catch (Exception)
+        {
+            return BadRequest();
+        }
+    }
 
-    // DELETE action
+    [HttpPost(Name = "PostGame")]
+    public IActionResult Post([FromBody] GamePayload payload)
+    {
+        try
+        {
+            var result = gameService.Create(payload);
+            return Created("Tests", result.First());
+        }
+        catch (Exception)
+        {
+            return BadRequest();
+        }
+    }
+
+    [HttpPut(Name = "PutGame")]
+    public IActionResult Put([FromBody] GamePayload payload)
+    {
+        try
+        {
+            var result = gameService.Update(payload);
+            return Created("Tests", result.First());
+        }
+        catch (Exception)
+        {
+            return BadRequest();
+        }
+    }
+
+    [HttpDelete(Name = "DeleteGame")]
+    public IActionResult Delete([FromBody] GamePayload payload)
+    {
+        try
+        {
+            var result = gameService.Delete(payload);
+            return Ok(result);
+        }
+        catch (Exception)
+        {
+            return BadRequest();
+        }
+    }
 }
+

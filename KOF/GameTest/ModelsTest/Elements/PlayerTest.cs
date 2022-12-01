@@ -5,46 +5,31 @@ namespace KOT.Models.Test;
 
 public class PlayerTest
 {
-    // private readonly Player player1 = new Player();
+    private readonly Player player1 = new Player("Pablo", new Monster("monster1", 10, 10));
 
-    // [Fact]
-    // public void ShouldReturnPropertyId()
-    // {
-    //     player1.PID = 1;
-    //     Assert.Equal(1, player1.PID);
+    [Fact]
+    public void ShouldReturnPropertyIdAsString()
+    {
+        Assert.True(player1.IdAttr?.Length > 0);
+        Assert.IsType<string>(player1.IdAttr);
+    }
 
-    //     Player player2 = new Player();
-    //     player2.PID = 2;
-    //     Assert.Equal(2, player2.PID);
+    [Fact]
+    public void ShouldReturnPropertyNameAsString()
+    {
+        Assert.Equal("Pablo", player1.NameAttr);
+    }
 
-    //     Player player3 = new Player();
-    //     player3.PID = 3;
-    //     Assert.Equal(3, player3.PID);
-    // }
+    [Fact]
+    public void ShouldReturnMonsterAsObjectWhenMonsterIsDeclared()
+    {
+        Assert.False(object.ReferenceEquals(null, player1.MonsterAttr));
+    }
 
-    // [Fact]
-    // public void ShouldReturnPropertyNameAsString()
-    // {
-    //     player1.Name = "Pablo";
-    //     Assert.Equal("Pablo", player1.Name);
-
-    //     player1.Name = "Patrick";
-    //     Assert.Equal("Patrick", player1.Name);
-
-    //     player1.Name = "Bob";
-    //     Assert.Equal("Bob", player1.Name);
-    // }
-
-    // [Fact]
-    // public void ShouldReturnMonsterAsObjectWhenMonsterIsDeclared()
-    // {
-    //     player1.MyMonster = new Monster();
-    //     Assert.False(object.ReferenceEquals(null, player1.MyMonster));
-    // }
-
-    // [Fact]
-    // public void ShouldReturnMonsterAsNullWhenMonsterIsNotDeclared()
-    // {
-    //     Assert.True(object.ReferenceEquals(null, player1.MyMonster));
-    // }
+    [Fact]
+    public void ShouldReturnMonsterAsNullWhenMonsterIsNotDeclared()
+    {
+        Player player2 = new Player("Player2", null);
+        Assert.True(object.ReferenceEquals(null, player2.MonsterAttr));
+    }
 }

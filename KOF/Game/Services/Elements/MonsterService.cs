@@ -33,11 +33,6 @@ public class MonsterService : IMonsterService
             return Monsters.Where(monster => monster.IdAttr!.Equals(payload.Id));
         }
 
-        if (payload.Name != null)
-        {
-            return Monsters.Where(monster => monster.NameAttr!.Equals(payload.Name));
-        }
-
         return Monsters;
     }
 
@@ -62,17 +57,6 @@ public class MonsterService : IMonsterService
         {
             var monster = Monsters
                 .Where(monster => monster.IdAttr!.Equals(payload.Id))
-                .ToArray();
-
-            Monsters.Remove(monster.First());
-
-            return monster;
-        }
-
-        if (payload.Name != null)
-        {
-            var monster = Monsters
-                .Where(monster => monster.NameAttr!.Equals(payload.Name))
                 .ToArray();
 
             Monsters.Remove(monster.First());

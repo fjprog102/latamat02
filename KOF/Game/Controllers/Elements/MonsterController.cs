@@ -32,11 +32,12 @@ public class MonsterController : ControllerBase
         }
     }
 
-    [HttpGet]
-    public IActionResult Get([FromBody] MonsterPayload payload)
+    [HttpGet("{id?}")]
+    public IActionResult Get(string? id)
     {
         try
         {
+            var payload = new MonsterPayload(id);
             var result = MonsterService.Read(payload);
             return Ok(result);
         }
@@ -60,11 +61,12 @@ public class MonsterController : ControllerBase
         }
     }
 
-    [HttpDelete]
-    public IActionResult Delete([FromBody] MonsterPayload payload)
+    [HttpDelete("{id?}")]
+    public IActionResult Delete(string? id)
     {
         try
         {
+            var payload = new MonsterPayload(id);
             var result = MonsterService.Delete(payload);
             return Ok(result);
         }
