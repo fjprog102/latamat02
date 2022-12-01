@@ -1,8 +1,6 @@
 ﻿namespace KOT.Controllers;
 
-using System.Text.Json;
 using KOT.Models;
-using KOT.Services;
 using KOT.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
