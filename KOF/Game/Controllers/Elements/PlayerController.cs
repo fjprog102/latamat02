@@ -16,7 +16,7 @@ public class PlayerController : ControllerBase
         playerService = instance;
     }
 
-    [HttpGet(Name = "GetPlayer")]
+    [HttpGet("{id?}")]
     public IActionResult Get(string? id)
     {
         try
@@ -56,13 +56,13 @@ public class PlayerController : ControllerBase
             return BadRequest();
         }
     }
-    [HttpDelete]
-    public IActionResult Delete([FromBody] PlayerPayload payload)
+    [HttpDelete("{id?}")]
+    public IActionResult Delete(string? id)
     {
         try
         {
-            var result = playerService.Delete(payload);
-            return Ok(result);
+            var result = playerService.Delete(new PlayerPayload(id: id));
+            return Ok(result.First());
         }
         catch (Exception)
         {
