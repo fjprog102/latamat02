@@ -22,7 +22,8 @@ public class GameController : ControllerBase
     {
         try
         {
-            var result = gameService.Read(new GamePayload(id: id));
+            var payload = new GamePayload(id);
+            var result = gameService.Read(payload);
             return Ok(result);
         }
         catch (Exception)
@@ -60,11 +61,14 @@ public class GameController : ControllerBase
     }
 
     [HttpDelete("{id?}")]
-    public IActionResult Delete([FromBody] GamePayload payload)
+    public IActionResult Delete(string? id)
     {
         try
         {
+            var payload = new GamePayload(id);
+
             var result = gameService.Delete(payload);
+
             return Ok(result);
         }
         catch (Exception)
