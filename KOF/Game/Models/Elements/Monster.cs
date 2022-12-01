@@ -1,24 +1,25 @@
 ﻿namespace KOT.Models;
 
 using KOT.Models.Abstracts;
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
 
 public class Monster : Element
 {
-    private string Id { get; set; }
-    private string Name { get; set; }
-    private int VictoryPoints { get; set; }
-    private int LifePoints { get; set; }
+    [BsonId]
+    [BsonRepresentation(BsonType.ObjectId)]
+    public string? Id { get; set; }
+    [BsonElement("Name")]
+    public string Name { get; set; }
+    [BsonElement("VictoryPoints")]
+    public int VictoryPoints { get; set; }
+    [BsonElement("LifePoints")]
+    public int LifePoints { get; set; }
 
     public Monster(string name, int victoryPoints, int lifePoints)
     {
-        Id = "123";
         Name = name;
         VictoryPoints = victoryPoints;
         LifePoints = lifePoints;
     }
-
-    public string? IdAttr => Id;
-    public string NameAttr => Name;
-    public int VictoryPointsAttr => VictoryPoints;
-    public int LifePointsAttr => LifePoints;
 }

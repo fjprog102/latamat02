@@ -3,6 +3,8 @@
 using KOT.Models;
 using KOT.Models.Abstracts;
 using KOT.Services.Interfaces;
+using Microsoft.Extensions.Options;
+using MongoDB.Driver;
 
 public class MonsterService : IMonsterService
 {
@@ -12,6 +14,17 @@ public class MonsterService : IMonsterService
         new Monster("Gigazaur", 7, 10)
     };
 
+    private readonly IMongoCollection<Monster> MonsterCollection;
+
+    public MonsterService(IOptions<KOTDatabaseSettings> kotDatabaseSettings)
+    {
+        var mongoClient = new MongoClient(kotDatabaseSettings.Value.ConnectionString);
+        var mongoDatabase = mongoClient.GetDatabase(kotDatabaseSettings.Value.DatabaseName);
+        MonsterCollection = mongoDatabase.GetCollection<Monster>(
+            kotDatabaseSettings.Value.MonsterCollectionName
+        );
+    }
+
     IEnumerable<Element> IMonsterService.Create(MonsterPayload payload)
     {
         if (payload.GetType() == typeof(MonsterPayload))
@@ -19,7 +32,7 @@ public class MonsterService : IMonsterService
             MonsterPayload args = (MonsterPayload)payload;
             var newMonster = new Monster((string)args.Name!, (int)args.VictoryPoints!, (int)args.LifePoints!);
 
-            Monsters.Add(newMonster);
+            MonsterCollection.InsertOne(newMonster);
             return new Element[] { newMonster };
         }
 
@@ -30,10 +43,10 @@ public class MonsterService : IMonsterService
     {
         if (payload.Id != null)
         {
-            return Monsters.Where(monster => monster.IdAttr!.Equals(payload.Id));
+            return MonsterCollection.Find(x => x.Id!.Equals(payload.Id)).ToList();
         }
 
-        return Monsters;
+        return MonsterCollection.Find(x => true).ToList();
     }
 
     IEnumerable<Element> IMonsterService.Update(MonsterPayload payload)
@@ -43,7 +56,13 @@ public class MonsterService : IMonsterService
             MonsterPayload args = (MonsterPayload)payload;
             var newMonster = new Monster((string)args.Name!, (int)args.VictoryPoints!, (int)args.LifePoints!);
 
-            Monsters[Monsters.FindIndex(monster => monster.IdAttr == payload.Id)] = newMonster;
+            var filter = Builders<Monster>.Filter.Eq(monster => monster.Id, payload.Id);
+            var update = Builders<Monster>.Update
+                .Set(monster => monster.Name, newMonster.Name)
+                .Set(monster => monster.VictoryPoints, newMonster.VictoryPoints)
+                .Set(monster => monster.LifePoints, newMonster.LifePoints);
+
+            MonsterCollection.UpdateOne(filter, update);
 
             return new Element[] { newMonster };
         }
@@ -55,13 +74,8 @@ public class MonsterService : IMonsterService
     {
         if (payload.Id != null)
         {
-            var monster = Monsters
-                .Where(monster => monster.IdAttr!.Equals(payload.Id))
-                .ToArray();
-
-            Monsters.Remove(monster.First());
-
-            return monster;
+            var deleted = MonsterCollection.FindOneAndDelete(x => x.Id!.Equals(payload.Id));
+            return new Element[] { deleted };
         }
 
         return new Element[0];
