@@ -2,8 +2,8 @@
 
 using KOT.Models;
 using KOT.Models.Abstracts;
-using KOT.Services.Interfaces;
 using Microsoft.Extensions.Options;
+using KOT.Services.Interfaces;
 
 public class GameService : IGameService
 {
