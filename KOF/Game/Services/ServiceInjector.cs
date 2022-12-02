@@ -13,5 +13,6 @@ public class ServiceInjector
         services.AddSingleton<IGameService, GameService>();
         services.AddSingleton<IPowerCardService, PowerCardService>();
         services.AddSingleton<IMonsterService, MonsterService>();
+        services.AddSingleton<IDatabaseService, DatabaseService>();
     }
 }
