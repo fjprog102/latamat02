@@ -22,7 +22,7 @@ public class PlayerTest
     [Fact]
     public void ShouldReturnMonsterAsNullWhenMonsterIsNotDeclared()
     {
-        Player player2 = new Player("Player2", null?);
+        Player player2 = new Player("Player2", null!);
         Assert.True(object.ReferenceEquals(null, player2.MyMonster));
     }
 }
