@@ -12,20 +12,20 @@ public class GainEnergyCube : PlayerAction<GainEnergyCube>
 
             if (game.Board!.TokyoBay != null)
             {
-                if (game.Board?.TokyoBay!.Find(player => player.Name == game.ActiveUserName) != null)
+                if (game.Board?.TokyoBay!.Find(player => player.Name == game.ActivePlayerName) != null)
                 {
-                    game.Board!.TokyoBay!.Find(player => player.Name == game.ActiveUserName)!.EnergyCubes += energyCubes;
+                    game.Board!.TokyoBay!.Find(player => player.Name == game.ActivePlayerName)!.EnergyCubes += energyCubes;
                 }
             }
 
-            if (game.Board?.TokyoCity!.Find(player => player.Name == game.ActiveUserName) != null)
+            if (game.Board?.TokyoCity!.Find(player => player.Name == game.ActivePlayerName) != null)
             {
-                game.Board!.TokyoCity!.Find(player => player.Name == game.ActiveUserName)!.EnergyCubes += energyCubes;
+                game.Board!.TokyoCity!.Find(player => player.Name == game.ActivePlayerName)!.EnergyCubes += energyCubes;
             }
 
-            if (game.Board?.OutsideTokyo!.Find(player => player.Name == game.ActiveUserName) != null)
+            if (game.Board?.OutsideTokyo!.Find(player => player.Name == game.ActivePlayerName) != null)
             {
-                game.Board!.OutsideTokyo!.Find(player => player.Name == game.ActiveUserName)!.EnergyCubes += energyCubes;
+                game.Board!.OutsideTokyo!.Find(player => player.Name == game.ActivePlayerName)!.EnergyCubes += energyCubes;
             }
         }
     }

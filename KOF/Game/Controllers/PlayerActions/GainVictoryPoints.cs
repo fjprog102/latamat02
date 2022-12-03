@@ -11,20 +11,20 @@ public class GainVictoryPoints : PlayerAction<GainVictoryPoints>
 
         if (game.Board!.TokyoBay != null)
         {
-            if (game.Board?.TokyoBay!.Find(player => player.Name == game.ActiveUserName) != null)
+            if (game.Board?.TokyoBay!.Find(player => player.Name == game.ActivePlayerName) != null)
             {
-                game.Board!.TokyoBay!.Find(player => player.Name == game.ActiveUserName)!.MyMonster.VictoryPoints += points;
+                game.Board!.TokyoBay!.Find(player => player.Name == game.ActivePlayerName)!.MyMonster.VictoryPoints += points;
             }
         }
 
-        if (game.Board?.TokyoCity!.Find(player => player.Name == game.ActiveUserName) != null)
+        if (game.Board?.TokyoCity!.Find(player => player.Name == game.ActivePlayerName) != null)
         {
-            game.Board!.TokyoCity!.Find(player => player.Name == game.ActiveUserName)!.MyMonster.VictoryPoints += points;
+            game.Board!.TokyoCity!.Find(player => player.Name == game.ActivePlayerName)!.MyMonster.VictoryPoints += points;
         }
 
-        if (game.Board?.OutsideTokyo!.Find(player => player.Name == game.ActiveUserName) != null)
+        if (game.Board?.OutsideTokyo!.Find(player => player.Name == game.ActivePlayerName) != null)
         {
-            game.Board!.OutsideTokyo!.Find(player => player.Name == game.ActiveUserName)!.MyMonster.VictoryPoints += points;
+            game.Board!.OutsideTokyo!.Find(player => player.Name == game.ActivePlayerName)!.MyMonster.VictoryPoints += points;
         }
     }
 

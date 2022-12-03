@@ -18,12 +18,12 @@ public class Game : Element
     public TokyoBoardProcessor? BoardProcessor { get; set; }
 
     [BsonElement("ActiveUserName")]
-    public string? ActiveUserName { get; set; }
+    public string? ActivePlayerName { get; set; }
 
     public Game(TokyoBoard board, TokyoBoardProcessor boardProcessor)
     {
         Board = board ?? throw new Exception("The board must be ready to initiliaze the Game.");
         BoardProcessor = boardProcessor;
-        ActiveUserName = null;
+        ActivePlayerName = null;
     }
 }

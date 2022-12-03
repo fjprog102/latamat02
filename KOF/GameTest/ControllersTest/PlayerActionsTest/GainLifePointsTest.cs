@@ -59,12 +59,12 @@ public class GainLifePointsTest
         instance.Execute(fourHearts, game);
         Assert.Equal(10, playerOne.MyMonster.LifePoints);
 
-        game.ActiveUserName = playerThree.Name;
+        game.ActivePlayerName = playerThree.Name;
         Assert.Equal(7, playerThree.MyMonster.LifePoints);
         instance.Execute(fourHearts, game);
         Assert.Equal(10, playerThree.MyMonster.LifePoints);
 
-        game.ActiveUserName = playerFour.Name;
+        game.ActivePlayerName = playerFour.Name;
         Assert.Equal(10, playerFour.MyMonster.LifePoints);
         instance.Execute(fourHearts, game);
         Assert.Equal(10, playerFour.MyMonster.LifePoints);
