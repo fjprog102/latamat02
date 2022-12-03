@@ -1,7 +1,7 @@
 ﻿namespace ModelsTests;
 
 using KOT.Models;
-using KOT.Models.Processors;
+using KOT.Models.Processor;
 
 public class TokyoBoardProcessorTest
 {
@@ -106,5 +106,20 @@ public class TokyoBoardProcessorTest
         Assert.Equal(3, Board.OutsideTokyo.Count());
         Assert.Empty(Board.TokyoBay);
         Assert.Equal(2, Board.TokyoCity.Count());
+    }
+
+    [Fact]
+    public void ItShouldReturnThePlaceOfThePlayer()
+    {
+        _ = new List<Player>() { player };
+        Board.OutsideTokyo.Add(player);
+        Dictionary<int, string> playerPlace = Processor.FindPlayer(Board, "player");
+        Assert.Equal("OutsideTokyo", playerPlace.Values.First());
+        Assert.Equal(0, playerPlace.Keys.First());
+        Board.OutsideTokyo.Remove(player);
+        Board.TokyoCity.Add(player);
+        playerPlace = Processor.FindPlayer(Board, "player");
+        Assert.Equal("TokyoCity", playerPlace.Values.First());
+        Assert.Equal(0, playerPlace.Keys.First());
     }
 }

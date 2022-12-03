@@ -10,28 +10,29 @@ public class DiceAnalyzer
     private readonly GainVictoryPoints GainVictory = new GainVictoryPoints();
     private readonly SmashMonsters Smash = new SmashMonsters();
 
-    public void ResolveDice(List<string> dices, PlayerPayload player)
+    public void ResolveDice(List<string> dices, GamePayload game)
     {
         var groupDices = dices.GroupBy(dice => dice);
         foreach (var group in groupDices)
         {
             if ((group.Key == "one" || group.Key == "two" || group.Key == "three") && group.Count() >= 3)
             {
-                GainVictory.Execute(dices, player);
+                GainVictory.Execute(dices, game);
             }
 
             if (group.Key == "heart")
             {
-                GainLife.Execute(dices, player);
+                GainLife.Execute(dices, game);
             }
 
             if (group.Key == "energy")
             {
-                GainEnergy.Execute(dices, player);
+                GainEnergy.Execute(dices, game);
             }
-            else
+
+            if (group.Key == "smash")
             {
-                Smash.Execute(dices, player);
+                Smash.Execute(dices, game);
             }
         }
     }

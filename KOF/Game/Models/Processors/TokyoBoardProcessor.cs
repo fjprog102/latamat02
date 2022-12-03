@@ -1,6 +1,4 @@
-﻿namespace KOT.Models.Processors;
-
-using KOT.Models.Abstracts;
+﻿namespace KOT.Models.Processor;
 
 public class TokyoBoardProcessor
 {
@@ -34,5 +32,39 @@ public class TokyoBoardProcessor
         {
             board.OutsideTokyo.Add(player);
         }
+    }
+
+    public Dictionary<int, string> FindPlayer(TokyoBoard board, string playerName)
+    {
+        Dictionary<int, string> playerPlace = new Dictionary<int, string>();
+
+        for (int index = 0; index < board.OutsideTokyo.Count(); index++)
+        {
+            if (board.OutsideTokyo[0].Name == playerName)
+            {
+                playerPlace[index] = "OutsideTokyo";
+            }
+        }
+
+        if (board.TokyoBay != null)
+        {
+            for (int index = 0; index < board.TokyoBay?.Count(); index++)
+            {
+                if (board.TokyoBay[0].Name == playerName)
+                {
+                    playerPlace[index] = "TokyoBay";
+                }
+            }
+        }
+
+        for (int index = 0; index < board.TokyoCity.Count(); index++)
+        {
+            if (board.TokyoCity[0].Name == playerName)
+            {
+                playerPlace[index] = "TokyoCity";
+            }
+        }
+
+        return playerPlace;
     }
 }

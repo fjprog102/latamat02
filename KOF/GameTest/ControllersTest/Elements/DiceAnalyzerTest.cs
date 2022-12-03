@@ -2,68 +2,114 @@
 
 using KOT.Controllers;
 using KOT.Models;
+using KOT.Models.Processor;
 
 public class DiceAnalyzerTest
 {
     private readonly DiceAnalyzer Analyzer = new DiceAnalyzer();
 
     [Fact]
-    public void ItShouldOnlyExecuteGainLifeActionAndUpdateTheLifePoints()
+    public void ItShouldOnlyExecuteGainLifeActionAndUpdatePlayerOneLifePoints()
     {
-        PlayerPayload player = new PlayerPayload("1", "Jose", new Monster("Gigazaur", 10, 2));
+        Player playerOne = new Player("Jose", new Monster("Gigazaur", 10, 2));
+        Player playerTwo = new Player("Juan", new Monster("Gigazaur", 10, 7));
+        Player playerThree = new Player("Adriel", new Monster("Gigazaur", 10, 6));
+        Player playerFour = new Player("Jorge", new Monster("Gigazaur", 10, 9));
+        List<Player> players = new List<Player>() { playerOne, playerTwo, playerThree, playerFour };
+        GamePayload game = new GamePayload(null, new TokyoBoard(), new TokyoBoardProcessor(), playerOne.Name);
         List<string> oneHeart = new List<string>() { "one", "two", "heart", "one", "two", "three" };
 
-        Assert.Equal(10, player.MyMonster!.VictoryPoints);
-        Assert.Equal(2, player.MyMonster!.LifePoints);
-        Assert.Equal(0, player.EnergyCubes);
-        Analyzer.ResolveDice(oneHeart, player);
-        Assert.Equal(10, player.MyMonster!.VictoryPoints);
-        Assert.Equal(3, player.MyMonster!.LifePoints);
-        Assert.Equal(0, player.EnergyCubes);
+        game.BoardProcessor!.SetTokyoBoard(players, game.Board!);
+
+        Assert.Equal(10, playerOne.MyMonster!.VictoryPoints);
+        Assert.Equal(2, playerOne.MyMonster!.LifePoints);
+        Assert.Equal(0, playerOne.EnergyCubes);
+        Analyzer.ResolveDice(oneHeart, game);
+        Assert.Equal(10, playerOne.MyMonster!.VictoryPoints);
+        Assert.Equal(3, playerOne.MyMonster!.LifePoints);
+        Assert.Equal(0, playerOne.EnergyCubes);
+        Assert.Equal(7, playerTwo.MyMonster!.LifePoints);
+        Assert.Equal(6, playerThree.MyMonster!.LifePoints);
+        Assert.Equal(9, playerFour.MyMonster!.LifePoints);
+
     }
 
     [Fact]
-    public void ItShouldOnlyExecuteGainVictoryActionAndUpdateTheVictoryPoints()
+    public void ItShouldOnlyExecuteGainVictoryActionAndUpdatePlayerTwoVictoryPoints()
     {
-        PlayerPayload player = new PlayerPayload("1", "Jose", new Monster("Gigazaur", 10, 10));
+        Player playerOne = new Player("Jose", new Monster("Gigazaur", 10, 2));
+        Player playerTwo = new Player("Juan", new Monster("Gigazaur", 10, 10));
+        Player playerThree = new Player("Adriel", new Monster("Gigazaur", 10, 10));
+        Player playerFour = new Player("Jorge", new Monster("Gigazaur", 10, 10));
+        List<Player> players = new List<Player>() { playerOne, playerTwo, playerThree, playerFour };
+        GamePayload game = new GamePayload(null, new TokyoBoard(), new TokyoBoardProcessor(), playerTwo.Name);
         List<string> threeOnes = new List<string>() { "one", "one", "three", "one", "two", "one" };
 
-        Assert.Equal(10, player.MyMonster!.VictoryPoints);
-        Assert.Equal(10, player.MyMonster!.LifePoints);
-        Assert.Equal(0, player.EnergyCubes);
-        Analyzer.ResolveDice(threeOnes, player);
-        Assert.Equal(12, player.MyMonster!.VictoryPoints);
-        Assert.Equal(10, player.MyMonster!.LifePoints);
-        Assert.Equal(0, player.EnergyCubes);
+        game.BoardProcessor!.SetTokyoBoard(players, game.Board!);
+
+        Assert.Equal(10, playerTwo.MyMonster!.VictoryPoints);
+        Assert.Equal(10, playerTwo.MyMonster!.LifePoints);
+        Assert.Equal(0, playerTwo.EnergyCubes);
+        Analyzer.ResolveDice(threeOnes, game);
+        Assert.Equal(12, playerTwo.MyMonster!.VictoryPoints);
+        Assert.Equal(10, playerTwo.MyMonster!.LifePoints);
+        Assert.Equal(0, playerTwo.EnergyCubes);
+        Assert.Equal(10, playerOne.MyMonster!.VictoryPoints);
+        Assert.Equal(10, playerThree.MyMonster!.VictoryPoints);
+        Assert.Equal(10, playerFour.MyMonster!.VictoryPoints);
     }
 
     [Fact]
-    public void ItShouldOnlyExecuteGainEnergyActionAndUpdateTheEnergyCubes()
+    public void ItShouldOnlyExecuteGainEnergyActionAndUpdatePlayerThreeEnergyCubes()
     {
-        PlayerPayload player = new PlayerPayload("1", "Jose", new Monster("Gigazaur", 10, 10));
+        Player playerOne = new Player("Jose", new Monster("Gigazaur", 10, 2));
+        Player playerTwo = new Player("Juan", new Monster("Gigazaur", 10, 10));
+        Player playerThree = new Player("Adriel", new Monster("Gigazaur", 10, 10));
+        Player playerFour = new Player("Jorge", new Monster("Gigazaur", 10, 10));
+        List<Player> players = new List<Player>() { playerOne, playerTwo, playerThree, playerFour };
+        GamePayload game = new GamePayload(null, new TokyoBoard(), new TokyoBoardProcessor(), playerThree.Name);
         List<string> fourEnergy = new List<string>() { "energy", "one", "energy", "one", "energy", "energy" };
 
-        Assert.Equal(10, player.MyMonster!.VictoryPoints);
-        Assert.Equal(10, player.MyMonster!.LifePoints);
-        Assert.Equal(0, player.EnergyCubes);
-        Analyzer.ResolveDice(fourEnergy, player);
-        Assert.Equal(10, player.MyMonster!.VictoryPoints);
-        Assert.Equal(10, player.MyMonster!.LifePoints);
-        Assert.Equal(4, player.EnergyCubes);
+        game.BoardProcessor!.SetTokyoBoard(players, game.Board!);
+
+        Assert.Equal(10, playerThree.MyMonster!.VictoryPoints);
+        Assert.Equal(10, playerThree.MyMonster!.LifePoints);
+        Assert.Equal(0, playerThree.EnergyCubes);
+        Analyzer.ResolveDice(fourEnergy, game);
+        Assert.Equal(10, playerThree.MyMonster!.VictoryPoints);
+        Assert.Equal(10, playerThree.MyMonster!.LifePoints);
+        Assert.Equal(4, playerThree.EnergyCubes);
+        Assert.Equal(0, playerOne.EnergyCubes);
+        Assert.Equal(0, playerTwo.EnergyCubes);
+        Assert.Equal(0, playerFour.EnergyCubes);
     }
 
     [Fact]
-    public void ItShouldExecuteAllActionsAndUpdateAttributes()
+    public void ItShouldExecuteAllActionsAndUpdatePlayerFourAttributesAndSmashRestOfThePlayers()
     {
-        PlayerPayload player = new PlayerPayload("1", "Jose", new Monster("Gigazaur", 10, 9));
+        Player playerOne = new Player("Jose", new Monster("Gigazaur", 10, 2));
+        Player playerTwo = new Player("Juan", new Monster("Gigazaur", 10, 10));
+        Player playerThree = new Player("Adriel", new Monster("Gigazaur", 10, 10));
+        Player playerFour = new Player("Jorge", new Monster("Gigazaur", 10, 9));
+        List<Player> players = new List<Player>() { playerOne, playerTwo, playerThree, playerFour };
+        GamePayload game = new GamePayload(null, new TokyoBoard(), new TokyoBoardProcessor(), playerFour.Name);
         List<string> allActions = new List<string>() { "two", "two", "energy", "two", "heart", "smash" };
 
-        Assert.Equal(10, player.MyMonster!.VictoryPoints);
-        Assert.Equal(9, player.MyMonster!.LifePoints);
-        Assert.Equal(0, player.EnergyCubes);
-        Analyzer.ResolveDice(allActions, player);
-        Assert.Equal(12, player.MyMonster!.VictoryPoints);
-        Assert.Equal(10, player.MyMonster!.LifePoints);
-        Assert.Equal(1, player.EnergyCubes);
+        game.BoardProcessor!.SetTokyoBoard(players, game.Board!);
+        game.BoardProcessor.ChangePlayerBoardPlace(playerOne, game.Board!.OutsideTokyo, game.Board.TokyoCity);
+        game.BoardProcessor.ChangePlayerBoardPlace(playerTwo, game.Board.OutsideTokyo, game.Board.TokyoCity);
+        game.BoardProcessor.ChangePlayerBoardPlace(player: playerThree, game.Board.OutsideTokyo, game.Board.TokyoCity);
+
+        Assert.Equal(10, playerFour.MyMonster!.VictoryPoints);
+        Assert.Equal(9, playerFour.MyMonster!.LifePoints);
+        Assert.Equal(0, playerFour.EnergyCubes);
+        Analyzer.ResolveDice(allActions, game);
+        Assert.Equal(12, playerFour.MyMonster!.VictoryPoints);
+        Assert.Equal(10, playerFour.MyMonster!.LifePoints);
+        Assert.Equal(1, playerFour.EnergyCubes);
+
+        Assert.Equal(1, playerOne.MyMonster!.LifePoints);
+        Assert.Equal(9, playerTwo.MyMonster!.LifePoints);
+        Assert.Equal(9, playerThree.MyMonster!.LifePoints);
     }
 }

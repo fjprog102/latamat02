@@ -2,6 +2,7 @@
 
 using KOT.Models;
 using KOT.Models.Abstracts;
+using KOT.Models.Processor;
 using KOT.Services.Interfaces;
 using Microsoft.Extensions.Options;
 using MongoDB.Driver;
@@ -9,8 +10,9 @@ using MongoDB.Driver;
 public class GameService : IGameService
 {
     private static readonly TokyoBoard Board = new TokyoBoard();
+    private static readonly TokyoBoardProcessor BoardProcessor = new TokyoBoardProcessor();
 
-    private readonly List<Game> Games = new List<Game> { new Game(Board) };
+    private readonly List<Game> Games = new List<Game> { new Game(Board, BoardProcessor) };
 
     private readonly IMongoCollection<Game> GameCollection;
 
@@ -42,7 +44,7 @@ public class GameService : IGameService
         if (payload.GetType() == typeof(GamePayload))
         {
             GamePayload args = (GamePayload)payload;
-            var newGame = new Game((TokyoBoard)args.Board!);
+            var newGame = new Game((TokyoBoard)args.Board!, (TokyoBoardProcessor)args.BoardProcessor!);
             // Games.Add(newGame);
             GameCollection.InsertOne(newGame);
             return new Element[] { newGame };
@@ -74,7 +76,7 @@ public class GameService : IGameService
         if (payload.Id != null || payload.GetType() == typeof(GamePayload))
         {
             GamePayload args = (GamePayload)payload;
-            var newGame = new Game((TokyoBoard)args.Board!);
+            var newGame = new Game((TokyoBoard)args.Board!, (TokyoBoardProcessor)args.BoardProcessor!);
 
             Games[Games.FindIndex(game => game.Id == payload.Id)] = newGame;
 
