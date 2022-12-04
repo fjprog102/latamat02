@@ -1,5 +1,6 @@
 ﻿using KOT.Models;
 using KOT.Models.Abstracts;
+using KOT.Models.Processor;
 using KOT.Services.Interfaces;
 using Microsoft.Extensions.Options;
 using MongoDB.Bson;
@@ -46,6 +47,19 @@ public class DatabaseService : IDatabaseService
     {
         var coll = GetCollection<T>(collectionName: collectionName);
         coll.InsertOne(document: document);
+    }
+
+    public void UpdateGame(string collectionName, GamePayload document)
+    {
+        var objectId = new ObjectId(document.Id);
+        var filter = Builders<Game>.Filter.AnyEq("_id", objectId);
+        var update = Builders<Game>.Update
+            .Set(game => game.Board, document.Board)
+            .Set(game => game.BoardProcessor, document.BoardProcessor)
+            .Set(game => game.ActivePlayerName, document.ActivePlayerName);
+
+        var coll = GetCollection<Game>(collectionName: collectionName);
+        coll.UpdateOne(filter, update);
     }
 
     public T Delete<T>(string collectionName, FilterDefinition<T> filter)
