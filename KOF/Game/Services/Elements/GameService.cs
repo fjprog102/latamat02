@@ -1,88 +1,73 @@
 ﻿namespace KOT.Services;
 
 using KOT.Models;
-using KOT.Models.Abstracts;
 using KOT.Models.Processor;
+using KOT.Models.Abstracts;
 using KOT.Services.Interfaces;
 using Microsoft.Extensions.Options;
-using MongoDB.Driver;
 
 public class GameService : IGameService
 {
-    private static readonly TokyoBoard Board = new TokyoBoard();
-    private static readonly TokyoBoardProcessor BoardProcessor = new TokyoBoardProcessor();
+    private readonly string _gameCollection;
+    private readonly IDatabaseService _dbInstance;
 
-    private readonly List<Game> Games = new List<Game> { new Game(Board, BoardProcessor) };
-
-    private readonly IMongoCollection<Game> GameCollection;
-
-    public GameService(IOptions<KOTDatabaseSettings> kotDatabaseSettings)
+    public GameService(
+        IOptions<KOTDatabaseSettings> kotDatabaseSettings,
+        IDatabaseService dbInstance
+    )
     {
-        var mongoClient = new MongoClient(kotDatabaseSettings.Value.ConnectionString);
-        var mongoDatabase = mongoClient.GetDatabase(kotDatabaseSettings.Value.DatabaseName);
-        GameCollection = mongoDatabase.GetCollection<Game>(
-            kotDatabaseSettings.Value.GameCollectionName
+        _gameCollection = kotDatabaseSettings.Value.GameCollectionName;
+        _dbInstance = dbInstance;
+    }
+
+    public IEnumerable<Element> Create(GamePayload payload)
+    {
+        GamePayload args = (GamePayload)payload;
+        var newGame = new Game((TokyoBoard)args.Board!, (TokyoBoardProcessor)args.BoardProcessor!);
+        _dbInstance.InsertOne<Game>(
+            collectionName: _gameCollection,
+            document: newGame
         );
+        return new List<Game> { newGame };
     }
 
-    IEnumerable<Element> IGameService.Read(DataHolder payload)
-    // public IEnumerable<Element> Read(DataHolder payload)
+    public IEnumerable<Element> Read(GamePayload payload)
     {
         if (payload.Id != null)
         {
-            // return Games.Where(game => game.Id!.Equals(payload.Id));
-            return GameCollection.Find(x => x.Id!.Equals(payload.Id)).ToList();
+            var filter = _dbInstance.GetFilterId<Game>(payload.Id);
+            return _dbInstance.Find<Game>(
+                collectionName: _gameCollection,
+                filter: filter
+            );
         }
 
-        // return Games;
-        return GameCollection.Find(x => true).ToList();
+        return _dbInstance.Find<Game>(collectionName: _gameCollection, null);
     }
 
-    IEnumerable<Element> IGameService.Create(DataHolder payload)
-    // public IEnumerable<Element> Create(DataHolder payload)
+    public IEnumerable<Element> Update(GamePayload payload)
     {
-        if (payload.GetType() == typeof(GamePayload))
-        {
-            GamePayload args = (GamePayload)payload;
-            var newGame = new Game((TokyoBoard)args.Board!, (TokyoBoardProcessor)args.BoardProcessor!);
-            // Games.Add(newGame);
-            GameCollection.InsertOne(newGame);
-            return new Element[] { newGame };
-        }
+        _dbInstance.UpdateGame(collectionName: _gameCollection, document: payload);
 
-        return new Element[0];
+        var game = new Game(payload.Board!, payload.BoardProcessor!);
+        game.Id = payload.Id;
+        game.ActivePlayerName = payload.ActivePlayerName;
+
+        return new List<Game> { game };
     }
-
-    IEnumerable<Element> IGameService.Delete(DataHolder payload)
-    // public IEnumerable<Element> Delete(DataHolder payload)
+    
+    public IEnumerable<Element> Delete(GamePayload payload)
     {
         if (payload.Id != null)
         {
-            // var game = Games.Where(game => game.Id!.Equals(payload.Id)).ToArray();
-
-            // Games.Remove(game.First());
-
-            // return game;
-            var deleted = GameCollection.FindOneAndDelete(x => x.Id!.Equals(payload.Id));
-            return new Element[] { deleted };
+            var filter = _dbInstance.GetFilterId<Game>(payload.Id);
+            var deleted = _dbInstance.Delete<Game>(
+                collectionName: _gameCollection,
+                filter: filter
+            );
+            return new List<Game> { deleted };
         }
 
-        return new Element[0];
-    }
-
-    IEnumerable<Element> IGameService.Update(DataHolder payload)
-    // public IEnumerable<Element> Update(DataHolder payload)
-    {
-        if (payload.Id != null || payload.GetType() == typeof(GamePayload))
-        {
-            GamePayload args = (GamePayload)payload;
-            var newGame = new Game((TokyoBoard)args.Board!, (TokyoBoardProcessor)args.BoardProcessor!);
-
-            Games[Games.FindIndex(game => game.Id == payload.Id)] = newGame;
-
-            return new Element[] { newGame };
-        }
-
-        return new Element[0];
+        return new List<Game> { };
     }
 }
