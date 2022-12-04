@@ -12,7 +12,10 @@ https://www.mongodb.com/docs/drivers/csharp/
 ### Steps
 - Install MongoDB: https://www.mongodb.com/try/download/community
 - Include MongoDB Compass installation
-- Once installation completes, service should be up and running, run "Connect" with MongoDB Compass to check that service is running
+- Once installation completes, service should be up and running.
+- Copy this connection string, `mongodb+srv://root:root@kotdatabase.qjcyfel.mongodb.net/?retryWrites=true&w=majority`
+- Paste it in the "URI" section of MongoDB Compass.
+- Run "Connect" with MongoDB Compass to check that service is running
 - Run KOT project
 
 #### MacOS
