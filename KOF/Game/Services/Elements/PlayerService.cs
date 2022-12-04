@@ -57,12 +57,13 @@ public class PlayerService : IPlayerService
         if (payload.Id != null || payload.GetType() == typeof(MonsterPayload))
         {
             PlayerPayload args = (PlayerPayload)payload;
-            var newPlayer = new Player((string)args.Name!, (Monster)args.MyMonster!);
+            var newPlayer = new Player((string)args.Name!, (Monster)args.MyMonster!, (int)args.EnergyCubes!);
 
             var filter = Builders<Player>.Filter.Eq(player => player.Id, payload.Id);
             var update = Builders<Player>.Update
                 .Set(player => player.Name, newPlayer.Name)
-                .Set(player => player.MyMonster, newPlayer.MyMonster);
+                .Set(player => player.MyMonster, newPlayer.MyMonster)
+                .Set(player => player.EnergyCubes, newPlayer.EnergyCubes);
 
             PlayerCollection.UpdateOne(filter, update);
 

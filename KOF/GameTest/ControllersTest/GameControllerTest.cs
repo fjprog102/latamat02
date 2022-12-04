@@ -2,6 +2,7 @@
 
 using KOT.Controllers;
 using KOT.Models;
+using KOT.Models.Processor;
 using KOT.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Moq;
@@ -11,19 +12,21 @@ public class GameControllerMockData
     public static List<Game> GetMethodMock()
     {
         TokyoBoard board = new TokyoBoard();
+        TokyoBoardProcessor boardProcessor = new TokyoBoardProcessor();
 
         return new List<Game>
         {
-            new Game(board),
-            new Game(board),
-            new Game(board),
+            new Game(board, boardProcessor),
+            new Game(board, boardProcessor),
+            new Game(board, boardProcessor),
         };
     }
 
     public static List<Game> PostMethodMock()
     {
         TokyoBoard board = new TokyoBoard();
-        return new List<Game> { new Game(board) };
+        TokyoBoardProcessor boardProcessor = new TokyoBoardProcessor();
+        return new List<Game> { new Game(board, boardProcessor) };
     }
 }
 
