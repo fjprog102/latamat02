@@ -1,7 +1,7 @@
 ﻿using KOT.Models.Abstracts;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
-
+using KOT.Models.Processor;
 namespace KOT.Models;
 
 public class PowerCard : AbstractCard
@@ -18,11 +18,13 @@ public class PowerCard : AbstractCard
 
     [BsonElement("Type")]
     public CardTypes Type { get; set; }
+    public Effect? effect { get; set; }
 
-    public PowerCard(string name, int cost, int type)
+    public PowerCard(string name, int cost, int type, Effect? _effect)
     {
         Name = name;
         Cost = cost;
         Type = (CardTypes)type;
+        effect = _effect;
     }
 }
