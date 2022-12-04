@@ -1,4 +1,4 @@
-namespace KOT.Models.TestEffect;
+namespace KOT.Models.Test;
 using KOT.Models.Processor;
 
 public class EffectTest
