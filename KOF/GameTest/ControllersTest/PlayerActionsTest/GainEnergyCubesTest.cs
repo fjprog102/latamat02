@@ -39,7 +39,7 @@ public class GainEnergyCubeTest
         instance.Execute(sixEnergy, game);
         Assert.Equal(10, playerOne.EnergyCubes);
 
-        game.ActiveUserName = playerTwo.Name;
+        game.ActivePlayerName = playerTwo.Name;
         List<string> fiveEnergy = new List<string>() { "energy", "two", "energy", "energy", "energy", "energy" };
         instance.Execute(fiveEnergy, game);
         Assert.Equal(5, playerTwo.EnergyCubes);
