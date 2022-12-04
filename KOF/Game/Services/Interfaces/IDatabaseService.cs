@@ -1,5 +1,5 @@
-﻿using MongoDB.Driver;
-using KOT.Models;
+﻿using KOT.Models;
+using MongoDB.Driver;
 
 namespace KOT.Services.Interfaces;
 

@@ -1,8 +1,8 @@
 ﻿namespace KOT.Services;
 
 using KOT.Models;
-using KOT.Models.Processor;
 using KOT.Models.Abstracts;
+using KOT.Models.Processor;
 using KOT.Services.Interfaces;
 using Microsoft.Extensions.Options;
 
@@ -55,7 +55,7 @@ public class GameService : IGameService
 
         return new List<Game> { game };
     }
-    
+
     public IEnumerable<Element> Delete(GamePayload payload)
     {
         if (payload.Id != null)
