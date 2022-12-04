@@ -4,21 +4,21 @@ using KOT.Models;
 
 public class Effect
 {
-    public int? Heart { get; set; } 
+    public int? HeartPoints { get; set; } 
     public int? CostReduction { get; set; } 
-    public int? Star { get; set; }
-    public int? Energy { get; set; } 
-    public int? Damage { get; set; }
-    public Effect(int heart = 0, 
+    public int? StarPoints { get; set; }
+    public int? EnergyPoints { get; set; } 
+    public int? DamagePoints { get; set; }
+    public Effect(int heartPoints = 0, 
                 int costReduction =0, 
-                int star = 0,
-                int energy = 0,
-                int damage = 0)
+                int starPoints = 0,
+                int energyPoints = 0,
+                int damagePoints = 0)
     {
-        Heart = heart;
+        HeartPoints = heartPoints;
         CostReduction = costReduction;
-        Star = star;
-        Energy = energy;
-        Damage = damage;
+        StarPoints = starPoints;
+        EnergyPoints = energyPoints;
+        DamagePoints = damagePoints;
     }
 }
