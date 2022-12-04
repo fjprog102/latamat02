@@ -15,6 +15,11 @@ public class Turn
     public void Play(GamePayload game, List<string> dices)
     {
         Start.Execute(dices, game);
+
+        Dices.GenerateKofDices(
+            Dices.BlackDices,
+            new bool[] { true, false, true, false, true, false }
+        );
         Analyzer.ResolveDice(dices, game);
         Move.Execute(dices, game);
         BuyCard.Execute(dices, game);
