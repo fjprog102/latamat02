@@ -16,9 +16,9 @@ public class PowerCardDeck
         Deck.Add(new CardDetails(new PowerCard("Corner Store", 3, 1), new Effect(starPoints: 1))); // +1 star
     }
 
-    public Effect GetEffect(string PowerCardName)
+    public Effect GetEffect(string powerCardName)
     {
-        var PowerCardEffect = from cardDetails in Deck where cardDetails.powerCard.Name == PowerCardName  select cardDetails.effect;
+        var PowerCardEffect = from cardDetails in Deck where cardDetails.powerCard.Name == powerCardName  select cardDetails.effect;
         return (Effect)PowerCardEffect.ToList()[0];
     }
 }
