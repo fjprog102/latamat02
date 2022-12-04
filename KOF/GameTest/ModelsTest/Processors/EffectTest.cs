@@ -1,4 +1,4 @@
-namespace KOT.Models.Test;
+﻿namespace KOT.Models.Test;
 using KOT.Models.Processor;
 
 public class EffectTest
@@ -17,7 +17,7 @@ public class EffectTest
     [Fact]
     public void ShouldReturnAttributes()
     {
-        Effect effect = new Effect(heartPoints: 2, starPoints: 7, damagePoints:3);
+        Effect effect = new Effect(heartPoints: 2, starPoints: 7, damagePoints: 3);
         Assert.Equal(2, effect.HeartPoints);
         Assert.Equal(0, effect.CostReduction);
         Assert.Equal(7, effect.StarPoints);

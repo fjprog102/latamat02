@@ -1,4 +1,4 @@
-namespace KOT.Models.Processor;
+﻿namespace KOT.Models.Processor;
 
 using KOT.Models;
 

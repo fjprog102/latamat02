@@ -1,4 +1,4 @@
-namespace KOT.Services.Processors;
+﻿namespace KOT.Services.Processors;
 using KOT.Models;
 using KOT.Models.Abstracts;
 using KOT.Models.Processor;
@@ -18,7 +18,7 @@ public class PowerCardDeck
 
     public Effect GetEffect(string powerCardName)
     {
-        var PowerCardEffect = from cardDetails in Deck where cardDetails.powerCard.Name == powerCardName  select cardDetails.effect;
-        return (Effect)PowerCardEffect.ToList()[0];
+        var powerCardEffect = from cardDetails in Deck where cardDetails.powerCard.Name == powerCardName select cardDetails.effect;
+        return (Effect)powerCardEffect.ToList()[0];
     }
 }
