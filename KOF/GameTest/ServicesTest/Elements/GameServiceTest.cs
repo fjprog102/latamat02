@@ -211,6 +211,8 @@ public class GameServiceTests
             boardProcessor: new TokyoBoardProcessor(),
             players: new List<Player> { }
         );
+        payload.Id = "id";
+        payload.ActivePlayerName = "player";
 
         var result = service.Update(payload: payload);
 
