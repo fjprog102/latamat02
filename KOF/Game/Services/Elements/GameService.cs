@@ -47,13 +47,22 @@ public class GameService : IGameService
 
     public IEnumerable<Element> Update(GamePayload payload)
     {
-        _dbInstance.UpdateGame(collectionName: _gameCollection, document: payload);
+        if (payload.Id != null)
+        {
+            var filter = _dbInstance.GetFilterId<Game>(payload.Id);
+            var newGame = new Game(payload.Board!, payload.BoardProcessor!, payload.Players!);
+            newGame.Id = payload.Id;
+            newGame.ActivePlayerName = payload.ActivePlayerName;
+            _dbInstance.UpdateOne<Game>(
+                collectionName: _gameCollection,
+                filter: filter,
+                document: newGame
+            );
 
-        var game = new Game(payload.Board!, payload.BoardProcessor!, payload.Players!);
-        game.Id = payload.Id;
-        game.ActivePlayerName = payload.ActivePlayerName;
+            return new List<Game> { newGame };
+        }
 
-        return new List<Game> { game };
+        return new List<Game> { };
     }
 
     public IEnumerable<Element> Delete(GamePayload payload)

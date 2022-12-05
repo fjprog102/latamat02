@@ -49,17 +49,10 @@ public class DatabaseService : IDatabaseService
         coll.InsertOne(document: document);
     }
 
-    public void UpdateGame(string collectionName, GamePayload document)
+    public void UpdateOne<T>(string collectionName, FilterDefinition<T>? filter, T document)
     {
-        var objectId = new ObjectId(document.Id);
-        var filter = Builders<Game>.Filter.AnyEq("_id", objectId);
-        var update = Builders<Game>.Update
-            .Set(game => game.Board, document.Board)
-            .Set(game => game.BoardProcessor, document.BoardProcessor)
-            .Set(game => game.ActivePlayerName, document.ActivePlayerName);
-
-        var coll = GetCollection<Game>(collectionName: collectionName);
-        coll.UpdateOne(filter, update);
+        var coll = GetCollection<T>(collectionName: collectionName);
+        coll.ReplaceOne(filter: filter, replacement: document);
     }
 
     public T Delete<T>(string collectionName, FilterDefinition<T> filter)
