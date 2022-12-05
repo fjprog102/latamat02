@@ -14,8 +14,8 @@ public class GameServiceMockData
     {
         return new List<Game>
         {
-            new Game(new TokyoBoard(), new TokyoBoardProcessor()),
-            new Game(new TokyoBoard(), new TokyoBoardProcessor())
+            new Game(new TokyoBoard(), new TokyoBoardProcessor(), new List<Player>()),
+            new Game(new TokyoBoard(), new TokyoBoardProcessor(), new List<Player>())
             // new Game(new TokyoBoard(), new TokyoBoardProcessor(), new List<Player>{}),
             // new Game(new TokyoBoard(), new TokyoBoardProcessor(), new List<Player>{})
         };
@@ -25,7 +25,7 @@ public class GameServiceMockData
     {
         return new List<Game>
         {
-            new Game(new TokyoBoard(), new TokyoBoardProcessor())
+            new Game(new TokyoBoard(), new TokyoBoardProcessor(), new List<Player>())
             // new Game(new TokyoBoard(), new TokyoBoardProcessor(), new List<Player>{})
         };
     }
