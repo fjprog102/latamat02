@@ -58,4 +58,9 @@ public class GameService : IGameService
 
         return new List<Game> { };
     }
+
+    public IEnumerable<Element> Update(DataHolder data)
+    {
+        throw new NotImplementedException();
+    }
 }

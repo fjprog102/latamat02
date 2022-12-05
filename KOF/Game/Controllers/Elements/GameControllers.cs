@@ -46,6 +46,21 @@ public class GameController : ControllerBase
         }
     }
 
+    // Need help
+    [HttpPut]
+    public IActionResult Put([FromBody] GamePayload payload)
+    {
+        try
+        {
+            var result = gameService.Update(payload);
+            return Created("Tests", result.First());
+        }
+        catch (Exception)
+        {
+            return BadRequest();
+        }
+    }
+
     [HttpDelete("{id?}")]
     public IActionResult Delete(string? id)
     {
