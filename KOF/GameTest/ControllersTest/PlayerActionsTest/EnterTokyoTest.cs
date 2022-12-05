@@ -21,18 +21,38 @@ public class EnterTokyoTest
     }
 
     [Fact]
-    public void PlayerShouldEnterTokyoCityIfItIsEmptyAndShouldGainOneVictoryPoint()
+    public void ItShouldNotEnterTokyoAndChangePointsIfDicesDoesntHaveASmashFace()
     {
         List<Player> players = new List<Player>() { playerOne, playerTwo, playerThree, playerFour, playerFive };
         GamePayload game = new GamePayload(null, new TokyoBoard(), new TokyoBoardProcessor(), playerOne.Name);
         var instance = new EnterTokyo();
+        List<string> rolledDices = new List<string>() { "energy", "energy", "one", "one", "one", "heart" };
 
         game.BoardProcessor!.SetTokyoBoard(players, game.Board!);
 
         Assert.True(game.Board!.OutsideTokyo.Exists(player => player.Name == game.ActivePlayerName));
         Assert.Equal(10, playerOne.MyMonster.VictoryPoints);
         Assert.Empty(game.Board!.TokyoCity);
-        instance.Execute(null!, game);
+        instance.Execute(rolledDices, game);
+        Assert.True(game.Board!.OutsideTokyo.Exists(player => player.Name == game.ActivePlayerName));
+        Assert.Equal(10, playerOne.MyMonster.VictoryPoints);
+        Assert.Empty(game.Board!.TokyoCity);
+    }
+
+    [Fact]
+    public void PlayerShouldEnterTokyoCityIfItIsEmptyAndShouldGainOneVictoryPoint()
+    {
+        List<Player> players = new List<Player>() { playerOne, playerTwo, playerThree, playerFour, playerFive };
+        GamePayload game = new GamePayload(null, new TokyoBoard(), new TokyoBoardProcessor(), playerOne.Name);
+        var instance = new EnterTokyo();
+        List<string> rolledDices = new List<string>() { "smash", "energy", "one", "one", "one", "heart" };
+
+        game.BoardProcessor!.SetTokyoBoard(players, game.Board!);
+
+        Assert.True(game.Board!.OutsideTokyo.Exists(player => player.Name == game.ActivePlayerName));
+        Assert.Equal(10, playerOne.MyMonster.VictoryPoints);
+        Assert.Empty(game.Board!.TokyoCity);
+        instance.Execute(rolledDices, game);
         Assert.False(game.Board!.OutsideTokyo.Exists(player => player.Name == game.ActivePlayerName));
         Assert.True(game.Board!.TokyoCity.Exists(player => player.Name == game.ActivePlayerName));
         Assert.Equal(11, playerOne.MyMonster.VictoryPoints);
@@ -44,6 +64,7 @@ public class EnterTokyoTest
         List<Player> players = new List<Player>() { playerOne, playerTwo, playerThree, playerFour, playerFive };
         GamePayload game = new GamePayload(null, new TokyoBoard(), new TokyoBoardProcessor(), playerOne.Name);
         var instance = new EnterTokyo();
+        List<string> rolledDices = new List<string>() { "smash", "energy", "one", "one", "one", "heart" };
 
         game.BoardProcessor!.SetTokyoBoard(players, game.Board!);
         game.BoardProcessor!.ChangePlayerBoardPlace(playerTwo, game.Board!.OutsideTokyo, game.Board.TokyoCity);
@@ -51,7 +72,7 @@ public class EnterTokyoTest
         Assert.True(game.Board!.OutsideTokyo.Exists(player => player.Name == game.ActivePlayerName));
         Assert.Equal(10, playerOne.MyMonster.VictoryPoints);
         Assert.Empty(game.Board!.TokyoBay);
-        instance.Execute(null!, game);
+        instance.Execute(rolledDices, game);
         Assert.False(game.Board!.OutsideTokyo.Exists(player => player.Name == game.ActivePlayerName));
         Assert.True(game.Board!.TokyoBay!.Exists(player => player.Name == game.ActivePlayerName));
         Assert.Equal(11, playerOne.MyMonster.VictoryPoints);
