@@ -38,16 +38,17 @@ public class PowerCardDeck
 
     public List<CardDetails> GetFaceUpPowerCards()
     {
-        List<CardDetails> FaceUpPowerCards = new List<CardDetails>();
+        List<CardDetails> faceUpPowerCards = new List<CardDetails>();
         for (int i = 0; i < 3; i++)
         {
             var random = new Random();
             int index = random.Next(Deck.Count);
-            if (!FaceUpPowerCards.Contains(Deck[index]))
+            if (!faceUpPowerCards.Contains(Deck[index]))
             {
-                FaceUpPowerCards.Add(Deck[index]);
+                faceUpPowerCards.Add(Deck[index]);
             }
         }
-        return FaceUpPowerCards;
+
+        return faceUpPowerCards;
     }
 }
