@@ -3,9 +3,9 @@
 using KOT.Controllers.Abstracts;
 using KOT.Models;
 
-public class GainVictoryPoints : PlayerAction<GainVictoryPoints>
+public class GainVictoryPoints : GameAction<GainVictoryPoints>
 {
-    public override void Execute(List<string> dices, GamePayload game)
+    public override void Execute(string[] dices, GamePayload game)
     {
         int points = CountVictoryPoints(dices);
 
@@ -28,7 +28,7 @@ public class GainVictoryPoints : PlayerAction<GainVictoryPoints>
         }
     }
 
-    public int CountVictoryPoints(List<string> dices)
+    public int CountVictoryPoints(string[] dices)
     {
         int points = 0;
         var groupDices = dices.GroupBy(dice => dice);

@@ -11,13 +11,17 @@ public class Turn
     public EnterTokyo Move = new EnterTokyo();
     public BuyPowerCard BuyCard = new BuyPowerCard();
     public EndTurn End = new EndTurn();
+    public EliminatePlayer Eliminate = new EliminatePlayer();
+    public CheckWinner CheckWinner = new CheckWinner();
 
-    public void Play(GamePayload game, List<string> dices)
+    public void Play(GamePayload game, string[] dices)
     {
         Start.Execute(dices, game);
         Analyzer.ResolveDice(dices, game);
+        Eliminate.Execute(dices, game);
         Move.Execute(dices, game);
         BuyCard.Execute(dices, game);
         End.Execute(dices, game);
+        CheckWinner.Execute(dices, game);
     }
 }

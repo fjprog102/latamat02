@@ -23,11 +23,15 @@ public class Game : Element
     [BsonElement("Players")]
     public List<Player>? Players { get; set; }
 
-    public Game(TokyoBoard board, TokyoBoardProcessor boardProcessor, List<Player> players)
+    [BsonElement("Winner")]
+    public string? Winner { get; set; }
+
+    public Game(TokyoBoard board, TokyoBoardProcessor boardProcessor, List<Player> players, string winner)
     {
         Board = board;
         BoardProcessor = boardProcessor;
         ActivePlayerName = null;
         Players = players;
+        Winner = winner;
     }
 }

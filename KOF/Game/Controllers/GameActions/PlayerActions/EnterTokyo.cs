@@ -3,13 +3,13 @@
 using KOT.Controllers.Abstracts;
 using KOT.Models;
 
-public class EnterTokyo : PlayerAction<EnterTokyo>
+public class EnterTokyo : GameAction<EnterTokyo>
 {
-    public override void Execute(List<string> dices, GamePayload game)
+    public override void Execute(string[] dices, GamePayload game)
     {
-        if (dices.Exists(dice => dice == "smash"))
+        if (dices.Contains("smash"))
         {
-            if (game.Board!.TokyoCity.Count() == 0)
+            if (game.Board!.TokyoCity.Count() == 0 || game.Board.TokyoBay == null)
             {
                 game.BoardProcessor!.ChangePlayerBoardPlace
                 (game.Board!.OutsideTokyo.Find(player => player.Name == game.ActivePlayerName)!, game.Board.OutsideTokyo, game.Board.TokyoCity);

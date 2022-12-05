@@ -9,13 +9,15 @@ public class GamePayload : DataHolder
     public TokyoBoardProcessor? BoardProcessor { get; set; }
     public string? ActivePlayerName { get; set; }
     public List<Player>? Players { get; set; }
+    public string? Winner { get; set; }
 
     public GamePayload(
         string? id = null,
         TokyoBoard? board = null,
         TokyoBoardProcessor? boardProcessor = null,
         string? activePlayerName = null,
-        List<Player>? players = null
+        List<Player>? players = null,
+        string? winner = null
     )
     {
         Id = id;
@@ -23,5 +25,6 @@ public class GamePayload : DataHolder
         ActivePlayerName = activePlayerName;
         BoardProcessor = boardProcessor;
         Players = players;
+        Winner = winner;
     }
 }

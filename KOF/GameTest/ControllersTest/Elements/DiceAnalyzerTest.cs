@@ -17,7 +17,7 @@ public class DiceAnalyzerTest
         Player playerFour = new Player("Jorge", new Monster("Gigazaur", 10, 9));
         List<Player> players = new List<Player>() { playerOne, playerTwo, playerThree, playerFour };
         GamePayload game = new GamePayload(null, new TokyoBoard(), new TokyoBoardProcessor(), playerOne.Name);
-        List<string> oneHeart = new List<string>() { "one", "two", "heart", "one", "two", "three" };
+        string[] oneHeart = { "one", "two", "heart", "one", "two", "three" };
 
         game.BoardProcessor!.SetTokyoBoard(players, game.Board!);
 
@@ -43,7 +43,7 @@ public class DiceAnalyzerTest
         Player playerFour = new Player("Jorge", new Monster("Gigazaur", 10, 10));
         List<Player> players = new List<Player>() { playerOne, playerTwo, playerThree, playerFour };
         GamePayload game = new GamePayload(null, new TokyoBoard(), new TokyoBoardProcessor(), playerTwo.Name);
-        List<string> threeOnes = new List<string>() { "one", "one", "three", "one", "two", "one" };
+        string[] threeOnes = { "one", "one", "three", "one", "two", "one" };
 
         game.BoardProcessor!.SetTokyoBoard(players, game.Board!);
 
@@ -68,7 +68,7 @@ public class DiceAnalyzerTest
         Player playerFour = new Player("Jorge", new Monster("Gigazaur", 10, 10));
         List<Player> players = new List<Player>() { playerOne, playerTwo, playerThree, playerFour };
         GamePayload game = new GamePayload(null, new TokyoBoard(), new TokyoBoardProcessor(), playerThree.Name);
-        List<string> fourEnergy = new List<string>() { "energy", "one", "energy", "one", "energy", "energy" };
+        string[] fourEnergy = { "energy", "one", "energy", "one", "energy", "energy" };
 
         game.BoardProcessor!.SetTokyoBoard(players, game.Board!);
 
@@ -93,7 +93,7 @@ public class DiceAnalyzerTest
         Player playerFour = new Player("Jorge", new Monster("Gigazaur", 10, 9));
         List<Player> players = new List<Player>() { playerOne, playerTwo, playerThree, playerFour };
         GamePayload game = new GamePayload(null, new TokyoBoard(), new TokyoBoardProcessor(), playerFour.Name);
-        List<string> allActions = new List<string>() { "two", "two", "energy", "two", "heart", "smash" };
+        string[] allActions = { "two", "two", "energy", "two", "heart", "smash" };
 
         game.BoardProcessor!.SetTokyoBoard(players, game.Board!);
         game.BoardProcessor.ChangePlayerBoardPlace(playerOne, game.Board!.OutsideTokyo, game.Board.TokyoCity);

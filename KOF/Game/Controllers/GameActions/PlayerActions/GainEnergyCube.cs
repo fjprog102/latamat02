@@ -3,9 +3,9 @@
 using KOT.Controllers.Abstracts;
 using KOT.Models;
 
-public class GainEnergyCube : PlayerAction<GainEnergyCube>
+public class GainEnergyCube : GameAction<GainEnergyCube>
 {
-    public override void Execute(List<string> dices, GamePayload game)
+    public override void Execute(string[] dices, GamePayload game)
     {
         {
             int energyCubes = dices.Where(dice => dice == "energy").Count();

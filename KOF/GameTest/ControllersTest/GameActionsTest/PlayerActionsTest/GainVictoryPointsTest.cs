@@ -12,7 +12,7 @@ public class GainVictoryPointsTest
     public void ItShouldBeAChildInstance()
     {
         var instance = new GainVictoryPoints();
-        Assert.True(instance.Instance.GetType().IsSubclassOf(typeof(PlayerAction<GainVictoryPoints>)));
+        Assert.True(instance.Instance.GetType().IsSubclassOf(typeof(GameAction<GainVictoryPoints>)));
     }
 
     [Fact]
@@ -20,13 +20,13 @@ public class GainVictoryPointsTest
     {
         var instance = new GainVictoryPoints();
 
-        List<string> threePoints = new List<string>() { "one", "two", "two", "two", "smash", "two" };
+        string[] threePoints = { "one", "two", "two", "two", "smash", "two" };
         Assert.Equal(3, instance.CountVictoryPoints(threePoints));
-        List<string> onePoint = new List<string>() { "one", "one", "three", "smash", "two", "one" };
+        string[] onePoint = { "one", "one", "three", "smash", "two", "one" };
         Assert.Equal(1, instance.CountVictoryPoints(onePoint));
-        List<string> sixPoints = new List<string>() { "three", "three", "three", "three", "three", "three" };
+        string[] sixPoints = { "three", "three", "three", "three", "three", "three" };
         Assert.Equal(6, instance.CountVictoryPoints(sixPoints));
-        List<string> zeroPoints = new List<string>() { "two", "two", "smash", "smash", "heart", "energy" };
+        string[] zeroPoints = { "two", "two", "smash", "smash", "heart", "energy" };
         Assert.Equal(0, instance.CountVictoryPoints(zeroPoints));
     }
 
@@ -44,15 +44,15 @@ public class GainVictoryPointsTest
         game.BoardProcessor!.SetTokyoBoard(players, game.Board!);
 
         Assert.Equal(10, playerOne.MyMonster?.VictoryPoints);
-        List<string> fourTwos = new List<string>() { "one", "two", "two", "two", "smash", "two" };
+        string[] fourTwos = { "one", "two", "two", "two", "smash", "two" };
         instance.Execute(fourTwos, game);
         Assert.Equal(13, playerOne.MyMonster?.VictoryPoints);
 
-        List<string> threeOnes = new List<string>() { "one", "one", "three", "smash", "two", "one" };
+        string[] threeOnes = { "one", "one", "three", "smash", "two", "one" };
         instance.Execute(threeOnes, game);
         Assert.Equal(14, playerOne.MyMonster?.VictoryPoints);
 
-        List<string> sixThrees = new List<string>() { "three", "three", "three", "three", "three", "three" };
+        string[] sixThrees = { "three", "three", "three", "three", "three", "three" };
         instance.Execute(sixThrees, game);
         Assert.Equal(20, playerOne.MyMonster?.VictoryPoints);
         Assert.Equal(10, playerTwo.MyMonster?.VictoryPoints);

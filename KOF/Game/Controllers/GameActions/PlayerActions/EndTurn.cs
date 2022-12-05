@@ -3,9 +3,9 @@
 using KOT.Controllers.Abstracts;
 using KOT.Models;
 
-public class EndTurn : PlayerAction<EndTurn>
+public class EndTurn : GameAction<EndTurn>
 {
-    public override void Execute(List<string> dices, GamePayload game)
+    public override void Execute(string[] dices, GamePayload game)
     {
         // Execute Player Power card (pending)
 

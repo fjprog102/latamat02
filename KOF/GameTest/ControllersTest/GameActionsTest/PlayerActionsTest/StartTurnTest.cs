@@ -17,7 +17,7 @@ public class StartTurnTest
     public void ItShouldBeAChildInstance()
     {
         var instance = new StartTurn();
-        Assert.True(instance.Instance.GetType().IsSubclassOf(typeof(PlayerAction<StartTurn>)));
+        Assert.True(instance.Instance.GetType().IsSubclassOf(typeof(GameAction<StartTurn>)));
     }
 
     [Fact]
