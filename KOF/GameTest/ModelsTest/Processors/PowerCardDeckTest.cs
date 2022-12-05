@@ -34,4 +34,11 @@ public class PowerCardDeckTest
         Assert.Equal(5, powerCardEffect1.StarPoints);
         Assert.Equal(4, powerCardEffect1.DamagePoints);
     }
+    [Fact]
+    public void ShouldReturnThreeFaceUpPowerCards()
+    {
+        PowerCardDeck myDeck = new PowerCardDeck();
+        List<CardDetails> faceUpPowerCards = myDeck.GetFaceUpPowerCards();
+        Assert.Equal(3, faceUpPowerCards.Count);
+    }
 }
