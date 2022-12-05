@@ -18,10 +18,14 @@ public class Player : Element
     [BsonElement("EnergyCubes")]
     public int EnergyCubes { get; set; }
 
-    public Player(string name, Monster monster, int energyCubes = 0)
+    [BsonElement("PowerCards")]
+    public List<PowerCard>? PowerCards { get; set; }
+
+    public Player(string name, Monster monster, int energyCubes = 0, List<PowerCard>? powerCards = null)
     {
         Name = name;
         MyMonster = monster;
         EnergyCubes = energyCubes;
+        PowerCards = powerCards;
     }
 }
