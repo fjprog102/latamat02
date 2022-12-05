@@ -39,7 +39,7 @@ public class PowerCardDeck
     public List<CardDetails> GetFaceUpPowerCards()
     {
         List<CardDetails> faceUpPowerCards = new List<CardDetails>();
-        for (int i = 0; i < 3; i++)
+        while (faceUpPowerCards.Count < 3)
         {
             var random = new Random();
             int index = random.Next(Deck.Count);
