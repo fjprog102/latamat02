@@ -16,8 +16,6 @@ public class GameServiceMockData
         {
             new Game(new TokyoBoard(), new TokyoBoardProcessor(), new List<Player>()),
             new Game(new TokyoBoard(), new TokyoBoardProcessor(), new List<Player>())
-            // new Game(new TokyoBoard(), new TokyoBoardProcessor(), new List<Player>{}),
-            // new Game(new TokyoBoard(), new TokyoBoardProcessor(), new List<Player>{})
         };
     }
 
@@ -26,7 +24,6 @@ public class GameServiceMockData
         return new List<Game>
         {
             new Game(new TokyoBoard(), new TokyoBoardProcessor(), new List<Player>())
-            // new Game(new TokyoBoard(), new TokyoBoardProcessor(), new List<Player>{})
         };
     }
 
@@ -119,13 +116,12 @@ public class GameServiceTests
 
         //Initialize service
         var service = new GameService(kotDatabaseSettings: options, dbInstance: dbMock.Object);
-        var payload = new GamePayload(board: new TokyoBoard(), boardProcessor: new TokyoBoardProcessor());
-        // var payload = new GamePayload
-        // (
-        //     board: new TokyoBoard(),
-        //     boardProcessor: new TokyoBoardProcessor(),
-        //     players: new List<Player>{}
-        // );
+        var payload = new GamePayload
+        (
+            board: new TokyoBoard(),
+            boardProcessor: new TokyoBoardProcessor(),
+            players: new List<Player> { }
+        );
 
         var result = service.Create(payload: payload);
 
@@ -209,13 +205,12 @@ public class GameServiceTests
 
         //Initialize service
         var service = new GameService(kotDatabaseSettings: options, dbInstance: dbMock.Object);
-        var payload = new GamePayload(board: new TokyoBoard(), boardProcessor: new TokyoBoardProcessor());
-        // var payload = new GamePayload
-        // (
-        //     board: new TokyoBoard(),
-        //     boardProcessor: new TokyoBoardProcessor(),
-        //     players: new List<Player>{}
-        // );
+        var payload = new GamePayload
+        (
+            board: new TokyoBoard(),
+            boardProcessor: new TokyoBoardProcessor(),
+            players: new List<Player> { }
+        );
 
         var result = service.Update(payload: payload);
 
