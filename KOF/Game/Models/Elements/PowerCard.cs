@@ -18,7 +18,7 @@ public class PowerCard : AbstractCard
 
     [BsonElement("Type")]
     public CardTypes Type { get; set; }
-    
+
     public PowerCard(string name, int cost, int type)
     {
         Name = name;
