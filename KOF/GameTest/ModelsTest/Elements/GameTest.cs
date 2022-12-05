@@ -7,18 +7,12 @@ public class GameTest
 {
     private readonly TokyoBoard board = new TokyoBoard();
     private readonly TokyoBoardProcessor processor = new TokyoBoardProcessor();
-
-    [Fact]
-    public void ItShouldThrownAnExceptionIfThenullBoardIsNull()
-    {
-        TokyoBoard? nullBoard = null;
-        Assert.Throws<Exception>(() => new Game(nullBoard!, processor));
-    }
+    private readonly List<Player> players = new List<Player>();
 
     [Fact]
     public void ItShouldCreateTheGameWithAnInitiliazedBoard()
     {
-        Game game = new Game(board, processor);
+        Game game = new Game(board, processor, players);
         Assert.NotNull(game);
     }
 }
