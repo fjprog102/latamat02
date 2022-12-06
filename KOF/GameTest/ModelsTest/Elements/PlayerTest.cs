@@ -1,6 +1,6 @@
 ﻿using KOT.Models.Processor;
 
-namespace KOT.Models.TestU;
+namespace KOT.Models.Test;
 
 public class PlayerTest
 {
