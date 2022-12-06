@@ -4,6 +4,7 @@ using KOT.Models;
 
 public class KofDiceTest
 {
+    /*
     private readonly KofDice kofDice = new KofDice();
 
     [Fact]
@@ -56,4 +57,5 @@ public class KofDiceTest
             Assert.Contains(face, kofDice.Symbols);
         }
     }
+    */
 }
