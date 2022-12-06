@@ -1,5 +1,6 @@
 ﻿using KOT.Models;
 using KOT.Models.Abstracts;
+using KOT.Models.Processor;
 using KOT.Services.Interfaces;
 using Microsoft.Extensions.Options;
 using MongoDB.Bson;
@@ -46,6 +47,12 @@ public class DatabaseService : IDatabaseService
     {
         var coll = GetCollection<T>(collectionName: collectionName);
         coll.InsertOne(document: document);
+    }
+
+    public void UpdateOne<T>(string collectionName, FilterDefinition<T>? filter, T document)
+    {
+        var coll = GetCollection<T>(collectionName: collectionName);
+        coll.ReplaceOne(filter: filter, replacement: document);
     }
 
     public T Delete<T>(string collectionName, FilterDefinition<T> filter)

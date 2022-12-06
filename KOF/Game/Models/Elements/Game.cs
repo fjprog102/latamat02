@@ -17,13 +17,17 @@ public class Game : Element
     [BsonElement("BoardProcessor")]
     public TokyoBoardProcessor? BoardProcessor { get; set; }
 
-    [BsonElement("ActiveUserName")]
-    public string? ActiveUserName { get; set; }
+    [BsonElement("ActivePlayerName")]
+    public string? ActivePlayerName { get; set; }
 
-    public Game(TokyoBoard board, TokyoBoardProcessor boardProcessor)
+    [BsonElement("Players")]
+    public List<Player>? Players { get; set; }
+
+    public Game(TokyoBoard board, TokyoBoardProcessor boardProcessor, List<Player> players)
     {
-        Board = board ?? throw new Exception("The board must be ready to initiliaze the Game.");
+        Board = board;
         BoardProcessor = boardProcessor;
-        ActiveUserName = null;
+        ActivePlayerName = null;
+        Players = players;
     }
 }

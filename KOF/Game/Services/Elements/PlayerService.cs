@@ -1,75 +1,66 @@
 ﻿namespace KOT.Services;
+
 using KOT.Models;
 using KOT.Models.Abstracts;
 using KOT.Services.Interfaces;
 using Microsoft.Extensions.Options;
-using MongoDB.Driver;
 
 public class PlayerService : IPlayerService
 {
-    public readonly IMongoCollection<Player> PlayerCollection;
+    private readonly string _playerCollection;
+    private readonly IDatabaseService _dbInstance;
 
-    public PlayerService(IOptions<KOTDatabaseSettings> kotDatabaseSettings)
+    public PlayerService(
+        IOptions<KOTDatabaseSettings> kotDatabaseSettings,
+        IDatabaseService dbInstance
+    )
     {
-        var mongoClient = new MongoClient(kotDatabaseSettings.Value.ConnectionString);
-        var mongoDatabase = mongoClient.GetDatabase(kotDatabaseSettings.Value.DatabaseName);
-        PlayerCollection = mongoDatabase.GetCollection<Player>(
-            kotDatabaseSettings.Value.PlayerCollectionName
+        _playerCollection = kotDatabaseSettings.Value.PlayerCollectionName;
+        _dbInstance = dbInstance;
+    }
+
+    public IEnumerable<Element> Create(DataHolder payload)
+    {
+        PlayerPayload args = (PlayerPayload)payload;
+        var newPlayer = new Player((string)args.Name!, (Monster)args.MyMonster!, (int)args.EnergyCubes!);
+        _dbInstance.InsertOne<Player>(
+            collectionName: _playerCollection,
+            document: newPlayer
         );
+        return new List<Player> { newPlayer };
     }
 
-    IEnumerable<Element> IPlayerService.Read(DataHolder payload)
+    public IEnumerable<Element> Read(DataHolder payload)
     {
         if (payload.Id != null)
         {
-            return PlayerCollection.Find(x => x.Id!.Equals(payload.Id)).ToList();
+            var filter = _dbInstance.GetFilterId<Player>(payload.Id);
+            return _dbInstance.Find<Player>(
+                collectionName: _playerCollection,
+                filter: filter
+            );
         }
 
-        return PlayerCollection.Find(x => true).ToList();
+        return _dbInstance.Find<Player>(collectionName: _playerCollection, null);
     }
 
-    IEnumerable<Element> IPlayerService.Create(DataHolder payload)
-    {
-        if (payload.GetType() == typeof(PlayerPayload))
-        {
-            PlayerPayload args = (PlayerPayload)payload;
-            var newCard = new Player((string)args.Name!, (Monster)args.MyMonster!);
-            PlayerCollection.InsertOne(newCard);
-            return new Element[] { newCard };
-        }
-
-        return new Element[0];
-    }
-
-    IEnumerable<Element> IPlayerService.Delete(DataHolder payload)
+    public IEnumerable<Element> Delete(DataHolder payload)
     {
         if (payload.Id != null)
         {
-            var deleted = PlayerCollection.FindOneAndDelete(x => x.Id!.Equals(payload.Id));
-            return new Element[] { deleted };
+            var filter = _dbInstance.GetFilterId<Player>(payload.Id);
+            var deleted = _dbInstance.Delete<Player>(
+                collectionName: _playerCollection,
+                filter: filter
+            );
+            return new List<Player> { deleted };
         }
 
-        return new Element[0];
+        return new List<Player> { };
     }
 
-    IEnumerable<Element> IPlayerService.Update(DataHolder payload)
+    public IEnumerable<Element> Update(DataHolder payload)
     {
-        if (payload.Id != null || payload.GetType() == typeof(MonsterPayload))
-        {
-            PlayerPayload args = (PlayerPayload)payload;
-            var newPlayer = new Player((string)args.Name!, (Monster)args.MyMonster!, (int)args.EnergyCubes!);
-
-            var filter = Builders<Player>.Filter.Eq(player => player.Id, payload.Id);
-            var update = Builders<Player>.Update
-                .Set(player => player.Name, newPlayer.Name)
-                .Set(player => player.MyMonster, newPlayer.MyMonster)
-                .Set(player => player.EnergyCubes, newPlayer.EnergyCubes);
-
-            PlayerCollection.UpdateOne(filter, update);
-
-            return new Element[] { newPlayer };
-        }
-
         return new Element[0];
     }
 }

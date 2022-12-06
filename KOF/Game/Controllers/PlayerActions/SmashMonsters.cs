@@ -9,7 +9,7 @@ public class SmashMonsters : PlayerAction<SmashMonsters>
     {
         int smash = dices.Where(dice => dice == "smash").Count();
 
-        if (game.Board?.OutsideTokyo.Exists(player => player.Name == game.ActiveUserName) == true)
+        if (game.Board?.OutsideTokyo.Exists(player => player.Name == game.ActivePlayerName) == true)
         {
             if (game.Board!.TokyoBay != null)
             {
