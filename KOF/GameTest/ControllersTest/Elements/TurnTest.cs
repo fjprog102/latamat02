@@ -30,7 +30,7 @@ public class TurnTest
     {
         List<Player> players = new List<Player>() { playerOne, playerTwo, playerThree, playerFour, playerFive };
         GamePayload game = new GamePayload(null, new TokyoBoard(), new TokyoBoardProcessor(), playerOne.Name, players);
-        List<string> rolledDices = new List<string>() { "three", "three", "three", "smash", "heart", "energy" };
+        string[] rolledDices = { "three", "three", "three", "smash", "heart", "energy" };
 
         game.BoardProcessor!.SetTokyoBoard(game.Players!, game.Board!);
 
@@ -59,7 +59,7 @@ public class TurnTest
     {
         List<Player> players = new List<Player>() { playerOne, playerTwo, playerThree, playerFour, playerFive };
         GamePayload game = new GamePayload(null, new TokyoBoard(), new TokyoBoardProcessor(), playerOne.Name, players);
-        List<string> rolledDices = new List<string>() { "two", "two", "two", "smash", "heart", "energy" };
+        string[] rolledDices = { "two", "two", "two", "smash", "heart", "energy" };
 
         game.BoardProcessor!.SetTokyoBoard(game.Players!, game.Board!);
         // Change PlayerOne place to affect other players
@@ -90,11 +90,11 @@ public class TurnTest
     {
         List<Player> players = new List<Player>() { playerOne, playerTwo, playerThree, playerFour, playerFive };
         GamePayload game = new GamePayload(null, new TokyoBoard(), new TokyoBoardProcessor(), playerOne.Name, players);
-        List<string> rolledDices = new List<string>() { "two", "two", "two", "smash", "heart", "energy" };
+        string[] playerOneDices = { "two", "two", "two", "smash", "heart", "energy" };
 
         game.BoardProcessor!.SetTokyoBoard(game.Players!, game.Board!);
 
-        Turn.Play(game, rolledDices);
+        Turn.Play(game, playerOneDices);
 
         // Player One actions:
         // Gains 4 VictoryPoints (+2 rolledDices, +1 for entering in Tokyo)
@@ -113,19 +113,19 @@ public class TurnTest
         // Ends turn changing activePlayer (playerTwo)
         Assert.Equal("Juan", game.ActivePlayerName);
 
-        rolledDices = new List<string>() { "smash", "smash", "energy", "heart", "heart", "energy" };
+        string[] playerTwoDices = { "smash", "smash", "energy", "smash", "heart", "smash" };
 
-        Turn.Play(game, rolledDices);
+        Turn.Play(game, playerTwoDices);
 
         // Player Two actions:
         // Gains 1 VictoryPoints for entering Tokyo
         Assert.Equal(11, playerTwo.MyMonster.VictoryPoints);
-        // Gains 2 EnergyCubes (rolledDices)
-        Assert.Equal(2, playerTwo.EnergyCubes);
+        // Gains 1 EnergyCubes (rolledDices)
+        Assert.Equal(1, playerTwo.EnergyCubes);
         // No gains of LifePoints (it has already the maximum)
         Assert.Equal(10, playerTwo.MyMonster.LifePoints);
         // Smash monsters (2 points for rolledDices) in Tokyo (onlyPlayerone) for being OutsideTokyo
-        Assert.Equal(8, playerOne.MyMonster.LifePoints);
+        Assert.Equal(6, playerOne.MyMonster.LifePoints);
         Assert.Equal(10, playerThree.MyMonster.LifePoints);
         Assert.Equal(10, playerFour.MyMonster.LifePoints);
         Assert.Equal(10, playerFive.MyMonster.LifePoints);
@@ -134,9 +134,9 @@ public class TurnTest
         // Ends turn changing activePlayer (playerThree)
         Assert.Equal("Adriel", game.ActivePlayerName);
 
-        rolledDices = new List<string>() { "three", "three", "smash", "three", "energy", "three" };
+        string[] playerThreeDices = { "three", "three", "smash", "three", "energy", "three" };
 
-        Turn.Play(game, rolledDices);
+        Turn.Play(game, playerThreeDices);
 
         // Player Three actions:
         // Gains 4 VictoryPoints (3 + 1)
@@ -146,7 +146,7 @@ public class TurnTest
         // No gains of LifePoints
         Assert.Equal(10, playerThree.MyMonster.LifePoints);
         // Smash monsters (1 points for rolledDices) in Tokyo (PlayerOne and PlayerTwo) for being OutsideTokyo
-        Assert.Equal(7, playerOne.MyMonster.LifePoints);
+        Assert.Equal(5, playerOne.MyMonster.LifePoints);
         Assert.Equal(9, playerTwo.MyMonster.LifePoints);
         Assert.Equal(10, playerFour.MyMonster.LifePoints);
         Assert.Equal(10, playerFive.MyMonster.LifePoints);
@@ -155,9 +155,9 @@ public class TurnTest
         // Ends turn changing activePlayer (playerFour)
         Assert.Equal("Jorge", game.ActivePlayerName);
 
-        rolledDices = new List<string>() { "energy", "energy", "one", "one", "one", "heart" };
+        string[] playerFourDices = { "energy", "energy", "one", "one", "one", "heart" };
 
-        Turn.Play(game, rolledDices);
+        Turn.Play(game, playerFourDices);
 
         // Player Four actions:
         // Gains 1 VictoryPoints (rolledDices)
@@ -167,7 +167,7 @@ public class TurnTest
         // No gains of LifePoints (it has already the maximum)
         Assert.Equal(10, playerFour.MyMonster.LifePoints);
         // Doesn't smash monsters
-        Assert.Equal(7, playerOne.MyMonster.LifePoints);
+        Assert.Equal(5, playerOne.MyMonster.LifePoints);
         Assert.Equal(9, playerTwo.MyMonster.LifePoints);
         Assert.Equal(10, playerFour.MyMonster.LifePoints);
         Assert.Equal(10, playerFive.MyMonster.LifePoints);
@@ -176,25 +176,31 @@ public class TurnTest
         // Ends turn changing activePlayer (playerFour)
         Assert.Equal("Valeria", game.ActivePlayerName);
 
-        rolledDices = new List<string>() { "smash", "smash", "smash", "smash", "energy", "heart" };
+        string[] playerFiveDices = { "smash", "smash", "smash", "smash", "energy", "smash" };
 
-        Turn.Play(game, rolledDices);
+        Turn.Play(game, playerFiveDices);
 
         // Player Five actions:
         // Gains 1 EnergyCubes (rolledDices)
         Assert.Equal(1, playerFive.EnergyCubes);
-        // No gains of LifePoints (it has already the maximum)
+        // No gains of LifePoints
         Assert.Equal(10, playerFive.MyMonster.LifePoints);
-        // Smash monsters (4 points for rolledDices) in Tokyo (PlayerOne, PlayerTwo and PlayerThree) for being OutsideTokyo
-        Assert.Equal(3, playerOne.MyMonster.LifePoints);
-        Assert.Equal(5, playerTwo.MyMonster.LifePoints);
-        Assert.Equal(6, playerThree.MyMonster.LifePoints);
+        // Smash monsters (5 points for rolledDices) in Tokyo (PlayerOne, PlayerTwo and PlayerThree) for being OutsideTokyo
+        Assert.Equal(0, playerOne.MyMonster.LifePoints);
+        Assert.Equal(4, playerTwo.MyMonster.LifePoints);
+        Assert.Equal(5, playerThree.MyMonster.LifePoints);
         Assert.Equal(10, playerFour.MyMonster.LifePoints);
-        // Enters in Tokyo
-        Assert.True(game.Board!.TokyoBay!.Exists(player => player.Name == playerFive.Name));
+        // Eliminate PlayerOne for having 0 LifePoints
+        Assert.DoesNotContain(playerOne, game.Board.OutsideTokyo);
+        Assert.DoesNotContain(playerOne, game.Board.TokyoCity);
+        // Nulls TokyoBay for being less than five players
+        Assert.Null(game.Board.TokyoBay);
+        // Enters in TokyoCity
+        Assert.True(game.Board!.TokyoCity!.Exists(player => player.Name == playerFive.Name));
         // Gains 1 VictoryPoints for entering Tokyo
         Assert.Equal(11, playerFive.MyMonster.VictoryPoints);
         // Ends turn changing activePlayer (playerFour)
         Assert.Equal("Jose", game.ActivePlayerName);
+        Assert.Equal("", game.Winner);
     }
 }

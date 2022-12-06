@@ -12,7 +12,7 @@ public class GameTest
     [Fact]
     public void ItShouldCreateTheGameWithAnInitiliazedBoard()
     {
-        Game game = new Game(board, processor, players);
+        Game game = new Game(board, processor, players, "");
         Assert.NotNull(game);
     }
 }

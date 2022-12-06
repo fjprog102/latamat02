@@ -2,42 +2,28 @@
 
 using KOT.Models.Abstracts;
 
-public class KofDice : Dice
+public class KofDice
 {
-    public List<string>[] BlackDices = new List<string>[6];
-    public List<string>[] GreenDices = new List<string>[2];
+    public string[] BlackDices = new string[6];
+    public string[] GreenDices = new string[2];
 
-    public new string[] Symbols = { "one", "two", "three", "heart", "energy", "smash" };
+    private readonly string[] Symbols = { "one", "two", "three", "heart", "energy", "smash" };
 
     public KofDice()
     {
-        foreach (string symbol in Symbols)
-        {
-            Faces.Add(symbol);
-        }
-
-        GenerateKofDices(BlackDices);
-        GenerateKofDices(GreenDices);
+        GenerateKofDices(BlackDices, new bool[] { false, false, false, false, false, false });
+        GenerateKofDices(GreenDices, new bool[] { false, false });
     }
 
-    public void GenerateKofDices(List<string>[] dices)
+    public void GenerateKofDices(string[] instance, bool[] choosen)
     {
-        for (int index = 0; index < dices.Length; index++)
+        for (int i = 0; i < instance.Count(); i++)
         {
-            dices[index] = Faces;
+            if (choosen[i] is false)
+            {
+                Random random = new Random();
+                instance[i] = Symbols.ElementAt(random.Next(6));
+            }
         }
-    }
-
-    public List<string> RollDices(List<string>[] dices)
-    {
-        List<string> rolledDices = new List<string>();
-        Random random = new Random();
-
-        for (int index = 0; index < dices.Length; index++)
-        {
-            rolledDices.Add(dices[index][random.Next(dices[index].Count() - 1)]);
-        }
-
-        return rolledDices;
     }
 }

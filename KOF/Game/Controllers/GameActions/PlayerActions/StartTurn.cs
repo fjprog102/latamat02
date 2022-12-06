@@ -3,9 +3,9 @@
 using KOT.Controllers.Abstracts;
 using KOT.Models;
 
-public class StartTurn : PlayerAction<StartTurn>
+public class StartTurn : GameAction<StartTurn>
 {
-    public override void Execute(List<string> dices, GamePayload game)
+    public override void Execute(string[] dices, GamePayload game)
     {
         if (game.Board!.TokyoCity.Exists(player => player.Name == game.ActivePlayerName) == true)
         {

@@ -10,7 +10,7 @@ public class DiceAnalyzer
     private readonly GainVictoryPoints GainVictory = new GainVictoryPoints();
     private readonly SmashMonsters Smash = new SmashMonsters();
 
-    public void ResolveDice(List<string> dices, GamePayload game)
+    public void ResolveDice(string[] dices, GamePayload game)
     {
         var groupDices = dices.GroupBy(dice => dice);
         foreach (var group in groupDices)

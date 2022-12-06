@@ -17,7 +17,7 @@ public class EnterTokyoTest
     public void ItShouldBeAChildInstance()
     {
         var instance = new EnterTokyo();
-        Assert.True(instance.Instance.GetType().IsSubclassOf(typeof(PlayerAction<EnterTokyo>)));
+        Assert.True(instance.Instance.GetType().IsSubclassOf(typeof(GameAction<EnterTokyo>)));
     }
 
     [Fact]
@@ -26,7 +26,7 @@ public class EnterTokyoTest
         List<Player> players = new List<Player>() { playerOne, playerTwo, playerThree, playerFour, playerFive };
         GamePayload game = new GamePayload(null, new TokyoBoard(), new TokyoBoardProcessor(), playerOne.Name);
         var instance = new EnterTokyo();
-        List<string> rolledDices = new List<string>() { "energy", "energy", "one", "one", "one", "heart" };
+        string[] rolledDices = { "energy", "energy", "one", "one", "one", "heart" };
 
         game.BoardProcessor!.SetTokyoBoard(players, game.Board!);
 
@@ -45,7 +45,7 @@ public class EnterTokyoTest
         List<Player> players = new List<Player>() { playerOne, playerTwo, playerThree, playerFour, playerFive };
         GamePayload game = new GamePayload(null, new TokyoBoard(), new TokyoBoardProcessor(), playerOne.Name);
         var instance = new EnterTokyo();
-        List<string> rolledDices = new List<string>() { "smash", "energy", "one", "one", "one", "heart" };
+        string[] rolledDices = { "smash", "energy", "one", "one", "one", "heart" };
 
         game.BoardProcessor!.SetTokyoBoard(players, game.Board!);
 
@@ -64,7 +64,7 @@ public class EnterTokyoTest
         List<Player> players = new List<Player>() { playerOne, playerTwo, playerThree, playerFour, playerFive };
         GamePayload game = new GamePayload(null, new TokyoBoard(), new TokyoBoardProcessor(), playerOne.Name);
         var instance = new EnterTokyo();
-        List<string> rolledDices = new List<string>() { "smash", "energy", "one", "one", "one", "heart" };
+        string[] rolledDices = { "smash", "energy", "one", "one", "one", "heart" };
 
         game.BoardProcessor!.SetTokyoBoard(players, game.Board!);
         game.BoardProcessor!.ChangePlayerBoardPlace(playerTwo, game.Board!.OutsideTokyo, game.Board.TokyoCity);

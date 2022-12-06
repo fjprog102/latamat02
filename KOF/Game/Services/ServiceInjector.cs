@@ -14,5 +14,6 @@ public class ServiceInjector
         services.AddSingleton<IPowerCardService, PowerCardService>();
         services.AddSingleton<IMonsterService, MonsterService>();
         services.AddSingleton<IDatabaseService, DatabaseService>();
+        services.AddSingleton<ISelectDiceService, SelectDiceService>();
     }
 }

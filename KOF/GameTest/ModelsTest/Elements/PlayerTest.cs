@@ -5,7 +5,7 @@ namespace KOT.Models.Test;
 
 public class PlayerTest
 {
-    private readonly Player player1 = new Player("Pablo", new Monster("monster1", 10, 10), 14, new List<PowerCard>() { new PowerCard("powerCard1", 10, 1) });
+    private readonly Player player1 = new Player("Pablo", new Monster("monster1", 10, 10), 14, null);
 
     [Fact]
     public void ShouldReturnPropertyNameAsString()
@@ -49,5 +49,10 @@ public class PlayerTest
     {
         Player player2 = new Player("Player2", null!);
         Assert.True(object.ReferenceEquals(null, player2.PowerCards));
+    }
+    [Fact]
+    public void ShouldReturnIdAsNull()
+    {
+        Assert.True(player1.Id! == null);
     }
 }

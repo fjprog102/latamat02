@@ -17,9 +17,9 @@ public class GameControllerMockData
 
         return new List<Game>
         {
-            new Game(board, boardProcessor, players),
-            new Game(board, boardProcessor, players),
-            new Game(board, boardProcessor, players),
+            new Game(board, boardProcessor, players, ""),
+            new Game(board, boardProcessor, players, ""),
+            new Game(board, boardProcessor, players, ""),
         };
     }
 
@@ -28,7 +28,7 @@ public class GameControllerMockData
         TokyoBoard board = new TokyoBoard();
         TokyoBoardProcessor boardProcessor = new TokyoBoardProcessor();
         List<Player> players = new List<Player>();
-        return new List<Game> { new Game(board, boardProcessor, players) };
+        return new List<Game> { new Game(board, boardProcessor, players, "") };
     }
 }
 

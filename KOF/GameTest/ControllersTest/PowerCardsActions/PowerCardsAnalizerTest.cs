@@ -1,5 +1,6 @@
 namespace KOT.Controllers.PowerCardsActions.Test;
 using KOT.Models;
+using KOT.Models.Processor;
 
 public class PowerCardsAnalizerTest
 {
@@ -12,8 +13,7 @@ public class PowerCardsAnalizerTest
         new PowerCard("Heal", 3, 1),
         new PowerCard("Energize", 8, 1),
         new PowerCard("Apartament Building", 5, 1),
-        new PowerCard("Jet Fighters", 5, 1),
-        new PowerCard("Alien Metabolism", 3, 0)
+        new PowerCard("Jet Fighters", 5, 1)
     };
 
     [Fact]
@@ -23,19 +23,19 @@ public class PowerCardsAnalizerTest
             "Player1",
             monster1,
             14,
-            new List<PowerCard>() { powerCards[0] }
+            new List<CardDetails>() {  }
         );
         Player player2 = new Player(
             "Player2",
             new Monster("Monster2", 5, 10),
             14,
-            new List<PowerCard>() { powerCards[1] }
+            new List<CardDetails>() {  }
         );
         Player player3 = new Player(
             "Player3",
             new Monster("Monster3", 5, 10),
             14,
-            new List<PowerCard>() { powerCards[0], powerCards[1] }
+            new List<CardDetails>() {  }
         );
         Analizer.ResolveCards(player1); //5victorypoints +1 star
         Assert.Equal(6, player1.MyMonster.VictoryPoints);

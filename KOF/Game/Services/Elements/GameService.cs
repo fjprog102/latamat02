@@ -23,7 +23,7 @@ public class GameService : IGameService
     public IEnumerable<Element> Create(GamePayload payload)
     {
         GamePayload args = (GamePayload)payload;
-        var newGame = new Game((TokyoBoard)args.Board!, (TokyoBoardProcessor)args.BoardProcessor!, (List<Player>)args.Players!);
+        var newGame = new Game((TokyoBoard)args.Board!, (TokyoBoardProcessor)args.BoardProcessor!, (List<Player>)args.Players!, (string)args.Winner!);
         _dbInstance.InsertOne<Game>(
             collectionName: _gameCollection,
             document: newGame
@@ -50,7 +50,7 @@ public class GameService : IGameService
         if (payload.Id != null)
         {
             var filter = _dbInstance.GetFilterId<Game>(payload.Id);
-            var newGame = new Game(payload.Board!, payload.BoardProcessor!, payload.Players!);
+            var newGame = new Game(payload.Board!, payload.BoardProcessor!, payload.Players!, payload.Winner!);
             newGame.Id = payload.Id;
             newGame.ActivePlayerName = payload.ActivePlayerName;
             _dbInstance.UpdateOne<Game>(
