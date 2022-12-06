@@ -10,6 +10,6 @@ public class BuyPowerCardTest
     public void ItShouldBeAChildInstance()
     {
         var instance = new BuyPowerCard();
-        Assert.True(instance.Instance.GetType().IsSubclassOf(typeof(PlayerAction<BuyPowerCard>)));
+        Assert.True(instance.Instance.GetType().IsSubclassOf(typeof(GameAction<BuyPowerCard>)));
     }
 }

@@ -11,7 +11,7 @@ public class GainEnergyCubeTest
     public void ItShouldBeAChildInstance()
     {
         var instance = new GainEnergyCube();
-        Assert.True(instance.Instance.GetType().IsSubclassOf(typeof(PlayerAction<GainEnergyCube>)));
+        Assert.True(instance.Instance.GetType().IsSubclassOf(typeof(GameAction<GainEnergyCube>)));
     }
 
     [Fact]
@@ -26,21 +26,21 @@ public class GainEnergyCubeTest
 
         game.BoardProcessor!.SetTokyoBoard(players, game.Board!);
 
-        List<string> oneEnergy = new List<string>() { "one", "two", "heart", "one", "two", "energy" };
+        string[] oneEnergy = { "one", "two", "heart", "one", "two", "energy" };
         var instance = new GainEnergyCube();
 
         Assert.Equal(0, playerOne.EnergyCubes);
         instance.Execute(oneEnergy, game);
         Assert.Equal(1, playerOne.EnergyCubes);
-        List<string> threeEnergy = new List<string>() { "energy", "energy", "three", "smash", "two", "energy" };
+        string[] threeEnergy = { "energy", "energy", "three", "smash", "two", "energy" };
         instance.Execute(threeEnergy, game);
         Assert.Equal(4, playerOne.EnergyCubes);
-        List<string> sixEnergy = new List<string>() { "energy", "energy", "energy", "energy", "energy", "energy" };
+        string[] sixEnergy = { "energy", "energy", "energy", "energy", "energy", "energy" };
         instance.Execute(sixEnergy, game);
         Assert.Equal(10, playerOne.EnergyCubes);
 
         game.ActivePlayerName = playerTwo.Name;
-        List<string> fiveEnergy = new List<string>() { "energy", "two", "energy", "energy", "energy", "energy" };
+        string[] fiveEnergy = { "energy", "two", "energy", "energy", "energy", "energy" };
         instance.Execute(fiveEnergy, game);
         Assert.Equal(5, playerTwo.EnergyCubes);
 

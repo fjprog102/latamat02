@@ -12,7 +12,7 @@ public class SmashMonstersTest
     public void ItShouldBeAChildInstance()
     {
         var instance = new SmashMonsters();
-        Assert.True(instance.Instance.GetType().IsSubclassOf(typeof(PlayerAction<SmashMonsters>)));
+        Assert.True(instance.Instance.GetType().IsSubclassOf(typeof(GameAction<SmashMonsters>)));
     }
 
     [Fact]
@@ -29,7 +29,7 @@ public class SmashMonstersTest
 
         game.BoardProcessor!.SetTokyoBoard(players, game.Board!);
 
-        List<string> smashThree = new List<string>() { "smash", "smash", "two", "two", "smash", "two" };
+        string[] smashThree = { "smash", "smash", "two", "two", "smash", "two" };
         instance.Execute(smashThree, game);
         Assert.Equal(10, playerOne.MyMonster?.LifePoints);
         Assert.Equal(10, playerTwo.MyMonster?.LifePoints);
@@ -65,7 +65,7 @@ public class SmashMonstersTest
         game.BoardProcessor.ChangePlayerBoardPlace(playerTwo, game.Board!.OutsideTokyo, game.Board.TokyoBay);
         game.BoardProcessor.ChangePlayerBoardPlace(playerFour, game.Board.OutsideTokyo, game.Board.TokyoCity);
 
-        List<string> smashThree = new List<string>() { "smash", "smash", "two", "two", "smash", "two" };
+        string[] smashThree = { "smash", "smash", "two", "two", "smash", "two" };
         instance.Execute(smashThree, game);
         Assert.Equal(10, playerOne.MyMonster?.LifePoints);
         Assert.Equal(7, playerTwo.MyMonster?.LifePoints);
@@ -89,7 +89,7 @@ public class SmashMonstersTest
         game.BoardProcessor!.SetTokyoBoard(players, game.Board!);
         game.BoardProcessor.ChangePlayerBoardPlace(playerOne, game.Board!.OutsideTokyo, game.Board.TokyoBay);
 
-        List<string> smashThree = new List<string>() { "smash", "smash", "two", "two", "smash", "two" };
+        string[] smashThree = { "smash", "smash", "two", "two", "smash", "two" };
         instance.Execute(smashThree, game);
         Assert.Equal(10, playerOne.MyMonster?.LifePoints);
         Assert.Equal(7, playerTwo.MyMonster?.LifePoints);

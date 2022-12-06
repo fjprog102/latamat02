@@ -11,7 +11,7 @@ public class GainLifePointsTest
     public void ItShouldBeAChildInstance()
     {
         var instance = new GainLifePoints();
-        Assert.True(instance.Instance.GetType().IsSubclassOf(typeof(PlayerAction<GainLifePoints>)));
+        Assert.True(instance.Instance.GetType().IsSubclassOf(typeof(GameAction<GainLifePoints>)));
     }
 
     [Fact]
@@ -27,16 +27,16 @@ public class GainLifePointsTest
 
         game.BoardProcessor!.SetTokyoBoard(players, game.Board!);
 
-        List<string> oneHeart = new List<string>() { "one", "two", "heart", "one", "two", "energy" };
+        string[] oneHeart = { "one", "two", "heart", "one", "two", "energy" };
         Assert.Equal(1, playerOne.MyMonster.LifePoints);
         instance.Execute(oneHeart, game);
         Assert.Equal(2, playerOne.MyMonster.LifePoints);
 
-        List<string> threeHearts = new List<string>() { "heart", "energy", "three", "heart", "two", "heart" };
+        string[] threeHearts = { "heart", "energy", "three", "heart", "two", "heart" };
         instance.Execute(threeHearts, game);
         Assert.Equal(5, playerOne.MyMonster.LifePoints);
 
-        List<string> fiveHearts = new List<string>() { "energy", "heart", "heart", "heart", "heart", "heart" };
+        string[] fiveHearts = { "energy", "heart", "heart", "heart", "heart", "heart" };
         instance.Execute(fiveHearts, game);
         Assert.Equal(10, playerOne.MyMonster.LifePoints);
     }
@@ -50,7 +50,7 @@ public class GainLifePointsTest
         Player playerFour = new Player("Jorge", new Monster("Gigazaur", 10, 10));
         List<Player> players = new List<Player>() { playerOne, playerTwo, playerThree, playerFour };
         GamePayload game = new GamePayload(null, new TokyoBoard(), new TokyoBoardProcessor(), playerOne.Name);
-        List<string> fourHearts = new List<string>() { "energy", "two", "heart", "heart", "heart", "heart" };
+        string[] fourHearts = { "energy", "two", "heart", "heart", "heart", "heart" };
         var instance = new GainLifePoints();
 
         game.BoardProcessor!.SetTokyoBoard(players, game.Board!);
@@ -82,7 +82,7 @@ public class GainLifePointsTest
         Player playerFour = new Player("Jorge", new Monster("Gigazaur", 10, 10));
         List<Player> players = new List<Player>() { playerOne, playerTwo, playerThree, playerFour };
         GamePayload game = new GamePayload(null, new TokyoBoard(), new TokyoBoardProcessor(), playerOne.Name);
-        List<string> fourHearts = new List<string>() { "energy", "two", "heart", "heart", "heart", "heart" };
+        string[] fourHearts = { "energy", "two", "heart", "heart", "heart", "heart" };
         var instance = new GainLifePoints();
 
         game.BoardProcessor!.SetTokyoBoard(players, game.Board!);

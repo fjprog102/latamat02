@@ -12,7 +12,7 @@ public class EndTurnTest
     public void ItShouldBeAChildInstance()
     {
         var instance = new EndTurn();
-        Assert.True(instance.Instance.GetType().IsSubclassOf(typeof(PlayerAction<EndTurn>)));
+        Assert.True(instance.Instance.GetType().IsSubclassOf(typeof(GameAction<EndTurn>)));
     }
 
     [Fact]

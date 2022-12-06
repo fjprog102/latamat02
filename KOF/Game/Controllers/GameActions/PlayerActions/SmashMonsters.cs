@@ -3,9 +3,9 @@
 using KOT.Controllers.Abstracts;
 using KOT.Models;
 
-public class SmashMonsters : PlayerAction<SmashMonsters>
+public class SmashMonsters : GameAction<SmashMonsters>
 {
-    public override void Execute(List<string> dices, GamePayload game)
+    public override void Execute(string[] dices, GamePayload game)
     {
         int smash = dices.Where(dice => dice == "smash").Count();
 
