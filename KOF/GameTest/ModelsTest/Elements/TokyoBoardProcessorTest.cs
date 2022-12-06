@@ -121,5 +121,12 @@ public class TokyoBoardProcessorTest
         playerPlace = Processor.FindPlayer(Board, "player");
         Assert.Equal("TokyoCity", playerPlace.Values.First());
         Assert.Equal(0, playerPlace.Keys.First());
+        Board.TokyoCity.Remove(player);
+        Board.TokyoBay = new List<Player>();
+        Assert.NotNull(Board.TokyoBay);
+        Board.TokyoBay.Add(player);
+        playerPlace = Processor.FindPlayer(Board, "player");
+        Assert.Equal("TokyoBay", playerPlace.Values.First());
+        Assert.Equal(0, playerPlace.Keys.First());
     }
 }

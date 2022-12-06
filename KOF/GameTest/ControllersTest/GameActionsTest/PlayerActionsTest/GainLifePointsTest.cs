@@ -80,23 +80,29 @@ public class GainLifePointsTest
         Player playerTwo = new Player("Juan", new Monster("Gigazaur", 10, 4));
         Player playerThree = new Player("Adriel", new Monster("Gigazaur", 10, 7));
         Player playerFour = new Player("Jorge", new Monster("Gigazaur", 10, 10));
-        List<Player> players = new List<Player>() { playerOne, playerTwo, playerThree, playerFour };
+        Player playerFive = new Player("Jorge", new Monster("Gigazaur", 10, 10));
+        List<Player> players = new List<Player>() { playerOne, playerTwo, playerThree, playerFour, playerFive};
         GamePayload game = new GamePayload(null, new TokyoBoard(), new TokyoBoardProcessor(), playerOne.Name);
         string[] fourHearts = { "energy", "two", "heart", "heart", "heart", "heart" };
         var instance = new GainLifePoints();
 
         game.BoardProcessor!.SetTokyoBoard(players, game.Board!);
+        Assert.NotNull(game.Board!.OutsideTokyo!.Find(player => player.Name == game.ActivePlayerName));
         game.BoardProcessor!.ChangePlayerBoardPlace(playerOne, game.Board!.OutsideTokyo, game.Board.TokyoBay);
 
+        Assert.NotNull(game.Board!.TokyoBay!.Find(player => player.Name == game.ActivePlayerName));
         Assert.Equal(8, playerOne.MyMonster.LifePoints);
         instance.Execute(fourHearts, game);
         Assert.Equal(8, playerOne.MyMonster.LifePoints);
 
-        game.BoardProcessor!.ChangePlayerBoardPlace(playerOne, originalPlace: game.Board!.TokyoBay, game.Board.TokyoCity);
+        game.BoardProcessor!.ChangePlayerBoardPlace(playerTwo, originalPlace: game.Board!.OutsideTokyo, game.Board.TokyoCity);
+        game.ActivePlayerName = playerTwo.Name;
+        Assert.NotNull(game.Board!.TokyoCity.Find(player => player.Name == game.ActivePlayerName));
         instance.Execute(fourHearts, game);
+        Assert.Equal(4, playerTwo.MyMonster.LifePoints);
+
         Assert.Equal(8, playerOne.MyMonster.LifePoints);
         Assert.Equal(10, playerFour.MyMonster.LifePoints);
         Assert.Equal(7, playerThree.MyMonster.LifePoints);
-        Assert.Equal(4, playerTwo.MyMonster.LifePoints);
     }
 }
