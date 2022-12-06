@@ -59,7 +59,7 @@ public class GainVictoryPointsTest
 
         game.BoardProcessor!.ChangePlayerBoardPlace(playerThree, game.Board!.OutsideTokyo, game.Board.TokyoBay);
         game.ActivePlayerName = playerThree.Name;
-        Assert.NotNull(game.Board!.TokyoBay.Find(player => player.Name == game.ActivePlayerName));
+        Assert.NotNull(game.Board.TokyoBay!.Find(player => player.Name == game.ActivePlayerName));
         string[] sixThrees = { "three", "three", "three", "three", "three", "three" };
         instance.Execute(sixThrees, game);
         Assert.Equal(13, playerOne.MyMonster?.VictoryPoints);
