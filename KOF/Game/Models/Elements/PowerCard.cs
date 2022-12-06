@@ -1,7 +1,7 @@
 ﻿using KOT.Models.Abstracts;
+using KOT.Models.Processor;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
-
 namespace KOT.Models;
 
 public class PowerCard : AbstractCard
