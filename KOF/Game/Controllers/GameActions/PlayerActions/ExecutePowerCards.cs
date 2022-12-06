@@ -1,6 +1,6 @@
-namespace KOT.Controllers.PowerCardsActions;
-using KOT.Models;
+﻿namespace KOT.Controllers.PowerCardsActions;
 using KOT.Controllers.Abstracts;
+using KOT.Models;
 
 public class ExecutePowerCard : PowerCardAction<ExecutePowerCard>
 {

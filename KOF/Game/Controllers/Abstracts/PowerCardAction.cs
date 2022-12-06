@@ -1,4 +1,4 @@
-namespace KOT.Controllers.Abstracts;
+﻿namespace KOT.Controllers.Abstracts;
 
 using KOT.Models;
 

@@ -1,4 +1,4 @@
-namespace KOT.Controllers.PowerCardsActions.Test;
+﻿namespace KOT.Controllers.PowerCardsActions.Test;
 using KOT.Models;
 using KOT.Models.Processor;
 
@@ -130,7 +130,7 @@ public class NewGame
         return game;
     }
 
-    public GamePayload sixthGame()
+    public GamePayload SixthGame()
     {
         List<Player> players = new List<Player>() { player6, player3, player4, player5 };
         GamePayload game = new GamePayload(
@@ -202,7 +202,7 @@ public class PowerCardsAnalizerTest
     public void ItShouldUpdateExecuteDamage()
     {
         NewGame newGame = new NewGame();
-        GamePayload game = newGame.sixthGame();
+        GamePayload game = newGame.SixthGame();
         Analizer.Execute(game); //5victorypoints + starPoints: 5, damagePoints: 4
         Player activePlayer = game.Board?.OutsideTokyo!.Find(
             player => player.Name == game.ActivePlayerName
