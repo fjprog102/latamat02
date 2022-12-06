@@ -1,11 +1,18 @@
-﻿using KOT.Models;
-using KOT.Models.Abstracts;
+﻿using KOT.Models.Processor;
 
-namespace KOT.Models.Test;
+namespace KOT.Models.TestU;
 
 public class PlayerTest
 {
-    private readonly Player player1 = new Player("Pablo", new Monster("monster1", 10, 10), 14, null);
+    private readonly Player player1 = new Player(
+        "Pablo",
+        new Monster("monster1", 10, 10),
+        14,
+        new List<CardDetails>()
+        {
+            new CardDetails(new PowerCard("Energize", 8, 1), new Effect(energyPoints: 9))
+        }
+    );
 
     [Fact]
     public void ShouldReturnPropertyNameAsString()
@@ -25,6 +32,7 @@ public class PlayerTest
         Player player2 = new Player("Player2", null!);
         Assert.True(object.ReferenceEquals(null, player2.MyMonster));
     }
+
     [Fact]
     public void ShouldReturnEnergyCubesAsIntIsDeclared()
     {
@@ -39,17 +47,19 @@ public class PlayerTest
     }
 
     [Fact]
-    public void ShouldReturnPowerCardsAsListOfPowercards()
+    public void ShouldReturnPowerCardsAsListOfCardDetails()
     {
-        Assert.IsType<List<PowerCard>>(player1.PowerCards);
+        Assert.IsType<List<CardDetails>>(player1.PowerCards);
         Assert.False(object.ReferenceEquals(null, player1.PowerCards));
     }
+
     [Fact]
     public void ShouldReturnPowerCardsAsNull()
     {
         Player player2 = new Player("Player2", null!);
         Assert.True(object.ReferenceEquals(null, player2.PowerCards));
     }
+
     [Fact]
     public void ShouldReturnIdAsNull()
     {
