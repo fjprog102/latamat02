@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram id="-_Bcv6ZNS8pgz9ajk_WP" name="Page-1">
-        <mxGraphModel dx="735" dy="727" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+        <mxGraphModel dx="1025" dy="606" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -9,7 +9,7 @@
                         <mxPoint x="140" y="290" as="targetPoint"/>
                         <Array as="points">
                             <mxPoint x="370" y="220"/>
-                            <mxPoint x="200" y="220"/>
+                            <mxPoint x="100" y="220"/>
                         </Array>
                     </mxGeometry>
                 </mxCell>
@@ -29,8 +29,15 @@
                         </Array>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="24" value="" style="edgeStyle=none;html=1;" edge="1" parent="1" source="2" target="22">
-                    <mxGeometry relative="1" as="geometry"/>
+                <mxCell id="24" value="" style="edgeStyle=none;html=1;" edge="1" parent="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="370" y="123" as="sourcePoint"/>
+                        <mxPoint x="687" y="290" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="370" y="220"/>
+                            <mxPoint x="687" y="220"/>
+                        </Array>
+                    </mxGeometry>
                 </mxCell>
                 <mxCell id="27" value="" style="edgeStyle=none;html=1;entryX=1.014;entryY=0.077;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="2" target="26">
                     <mxGeometry relative="1" as="geometry"/>
@@ -45,7 +52,7 @@
                     <mxGeometry y="26" width="140" height="26" as="geometry"/>
                 </mxCell>
                 <mxCell id="9" value="#ChoosenDicePayload" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;fillColor=none;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" vertex="1" parent="1">
-                    <mxGeometry x="30" y="264" width="140" height="78" as="geometry"/>
+                    <mxGeometry x="30" y="290" width="140" height="78" as="geometry"/>
                 </mxCell>
                 <mxCell id="10" value="bool Choosen" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="9">
                     <mxGeometry y="26" width="140" height="26" as="geometry"/>
@@ -84,7 +91,7 @@
                     <mxGeometry y="78" width="140" height="26" as="geometry"/>
                 </mxCell>
                 <mxCell id="22" value="#PlayerPayload" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;fillColor=none;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" vertex="1" parent="1">
-                    <mxGeometry x="690" y="290" width="140" height="104" as="geometry"/>
+                    <mxGeometry x="620" y="290" width="140" height="104" as="geometry"/>
                 </mxCell>
                 <mxCell id="23" value="string Name" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="22">
                     <mxGeometry y="26" width="140" height="26" as="geometry"/>
@@ -96,7 +103,7 @@
                     <mxGeometry y="78" width="140" height="26" as="geometry"/>
                 </mxCell>
                 <mxCell id="25" value="#PowerCardPayload" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;fillColor=none;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" vertex="1" parent="1">
-                    <mxGeometry x="40" y="70" width="140" height="104" as="geometry"/>
+                    <mxGeometry x="10" y="90" width="140" height="104" as="geometry"/>
                 </mxCell>
                 <mxCell id="26" value="string Name" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="25">
                     <mxGeometry y="26" width="140" height="26" as="geometry"/>
@@ -108,7 +115,7 @@
                     <mxGeometry y="78" width="140" height="26" as="geometry"/>
                 </mxCell>
                 <mxCell id="28" value="#TurnPayload" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;fillColor=none;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" vertex="1" parent="1">
-                    <mxGeometry x="610" y="70" width="140" height="52" as="geometry"/>
+                    <mxGeometry x="610" y="122" width="140" height="52" as="geometry"/>
                 </mxCell>
                 <mxCell id="29" value="string DiceResult" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="28">
                     <mxGeometry y="26" width="140" height="26" as="geometry"/>
