@@ -52,6 +52,8 @@ public class GameService : IGameService
             var filter = _dbInstance.GetFilterId<Game>(payload.Id);
             var newGame = new Game(payload.Players!);
             newGame.Id = payload.Id;
+            newGame.Board = payload.Board;
+            newGame.BoardProcessor = payload.BoardProcessor;
             newGame.ActivePlayerName = payload.ActivePlayerName;
             _dbInstance.UpdateOne<Game>(
                 collectionName: _gameCollection,

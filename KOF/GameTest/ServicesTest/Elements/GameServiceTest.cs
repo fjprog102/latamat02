@@ -14,8 +14,8 @@ public class GameServiceMockData
     {
         return new List<Game>
         {
-            new Game(new TokyoBoard(), new TokyoBoardProcessor(), new List<Player>(), ""),
-            new Game(new TokyoBoard(), new TokyoBoardProcessor(), new List<Player>(), "")
+            new Game(new List<Player>() { new Player("Jose", new Monster("Alienoid", 0, 10), 0) }),
+            new Game(new List<Player>() { new Player("Shirley", new Monster("Cyber Kitty", 0, 10), 0) })
         };
     }
 
@@ -23,7 +23,7 @@ public class GameServiceMockData
     {
         return new List<Game>
         {
-            new Game(new TokyoBoard(), new TokyoBoardProcessor(), new List<Player>(), "")
+            new Game(new List<Player>() { new Player("Jose", new Monster("Alienoid", 0, 10), 0) })
         };
     }
 
@@ -120,7 +120,8 @@ public class GameServiceTests
         (
             board: new TokyoBoard(),
             boardProcessor: new TokyoBoardProcessor(),
-            players: new List<Player> { }
+            players: new List<Player> { new Player("Jose", new Monster("Alienoid", 0, 10), 0),
+            new Player("Shirley", new Monster("Cyber Kitty", 0, 10), 0) }
         );
 
         var result = service.Create(payload: payload);
@@ -209,7 +210,8 @@ public class GameServiceTests
         (
             board: new TokyoBoard(),
             boardProcessor: new TokyoBoardProcessor(),
-            players: new List<Player> { }
+            players: new List<Player> { new Player("Jose", new Monster("Alienoid", 0, 10), 0),
+            new Player("Shirley", new Monster("Cyber Kitty", 0, 10), 0) }
         );
         payload.Id = "id";
         payload.ActivePlayerName = "player";
