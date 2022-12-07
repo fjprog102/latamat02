@@ -16,7 +16,7 @@ public class DiceAnalyzerTest
         Player playerThree = new Player("Adriel", new Monster("Gigazaur", 10, 6));
         Player playerFour = new Player("Jorge", new Monster("Gigazaur", 10, 9));
         List<Player> players = new List<Player>() { playerOne, playerTwo, playerThree, playerFour };
-        GamePayload game = new GamePayload(null, new TokyoBoard(), new TokyoBoardProcessor(), playerOne.Name);
+        GamePayload game = new GamePayload(null, new TokyoBoard(), new TokyoBoardProcessor(), new PowerCardDeck(), playerOne.Name);
         string[] oneHeart = { "one", "two", "heart", "one", "two", "three" };
 
         game.BoardProcessor!.SetTokyoBoard(players, game.Board!);
@@ -42,7 +42,7 @@ public class DiceAnalyzerTest
         Player playerThree = new Player("Adriel", new Monster("Gigazaur", 10, 10));
         Player playerFour = new Player("Jorge", new Monster("Gigazaur", 10, 10));
         List<Player> players = new List<Player>() { playerOne, playerTwo, playerThree, playerFour };
-        GamePayload game = new GamePayload(null, new TokyoBoard(), new TokyoBoardProcessor(), playerTwo.Name);
+        GamePayload game = new GamePayload(null, new TokyoBoard(), new TokyoBoardProcessor(), new PowerCardDeck(), playerTwo.Name);
         string[] threeOnes = { "one", "one", "three", "one", "two", "one" };
 
         game.BoardProcessor!.SetTokyoBoard(players, game.Board!);
@@ -67,7 +67,7 @@ public class DiceAnalyzerTest
         Player playerThree = new Player("Adriel", new Monster("Gigazaur", 10, 10));
         Player playerFour = new Player("Jorge", new Monster("Gigazaur", 10, 10));
         List<Player> players = new List<Player>() { playerOne, playerTwo, playerThree, playerFour };
-        GamePayload game = new GamePayload(null, new TokyoBoard(), new TokyoBoardProcessor(), playerThree.Name);
+        GamePayload game = new GamePayload(null, new TokyoBoard(), new TokyoBoardProcessor(), new PowerCardDeck(), playerThree.Name);
         string[] fourEnergy = { "energy", "one", "energy", "one", "energy", "energy" };
 
         game.BoardProcessor!.SetTokyoBoard(players, game.Board!);
@@ -92,7 +92,7 @@ public class DiceAnalyzerTest
         Player playerThree = new Player("Adriel", new Monster("Gigazaur", 10, 10));
         Player playerFour = new Player("Jorge", new Monster("Gigazaur", 10, 9));
         List<Player> players = new List<Player>() { playerOne, playerTwo, playerThree, playerFour };
-        GamePayload game = new GamePayload(null, new TokyoBoard(), new TokyoBoardProcessor(), playerFour.Name);
+        GamePayload game = new GamePayload(null, new TokyoBoard(), new TokyoBoardProcessor(), new PowerCardDeck(), playerFour.Name);
         string[] allActions = { "two", "two", "energy", "two", "heart", "smash" };
 
         game.BoardProcessor!.SetTokyoBoard(players, game.Board!);

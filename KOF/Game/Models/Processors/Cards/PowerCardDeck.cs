@@ -1,7 +1,5 @@
-﻿namespace KOT.Services.Processors;
+﻿namespace KOT.Models.Processor;
 using KOT.Models;
-using KOT.Models.Abstracts;
-using KOT.Models.Processor;
 
 public class PowerCardDeck
 {

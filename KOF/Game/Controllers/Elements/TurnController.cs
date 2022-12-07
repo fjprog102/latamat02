@@ -25,7 +25,7 @@ public class TurnController : ControllerBase
             Turn turn = new Turn();
             var result = gameService.Read(new GamePayload(payload.Id)).First();
             var changedGame = new GamePayload(result.Id, result.Board,
-                result.BoardProcessor, result.ActivePlayerName, result.Players, result.Winner);
+                result.BoardProcessor, result.Deck, result.ActivePlayerName, result.Players, result.Winner);
             // string[] dices = { "one", "one", "one", "energy", "smash" };
             turn.Play(changedGame, payload.DiceResult);
 

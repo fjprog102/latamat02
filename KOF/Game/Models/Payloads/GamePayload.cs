@@ -7,6 +7,7 @@ public class GamePayload : DataHolder
 {
     public TokyoBoard? Board { get; set; }
     public TokyoBoardProcessor? BoardProcessor { get; set; }
+    public PowerCardDeck? Deck { get; set; }
     public string? ActivePlayerName { get; set; }
     public List<Player>? Players { get; set; }
     public string? Winner { get; set; }
@@ -15,6 +16,7 @@ public class GamePayload : DataHolder
         string? id = null,
         TokyoBoard? board = null,
         TokyoBoardProcessor? boardProcessor = null,
+        PowerCardDeck? deck = null,
         string? activePlayerName = null,
         List<Player>? players = null,
         string? winner = null
@@ -24,6 +26,7 @@ public class GamePayload : DataHolder
         Board = board;
         ActivePlayerName = activePlayerName;
         BoardProcessor = boardProcessor;
+        Deck = deck;
         Players = players;
         Winner = winner;
     }

@@ -22,7 +22,7 @@ public class GainLifePointsTest
         Player playerThree = new Player("Adriel", new Monster("Gigazaur", 10, 10));
         Player playerFour = new Player("Jorge", new Monster("Gigazaur", 10, 10));
         List<Player> players = new List<Player>() { playerOne, playerTwo, playerThree, playerFour };
-        GamePayload game = new GamePayload(null, new TokyoBoard(), new TokyoBoardProcessor(), playerOne.Name);
+        GamePayload game = new GamePayload(null, new TokyoBoard(), new TokyoBoardProcessor(), new PowerCardDeck(), playerOne.Name);
         var instance = new GainLifePoints();
 
         game.BoardProcessor!.SetTokyoBoard(players, game.Board!);
@@ -49,7 +49,7 @@ public class GainLifePointsTest
         Player playerThree = new Player("Adriel", new Monster("Gigazaur", 10, 7));
         Player playerFour = new Player("Jorge", new Monster("Gigazaur", 10, 10));
         List<Player> players = new List<Player>() { playerOne, playerTwo, playerThree, playerFour };
-        GamePayload game = new GamePayload(null, new TokyoBoard(), new TokyoBoardProcessor(), playerOne.Name);
+        GamePayload game = new GamePayload(null, new TokyoBoard(), new TokyoBoardProcessor(), new PowerCardDeck(), playerOne.Name);
         string[] fourHearts = { "energy", "two", "heart", "heart", "heart", "heart" };
         var instance = new GainLifePoints();
 
@@ -82,7 +82,7 @@ public class GainLifePointsTest
         Player playerFour = new Player("Jorge", new Monster("Gigazaur", 10, 10));
         Player playerFive = new Player("Jorge", new Monster("Gigazaur", 10, 10));
         List<Player> players = new List<Player>() { playerOne, playerTwo, playerThree, playerFour, playerFive };
-        GamePayload game = new GamePayload(null, new TokyoBoard(), new TokyoBoardProcessor(), playerOne.Name);
+        GamePayload game = new GamePayload(null, new TokyoBoard(), new TokyoBoardProcessor(), new PowerCardDeck(), playerOne.Name);
         string[] fourHearts = { "energy", "two", "heart", "heart", "heart", "heart" };
         var instance = new GainLifePoints();
 

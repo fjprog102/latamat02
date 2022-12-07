@@ -1,7 +1,6 @@
 ﻿namespace KOT.Models.Test;
 
 using KOT.Models.Processor;
-using KOT.Services.Processors;
 
 public class PowerCardDeckTest
 {

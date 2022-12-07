@@ -85,7 +85,7 @@ public class ExecutePowerCardTest
     public void ItShouldExecuteThePowerCardOfTheActivePlayer()
     {
         List<Player> players = new List<Player>() { player1, player2, player3, player4, player5};
-        GamePayload game = new GamePayload(null, new TokyoBoard(), new TokyoBoardProcessor(), player1.Name);
+        GamePayload game = new GamePayload(null, new TokyoBoard(), new TokyoBoardProcessor(), new PowerCardDeck(), player1.Name);
 
         game.BoardProcessor!.SetTokyoBoard(players, game.Board!);
 
