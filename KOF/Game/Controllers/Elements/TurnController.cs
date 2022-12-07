@@ -17,18 +17,18 @@ public class TurnController : ControllerBase
         gameService = instance;
     }
 
-    [HttpGet("{id}")]
-    public IActionResult Get(string? id)
+    [HttpPost]
+    public IActionResult Post([FromBody] TurnPayload payload)
     {
         try
         {
             Turn turn = new Turn();
-            var game = new GamePayload(id);
-            var result = gameService.Read(game).First();
+            var result = gameService.Read(new GamePayload(payload.Id)).First();
             var changedGame = new GamePayload(result.Id, result.Board,
-            result.BoardProcessor, result.ActivePlayerName, result.Players, result.Winner);
-            string[] dices = { "one", "one", "one", "energy", "smash" };
-            turn.Play(changedGame, dices);
+                result.BoardProcessor, result.ActivePlayerName, result.Players, result.Winner);
+            // string[] dices = { "one", "one", "one", "energy", "smash" };
+            turn.Play(changedGame, payload.DiceResult);
+
             return Ok(gameService.Update(changedGame));
         }
         catch (Exception)

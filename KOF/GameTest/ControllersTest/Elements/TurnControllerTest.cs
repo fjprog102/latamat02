@@ -8,45 +8,38 @@ using Moq;
 
 public class TurnControllerMockData
 {
-
-    public static List<Game> GetMethodMock()
+    public static List<Game> PostMethodMock()
     {
         List<Player> players = new List<Player>() { new Player("Jose", new Monster("Alienoid", 0, 10), 0),
             new Player("Shirley", new Monster("Cyber Kitty", 0, 10), 0) };
-
-        return new List<Game>
-        {
-            new Game(players),
-            new Game(players),
-            new Game(players)
-        };
+        return new List<Game> { new Game(players) };
     }
 
-    // [Fact]
-    // public void TestsGetMethod200Response()
-    // {
-    //     Mock<IGameService>? gameService = new Mock<IGameService>();
-    //     gameService
-    //         .Setup(mock => mock.Read(It.IsAny<GamePayload>()))
-    //         .Returns(TurnControllerMockData.GetMethodMock());
-
-    //     var patched = new TurnController(gameService.Object);
-
-    //     var result = (OkObjectResult)patched.Get(id: null);
-    //     Assert.Equal(200, result.StatusCode);
-    // }
-
     [Fact]
-    public void TestsGetMethod400Response()
+    public void TestsPostMethod201Response()
     {
-        Mock<IGameService>? gameService = new Mock<IGameService>();
+        var gameService = new Mock<IGameService>();
+        var payload = new GamePayload();
         gameService
-            .Setup(mock => mock.Read(It.IsAny<GamePayload>()))
-            .Throws(new Exception());
+            .Setup(mock => mock.Create(payload))
+            .Returns(TurnControllerMockData.PostMethodMock());
 
         var patched = new TurnController(gameService.Object);
 
-        var result = (BadRequestResult)patched.Get(id: null);
+        var result = (CreatedResult)patched.Post(null);
+        Assert.Equal(201, result.StatusCode);
+    }
+
+    [Fact]
+    public void TestsPostMethod400Response()
+    {
+        var gameService = new Mock<IGameService>();
+        var payload = new GamePayload();
+        gameService.Setup(mock => mock.Create(payload)).Throws(new Exception());
+
+        var patched = new TurnController(gameService.Object);
+
+        var result = (BadRequestResult)patched.Post(null);
         Assert.Equal(400, result.StatusCode);
     }
 }
