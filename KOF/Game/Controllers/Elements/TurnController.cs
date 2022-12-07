@@ -1,4 +1,4 @@
-namespace KOT.Controllers;
+﻿namespace KOT.Controllers;
 
 using System.Text.Json;
 using KOT.Models;
@@ -21,15 +21,15 @@ public class TurnController : ControllerBase
     public IActionResult Get(string? id)
     {
         try
-        {  
+        {
             Turn turn = new Turn();
             var game = new GamePayload(id);
             var result = gameService.Read(game).First();
-            var ChangedGame = new GamePayload(result.Id, result.Board, 
+            var changedGame = new GamePayload(result.Id, result.Board,
             result.BoardProcessor, result.ActivePlayerName, result.Players, result.Winner);
-            string[] dices = {"one", "one", "one", "energy", "smash"};
-            turn.Play(ChangedGame, dices);
-            return Ok(gameService.Update(ChangedGame));
+            string[] dices = { "one", "one", "one", "energy", "smash" };
+            turn.Play(changedGame, dices);
+            return Ok(gameService.Update(changedGame));
         }
         catch (Exception e)
         {
