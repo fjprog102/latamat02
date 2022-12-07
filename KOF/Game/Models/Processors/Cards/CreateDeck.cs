@@ -10,9 +10,6 @@ public class PowerCardDeck
     public PowerCardDeck()
     {
         Deck.Add(
-            new CardDetails(new PowerCard("Alien Metabolism", 3, 0), new Effect(costReduction: 1))
-        ); //buying cards costs you 1 less
-        Deck.Add(
             new CardDetails(
                 new PowerCard("Jet Fighters", 5, 1),
                 new Effect(starPoints: 5, damagePoints: 4)

@@ -15,7 +15,6 @@ public class CardDetailsTest
         Assert.Equal(myPowerCard.Cost, myCardDetails.powerCard.Cost);
         Assert.Equal(myPowerCard.Type, myCardDetails.powerCard.Type);
         Assert.Equal(powerCardEffect.HeartPoints, myCardDetails.effect.HeartPoints);
-        Assert.Equal(powerCardEffect.CostReduction, myCardDetails.effect.CostReduction);
         Assert.Equal(powerCardEffect.StarPoints, myCardDetails.effect.StarPoints);
         Assert.Equal(powerCardEffect.EnergyPoints, myCardDetails.effect.EnergyPoints);
         Assert.Equal(powerCardEffect.DamagePoints, myCardDetails.effect.DamagePoints);
@@ -31,7 +30,6 @@ public class CardDetailsTest
         Assert.Equal(myPowerCard.Cost, myCardDetails.powerCard.Cost);
         Assert.Equal(myPowerCard.Type, myCardDetails.powerCard.Type);
         Assert.Equal(powerCardEffect.HeartPoints, myCardDetails.effect.HeartPoints);
-        Assert.Equal(powerCardEffect.CostReduction, myCardDetails.effect.CostReduction);
         Assert.Equal(powerCardEffect.StarPoints, myCardDetails.effect.StarPoints);
         Assert.Equal(powerCardEffect.EnergyPoints, myCardDetails.effect.EnergyPoints);
         Assert.Equal(powerCardEffect.DamagePoints, myCardDetails.effect.DamagePoints);
