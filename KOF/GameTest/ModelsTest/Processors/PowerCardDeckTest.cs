@@ -19,7 +19,7 @@ public class PowerCardDeckTest
         var heartPoints =
             from cardDetails in powerCardDeck.Deck
             where cardDetails.powerCard.Name == "Heal"
-            select cardDetails.effect.HeartPoints;
+            select cardDetails.effect.LifePoints;
         Assert.Equal(2, heartPoints.ToList()[0]);
     }
 
@@ -28,11 +28,10 @@ public class PowerCardDeckTest
     {
         PowerCardDeck powerCardDeck = new PowerCardDeck();
         Effect powerCardEffect = powerCardDeck.GetEffect("Heal");
-        Assert.Equal(2, powerCardEffect.HeartPoints);
+        Assert.Equal(2, powerCardEffect.LifePoints);
 
         Effect powerCardEffect1 = powerCardDeck.GetEffect("Jet Fighters");
-        Assert.Equal(5, powerCardEffect1.StarPoints);
-        Assert.Equal(4, powerCardEffect1.DamagePoints);
+        Assert.Equal(5, powerCardEffect1.VictoryPoints);
     }
     [Fact]
     public void ShouldReturnThreeFaceUpPowerCards()

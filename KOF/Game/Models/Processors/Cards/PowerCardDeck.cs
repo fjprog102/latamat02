@@ -12,7 +12,7 @@ public class PowerCardDeck
         Deck.Add(
             new CardDetails(
                 new PowerCard("Jet Fighters", 5, 1),
-                new Effect(starPoints: 5, damagePoints: 4)
+                new Effect(starPoints: 5)
             )
         ); //"+ 5[Star] and take 4 damage"
         Deck.Add(
