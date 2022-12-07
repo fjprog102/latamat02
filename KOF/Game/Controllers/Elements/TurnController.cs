@@ -31,9 +31,8 @@ public class TurnController : ControllerBase
             turn.Play(changedGame, dices);
             return Ok(gameService.Update(changedGame));
         }
-        catch (Exception e)
+        catch (Exception)
         {
-            System.Console.WriteLine(e.Message);
             return BadRequest();
         }
     }
