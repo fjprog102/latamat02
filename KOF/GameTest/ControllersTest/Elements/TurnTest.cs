@@ -1,6 +1,7 @@
 ﻿namespace KOT.Controllers.Test;
 
 using KOT.Controllers;
+using KOT.Controllers.PlayerActions;
 using KOT.Models;
 using KOT.Models.Processor;
 
@@ -193,14 +194,35 @@ public class TurnTest
         // Eliminate PlayerOne for having 0 LifePoints
         Assert.DoesNotContain(playerOne, game.Board.OutsideTokyo);
         Assert.DoesNotContain(playerOne, game.Board.TokyoCity);
+        Assert.DoesNotContain(playerOne, game.Players);
         // Nulls TokyoBay for being less than five players
         Assert.Null(game.Board.TokyoBay);
         // Enters in TokyoCity
         Assert.True(game.Board!.TokyoCity!.Exists(player => player.Name == playerFive.Name));
         // Gains 1 VictoryPoints for entering Tokyo
         Assert.Equal(11, playerFive.MyMonster.VictoryPoints);
-        // Ends turn changing activePlayer (playerFour)
-        Assert.Equal("Jose", game.ActivePlayerName);
+        // Ends turn changing activePlayer (playerFive)
+        Assert.Equal("Juan", game.ActivePlayerName);
+        Assert.Equal("Juan", playerTwo.Name);
         Assert.Equal("", game.Winner);
+
+        string[] playerTwoNewDices = { "three", "three", "three", "three", "three", "three" };
+
+        game.BoardProcessor.ChangePlayerBoardPlace(playerTwo, game.Board.TokyoCity, game.Board.OutsideTokyo);
+        game.Board.OutsideTokyo.Find(player => player.Name == playerTwo.Name)!.MyMonster.VictoryPoints = 24;
+        Assert.Equal(24, game.Board.OutsideTokyo.Find(player => player.Name == playerTwo.Name)!.MyMonster.VictoryPoints);
+        Turn.Play(game, playerTwoNewDices);
+
+        // Player Two actions:
+        // No Gains of EnergyCubes
+        Assert.Equal(1, playerTwo.EnergyCubes);
+        // Gains 4 VictoryPoints (3 + 3)
+
+        // No gains of LifePoints
+        Assert.Equal(4, playerTwo.MyMonster.LifePoints);
+        // Ends turn changing activePlayer (playerFive)
+        Assert.Equal("Adriel", game.ActivePlayerName);
+        Assert.Equal("Adriel", playerThree.Name);
+        Assert.Equal("Juan", game.Winner);
     }
 }

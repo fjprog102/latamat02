@@ -7,27 +7,27 @@ public class EliminatePlayer : GameAction<EliminatePlayer>
 {
     public override void Execute(string[] dices, GamePayload game)
     {
-        RemovePlayer(game.Board!.OutsideTokyo);
-        RemovePlayer(game.Board.TokyoCity);
+        RemovePlayer(game.Board!.OutsideTokyo, game.Players!);
+        RemovePlayer(game.Board.TokyoCity, game.Players!);
         if (game.Board!.TokyoBay != null)
         {
-            RemovePlayer(game.Board.TokyoBay);
-        }
-
-        if (game.Board!.OutsideTokyo.Count() + game.Board!.TokyoBay!.Count() + game.Board!.TokyoCity.Count() < 5)
-        {
-            MovePlayersFromTokyoBayToTokyoCity(game);
-            game.Board.TokyoBay = null;
+            RemovePlayer(game.Board.TokyoBay, game.Players!);
+            if (game.Board!.OutsideTokyo.Count() + game.Board!.TokyoBay!.Count() + game.Board!.TokyoCity.Count() < 5)
+            {
+                MovePlayersFromTokyoBayToTokyoCity(game);
+                game.Board.TokyoBay = null;
+            }
         }
     }
 
-    public void RemovePlayer(List<Player> players)
+    public void RemovePlayer(List<Player> boardPlayers, List<Player> players)
     {
-        for (int index = 0; index < players.Count(); index++)
+        for (int index = 0; index < boardPlayers.Count(); index++)
         {
-            if (players[index].MyMonster.LifePoints <= 0)
+            if (boardPlayers[index].MyMonster.LifePoints <= 0)
             {
-                players.Remove(players[index]);
+                players.Remove(players.Find(player => player.Name == boardPlayers[index].Name)!);
+                boardPlayers.Remove(boardPlayers[index]);
             }
         }
     }

@@ -1,0 +1,18 @@
+[
+  {
+    "id": "",
+    "diceResult": ["energy", "energy", "heart", "energy", "heart", "smash"]
+  },
+  {
+    "id": "",
+    "diceResult": ["smash", "smash", "smash", "smash", "smash", "heart"]
+  },
+  {
+    "id": "",
+    "diceResult": ["smash", "smash", "energy", "smash", "smash", "smash"]
+  },
+  {
+    "id": "",
+    "diceResult": ["three", "three", "three", "three", "three", "three"]
+  }
+]

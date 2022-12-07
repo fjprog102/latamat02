@@ -1,6 +1,7 @@
 ﻿namespace KOT.Controllers;
 
 using System.Text.Json;
+using KOT.Controllers.PlayerActions;
 using KOT.Models;
 using KOT.Models.Abstracts;
 using KOT.Services.Interfaces;
@@ -26,7 +27,6 @@ public class TurnController : ControllerBase
             var result = gameService.Read(new GamePayload(payload.Id)).First();
             var changedGame = new GamePayload(result.Id, result.Board,
                 result.BoardProcessor, result.Deck, result.ActivePlayerName, result.Players, result.Winner);
-            // string[] dices = { "one", "one", "one", "energy", "smash" };
             turn.Play(changedGame, payload.DiceResult);
 
             return Ok(gameService.Update(changedGame));

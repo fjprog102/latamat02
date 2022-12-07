@@ -36,7 +36,7 @@ public class Game : Element
         Deck = new PowerCardDeck();
         ActivePlayerName = players.First().Name;
         Players = players;
-        Winner = null;
+        Winner = "";
         BoardProcessor.SetTokyoBoard(Players, Board);
     }
 }

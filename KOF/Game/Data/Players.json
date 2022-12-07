@@ -7,10 +7,10 @@
       {
         "name": "Alienoid",
         "victoryPoints": 10,
-        "lifePoints": 10
+        "lifePoints": 8
       },
       "energyCubes": 0,
-      "powerCards": null
+      "powerCards": []
     },
     {
       "name": "Juan",
@@ -21,7 +21,7 @@
         "lifePoints": 10
       },
       "energyCubes": 0,
-      "powerCards": null
+      "powerCards": []
     },
     {
       "name": "Jorge",
@@ -32,18 +32,18 @@
         "lifePoints": 10
       },
       "energyCubes": 0,
-      "powerCards": null
+      "powerCards": []
     },
     {
       "name": "Valeria",
       "myMonster":
       {
         "name": "Gigazaur",
-        "victoryPoints": 10,
+        "victoryPoints": 15,
         "lifePoints": 10
       },
       "energyCubes": 0,
-      "powerCards": null
+      "powerCards": []
     },
     {
       "name": "Joaquin",
@@ -54,7 +54,7 @@
         "lifePoints": 10
       },
       "energyCubes": 0,
-      "powerCards": null
+      "powerCards": []
     }
   ]
 }

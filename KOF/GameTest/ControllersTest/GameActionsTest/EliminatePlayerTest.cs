@@ -22,7 +22,7 @@ public class EliminatePlayerTest
         Player playerTwo = new Player("Juan", new Monster("Gigazaur", 10, 10));
         Player playerThree = new Player("Adriel", new Monster("Gigazaur", 10, 0));
         Player playerFour = new Player("Jorge", new Monster("Gigazaur", 10, 10));
-        Player playerFive = new Player("Jorge", new Monster("Gigazaur", 10, 0));
+        Player playerFive = new Player("Joaquin", new Monster("Gigazaur", 10, 0));
         List<Player> players = new List<Player>() { playerOne, playerTwo, playerThree, playerFour, playerFive };
         GamePayload game = new GamePayload(null, new TokyoBoard(), new TokyoBoardProcessor(), new PowerCardDeck(), playerOne.Name, players);
         var instance = new EliminatePlayer();
@@ -31,19 +31,22 @@ public class EliminatePlayerTest
         game.BoardProcessor!.ChangePlayerBoardPlace(playerOne, game.Board!.OutsideTokyo, game.Board.TokyoBay);
         game.BoardProcessor!.ChangePlayerBoardPlace(playerThree, game.Board!.OutsideTokyo, game.Board.TokyoCity);
 
-        instance.RemovePlayer(game.Board.OutsideTokyo);
-        instance.RemovePlayer(game.Board.TokyoBay!);
-        instance.RemovePlayer(game.Board.TokyoCity);
+        instance.RemovePlayer(game.Board.OutsideTokyo, game.Players!);
+        instance.RemovePlayer(game.Board.TokyoBay!, game.Players!);
+        instance.RemovePlayer(game.Board.TokyoCity, game.Players!);
 
         Assert.DoesNotContain(playerOne, game.Board.OutsideTokyo);
         Assert.DoesNotContain(playerOne, game.Board.TokyoBay);
         Assert.DoesNotContain(playerOne, game.Board.TokyoCity);
+        Assert.DoesNotContain(playerOne, game.Players);
         Assert.DoesNotContain(playerThree, game.Board.OutsideTokyo);
         Assert.DoesNotContain(playerThree, game.Board.TokyoBay);
         Assert.DoesNotContain(playerThree, game.Board.TokyoCity);
+        Assert.DoesNotContain(expected: playerThree, game.Players);
         Assert.DoesNotContain(playerFive, game.Board.OutsideTokyo);
         Assert.DoesNotContain(playerFive, game.Board.TokyoBay);
         Assert.DoesNotContain(playerFive, game.Board.TokyoCity);
+        Assert.DoesNotContain(playerFive, game.Players);
     }
 
     [Fact]
@@ -53,7 +56,7 @@ public class EliminatePlayerTest
         Player playerTwo = new Player("Juan", new Monster("Gigazaur", 10, 10));
         Player playerThree = new Player("Adriel", new Monster("Gigazaur", 10, 0));
         Player playerFour = new Player("Jorge", new Monster("Gigazaur", 10, 10));
-        Player playerFive = new Player("Jorge", new Monster("Gigazaur", 10, 10));
+        Player playerFive = new Player("Valeria", new Monster("Gigazaur", 10, 10));
         List<Player> players = new List<Player>() { playerOne, playerTwo, playerThree, playerFour, playerFive };
         GamePayload game = new GamePayload(null, new TokyoBoard(), new TokyoBoardProcessor(), new PowerCardDeck(), playerOne.Name, players);
         var instance = new EliminatePlayer();
@@ -62,11 +65,12 @@ public class EliminatePlayerTest
         game.BoardProcessor!.ChangePlayerBoardPlace(playerOne, game.Board!.OutsideTokyo, game.Board.TokyoBay);
         game.BoardProcessor!.ChangePlayerBoardPlace(playerThree, game.Board!.OutsideTokyo, game.Board.TokyoCity);
 
-        instance.RemovePlayer(game.Board.TokyoCity);
+        instance.RemovePlayer(game.Board.TokyoCity, game.Players!);
 
         Assert.DoesNotContain(playerThree, game.Board.OutsideTokyo);
         Assert.DoesNotContain(playerThree, game.Board.TokyoBay);
         Assert.DoesNotContain(playerThree, game.Board.TokyoCity);
+        Assert.DoesNotContain(playerThree, game.Players);
 
         Assert.Single(game.Board.TokyoBay!);
         Assert.Equal(playerOne, game.Board.TokyoBay!.First());
@@ -82,7 +86,7 @@ public class EliminatePlayerTest
         Player playerTwo = new Player("Juan", new Monster("Gigazaur", 10, 10));
         Player playerThree = new Player("Adriel", new Monster("Gigazaur", 10, 0));
         Player playerFour = new Player("Jorge", new Monster("Gigazaur", 10, 10));
-        Player playerFive = new Player("Jorge", new Monster("Gigazaur", 10, 0));
+        Player playerFive = new Player("Valeria", new Monster("Gigazaur", 10, 0));
         List<Player> players = new List<Player>() { playerOne, playerTwo, playerThree, playerFour, playerFive };
         GamePayload game = new GamePayload(null, new TokyoBoard(), new TokyoBoardProcessor(), new PowerCardDeck(), playerOne.Name, players);
         var instance = new EliminatePlayer();
@@ -97,10 +101,13 @@ public class EliminatePlayerTest
         Assert.Null(game.Board.TokyoBay);
         Assert.DoesNotContain(playerOne, game.Board.OutsideTokyo);
         Assert.DoesNotContain(playerOne, game.Board.TokyoCity);
+        Assert.DoesNotContain(playerOne, game.Players!);
         Assert.DoesNotContain(playerThree, game.Board.OutsideTokyo);
         Assert.DoesNotContain(playerThree, game.Board.TokyoCity);
+        Assert.DoesNotContain(playerThree, game.Players!);
         Assert.DoesNotContain(playerFive, game.Board.OutsideTokyo);
         Assert.DoesNotContain(playerFive, game.Board.TokyoCity);
+        Assert.DoesNotContain(playerFive, game.Players!);
         Assert.Contains(playerTwo, game.Board.TokyoCity);
     }
 }

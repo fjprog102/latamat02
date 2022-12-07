@@ -55,6 +55,7 @@ public class GameService : IGameService
             newGame.Board = payload.Board;
             newGame.BoardProcessor = payload.BoardProcessor;
             newGame.ActivePlayerName = payload.ActivePlayerName;
+            newGame.Winner = payload.Winner;
             _dbInstance.UpdateOne<Game>(
                 collectionName: _gameCollection,
                 filter: filter,
