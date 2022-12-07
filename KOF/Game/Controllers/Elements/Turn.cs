@@ -17,11 +17,10 @@ public class Turn
     public void Play(GamePayload game, string[] dices)
     {
         Start.Execute(dices, game);
-
-        Dices.GenerateKofDices(
-            Dices.BlackDices,
-            new bool[] { true, false, true, false, true, false }
-        );
+        // Dices.GenerateKofDices(
+        //     Dices.BlackDices,
+        //     new bool[] { true, false, true, false, true, false }
+        // );
         Analyzer.ResolveDice(dices, game);
         Eliminate.Execute(dices, game);
         Move.Execute(dices, game);

@@ -26,12 +26,13 @@ public class Game : Element
     [BsonElement("Winner")]
     public string? Winner { get; set; }
 
-    public Game(TokyoBoard board, TokyoBoardProcessor boardProcessor, List<Player> players, string winner)
+    public Game(List<Player> players)
     {
-        Board = board;
-        BoardProcessor = boardProcessor;
-        ActivePlayerName = null;
+        Board = new TokyoBoard();
+        BoardProcessor = new TokyoBoardProcessor();
+        ActivePlayerName = players.First().Name;
         Players = players;
-        Winner = winner;
+        Winner = null;
+        BoardProcessor.SetTokyoBoard(Players, Board);
     }
 }

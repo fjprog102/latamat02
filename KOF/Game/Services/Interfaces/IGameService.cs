@@ -5,8 +5,8 @@ namespace KOT.Services.Interfaces;
 
 public interface IGameService
 {
-    public IEnumerable<Element> Read(GamePayload data);
-    public IEnumerable<Element> Create(GamePayload data);
-    public IEnumerable<Element> Delete(GamePayload data);
-    public IEnumerable<Element> Update(GamePayload data);
+    public IEnumerable<Game> Read(GamePayload data);
+    public IEnumerable<Game> Create(GamePayload data);
+    public IEnumerable<Game> Delete(GamePayload data);
+    public IEnumerable<Game> Update(GamePayload data);
 }

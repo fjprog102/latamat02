@@ -20,10 +20,10 @@ public class GameService : IGameService
         _dbInstance = dbInstance;
     }
 
-    public IEnumerable<Element> Create(GamePayload payload)
+    public IEnumerable<Game> Create(GamePayload payload)
     {
         GamePayload args = (GamePayload)payload;
-        var newGame = new Game((TokyoBoard)args.Board!, (TokyoBoardProcessor)args.BoardProcessor!, (List<Player>)args.Players!, (string)args.Winner!);
+        var newGame = new Game((List<Player>)args.Players!);
         _dbInstance.InsertOne<Game>(
             collectionName: _gameCollection,
             document: newGame
@@ -31,7 +31,7 @@ public class GameService : IGameService
         return new List<Game> { newGame };
     }
 
-    public IEnumerable<Element> Read(GamePayload payload)
+    public IEnumerable<Game> Read(GamePayload payload)
     {
         if (payload.Id != null)
         {
@@ -45,13 +45,15 @@ public class GameService : IGameService
         return _dbInstance.Find<Game>(collectionName: _gameCollection, null);
     }
 
-    public IEnumerable<Element> Update(GamePayload payload)
+    public IEnumerable<Game> Update(GamePayload payload)
     {
         if (payload.Id != null)
         {
             var filter = _dbInstance.GetFilterId<Game>(payload.Id);
-            var newGame = new Game(payload.Board!, payload.BoardProcessor!, payload.Players!, payload.Winner!);
+            var newGame = new Game(payload.Players!);
             newGame.Id = payload.Id;
+            newGame.Board = payload.Board;
+            newGame.BoardProcessor = payload.BoardProcessor;
             newGame.ActivePlayerName = payload.ActivePlayerName;
             _dbInstance.UpdateOne<Game>(
                 collectionName: _gameCollection,
@@ -65,7 +67,7 @@ public class GameService : IGameService
         return new List<Game> { };
     }
 
-    public IEnumerable<Element> Delete(GamePayload payload)
+    public IEnumerable<Game> Delete(GamePayload payload)
     {
         if (payload.Id != null)
         {

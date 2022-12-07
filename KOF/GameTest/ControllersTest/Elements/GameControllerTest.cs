@@ -11,24 +11,22 @@ public class GameControllerMockData
 {
     public static List<Game> GetMethodMock()
     {
-        TokyoBoard board = new TokyoBoard();
-        TokyoBoardProcessor boardProcessor = new TokyoBoardProcessor();
-        List<Player> players = new List<Player>();
+        List<Player> players = new List<Player>() { new Player("Jose", new Monster("Alienoid", 0, 10), 0),
+            new Player("Shirley", new Monster("Cyber Kitty", 0, 10), 0) };
 
         return new List<Game>
         {
-            new Game(board, boardProcessor, players, ""),
-            new Game(board, boardProcessor, players, ""),
-            new Game(board, boardProcessor, players, ""),
+            new Game(players),
+            new Game(players),
+            new Game(players)
         };
     }
 
     public static List<Game> PostMethodMock()
     {
-        TokyoBoard board = new TokyoBoard();
-        TokyoBoardProcessor boardProcessor = new TokyoBoardProcessor();
-        List<Player> players = new List<Player>();
-        return new List<Game> { new Game(board, boardProcessor, players, "") };
+        List<Player> players = new List<Player>() { new Player("Jose", new Monster("Alienoid", 0, 10), 0),
+            new Player("Shirley", new Monster("Cyber Kitty", 0, 10), 0) };
+        return new List<Game> { new Game(players) };
     }
 }
 

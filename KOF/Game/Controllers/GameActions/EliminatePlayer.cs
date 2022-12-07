@@ -14,7 +14,7 @@ public class EliminatePlayer : GameAction<EliminatePlayer>
             RemovePlayer(game.Board.TokyoBay);
         }
 
-        if (game.Board!.OutsideTokyo.Count() + game.Board.TokyoBay!.Count() + game.Board.TokyoCity.Count() < 5)
+        if (game.Board!.OutsideTokyo.Count() + game.Board!.TokyoBay!.Count() + game.Board!.TokyoCity.Count() < 5)
         {
             MovePlayersFromTokyoBayToTokyoCity(game);
             game.Board.TokyoBay = null;

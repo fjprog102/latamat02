@@ -1,0 +1,55 @@
+{
+  "players": 
+  [
+    {
+      "name": "Adriel",
+      "myMonster":
+      {
+        "name": "Alienoid",
+        "victoryPoints": 10,
+        "lifePoints": 10
+      },
+      "energyCubes": 0
+    },
+    {
+      "name": "Juan",
+      "myMonster":
+      {
+        "name": "The King",
+        "victoryPoints": 10,
+        "lifePoints": 10
+      },
+      "energyCubes": 0
+    },
+    {
+      "name": "Jorge",
+      "myMonster":
+      {
+        "name": "Cyber Kitty",
+        "victoryPoints": 10,
+        "lifePoints": 10
+      },
+      "energyCubes": 0
+    },
+    {
+      "name": "Valeria",
+      "myMonster":
+      {
+        "name": "Gigazaur",
+        "victoryPoints": 10,
+        "lifePoints": 10
+      },
+      "energyCubes": 0
+    },
+    {
+      "name": "Joaquin",
+      "myMonster":
+      {
+        "name": "Meca Dragon",
+        "victoryPoints": 10,
+        "lifePoints": 10
+      },
+      "energyCubes": 0
+    }
+  ]
+}

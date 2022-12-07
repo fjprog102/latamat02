@@ -37,7 +37,7 @@ public class GameController : ControllerBase
     {
         try
         {
-            var result = gameService.Create(payload);
+            IEnumerable<Game>? result = gameService.Create(payload);
             return Created("Tests", result.First());
         }
         catch (Exception)
