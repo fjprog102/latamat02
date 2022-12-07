@@ -1,30 +1,38 @@
-﻿namespace KOT.Controllers.PowerCardsActions;
+﻿namespace KOT.Controllers.PlayerActions;
+
 using KOT.Controllers.Abstracts;
 using KOT.Models;
 
-public class ExecutePowerCard : PowerCardAction<ExecutePowerCard>
+public class ExecutePowerCard : GameAction<ExecutePowerCard>
 {
-    public override void Execute(GamePayload game)
+    public override void Execute(string[] dices, GamePayload game)
     {
-        if (game.Board?.OutsideTokyo!.Find(player => player.Name == game.ActivePlayerName)!.PowerCards!.Count() > 0)
+
+        if (game.Board?.OutsideTokyo!.Exists(player => player.Name == game.ActivePlayerName) == true)
         {
-            var player = game.Board?.OutsideTokyo!.Find(player => player.Name == game.ActivePlayerName)!;
-            var powerCards = player.PowerCards!;
-            foreach (var powerCard in powerCards)
+            ExecuteEffect(game.Board.OutsideTokyo.Find(player => player.Name == game.ActivePlayerName)!);
+        }
+
+        if (game.Board?.TokyoCity!.Exists(player => player.Name == game.ActivePlayerName) == true)
+        {
+            ExecuteEffect(game.Board.TokyoCity.Find(player => player.Name == game.ActivePlayerName)!);
+        }
+
+        if (game.Board!.TokyoBay != null && game.Board?.TokyoBay!.Exists(player => player.Name == game.ActivePlayerName) == true)
+        {
+            ExecuteEffect(game.Board.TokyoBay.Find(player => player.Name == game.ActivePlayerName)!);
+        }
+    }
+
+    public void ExecuteEffect(Player player)
+    {
+        if (player.PowerCards!.Count() > 0)
+        {
+            foreach (var powerCard in player.PowerCards!)
             {
                 player.EnergyCubes += powerCard.effect.EnergyPoints;
-                player.MyMonster.VictoryPoints += powerCard.effect.StarPoints;
-                player.MyMonster.LifePoints += powerCard.effect.HeartPoints;
-                if (powerCard.effect.DamagePoints > 0)
-                {
-                    for (int index = 0; index < game.Board?.OutsideTokyo!.Count(); index++)
-                    {
-                        if (game.Board?.OutsideTokyo![index].Name != player.Name)
-                        {
-                            game.Board!.OutsideTokyo![index].MyMonster.LifePoints -= powerCard.effect.DamagePoints;
-                        }
-                    }
-                }
+                player.MyMonster.VictoryPoints += powerCard.effect.VictoryPoints;
+                player.MyMonster.LifePoints += powerCard.effect.LifePoints;
             }
         }
     }

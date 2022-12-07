@@ -23,6 +23,9 @@ public class Game : Element
     [BsonElement("Players")]
     public List<Player>? Players { get; set; }
 
+    [BsonElement("PowerCardDeck")]
+    public PowerCardDeck Deck { get; set; }
+
     [BsonElement("Winner")]
     public string? Winner { get; set; }
 
@@ -30,6 +33,7 @@ public class Game : Element
     {
         Board = new TokyoBoard();
         BoardProcessor = new TokyoBoardProcessor();
+        Deck = new PowerCardDeck();
         ActivePlayerName = players.First().Name;
         Players = players;
         Winner = null;

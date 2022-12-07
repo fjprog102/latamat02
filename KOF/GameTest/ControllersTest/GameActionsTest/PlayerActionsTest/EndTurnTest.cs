@@ -23,7 +23,7 @@ public class EndTurnTest
         Player playerThree = new Player("Adriel", new Monster("Gigazaur", 10, 10));
         Player playerFour = new Player("Jorge", new Monster("Gigazaur", 10, 10));
         List<Player> players = new List<Player>() { playerOne, playerTwo, playerThree, playerFour };
-        GamePayload game = new GamePayload(null, new TokyoBoard(), new TokyoBoardProcessor(), playerOne.Name, players);
+        GamePayload game = new GamePayload(null, new TokyoBoard(), new TokyoBoardProcessor(), new PowerCardDeck(), playerOne.Name, players);
         var instance = new EndTurn();
 
         Assert.Equal("Jose", game.ActivePlayerName);

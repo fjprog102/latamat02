@@ -9,7 +9,8 @@
         "victoryPoints": 10,
         "lifePoints": 10
       },
-      "energyCubes": 0
+      "energyCubes": 0,
+      "powerCards": null
     },
     {
       "name": "Juan",
@@ -19,7 +20,8 @@
         "victoryPoints": 10,
         "lifePoints": 10
       },
-      "energyCubes": 0
+      "energyCubes": 0,
+      "powerCards": null
     },
     {
       "name": "Jorge",
@@ -29,7 +31,8 @@
         "victoryPoints": 10,
         "lifePoints": 10
       },
-      "energyCubes": 0
+      "energyCubes": 0,
+      "powerCards": null
     },
     {
       "name": "Valeria",
@@ -39,7 +42,8 @@
         "victoryPoints": 10,
         "lifePoints": 10
       },
-      "energyCubes": 0
+      "energyCubes": 0,
+      "powerCards": null
     },
     {
       "name": "Joaquin",
@@ -49,7 +53,8 @@
         "victoryPoints": 10,
         "lifePoints": 10
       },
-      "energyCubes": 0
+      "energyCubes": 0,
+      "powerCards": null
     }
   ]
 }

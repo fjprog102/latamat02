@@ -24,7 +24,7 @@ public class SmashMonstersTest
         Player playerFour = new Player("Jorge", new Monster("Gigazaur", 10, 10));
         Player playerFive = new Player("Valeria", new Monster("Gigazaur", 10, 10));
         List<Player> players = new List<Player>() { playerOne, playerTwo, playerThree, playerFour };
-        GamePayload game = new GamePayload(null, new TokyoBoard(), new TokyoBoardProcessor(), playerOne.Name);
+        GamePayload game = new GamePayload(null, new TokyoBoard(), new TokyoBoardProcessor(), new PowerCardDeck(), playerOne.Name);
         var instance = new SmashMonsters();
 
         game.BoardProcessor!.SetTokyoBoard(players, game.Board!);
@@ -58,7 +58,7 @@ public class SmashMonstersTest
         Player playerFour = new Player("Jorge", new Monster("Gigazaur", 10, 10));
         Player playerFive = new Player("Valeria", new Monster("Gigazaur", 10, 10));
         List<Player> players = new List<Player>() { playerOne, playerTwo, playerThree, playerFour, playerFive };
-        GamePayload game = new GamePayload(null, new TokyoBoard(), new TokyoBoardProcessor(), playerOne.Name);
+        GamePayload game = new GamePayload(null, new TokyoBoard(), new TokyoBoardProcessor(), new PowerCardDeck(), playerOne.Name);
         var instance = new SmashMonsters();
 
         game.BoardProcessor!.SetTokyoBoard(players, game.Board!);
@@ -83,7 +83,7 @@ public class SmashMonstersTest
         Player playerFour = new Player("Jorge", new Monster("Gigazaur", 10, 10));
         Player playerFive = new Player("Valeria", new Monster("Gigazaur", 10, 10));
         List<Player> players = new List<Player>() { playerOne, playerTwo, playerThree, playerFour, playerFive };
-        GamePayload game = new GamePayload(null, new TokyoBoard(), new TokyoBoardProcessor(), playerOne.Name);
+        GamePayload game = new GamePayload(null, new TokyoBoard(), new TokyoBoardProcessor(), new PowerCardDeck(), playerOne.Name);
         var instance = new SmashMonsters();
 
         game.BoardProcessor!.SetTokyoBoard(players, game.Board!);

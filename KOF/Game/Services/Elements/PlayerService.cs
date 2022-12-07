@@ -2,6 +2,7 @@
 
 using KOT.Models;
 using KOT.Models.Abstracts;
+using KOT.Models.Processor;
 using KOT.Services.Interfaces;
 using Microsoft.Extensions.Options;
 
@@ -22,7 +23,7 @@ public class PlayerService : IPlayerService
     public IEnumerable<Element> Create(DataHolder payload)
     {
         PlayerPayload args = (PlayerPayload)payload;
-        var newPlayer = new Player((string)args.Name!, (Monster)args.MyMonster!, (int)args.EnergyCubes!);
+        var newPlayer = new Player((string)args.Name!, (Monster)args.MyMonster!, (int)args.EnergyCubes!, (List<CardDetails>)args.PowerCards!);
         _dbInstance.InsertOne<Player>(
             collectionName: _playerCollection,
             document: newPlayer
