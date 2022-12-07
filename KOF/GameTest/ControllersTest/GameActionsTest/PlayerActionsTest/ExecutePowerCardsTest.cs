@@ -7,16 +7,16 @@ using KOT.Models.Processor;
 
 public class ExecutePowerCardTest
 {
-        public Player player1 = new Player(
-        "Player1",
-        new Monster("Monster1", 5, 10),
-        14,
-        new List<CardDetails>()
-        {
+    public Player player1 = new Player(
+    "Player1",
+    new Monster("Monster1", 5, 10),
+    14,
+    new List<CardDetails>()
+    {
             new CardDetails(new PowerCard("Corner Store", 3, 1), new Effect(starPoints: 1))
-            
-        }
-    );
+
+    }
+);
     public Player player2 = new Player(
         "Player2",
         new Monster("Monster2", 5, 10),
@@ -84,7 +84,7 @@ public class ExecutePowerCardTest
     [Fact]
     public void ItShouldExecuteThePowerCardOfTheActivePlayer()
     {
-        List<Player> players = new List<Player>() { player1, player2, player3, player4, player5};
+        List<Player> players = new List<Player>() { player1, player2, player3, player4, player5 };
         GamePayload game = new GamePayload(null, new TokyoBoard(), new TokyoBoardProcessor(), new PowerCardDeck(), player1.Name);
 
         game.BoardProcessor!.SetTokyoBoard(players, game.Board!);
@@ -92,7 +92,7 @@ public class ExecutePowerCardTest
         Assert.Contains(player1, game.Board!.OutsideTokyo);
         Assert.Equal(player1.Name, game.ActivePlayerName);
         Assert.Equal(5, player1.MyMonster.VictoryPoints);
-        Analizer.Execute(null!, game); 
+        Analizer.Execute(null!, game);
         Assert.Equal(6, player1.MyMonster.VictoryPoints);
 
         game.BoardProcessor!.ChangePlayerBoardPlace(player2, game.Board!.OutsideTokyo, game.Board.TokyoCity);
@@ -101,7 +101,7 @@ public class ExecutePowerCardTest
         Assert.Equal(player2.Name, game.ActivePlayerName);
         Assert.Equal(5, player2.MyMonster.VictoryPoints);
         Assert.Equal(14, player2.EnergyCubes);
-        Analizer.Execute(null!, game); 
+        Analizer.Execute(null!, game);
         Assert.Equal(9, player2.MyMonster.VictoryPoints);
         Assert.Equal(23, player2.EnergyCubes);
 
@@ -112,7 +112,7 @@ public class ExecutePowerCardTest
         Assert.Equal(5, player4.MyMonster.VictoryPoints);
         Assert.Equal(14, player4.EnergyCubes);
         Assert.Equal(8, player4.MyMonster.LifePoints);
-        Analizer.Execute(null!, game); 
+        Analizer.Execute(null!, game);
         Assert.Equal(9, player4.MyMonster.VictoryPoints);
         Assert.Equal(16, player4.EnergyCubes);
         Assert.Equal(10, player4.MyMonster.LifePoints);

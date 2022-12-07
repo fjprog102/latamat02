@@ -12,10 +12,12 @@ public class ExecutePowerCard : GameAction<ExecutePowerCard>
         {
             ExecuteEffect(game.Board.OutsideTokyo.Find(player => player.Name == game.ActivePlayerName)!);
         }
+
         if (game.Board?.TokyoCity!.Exists(player => player.Name == game.ActivePlayerName) == true)
         {
             ExecuteEffect(game.Board.TokyoCity.Find(player => player.Name == game.ActivePlayerName)!);
         }
+
         if (game.Board!.TokyoBay != null && game.Board?.TokyoBay!.Exists(player => player.Name == game.ActivePlayerName) == true)
         {
             ExecuteEffect(game.Board.TokyoBay.Find(player => player.Name == game.ActivePlayerName)!);
@@ -24,7 +26,7 @@ public class ExecutePowerCard : GameAction<ExecutePowerCard>
 
     public void ExecuteEffect(Player player)
     {
-        if(player.PowerCards!.Count() > 0)
+        if (player.PowerCards!.Count() > 0)
         {
             foreach (var powerCard in player.PowerCards!)
             {

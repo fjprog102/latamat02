@@ -39,7 +39,7 @@ public class StartTurnTest
     public void ItShouldUpdateVictoryPointsIfPlayerIsInTokyoBay()
     {
         List<Player> players = new List<Player>() { playerOne, playerTwo, playerThree, playerFour, playerFive };
-        GamePayload game = new GamePayload(null, new TokyoBoard(), new TokyoBoardProcessor(),  new PowerCardDeck(), playerOne.Name);
+        GamePayload game = new GamePayload(null, new TokyoBoard(), new TokyoBoardProcessor(), new PowerCardDeck(), playerOne.Name);
         var instance = new StartTurn();
 
         game.BoardProcessor!.SetTokyoBoard(players, game.Board!);

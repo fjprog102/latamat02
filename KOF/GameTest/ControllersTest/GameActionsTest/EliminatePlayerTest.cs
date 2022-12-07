@@ -84,7 +84,7 @@ public class EliminatePlayerTest
         Player playerFour = new Player("Jorge", new Monster("Gigazaur", 10, 10));
         Player playerFive = new Player("Jorge", new Monster("Gigazaur", 10, 0));
         List<Player> players = new List<Player>() { playerOne, playerTwo, playerThree, playerFour, playerFive };
-        GamePayload game = new GamePayload(null, new TokyoBoard(), new TokyoBoardProcessor(),new PowerCardDeck(),  playerOne.Name, players);
+        GamePayload game = new GamePayload(null, new TokyoBoard(), new TokyoBoardProcessor(), new PowerCardDeck(), playerOne.Name, players);
         var instance = new EliminatePlayer();
 
         game.BoardProcessor!.SetTokyoBoard(players, game.Board!);

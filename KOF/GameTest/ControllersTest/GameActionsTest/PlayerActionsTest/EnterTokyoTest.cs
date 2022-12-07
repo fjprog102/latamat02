@@ -24,7 +24,7 @@ public class EnterTokyoTest
     public void ItShouldNotEnterTokyoAndChangePointsIfDicesDoesntHaveASmashFace()
     {
         List<Player> players = new List<Player>() { playerOne, playerTwo, playerThree, playerFour, playerFive };
-        GamePayload game = new GamePayload(null, new TokyoBoard(), new TokyoBoardProcessor(), new PowerCardDeck(),playerOne.Name);
+        GamePayload game = new GamePayload(null, new TokyoBoard(), new TokyoBoardProcessor(), new PowerCardDeck(), playerOne.Name);
         var instance = new EnterTokyo();
         string[] rolledDices = { "energy", "energy", "one", "one", "one", "heart" };
 

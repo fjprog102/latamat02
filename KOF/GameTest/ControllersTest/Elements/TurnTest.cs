@@ -89,7 +89,7 @@ public class TurnTest
     public void ItShouldExecuteATurnForEachPlayer()
     {
         List<Player> players = new List<Player>() { playerOne, playerTwo, playerThree, playerFour, playerFive };
-        GamePayload game = new GamePayload(null, new TokyoBoard(), new TokyoBoardProcessor(),new PowerCardDeck(),  playerOne.Name, players);
+        GamePayload game = new GamePayload(null, new TokyoBoard(), new TokyoBoardProcessor(), new PowerCardDeck(), playerOne.Name, players);
         string[] playerOneDices = { "two", "two", "two", "smash", "heart", "energy" };
 
         game.BoardProcessor!.SetTokyoBoard(game.Players!, game.Board!);
