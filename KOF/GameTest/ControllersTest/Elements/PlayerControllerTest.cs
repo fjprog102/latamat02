@@ -22,6 +22,16 @@ public class PlayerControllerMockData
     {
         return new List<Player> { new Player("player4", new Monster("monster4", 7, 7)) };
     }
+
+    public static List<Player> PutMethodMock()
+    {
+        return new List<Player> { new Player("player4", new Monster("monster4", 7, 7)) };
+    }
+
+    public static List<Player> DeleteMethodMock()
+    {
+        return new List<Player> { new Player("player4", new Monster("monster4", 7, 7)) };
+    }
 }
 public class PlayerControllerTest
 {
@@ -75,6 +85,64 @@ public class PlayerControllerTest
         var patched = new PlayerController(playerService.Object);
 
         var result = (BadRequestResult)patched.Post(payload);
+        Assert.Equal(400, result.StatusCode);
+    }
+
+    [Fact]
+    public void TestsPutMethod201Response()
+    {
+        var playerService = new Mock<IPlayerService>();
+        var payload = new PlayerPayload(name: "name4", myMonster: null);
+        playerService
+            .Setup(mock => mock.Update(payload))
+            .Returns(PlayerControllerMockData.PutMethodMock());
+
+        var patched = new PlayerController(playerService.Object);
+
+        var result = (CreatedResult)patched.Put(payload);
+        Assert.Equal(201, result.StatusCode);
+    }
+
+    [Fact]
+    public void TestsPutMethod400Response()
+    {
+        var playerService = new Mock<IPlayerService>();
+        var payload = new PlayerPayload(name: "name4", myMonster: null);
+        playerService
+            .Setup(mock => mock.Update(payload))
+            .Throws(new Exception());
+
+        var patched = new PlayerController(playerService.Object);
+
+        var result = (BadRequestResult)patched.Put(payload);
+        Assert.Equal(400, result.StatusCode);
+    }
+
+    [Fact]
+    public void TestsDeleteMethod201Response()
+    {
+        var playerService = new Mock<IPlayerService>();
+        playerService
+            .Setup(mock => mock.Delete(It.IsAny<PlayerPayload>()))
+            .Returns(PlayerControllerMockData.DeleteMethodMock());
+
+        var patched = new PlayerController(playerService.Object);
+
+        var result = (OkObjectResult)patched.Delete("123");
+        Assert.Equal(200, result.StatusCode);
+    }
+
+    [Fact]
+    public void TestsDeleteMethod400Response()
+    {
+        var playerService = new Mock<IPlayerService>();
+        playerService
+            .Setup(mock => mock.Delete(It.IsAny<PlayerPayload>()))
+            .Throws(new Exception());
+
+        var patched = new PlayerController(playerService.Object);
+
+        var result = (BadRequestResult)patched.Delete("123");
         Assert.Equal(400, result.StatusCode);
     }
 }
