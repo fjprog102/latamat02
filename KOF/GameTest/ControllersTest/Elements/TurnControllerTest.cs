@@ -1,45 +1,57 @@
-﻿// namespace KOT.Controllers.Test;
+﻿namespace KOT.Controllers.Test;
 
-// using KOT.Controllers;
-// using KOT.Models;
-// using KOT.Services.Interfaces;
-// using Microsoft.AspNetCore.Mvc;
-// using Moq;
+using KOT.Controllers;
+using KOT.Models;
+using KOT.Services.Interfaces;
+using Microsoft.AspNetCore.Mvc;
+using Moq;
 
-// public class TurnControllerMockData
-// {
-//     public static List<Game> PostMethodMock()
-//     {
-//         List<Player> players = new List<Player>() { new Player("Jose", new Monster("Alienoid", 0, 10), 0),
-//             new Player("Shirley", new Monster("Cyber Kitty", 0, 10), 0) };
-//         return new List<Game> { new Game(players) };
-//     }
+public class TurnControllerMockData
+{
+    public static List<Game> PostMethodMock()
+    {
+        List<Player> players = new List<Player>()
+        {
+            new Player("Jose", new Monster("Alienoid", 0, 10), 0),
+            new Player("Shirley", new Monster("Cyber Kitty", 0, 10), 0)
+        };
+        return new List<Game> { new Game(players) };
+    }
 
-//     [Fact]
-//     public void TestsPostMethod201Response()
-//     {
-//         var gameService = new Mock<IGameService>();
-//         var payload = new GamePayload();
-//         gameService
-//             .Setup(mock => mock.Create(payload))
-//             .Returns(TurnControllerMockData.PostMethodMock());
+    public static List<Game> PostMethodMockSingle()
+    {
+        List<Player> players = new List<Player>()
+        {
+            new Player("Jose", new Monster("Alienoid", 0, 10), 0),
+        };
+        return new List<Game> { new Game(players) };
+    }
 
-//         var patched = new TurnController(gameService.Object);
+    [Fact]
+    public void TestsPostMethod201Response()
+    {
+        var gameService = new Mock<IGameService>();
+        var payload = new TurnPayload("", new string[] { });
+        gameService
+            .Setup(mock => mock.Read(It.IsAny<GamePayload>()))
+            .Returns(TurnControllerMockData.PostMethodMock());
+        gameService
+            .Setup(mock => mock.Update(It.IsAny<GamePayload>()))
+            .Returns(TurnControllerMockData.PostMethodMockSingle());
 
-//         var result = (CreatedResult)patched.Post(null!);
-//         Assert.Equal(201, result.StatusCode);
-//     }
+        var patched = new TurnController(gameService.Object);
+        var result = (OkObjectResult)patched.Post(payload: payload);
 
-//     [Fact]
-//     public void TestsPostMethod400Response()
-//     {
-//         var gameService = new Mock<IGameService>();
-//         var payload = new GamePayload();
-//         gameService.Setup(mock => mock.Create(payload)).Throws(new Exception());
+        Assert.Equal(200, result.StatusCode);
+    }
 
-//         var patched = new TurnController(gameService.Object);
+    [Fact]
+    public void TestsPostMethod400Response()
+    {
+        var gameService = new Mock<IGameService>();
+        var patched = new TurnController(gameService.Object);
+        var result = (BadRequestResult)patched.Post(null!);
 
-//         var result = (BadRequestResult)patched.Post(null!);
-//         Assert.Equal(400, result.StatusCode);
-//     }
-// }
+        Assert.Equal(400, result.StatusCode);
+    }
+}
