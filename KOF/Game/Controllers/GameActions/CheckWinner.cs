@@ -7,8 +7,7 @@ public class CheckWinner : GameAction<CheckWinner>
 {
     public override void Execute(string[] dices, GamePayload game)
     {
-        game.Winner = CheckWinnerInBoardPlace(game.Board!.OutsideTokyo) +
-        CheckWinnerInBoardPlace(game.Board.TokyoCity);
+        game.Winner = CheckWinnerInBoardPlace(game.Board!.OutsideTokyo) + CheckWinnerInBoardPlace(game.Board!.TokyoCity);
         if (game.Board!.TokyoBay != null)
         {
             game.Winner += CheckWinnerInBoardPlace(game.Board.TokyoBay);
@@ -17,14 +16,15 @@ public class CheckWinner : GameAction<CheckWinner>
 
     public string CheckWinnerInBoardPlace(List<Player> players)
     {
+        string winner = "";
         for (int index = 0; index < players.Count(); index++)
         {
             if (players[index].MyMonster.VictoryPoints >= 20)
             {
-                return players[index].Name;
+                winner = players[index].Name;
             }
         }
 
-        return "";
+        return winner;
     }
 }

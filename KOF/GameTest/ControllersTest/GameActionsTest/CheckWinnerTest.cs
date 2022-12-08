@@ -49,8 +49,8 @@ public class CheckWinnerrTest
         var instance = new CheckWinner();
 
         game.BoardProcessor!.SetTokyoBoard(players, game.Board!);
-        game.BoardProcessor!.ChangePlayerBoardPlace(playerOne, game.Board!.OutsideTokyo, game.Board.TokyoBay);
-        game.BoardProcessor!.ChangePlayerBoardPlace(playerThree, game.Board!.OutsideTokyo, game.Board.TokyoCity);
+        game.BoardProcessor!.ChangePlayerBoardPlace(playerOne, game.Board!.OutsideTokyo, game.Board.TokyoCity);
+        game.BoardProcessor!.ChangePlayerBoardPlace(playerThree, game.Board!.OutsideTokyo, game.Board.TokyoBay);
 
         instance.Execute(null!, game);
         Assert.Equal(playerOne.Name, game.Winner);
