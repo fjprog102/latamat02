@@ -9,7 +9,5 @@ RUN dotnet restore
 RUN dotnet publish -c Release -o DockerBuild
 
 # Build runtime image
-FROM mcr.microsoft.com/dotnet/aspnet:6.0
-WORKDIR /KOF/Game
-COPY --from=build-env /KOF/Game/DockerBuild .
+WORKDIR /KOF/Game/DockerBuild
 ENTRYPOINT ["dotnet", "KOF.dll"]
