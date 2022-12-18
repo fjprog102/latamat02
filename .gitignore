@@ -6,6 +6,9 @@
 # Code Coverage report
 .coveragereport/
 
+# DockerBuildFiles
+DockerBuilds/
+
 # User-specific files
 *.rsuser
 *.suo
