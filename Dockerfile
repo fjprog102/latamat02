@@ -8,5 +8,4 @@ WORKDIR /KOF/Game
 RUN dotnet restore
 RUN dotnet publish -c Release -o DockerBuilds
 WORKDIR /KOF/Game/DockerBuilds
-COPY --from=build-env /KOF/Out .
 ENTRYPOINT ["dotnet", "KOF.dll", "--environment=Development"]
